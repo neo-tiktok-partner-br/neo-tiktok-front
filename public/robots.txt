@@ -22,4 +22,4 @@ User-agent: Google-Extended
 Allow: /
 
 # Discovery Layer Links
-Sitemap: https://neoflowoff.agency/sitemap.xml
+Sitemap: https://neotiktok.com/sitemap.xml

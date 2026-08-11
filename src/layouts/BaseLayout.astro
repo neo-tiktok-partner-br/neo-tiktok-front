@@ -16,7 +16,7 @@ const {
 
 // Purificação de URL Canônica conforme SEO.md v2.1.0
 // FIXADO: replace(/\/$/) na raiz produzia string vazia — fallback agora correto
-const BASE_URL = "https://neoflowoff.agency";
+const BASE_URL = "https://neotiktok.com";
 const rawCanonical = new URL(Astro.url.pathname, Astro.site || BASE_URL).href;
 const canonicalURL = rawCanonical === BASE_URL + '/' ? BASE_URL : rawCanonical.replace(/\/$/, '');
 
@@ -29,23 +29,23 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "ProfessionalService",
-      "@id": "https://neoflowoff.agency/#organization",
-      "name": "neoflow agency",
+      "@id": "https://neotiktok.com/#organization",
+      "name": "neotiktok agency",
       "alternateName": [
         "neøflow",
         "neøflow official tiktok partners",
         "Neo FlowOFF Agency",
-        "neoflowoff.agency"
+        "neotiktok.com"
       ],
       "legalName": "Flowoff Marketing e Assessoria Digital LTDA",
-      "url": "https://neoflowoff.agency",
+      "url": "https://neotiktok.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://neoflowoff.agency/assets/logo_partners.svg"
+        "url": "https://neotiktok.com/assets/logo_partners.svg"
       },
       "description": description,
       "slogan": "Seu perfil. Seus interesses. Nosso negócio.",
-      "email": "neo@neoflowoff.agency",
+      "email": "neo@neotiktok.com",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "BR"
@@ -60,11 +60,11 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://neoflowoff.agency/#website",
-      "url": "https://neoflowoff.agency",
+      "@id": "https://neotiktok.com/#website",
+      "url": "https://neotiktok.com",
       "name": "neøflow official tiktok partners",
       "publisher": {
-        "@id": "https://neoflowoff.agency/#organization"
+        "@id": "https://neotiktok.com/#organization"
       }
     }
   ]

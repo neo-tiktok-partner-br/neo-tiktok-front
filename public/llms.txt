@@ -5,12 +5,12 @@
 neøflow is an official TikTok Partner ecosystem operating as a decentralized commercial infrastructure for Shop (Sellers), Creators (Affiliates/LIVES), Marketing (UGC/Ads), and Tech (Open API, OAuth 2.0, Webhooks, AI Agents).
 
 ## Core Documentation Index
-- [System Architecture & Rules](https://neoflowoff.agency/AGENTS.md): Canonical development policy, design system, and integration constraints.
-- [Setup & Environment Guide](https://neoflowoff.agency/SETUP.md): Local installation, Node.js runtime, pnpm, and Makefile instructions.
-- [Ecosystem Domain Codex](https://neoflowoff.agency/CODEX.md): Vocabulary, technical terms, and domain glossary.
-- [Legal Compliance Hub](https://neoflowoff.agency/legal/privacidade): Privacy policy (LGPD), Terms of Service, Data Subject Rights (LGPD Art. 18), and E-commerce Decree (7.962/13).
+- [System Architecture & Rules](https://neotiktok.com/AGENTS.md): Canonical development policy, design system, and integration constraints.
+- [Setup & Environment Guide](https://neotiktok.com/SETUP.md): Local installation, Node.js runtime, pnpm, and Makefile instructions.
+- [Ecosystem Domain Codex](https://neotiktok.com/CODEX.md): Vocabulary, technical terms, and domain glossary.
+- [Legal Compliance Hub](https://neotiktok.com/legal/privacidade): Privacy policy (LGPD), Terms of Service, Data Subject Rights (LGPD Art. 18), and E-commerce Decree (7.962/13).
 
 ## Operational Identity
 - Legal Entity: Flowoff Marketing e Assessoria Digital LTDA
 - CNPJ: 43.376.355/0001-92
-- Official Contact & DPO: neo@neoflowoff.agency
+- Official Contact & DPO: neo@neotiktok.com
