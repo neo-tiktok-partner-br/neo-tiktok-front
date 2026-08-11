@@ -1,13 +1,17 @@
 :root {
-  /* Canvas & iOS Glass Surfaces */
-  --neo-bg: #09131a;
-  --neo-bg-card: rgba(16, 34, 45, 0.75);
-  --neo-bg-subtle: #0b151c;
-  --neo-border: rgba(110, 231, 249, 0.2);
-  --neo-border-active: rgba(215, 254, 9, 0.5);
+  /* Canvas & Surfaces — Grafite canônico (branding.md §5.1)
+     neo.void.900   #0B0B0C  — background principal
+     neo.void.1000  #050505  — paineis profundos
+     neo.graphite.800 rgba(18,18,20) — cards / glass */
+  --neo-bg: #0b0b0c;
+  --neo-bg-card: rgba(18, 18, 20, 0.75);
+  --neo-bg-subtle: #050505;
+  /* Borda dark canônica conforme branding.md §9.2 */
+  --neo-border: rgba(255, 255, 255, 0.10);
+  --neo-border-active: rgba(215, 254, 9, 0.50);
 
   /* iOS Glassmorphism Tokens */
-  --glass-bg: rgba(16, 34, 45, 0.7);
+  --glass-bg: rgba(18, 18, 20, 0.70);
   --glass-blur: blur(24px);
   --glass-border: rgba(255, 255, 255, 0.12);
 
@@ -68,7 +72,6 @@ body {
   line-height: 1.5;
   min-height: -webkit-fill-available;
   min-height: 100vh;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
@@ -77,6 +80,17 @@ body {
   overscroll-behavior-y: none;
   overscroll-behavior-x: none;
   touch-action: manipulation;
+}
+
+/* FIXADO: overflow-x: hidden em html E body simultaneamente mata o scroll vertical
+   no Safari/WebKit. overflow-x: clip no body evita overflow horizontal sem criar
+   um novo BFC (block formatting context), preservando o scroll vertical corretamente. */
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: clip;
 }
 
 /* Touch Action & iOS Interaction Optimization */

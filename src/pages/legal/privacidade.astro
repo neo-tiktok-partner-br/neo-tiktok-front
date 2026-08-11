@@ -1,15 +1,17 @@
 ---
 import LegalLayout from '../../components/LegalLayout.astro';
+
+const contactEmail = "neo@neoflowoff.agency";
 ---
 
 <LegalLayout
-  title="Política de Privacidade (LGPD)"
-  subtitle="Transparência e segurança no tratamento dos seus dados pessoais no ecossistema neøflow."
+  title="Política de Privacidade e Proteção de Dados (LGPD)"
+  subtitle="Transparência, controle e segurança no tratamento dos seus dados pessoais no ecossistema neøflow."
   activeDoc="privacidade"
 >
   <h2>1. Introdução e Compromisso com a Privacidade</h2>
   <p>
-    A <strong>NEOFLOW TECNOLOGIA E PERFORMANCE LTDA</strong> ("neøflow"), inscrita no CNPJ sob o nº <strong>00.000.000/0001-00</strong>, reafirma seu compromisso incondicional com a privacidade, segurança e proteção dos dados pessoais de todos os lojistas, criadores de conteúdo, parceiros e visitantes de nossa plataforma.
+    A <strong>Flowoff Marketing e Assessoria Digital LTDA</strong> ("neøflow"), inscrita no CNPJ sob o nº <strong>43.376.355/0001-92</strong>, reafirma seu compromisso incondicional com a privacidade, segurança e proteção dos dados pessoais de todos os lojistas, criadores de conteúdo, parceiros e visitantes de nossa plataforma.
   </p>
   <p>
     Esta Política de Privacidade foi elaborada em estrita conformidade com a <strong>Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 - LGPD)</strong>, detalhando como coletamos, armazenamos, utilizamos, compartilhamos e protegemos suas informações.
@@ -46,8 +48,59 @@ import LegalLayout from '../../components/LegalLayout.astro';
     Adotamos medidas técnicas e administrativas aptas a proteger os dados pessoais de acessos não autorizados e de situações acidentais ou ilícitas de destruição, perda, alteração ou difusão. Credenciais de API, tokens OAuth e segredos de conexão são armazenados em ambiente isolado e criptografado com acesso restrito.
   </p>
 
-  <h2>6. Alterações nesta Política</h2>
+  <h2>6. Seus Direitos Fundamentais (Artigo 18 da LGPD)</h2>
   <p>
-    Esta Política de Privacidade poderá ser atualizada periodicamente para refletir melhorias em nossos serviços ou alterações legislativas. Recomendamos a consulta regular desta página.
+    Conforme o Artigo 18 da LGPD, você possui direitos fundamentais sobre seus dados pessoais, que garantimos de forma gratuita e rápida:
   </p>
+  <ul>
+    <li><strong>Confirmação e Acesso:</strong> Confirmar a existência de tratamento e solicitar acesso imediato aos seus dados guardados conosco.</li>
+    <li><strong>Retificação:</strong> Corrigir dados desatualizados, incompletos ou incorretos.</li>
+    <li><strong>Eliminação e Bloqueio:</strong> Solicitar exclusão ou anonimização de dados desnecessários ou tratados em desconformidade legal.</li>
+    <li><strong>Portabilidade:</strong> Solicitar transferência dos seus dados para outro fornecedor ou serviço.</li>
+    <li><strong>Revogação de Consentimento:</strong> Retirar sua autorização para tratamento de dados a qualquer momento.</li>
+    <li><strong>Informação sobre Compartilhamento:</strong> Saber com quais parceiros ou entidades compartilhamos seus dados.</li>
+  </ul>
+  <p>
+    Para exercer qualquer um destes direitos, envie sua solicitação ao nosso Encarregado de Proteção de Dados (DPO) através do contato abaixo. A verificação da identidade do solicitante poderá ser exigida para prevenção de fraudes.
+  </p>
+
+  <div class="dpo-contact-box">
+    <h3>Canal Oficial de Atendimento LGPD / DPO</h3>
+    <p><strong>E-mail de Contato:</strong> <a href={`mailto:${contactEmail}?subject=Solicitação LGPD - Art. 18`} class="email font-mono">{contactEmail}</a></p>
+    <p class="small font-mono">Prazo de resposta legal: em até 15 dias corridos.</p>
+  </div>
+
+  <h2>7. Alterações nesta Política</h2>
+  <p>
+    Esta Política de Privacidade poderá ser atualizada periodicamente para refletir melhorias em nossos serviços ou alterações regulatórias.
+  </p>
+
+  <style>
+    .dpo-contact-box {
+      background: rgba(215, 254, 9, 0.05);
+      border: 1px solid rgba(215, 254, 9, 0.3);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .dpo-contact-box h3 {
+      font-family: var(--font-display);
+      color: var(--neo-acid);
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .dpo-contact-box .email {
+      color: var(--neo-cyan);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .dpo-contact-box .small {
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--neo-text-muted);
+    }
+  </style>
 </LegalLayout>

@@ -1,6 +1,7 @@
 ---
 import Preloader from '../components/Preloader.astro';
 import FooterPolicy from '../components/FooterPolicy.astro';
+import Header from '../components/Header.astro';
 import '../styles/tokens.css';
 
 interface Props {
@@ -14,8 +15,13 @@ const {
 } = Astro.props;
 
 // Purificação de URL Canônica conforme SEO.md v2.1.0
-const rawCanonical = new URL(Astro.url.pathname, Astro.site || "https://neoflowoff.agency").href;
-const canonicalURL = rawCanonical.replace(/\/$/, '') || "https://neoflowoff.agency";
+// FIXADO: replace(/\/$/) na raiz produzia string vazia — fallback agora correto
+const BASE_URL = "https://neoflowoff.agency";
+const rawCanonical = new URL(Astro.url.pathname, Astro.site || BASE_URL).href;
+const canonicalURL = rawCanonical === BASE_URL + '/' ? BASE_URL : rawCanonical.replace(/\/$/, '');
+
+// OG Image canônica (social sharing)
+const ogImage = `${BASE_URL}/assets/og-cover.png`;
 
 // Schema.org JSON-LD (@graph)
 const jsonLd = {
@@ -31,7 +37,7 @@ const jsonLd = {
         "Neo FlowOFF Agency",
         "neoflowoff.agency"
       ],
-      "legalName": "NEOFLOW TECNOLOGIA E PERFORMANCE LTDA",
+      "legalName": "Flowoff Marketing e Assessoria Digital LTDA",
       "url": "https://neoflowoff.agency",
       "logo": {
         "@type": "ImageObject",
@@ -117,7 +123,7 @@ const jsonLd = {
     <!-- Critical Inline CSS (Instant FCP Paint) -->
     <style is:inline>
       html, body {
-        background-color: #09131a;
+        background-color: #0b0b0c;
         color: #ffffff;
         margin: 0;
         padding: 0;
@@ -130,7 +136,7 @@ const jsonLd = {
         position: fixed;
         inset: 0;
         z-index: 9999;
-        background-color: #09131a;
+        background-color: #0b0b0c;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -144,13 +150,26 @@ const jsonLd = {
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:locale" content="pt_BR" />
-    <meta name="theme-color" content="#09131a" />
+    <!-- FIXADO: og:image era ausente — cards sociais não renderizavam imagem -->
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="neøflow // Official TikTok Partners" />
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="theme-color" content="#0b0b0c" />
 
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
   </head>
   <body>
+    <!-- Skip Navigation (Acessibilidade: WCAG 2.4.1) -->
+    <a href="#main-content" class="skip-to-content">Pular para o conteúdo principal</a>
     <Preloader />
+    <Header />
     <main id="main-content">
       <slot />
     </main>
@@ -160,11 +179,36 @@ const jsonLd = {
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').catch((err) => {
-            console.debug('ServiceWorker registro:', err);
-          });
+          navigator.serviceWorker.register('/sw.js')
+            .then((reg) => {
+              // Força verificação de update em cada visita
+              reg.update();
+            })
+            .catch((err) => {
+              // FIXADO: era console.debug — erros de SW eram invisíveis em produção
+              console.warn('[neøflow] ServiceWorker falhou no registro:', err);
+            });
         });
       }
     </script>
+    <style is:inline>
+      .skip-to-content {
+        position: absolute;
+        top: -100%;
+        left: 1rem;
+        padding: 0.5rem 1rem;
+        background: #d7fe09;
+        color: #050b0f;
+        font-weight: 700;
+        font-size: 0.875rem;
+        border-radius: 0 0 8px 8px;
+        text-decoration: none;
+        z-index: 100000;
+        transition: top 0.2s;
+      }
+      .skip-to-content:focus {
+        top: 0;
+      }
+    </style>
   </body>
 </html>

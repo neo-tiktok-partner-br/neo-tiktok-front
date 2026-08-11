@@ -1,0 +1,120 @@
+---
+// Header.astro — neøflow Official TikTok Partner Header
+---
+<header class="neo-header" id="site-header">
+  <div class="header-container">
+    <!-- Logo compacta alinhada à identidade visual canônica -->
+    <a href="/" class="header-logo font-display">
+      <span>neøflow</span><span class="logo-slash-coral">/</span><span class="logo-slash-cyan">/</span>
+    </a>
+
+    <!-- Badge temporária de lançamento -->
+    <div class="header-badge-wrapper">
+      <div class="header-badge font-mono">
+        <span class="badge-dot"></span>
+        <span>EM BREVE // SETEMBRO 26</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  if (header) {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        header.classList.add('is-scrolled');
+      } else {
+        header.classList.remove('is-scrolled');
+      }
+    };
+    // Scroll passivo para manter performance máxima de render
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Executa uma vez no load
+    handleScroll();
+  }
+</script>
+
+<style>
+  .neo-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+  }
+
+  /* Efeito Glassmorphism quando o usuário rola a página */
+  .neo-header.is-scrolled {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--neo-border);
+    box-shadow: var(--shadow-ios);
+  }
+
+  .header-container {
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--neo-white);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    transition: opacity 0.2s ease;
+  }
+
+  .header-logo:hover {
+    opacity: 0.85;
+  }
+
+  .logo-slash-coral {
+    color: var(--neo-coral); /* #FE2C55 */
+    margin-left: 2px;
+  }
+
+  .logo-slash-cyan {
+    color: var(--neo-cyan); /* #00F2FE */
+  }
+
+  .header-badge-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.03); /* Fundo branco/translúcido sutil */
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Borda neutra esmaecida */
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--neo-text-muted); /* Texto slate neutro */
+    box-shadow: var(--shadow-ios);
+  }
+
+  .badge-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--neo-acid); /* Ativo Verde Ácido */
+    box-shadow: 0 0 6px var(--neo-acid);
+  }
+</style>

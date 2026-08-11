@@ -24,10 +24,8 @@ Abaixo está a matriz completa de rotas concluídas e o roadmap aprovado para de
 ┃ ROTA                 DOMÍNIO       STATUS      PROPÓSITO & RECURSOS CHAVE           ┃
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 ┃ /                    Home          CONCLUÍDO   Landing page iOS-like com logo LCP   ┃
-┃ /legal/privacidade   Legal         CONCLUÍDO   Política de Privacidade (LGPD)       ┃
-┃ /legal/termos        Legal         CONCLUÍDO   Termos de Uso & Serviços             ┃
-┃ /legal/direitos-...  Legal         CONCLUÍDO   Direitos do Titular de Dados (Art.18)┃
-┃ /legal/decreto-...   Legal         CONCLUÍDO   Decreto do E-commerce (Nº 7.962/13)  ┃
+┃ /legal/privacidade   Legal         CONCLUÍDO   Privacidade & Direitos do Titular    ┃
+┃ /legal/termos        Legal         CONCLUÍDO   Termos de Uso & Decreto E-commerce   ┃
 ┃ /shop                Shop          PLANEJADO   Hub de Sellers, marcas e catálogos   ┃
 ┃ /shop/conectar       Shop          PLANEJADO   Onboarding e autorização OAuth       ┃
 ┃ /creators            Creators      PLANEJADO   Hub de Criadores e Live Commerce     ┃
@@ -49,8 +47,8 @@ Abaixo está a matriz completa de rotas concluídas e o roadmap aprovado para de
    * Design System Mobile-First iOS-Like com cantos rounded `--radius-ios: 22px`, física de toque e cores semânticas (Acid Green, Coral, Cyan, White).
 2. **Hub de Conformidade Legal Brasileira (`/legal/*`):**
    * Layout mestre unificado (`LegalLayout.astro`) com suporte a arraste tátil (Drag-to-Scroll).
-   * Identificação formal da razão social `NEOFLOW TECNOLOGIA E PERFORMANCE LTDA`, CNPJ `00.000.000/0001-00` e DPO `neo@neoflowoff.agency`.
-   * 4 rotas estáticas ativas (`/legal/privacidade`, `/legal/termos`, `/legal/direitos-titular`, `/legal/decreto-ecommerce`).
+   * Identificação formal da razão social `Flowoff Marketing e Assessoria Digital LTDA`, CNPJ `43.376.355/0001-92` e DPO `neo@neoflowoff.agency`.
+   * 2 rotas estáticas ativas consolidando conformidade integral (`/legal/privacidade` e `/legal/termos`).
 3. **Infraestrutura PWA & SEO:**
    * Service Worker PWA (`public/sw.js`), `manifest.webmanifest`, `robots.txt`, `llms.txt`, `sitemap.xml` e `favicon.ico`.
    * `make verify` compilando 100% de produção sem erros.

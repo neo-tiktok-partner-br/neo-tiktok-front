@@ -4,13 +4,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 interface Props {
   title: string;
   subtitle: string;
-  activeDoc: 'privacidade' | 'termos' | 'direitos-titular' | 'decreto-ecommerce';
+  activeDoc: 'privacidade' | 'termos';
 }
 
 const { title, subtitle, activeDoc } = Astro.props;
 
-const companyName = "NEOFLOW TECNOLOGIA E PERFORMANCE LTDA";
-const companyCnpj = "00.000.000/0001-00";
+const companyName = "Flowoff Marketing e Assessoria Digital LTDA";
+const companyCnpj = "43.376.355/0001-92";
 const contactEmail = "neo@neoflowoff.agency";
 ---
 
@@ -57,20 +57,6 @@ const contactEmail = "neo@neoflowoff.agency";
           >
             <span class="num">02</span>
             <span>Termos de Uso &amp; Serviços</span>
-          </a>
-          <a
-            href="/legal/direitos-titular"
-            class:list={["sidebar-link", { active: activeDoc === 'direitos-titular' }]}
-          >
-            <span class="num">03</span>
-            <span>Direitos do Titular (LGPD)</span>
-          </a>
-          <a
-            href="/legal/decreto-ecommerce"
-            class:list={["sidebar-link", { active: activeDoc === 'decreto-ecommerce' }]}
-          >
-            <span class="num">04</span>
-            <span>Decreto do E-commerce</span>
           </a>
         </nav>
 
@@ -146,7 +132,7 @@ const contactEmail = "neo@neoflowoff.agency";
   .legal-page-wrapper {
     max-width: 1140px;
     margin: 0 auto;
-    padding: calc(1.5rem + var(--sat)) 1.25rem calc(3rem + var(--sab)) 1.25rem;
+    padding: calc(90px + var(--sat)) 1.25rem calc(3rem + var(--sab)) 1.25rem; /* Ajustado top padding para desviar da header fixa */
     width: 100%;
     box-sizing: border-box;
   }
@@ -250,7 +236,7 @@ const contactEmail = "neo@neoflowoff.agency";
   @media (min-width: 860px) {
     .legal-sidebar {
       position: sticky;
-      top: 2rem;
+      top: 90px; /* Alinhado para ficar visível logo abaixo da header fixa */
     }
   }
 

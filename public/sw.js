@@ -9,19 +9,20 @@ const PRECACHE_ASSETS = [
   '/favicon.ico',
   '/assets/logo_partners.svg',
   '/legal/privacidade',
-  '/legal/termos',
-  '/legal/direitos-titular',
-  '/legal/decreto-ecommerce'
+  '/legal/termos'
 ];
 
 // Instalação do Service Worker & Precache de assets vitais
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(PRECACHE_ASSETS).catch((err) => {
-        console.warn('[neøflow sw] Precache aviso:', err);
-      });
-    }).then(() => self.skipWaiting())
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(PRECACHE_ASSETS))
+      .catch((err) => {
+        // FIXADO: catch estava engolindo o erro E impedindo skipWaiting
+        // Agora loga o erro mas ainda ativa o SW
+        console.warn('[neøflow sw] Precache parcial (não crítico):', err);
+      })
+      .finally(() => self.skipWaiting())
   );
 });
 
@@ -72,16 +73,21 @@ self.addEventListener('fetch', (event) => {
   // Estratégia 2: Imagens, CSS, JS, Fontes -> Stale-While-Revalidate
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
-      const fetchPromise = fetch(request).then((networkResponse) => {
-        if (networkResponse.ok) {
-          const responseClone = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(request, responseClone));
-        }
-        return networkResponse;
-      }).catch((err) => {
-        console.debug('[neøflow sw] Rede offline para asset:', request.url);
-      });
+      const fetchPromise = fetch(request)
+        .then((networkResponse) => {
+          if (networkResponse.ok) {
+            const responseClone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, responseClone));
+          }
+          return networkResponse;
+        })
+        .catch(() => {
+          // FIXADO: retornava undefined quando offline e sem cache
+          // respondWith(undefined) é erro não-tratado — agora retorna Response vazio
+          return cachedResponse || new Response('', { status: 503, statusText: 'Offline' });
+        });
 
+      // Retorna cache instantâneo ou aguarda rede
       return cachedResponse || fetchPromise;
     })
   );

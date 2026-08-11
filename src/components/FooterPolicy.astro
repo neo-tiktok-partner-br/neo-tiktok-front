@@ -6,67 +6,42 @@ const contactEmail = "neo@neoflowoff.agency";
 <footer class="neo-footer">
   <div class="footer-container">
     <div class="footer-grid">
-      <!-- Coluna 1: Marca e Posicionamento -->
+      <!-- Coluna 1: Marca, Descrição e Contato -->
       <div class="footer-brand font-display">
-        <h3 class="brand-title">neøflow</h3>
+        <h3 class="brand-title">
+          <span>neøflow</span><span class="footer-slash-coral">/</span><span class="footer-slash-cyan">/</span>
+        </h3>
         <p class="brand-tagline font-mono">Official TikTok Partners</p>
         <p class="brand-desc">
-          Infraestrutura descentralizada de tecnologia e inteligência comercial para Shop, Creators e Marketing.
+          A INFRAESTRUTURA ESTÁ PRONTA.<br />SEJA A PRIMEIRA CAMADA DE OPERADORES.
         </p>
-      </div>
-
-      <!-- Coluna 2: Navegação & Domínios -->
-      <div class="footer-col">
-        <h4 class="col-title font-mono">ECOSSISTEMA</h4>
-        <ul class="footer-links">
-          <li><span class="dot shop"></span><a href="#shop">Shop & Sellers</a></li>
-          <li><span class="dot creators"></span><a href="#creators">Creators Network</a></li>
-          <li><span class="dot marketing"></span><a href="#marketing">Marketing & UGC</a></li>
-          <li><span class="dot tech"></span><a href="#tech">Tech & Connectors</a></li>
-        </ul>
-      </div>
-
-      <!-- Coluna 3: Conformidade Legal & LGPD (Normas Brasileiras) -->
-      <div class="footer-col">
-        <h4 class="col-title font-mono">CONFORMIDADE LEGAL</h4>
-        <ul class="footer-links">
-          <li><a href="/legal/privacidade">Política de Privacidade (LGPD)</a></li>
-          <li><a href="/legal/termos">Termos de Uso &amp; Serviços</a></li>
-          <li><a href="/legal/direitos-titular">Direitos do Titular de Dados</a></li>
-          <li><a href="/legal/decreto-ecommerce">Decreto do E-commerce (Nº 7.962/13)</a></li>
-        </ul>
-      </div>
-
-      <!-- Coluna 4: Contato & Encarregado de Dados (DPO) -->
-      <div class="footer-col">
-        <h4 class="col-title font-mono">CONTATO OFICIAL</h4>
         <p class="contact-info font-mono">
-          Suporte e Atendimento:<br />
           <a href={`mailto:${contactEmail}`} class="email-link">{contactEmail}</a>
         </p>
-        <p class="contact-info font-mono lgpd-note">
-          Encarregado de Dados (DPO):<br />
-          <span class="muted">{contactEmail}</span>
-        </p>
+      </div>
+
+      <!-- Coluna 2: Links Legais Obrigatórios -->
+      <div class="footer-col">
+        <h4 class="col-title font-mono">CONFORMIDADE</h4>
+        <ul class="footer-links">
+          <li><a href="/legal/privacidade">Diretrizes de Privacidade (LGPD)</a></li>
+          <li><a href="/legal/termos">Termos de Uso &amp; Serviços</a></li>
+        </ul>
       </div>
     </div>
 
     <!-- Divisor Visual -->
     <div class="footer-divider"></div>
 
-    <!-- Rodapé Legal & Isenção de Responsabilidade de Marca -->
+    <!-- Rodapé de Disclaimer Legal e Copyright compactados -->
     <div class="footer-bottom font-mono">
-      <div class="legal-notice">
-        <p>
-          <strong>Aviso de Conformidade e Autonomia:</strong> A <strong>neøflow</strong> é uma parceira de tecnologia e ecossistema parceiro oficial do TikTok Shop. As marcas registradas TikTok e TikTok Shop são de propriedade de suas respectivas detentoras. O uso de integrações é governado pelas APIs oficiais e termos de serviço de parceiros.
-        </p>
-        <p class="compliance-laws">
-          Em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD) e o Código de Defesa do Consumidor (Lei nº 8.078/1990).
-        </p>
-      </div>
-
+      <p class="legal-notice">
+        <strong>Aviso:</strong> A <strong>neøflow</strong> é uma parceira de tecnologia independente do TikTok Shop. As marcas registradas TikTok e TikTok Shop pertencem às suas respectivas detentoras. Em conformidade com a LGPD e o Código de Defesa do Consumidor.
+      </p>
       <div class="copyright">
-        © {currentYear} <strong>neøflow // Official TikTok Partners</strong>. Todos os direitos reservados.
+        © {currentYear} neøflow // Official TikTok Partners. Todos os direitos reservados.
+        <br />
+        Flowoff Marketing e Assessoria Digital LTDA — CNPJ: 43.376.355/0001-92
       </div>
     </div>
   </div>
@@ -76,99 +51,76 @@ const contactEmail = "neo@neoflowoff.agency";
   .neo-footer {
     background-color: var(--neo-bg-card);
     border-top: 1px solid var(--neo-border);
-    padding: 4rem 1.5rem 2.5rem 1.5rem;
-    margin-top: 5rem;
+    padding: 3rem 1.25rem 2rem 1.25rem; /* Mais compacto verticalmente */
+    margin-top: 4rem; /* Margem reduzida */
     color: var(--neo-text-muted);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .footer-container {
-    max-width: 1140px;
+    max-width: 1080px; /* Alinhado ao max-width da home */
     margin: 0 auto;
   }
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.8fr 1fr 1.2fr 1.2fr;
+    grid-template-columns: 1.5fr 1fr; /* Layout de 2 colunas no desktop */
     gap: 2.5rem;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
     .footer-grid {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr; /* Coluna única no mobile/tablet */
+      gap: 2rem;
+    }
+    .neo-footer {
+      padding: 2.5rem 1rem 1.5rem 1rem; /* Mais compacto em telas pequenas */
     }
   }
 
-  @media (max-width: 600px) {
-    .footer-grid {
-      grid-template-columns: 1fr;
-    }
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 
   .brand-title {
-    font-size: 1.75rem;
+    font-size: 1.5rem; /* Ajustado tamanho no footer */
     font-weight: 800;
     color: var(--neo-white);
     letter-spacing: -0.03em;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .footer-slash-coral {
+    color: var(--neo-coral);
+    margin-left: 2px;
+  }
+
+  .footer-slash-cyan {
+    color: var(--neo-cyan);
   }
 
   .brand-tagline {
     color: var(--neo-acid);
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.25rem;
   }
 
   .brand-desc {
     color: var(--neo-text-muted);
     line-height: 1.5;
-    font-size: 0.85rem;
+    font-size: 0.825rem;
+    max-width: 480px;
   }
-
-  .col-title {
-    color: var(--neo-white);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    margin-bottom: 1.25rem;
-  }
-
-  .footer-links {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.65rem;
-  }
-
-  .footer-links a {
-    color: var(--neo-text-muted);
-    text-decoration: none;
-    transition: var(--transition-smooth);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-
-  .footer-links a:hover {
-    color: var(--neo-acid);
-    transform: translateX(2px);
-  }
-
-  .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    display: inline-block;
-  }
-  .dot.shop { background-color: var(--neo-coral); }
-  .dot.creators { background-color: var(--neo-cyan); }
-  .dot.marketing { background-color: var(--neo-white); }
-  .dot.tech { background-color: var(--neo-acid); }
 
   .contact-info {
-    font-size: 0.825rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
   }
 
   .email-link {
@@ -180,43 +132,59 @@ const contactEmail = "neo@neoflowoff.agency";
 
   .email-link:hover {
     color: var(--neo-acid);
-    text-decoration: underline;
   }
 
-  .lgpd-note .muted {
+  .col-title {
+    color: var(--neo-white);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.85rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-links a {
     color: var(--neo-text-muted);
-    font-size: 0.8rem;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.825rem;
+  }
+
+  .footer-links a:hover {
+    color: var(--neo-acid);
+    transform: translateX(2px);
   }
 
   .footer-divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--neo-border), transparent);
-    margin: 2.5rem 0 1.75rem 0;
+    margin: 2rem 0 1.5rem 0; /* Espaço reduzido */
   }
 
   .footer-bottom {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
-    font-size: 0.75rem;
-    line-height: 1.6;
-    color: #7b94a0;
-  }
-
-  .legal-notice strong {
+    gap: 0.85rem;
+    font-size: 0.72rem;
+    line-height: 1.5;
     color: var(--neo-text-muted);
   }
 
-  .compliance-laws {
-    margin-top: 0.35rem;
-    color: var(--neo-text-muted);
+  .legal-notice {
     opacity: 0.8;
   }
 
   .copyright {
-    color: var(--neo-text-muted);
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding-top: 0.85rem;
+    font-size: 0.7rem;
+    opacity: 0.75;
   }
 </style>

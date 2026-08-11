@@ -11,6 +11,6 @@ neøflow is an official TikTok Partner ecosystem operating as a decentralized co
 - [Legal Compliance Hub](https://neoflowoff.agency/legal/privacidade): Privacy policy (LGPD), Terms of Service, Data Subject Rights (LGPD Art. 18), and E-commerce Decree (7.962/13).
 
 ## Operational Identity
-- Legal Entity: NEOFLOW TECNOLOGIA E PERFORMANCE LTDA
-- CNPJ: 00.000.000/0001-00
+- Legal Entity: Flowoff Marketing e Assessoria Digital LTDA
+- CNPJ: 43.376.355/0001-92
 - Official Contact & DPO: neo@neoflowoff.agency

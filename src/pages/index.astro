@@ -8,110 +8,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="ambient-glow"></div>
 
     <div class="hero-container">
-      <!-- Tag / Header Superior -->
-      <div class="partner-badge-wrapper">
-        <div class="partner-badge font-mono">
-          <span class="badge-dot"></span>
-          <span>OFFICIAL TIKTOK PARTNER ECOSYSTEM</span>
-        </div>
-      </div>
+      <!-- Espaçador superior para manter alinhamento vertical com a logo no centro -->
+      <div class="header-spacer"></div>
 
-      <!-- LOGO CENTRALIZADO (iOS Glass Card) -->
-      <div class="hero-logo-card">
-        <div class="logo-wrapper">
-          <img
-            src="/assets/logo_partners.svg"
-            alt="neøflow Official TikTok Partners Logo"
-            class="main-partner-logo"
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-            width="720"
-            height="180"
-          />
-        </div>
-      </div>
+      <!-- LOGO -->
+      <img
+        src="/assets/logo_partners.svg"
+        alt="neøflow Official TikTok Partners Logo"
+        class="main-partner-logo"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        width="860"
+        height="260"
+      />
 
-      <!-- TÍTULO & BRAND STATEMENT -->
-      <div class="brand-statement">
-        <h1 class="hero-slogan font-display">
-          Seu perfil. Seus interesses. <span class="text-accent">Nosso negócio.</span>
-        </h1>
+      <!-- Espaçador inferior para manter alinhamento vertical com a logo no centro -->
+      <div class="bottom-spacer"></div>
+    </div>
+  </section>
 
-        <!-- BLOCO INSTITUCIONAL -->
-        <div class="manifesto-box font-mono">
-          <p class="manifesto-line text-negation">não é programa de afiliados.</p>
-          <p class="manifesto-line text-negation">não é prestação de serviços.</p>
-          <p class="manifesto-line text-negation">não é marketing digital.</p>
-          <p class="manifesto-line text-highlight">É apenas o que gostamos de fazer.</p>
-        </div>
-      </div>
 
-      <!-- CARTÕES DOS 4 DOMÍNIOS (Mobile-First Touch Grid) -->
-      <div class="domains-grid">
-        <!-- 01 SHOP -->
-        <div class="domain-card shop-card">
-          <div class="domain-header">
-            <span class="domain-icon shop">01</span>
-            <span class="domain-tag font-mono">SELLERS &amp; SHOP</span>
-          </div>
-          <h3 class="domain-title font-display">Shop</h3>
-          <p class="domain-desc">
-            Sincronização de catálogo, gestão de pedidos, inventário e automação de vendas.
-          </p>
-          <div class="card-footer font-mono">#FE2C55</div>
-        </div>
 
-        <!-- 02 CREATORS -->
-        <div class="domain-card creators-card">
-          <div class="domain-header">
-            <span class="domain-icon creators">02</span>
-            <span class="domain-tag font-mono">NETWORK &amp; LIVES</span>
-          </div>
-          <h3 class="domain-title font-display">Creators</h3>
-          <p class="domain-desc">
-            Rede de criadores de conteúdo, afiliados e playbooks para aceleração de Live Commerce.
-          </p>
-          <div class="card-footer font-mono">#00F2FE</div>
-        </div>
 
-        <!-- 03 MARKETING -->
-        <div class="domain-card marketing-card">
-          <div class="domain-header">
-            <span class="domain-icon marketing">03</span>
-            <span class="domain-tag font-mono">UGC &amp; PERFORMANCE</span>
-          </div>
-          <h3 class="domain-title font-display">Marketing</h3>
-          <p class="domain-desc">
-            Inteligência de mídias, campanhas UGC e otimização acelerada no TikTok Shop Ads.
-          </p>
-          <div class="card-footer font-mono">#FFFFFF</div>
-        </div>
-
-        <!-- 04 TECH -->
-        <div class="domain-card tech-card">
-          <div class="domain-header">
-            <span class="domain-icon tech">04</span>
-            <span class="domain-tag font-mono">OAUTH &amp; AGENTS</span>
-          </div>
-          <h3 class="domain-title font-display">Tech</h3>
-          <p class="domain-desc">
-            TikTok Shop Open API, Webhooks resilientes, automação e orquestração de Agentes de IA.
-          </p>
-          <div class="card-footer font-mono">#D7FE09</div>
-        </div>
-      </div>
-
-      <!-- BOTÃO / CTA PRINCIPAL (iOS Touch Optimized) -->
-      <div class="cta-container">
-        <a href="mailto:neo@neoflowoff.agency" class="btn-primary font-mono">
-          <span>ENTRAR EM CONTATO</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-      </div>
+  <!-- Faixa Branca Esticada nas Laterais (Alto Impacto / TikTok Business Style) -->
+  <section class="slogan-band-section">
+    <div class="slogan-container">
+      <h1 class="hero-slogan font-display">
+        Seu perfil.<br />
+        Seus interesses.<br />
+        Nosso negócio.
+      </h1>
     </div>
   </section>
 
@@ -119,23 +46,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     /* Mobile-First Layout Core */
     .hero-section {
       position: relative;
-      min-height: calc(100vh - 80px);
+      min-height: 85vh; /* Ocupa a maior parte da tela de entrada */
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: calc(1.5rem + var(--sat)) 1.25rem calc(3rem + var(--sab)) 1.25rem;
+      padding: calc(3rem + var(--sat)) 1.25rem calc(3rem + var(--sab)) 1.25rem;
     }
 
     .ambient-glow {
       position: absolute;
-      top: 15%;
+      top: 50%; /* Centraliza o brilho na logo */
       left: 50%;
       transform: translate(-50%, -50%);
       width: 100%;
-      max-width: 480px;
-      height: 380px;
+      max-width: 600px;
+      height: 480px;
       background: radial-gradient(circle, rgba(215, 254, 9, 0.12) 0%, rgba(0, 242, 254, 0.05) 50%, transparent 75%);
-      filter: blur(50px);
+      filter: blur(60px);
       pointer-events: none;
       z-index: 0;
     }
@@ -145,269 +72,82 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       z-index: 1;
       max-width: 1080px;
       width: 100%;
+      min-height: 65vh; /* Estica o container verticalmente */
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: space-between; /* Badge no topo, logo no centro, slogan embaixo */
       text-align: center;
-      gap: 1.75rem;
+      gap: 3rem; /* Fallback caso a tela seja muito pequena */
     }
 
-    /* BADGE SUPERIOR (iOS Capsule) */
-    .partner-badge-wrapper {
-      display: flex;
-      justify-content: center;
+    /* Espaçadores que garantem o alinhamento da logo no centro exato da tela */
+    .header-spacer,
+    .bottom-spacer {
+      height: 70px;
       width: 100%;
-    }
-
-    .partner-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.45rem 1rem;
-      border-radius: var(--radius-full);
-      background: var(--glass-bg);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border: 1px solid var(--neo-border);
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      color: var(--neo-cyan);
-      box-shadow: var(--shadow-ios);
-    }
-
-    .badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background-color: var(--neo-acid);
-      box-shadow: 0 0 8px var(--neo-acid);
-    }
-
-    /* LOGO CENTRALIZADO (iOS Glass Container) */
-    .hero-logo-card {
-      width: 100%;
-      max-width: 720px;
-      padding: 1.75rem 1.25rem;
-      background: linear-gradient(135deg, rgba(16, 34, 45, 0.75) 0%, rgba(11, 21, 28, 0.85) 100%);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-ios);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      box-shadow: var(--shadow-ios);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: var(--transition-smooth);
-    }
-
-    .hero-logo-card:active {
-      transform: scale(0.98);
-    }
-
-    .logo-wrapper {
-      width: 100%;
-      display: flex;
-      justify-content: center;
     }
 
     .main-partner-logo {
       width: 100%;
       height: auto;
-      max-height: 180px;
+      max-width: 640px; /* Mobile width */
+      max-height: 220px;
       object-fit: contain;
-      filter: drop-shadow(0 4px 15px rgba(255, 255, 255, 0.08));
+      transition: var(--transition-smooth);
+      margin: auto 0;
     }
 
-    /* STATEMENT & SLOGAN */
-    .brand-statement {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.25rem;
+    /* ══════════════════════════════════════════
+       SLOGAN BAND SECTION (TikTok Business Style)
+       ══════════════════════════════════════════ */
+    .slogan-band-section {
+      background-color: var(--neo-white); /* Faixa branca esticada nas laterais */
+      color: #000000;
+      padding: 4.5rem 1.5rem;
       width: 100%;
-      max-width: 780px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .slogan-container {
+      max-width: 1080px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start; /* Alinhado à esquerda como na referência */
     }
 
     .hero-slogan {
-      font-size: clamp(1.6rem, 5.5vw, 2.75rem);
-      font-weight: 800;
-      color: var(--neo-white);
-      line-height: 1.22;
+      font-size: clamp(2.2rem, 8vw, 4.5rem); /* Grande e ultra-impactante */
+      font-weight: 800; /* Extra bold */
+      color: #000000;
+      line-height: 1.08; /* Altura de linha super-apertada */
+      letter-spacing: -0.04em; /* Letras coladas */
+      text-align: left; /* Alinhado à esquerda */
     }
 
-    .text-accent {
-      color: var(--neo-acid);
-      text-shadow: 0 0 20px rgba(215, 254, 9, 0.35);
-    }
+    /* Responsividade para telas maiores (Tablet/Desktop) */
+    @media (min-width: 768px) {
+      .hero-section {
+        min-height: 90vh; /* Altura generosa no desktop */
+      }
 
-    .manifesto-box {
-      background: var(--glass-bg);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border: 1px solid var(--glass-border);
-      padding: 1.1rem 1.35rem;
-      border-radius: var(--radius-md);
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      font-size: 0.88rem;
-      text-align: center;
-      width: 100%;
-      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
-    }
-
-    .text-negation {
-      color: var(--neo-text-muted);
-      opacity: 0.85;
-    }
-
-    .text-highlight {
-      color: var(--neo-acid);
-      font-weight: 600;
-      margin-top: 0.25rem;
-      letter-spacing: 0.02em;
-    }
-
-    /* GRID DOS 4 DOMÍNIOS (Mobile First -> Single Column) */
-    .domains-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      width: 100%;
-      margin-top: 0.5rem;
-    }
-
-    .domain-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-ios);
-      padding: 1.35rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      text-align: left;
-      gap: 0.65rem;
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      transition: var(--transition-smooth);
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-ios);
-    }
-
-    .domain-card:active {
-      transform: var(--ios-active-scale);
-    }
-
-    .domain-header {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      width: 100%;
-    }
-
-    .domain-icon {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 0.2rem 0.5rem;
-      border-radius: var(--radius-sm);
-    }
-
-    .domain-icon.shop { background: rgba(254, 44, 85, 0.18); color: var(--neo-coral); }
-    .domain-icon.creators { background: rgba(0, 242, 254, 0.18); color: var(--neo-cyan); }
-    .domain-icon.marketing { background: rgba(255, 255, 255, 0.18); color: var(--neo-white); }
-    .domain-icon.tech { background: rgba(215, 254, 9, 0.18); color: var(--neo-acid); }
-
-    .domain-tag {
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      color: var(--neo-text-muted);
-    }
-
-    .domain-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--neo-white);
-    }
-
-    .domain-desc {
-      font-size: 0.85rem;
-      color: var(--neo-text-muted);
-      line-height: 1.45;
-      flex-grow: 1;
-    }
-
-    .card-footer {
-      font-size: 0.68rem;
-      letter-spacing: 0.05em;
-      opacity: 0.45;
-      margin-top: 0.25rem;
-    }
-
-    /* CTA BUTTON (iOS Touch Friendly >= 52px) */
-    .cta-container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-top: 0.5rem;
-    }
-
-    .btn-primary {
-      width: 100%;
-      max-width: 360px;
-      min-height: 52px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.65rem;
-      background: var(--neo-acid);
-      color: var(--neo-text-dark);
-      font-weight: 700;
-      font-size: 0.92rem;
-      letter-spacing: 0.06em;
-      padding: 0.85rem 1.75rem;
-      border-radius: var(--radius-full);
-      text-decoration: none;
-      box-shadow: 0 8px 25px rgba(215, 254, 9, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .btn-primary:active {
-      transform: scale(0.96);
-      box-shadow: 0 4px 15px rgba(215, 254, 9, 0.25);
-    }
-
-    /* Desktop Breakpoint Adjustments (Tablet & Desktop) */
-    @media (min-width: 600px) {
       .hero-container {
-        gap: 2.25rem;
+        min-height: 72vh; /* Distribuição de espaço premium */
       }
+
       .main-partner-logo {
-        max-height: 220px;
+        max-width: 840px; /* Aumentado no desktop */
       }
-      .domains-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.25rem;
-      }
-      .btn-primary {
-        width: auto;
+
+      .slogan-band-section {
+        padding: 7rem 2rem; /* Mais respiro na faixa branca no desktop */
       }
     }
 
-    @media (min-width: 1024px) {
-      .domains-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-      .domain-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.4);
-      }
-      .shop-card:hover { border-color: var(--neo-coral); }
-      .creators-card:hover { border-color: var(--neo-cyan); }
-      .marketing-card:hover { border-color: var(--neo-white); }
-      .tech-card:hover { border-color: var(--neo-acid); }
-    }
   </style>
 </BaseLayout>

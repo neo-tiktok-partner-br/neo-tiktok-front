@@ -28,7 +28,7 @@ Antes de realizar qualquer edição, proposta de arquitetura ou alteração no c
 
 2. **Regra de Nomenclatura da Marca:**
    * **SEMPRE** escreva o nome da marca em minúsculas: `neøflow` (nunca `NEØFLOW`).
-   * Exceção: Razão Social formal corporativa em contratos e cabeçalhos jurídicos (`NEOFLOW TECNOLOGIA E PERFORMANCE LTDA`).
+   * Exceção: Razão Social formal corporativa em contratos e cabeçalhos jurídicos (`Flowoff Marketing e Assessoria Digital LTDA`).
 
 3. **Doutrina Visual & Fronteiras do TikTok:**
    * Padrão visual: *TikTok-native. neøflow-owned.*

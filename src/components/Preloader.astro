@@ -10,7 +10,7 @@
         <span class="brand-symbol">NEØ</span>
       </div>
     </div>
-    
+
     <div class="progress-bar-container">
       <div class="progress-bar-fill" id="preloader-progress"></div>
     </div>
@@ -71,16 +71,16 @@
   .spinner-ring.outer {
     width: 90px;
     height: 90px;
-    border-top-color: var(--neo-acid);
-    border-right-color: rgba(215, 254, 9, 0.2);
+    border-top-color: var(--neo-coral); /* Vermelho/Coral */
+    border-right-color: rgba(254, 44, 85, 0.15);
     animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   }
 
   .spinner-ring.inner {
     width: 68px;
     height: 68px;
-    border-bottom-color: var(--neo-cyan);
-    border-left-color: rgba(0, 242, 254, 0.2);
+    border-bottom-color: var(--neo-cyan); /* Azulado/Ciano */
+    border-left-color: rgba(0, 242, 254, 0.15);
     animation: spin-reverse 0.9s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   }
 
@@ -93,14 +93,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 15px rgba(215, 254, 9, 0.2);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
   }
 
   .brand-symbol {
     font-family: var(--font-display);
     font-weight: 800;
     font-size: 0.9rem;
-    color: var(--neo-acid);
+    color: var(--neo-white); /* Branco */
     letter-spacing: 1px;
   }
 
@@ -115,7 +115,7 @@
   .progress-bar-fill {
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, var(--neo-cyan), var(--neo-acid));
+    background: linear-gradient(90deg, var(--neo-cyan), var(--neo-coral)); /* Degradê Azulado -> Vermelho */
     border-radius: 4px;
     transform-origin: left;
     transform: scaleX(0);
@@ -136,8 +136,8 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: var(--neo-acid);
-    box-shadow: 0 0 8px var(--neo-acid);
+    background-color: var(--neo-cyan); /* Azulado */
+    box-shadow: 0 0 8px var(--neo-cyan);
     animation: pulse-dot 1s ease-in-out infinite alternate;
   }
 
@@ -158,24 +158,52 @@
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  (function initPreloader() {
     const preloader = document.getElementById('neo-preloader');
     const progressBar = document.getElementById('preloader-progress');
     const statusText = document.getElementById('preloader-status-text');
 
+    // Se o preloader não existir no DOM, aborta silenciosamente
+    if (!preloader) return;
+
+    // FIXADO: sem timeout máximo — tela travava para sempre se JS falhasse
+    const SAFETY_TIMEOUT_MS = 4000;
+    let interval: ReturnType<typeof setInterval> | null = null;
+
+    function dismiss() {
+      if (interval) {
+        clearInterval(interval);
+        interval = null;
+      }
+      if (progressBar) progressBar.style.transform = 'scaleX(1)';
+      if (statusText) statusText.textContent = 'neøflow CONNECTED';
+      // Aguarda o frame de paint antes de aplicar a transição
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          if (preloader) { // Ensure preloader is not null before accessing
+            preloader.classList.add('hidden');
+            // Remove do DOM após transição para liberar memória e paint layers
+            setTimeout(() => preloader.remove(), 650);
+          }
+        }, 350);
+      });
+    }
+
+    // FIXADO: prefers-reduced-motion — dispensa preloader imediatamente
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      dismiss();
+      return;
+    }
+
+    // Safety net: nunca deixa o preloader bloqueando por mais de 4s
+    const safetyTimer = setTimeout(dismiss, SAFETY_TIMEOUT_MS);
+
     let progress = 0;
-    const interval = setInterval(() => {
+    interval = setInterval(() => {
       progress += Math.floor(Math.random() * 25) + 15;
       if (progress >= 100) {
-        progress = 100;
-        requestAnimationFrame(() => {
-          if (progressBar) progressBar.style.transform = 'scaleX(1)';
-          if (statusText) statusText.textContent = 'neøflow CONNECTED';
-        });
-        clearInterval(interval);
-        setTimeout(() => {
-          if (preloader) preloader.classList.add('hidden');
-        }, 350);
+        clearTimeout(safetyTimer);
+        dismiss();
       } else {
         const scale = progress / 100;
         requestAnimationFrame(() => {
@@ -183,5 +211,5 @@
         });
       }
     }, 80);
-  });
+  })();
 </script>

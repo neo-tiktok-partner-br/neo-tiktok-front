@@ -275,25 +275,25 @@ O sistema nasce em contraste preto/branco.
 
 Cor entra depois da estrutura.
 
-## 4.3 Operational Labels
+## 4.3 Creator & Shop Tags (Sinalizadores de Comunidade)
 
-Labels curtas e técnicas são parte da estética.
+Tags curtas, limpas e de alto contraste são parte da estética de social commerce, informando estados e dados com clareza e entusiasmo.
 
 Exemplos:
 
 ```text
-CONNECTED
-SHOP SYNC
-CREATOR LAYER
-ORDER EVENT
 LIVE
-API READY
-WEBHOOK ACTIVE
-SELLER 03
-SYNC 12:42:18
+CREATOR
+SHOP
+TRENDING
+READY
+SYNCED
+PARTNER
+ACTIVE
+SEPTEMBER 26
 ```
 
-Elas devem ser funcionais ou semanticamente plausíveis. Nunca usar “tech gibberish” decorativo.
+Elas devem ser funcionais, legíveis e amigáveis. Nunca usar termos de desenvolvimento interno ou códigos técnicos de terminal.
 
 ## 4.4 Structured Asymmetry
 
@@ -301,23 +301,16 @@ Layouts podem ser assimétricos, mas nunca aleatórios.
 
 A assimetria deve ser sustentada por grid.
 
-## 4.5 Visible Infrastructure
+## 4.5 Creator-Centric Connections (Narrativa Visual Fluida)
 
-A tecnologia pode aparecer visualmente por meio de:
+A tecnologia e a integração aparecem por meio de conexões humanas e de produto, celebrando o fluxo do ecossistema de forma alegre e visual:
 
-- linhas de conexão;
-- eventos;
-- pequenas tabelas;
-- traces;
-- status;
-- timestamps;
-- nós;
-- cards de integração;
-- relações seller → connector → service;
-- creator → content → order;
-- shop → inventory → event.
+- avatares de criadores e fotos de produtos reais;
+- fluxos fluidos conectando criador → conteúdo → vendas;
+- cards limpos mostrando o sucesso da parceria;
+- relações simples e amigáveis entre lojas e criadores.
 
-A infraestrutura é mostrada como **produto real**, não como ficção científica.
+O ecossistema é mostrado como uma plataforma viva, feliz e integrada ao dia a dia do social commerce, rejeitando qualquer estética fria de desenvolvimento (cyberpunk, linhas de comando, traces de código ou logs de terminal).
 
 ---
 
@@ -1133,26 +1126,33 @@ A arquitetura deve continuar compreensível sem logos.
 
 ---
 
-# 17. VOZ VISUAL DE UI
-
-A interface deve falar como sistema operacional, não como campanha.
+# 17. VOZ VISUAL
 
 ## 17.1 Microcopy
+
+A linguagem de microcopy deve ser alegre, direta, descomplicada e focada no sucesso de criadores e lojas, evitando jargões técnicos áridos de desenvolvimento.
 
 Preferir:
 
 ```text
 Conectar loja
 Sincronizar agora
-3 eventos pendentes
-Webhook ativo
-Acesso expirado
-Reautorizar conta
-Ver payload
+Conexão ativa
+Conta autorizada
+Ver detalhes
 Abrir pedido
+Pronto para usar
 ```
 
-Evitar:
+Evitar (termos puramente dev, técnicos ou frios):
+
+```text
+Webhook ativo
+Ver payload
+API status: 200 OK
+```
+
+E também evitar clichês teatrais e vazios:
 
 ```text
 Liberte todo o potencial da sua jornada
