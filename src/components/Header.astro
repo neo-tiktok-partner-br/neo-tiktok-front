@@ -12,7 +12,8 @@
     <div class="header-badge-wrapper">
       <div class="header-badge font-mono">
         <span class="badge-dot"></span>
-        <span>EM BREVE // SETEMBRO 26</span>
+        <span class="badge-text-desktop">EM BREVE // SETEMBRO 26</span>
+        <span class="badge-text-mobile">SOON // SET 26'</span>
       </div>
     </div>
   </div>
@@ -116,5 +117,34 @@
     border-radius: 50%;
     background-color: var(--neo-acid); /* Ativo Verde Ácido */
     box-shadow: 0 0 6px var(--neo-acid);
+  }
+
+  .badge-text-desktop {
+    display: inline;
+  }
+
+  .badge-text-mobile {
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    .header-container {
+      padding: 0 1rem;
+    }
+
+    .badge-text-desktop {
+      display: none;
+    }
+
+    .badge-text-mobile {
+      display: inline;
+    }
+
+    .header-badge {
+      padding: 0.35rem 0.75rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      gap: 0.4rem;
+    }
   }
 </style>
