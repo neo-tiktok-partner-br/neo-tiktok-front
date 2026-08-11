@@ -47,6 +47,7 @@ Este documento define o vocabulário e a terminologia técnica oficiais do ecoss
 * **Service Worker PWA (`sw.js`):** Script de fundo que gerencia o cache offline e estratégias Network-First / Stale-While-Revalidate.
 * **LGPD (Lei nº 13.709/2018):** Lei Geral de Proteção de Dados Pessoais do Brasil (Direitos do Titular, Art. 18).
 * **Decreto do E-commerce (Decreto nº 7.962/2013):** Regulamentação do e-commerce no Brasil (Direito de Arrependimento de 7 dias e identificação da razão social).
+* **Chrome DevTools Workspace Auto-Discovery (`com.chrome.devtools.json`):** Protocolo W3C/DevTools que expõe um UUID v4 e a raiz do projeto para autodescoberta e depuração automatizada no navegador.
 
 ────────────────────────────────────────
 
