@@ -1,0 +1,16 @@
+# neøflow // Official TikTok Partners — LLM Discovery Layer
+> Sovereign Markdown Documentation Index for Agentic Ingestion & Synthesis
+
+## System Overview
+neøflow is an official TikTok Partner ecosystem operating as a decentralized commercial infrastructure for Shop (Sellers), Creators (Affiliates/LIVES), Marketing (UGC/Ads), and Tech (Open API, OAuth 2.0, Webhooks, AI Agents).
+
+## Core Documentation Index
+- [System Architecture & Rules](https://neoflowoff.agency/AGENTS.md): Canonical development policy, design system, and integration constraints.
+- [Setup & Environment Guide](https://neoflowoff.agency/SETUP.md): Local installation, Node.js runtime, pnpm, and Makefile instructions.
+- [Ecosystem Domain Codex](https://neoflowoff.agency/CODEX.md): Vocabulary, technical terms, and domain glossary.
+- [Legal Compliance Hub](https://neoflowoff.agency/legal/privacidade): Privacy policy (LGPD), Terms of Service, Data Subject Rights (LGPD Art. 18), and E-commerce Decree (7.962/13).
+
+## Operational Identity
+- Legal Entity: NEOFLOW TECNOLOGIA E PERFORMANCE LTDA
+- CNPJ: 00.000.000/0001-00
+- Official Contact & DPO: neo@neoflowoff.agency

@@ -1,0 +1,131 @@
+---
+import Preloader from '../components/Preloader.astro';
+import FooterPolicy from '../components/FooterPolicy.astro';
+import '../styles/tokens.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "neøflow // Official TikTok Partners — Shop. Creators. Marketing. Tech",
+  description = "Infraestrutura descentralizada de tecnologia e inteligência comercial no ecossistema TikTok Partner. Conectamos lojistas, criadores e dados com autonomia."
+} = Astro.props;
+
+// Purificação de URL Canônica conforme SEO.md v2.1.0
+const rawCanonical = new URL(Astro.url.pathname, Astro.site || "https://neoflowoff.agency").href;
+const canonicalURL = rawCanonical.replace(/\/$/, '') || "https://neoflowoff.agency";
+
+// Schema.org JSON-LD (@graph)
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://neoflowoff.agency/#organization",
+      "name": "neoflow agency",
+      "alternateName": [
+        "neøflow",
+        "neøflow official tiktok partners",
+        "Neo FlowOFF Agency",
+        "neoflowoff.agency"
+      ],
+      "legalName": "NEOFLOW TECNOLOGIA E PERFORMANCE LTDA",
+      "url": "https://neoflowoff.agency",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://neoflowoff.agency/assets/logo_partners.svg"
+      },
+      "description": description,
+      "slogan": "Seu perfil. Seus interesses. Nosso negócio.",
+      "email": "neo@neoflowoff.agency",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "BR"
+      },
+      "knowsAbout": [
+        "TikTok Shop Partner",
+        "Infraestrutura Comercial",
+        "Live Commerce",
+        "Automação de Catálogos",
+        "Agentes de IA Customizados"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://neoflowoff.agency/#website",
+      "url": "https://neoflowoff.agency",
+      "name": "neøflow official tiktok partners",
+      "publisher": {
+        "@id": "https://neoflowoff.agency/#organization"
+      }
+    }
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Mobile & iOS WebApp Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="neøflow" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Canonical URL (SEO.md v2.1.0) -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- PWA WebApp Manifest -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo_partners.svg" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Meta Open Graph (Desambiguação de Marca) -->
+    <meta property="og:site_name" content="neøflow // Official TikTok Partners" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta name="theme-color" content="#09131a" />
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+  </head>
+  <body>
+    <Preloader />
+    <main id="main-content">
+      <slot />
+    </main>
+    <FooterPolicy />
+
+    <!-- Registrador de Service Worker (PWA) -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch((err) => {
+            console.debug('ServiceWorker registro:', err);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

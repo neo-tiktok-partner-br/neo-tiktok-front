@@ -1,0 +1,25 @@
+# ==========================================================================
+# neøflow // Official TikTok Partners — Robots Policy
+# Padrão Canônico SEO v2.1.0 (_standards/SEO.md)
+# ==========================================================================
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_astro/
+
+# Permissão Explícita para AI Crawlers & LLM Ingestion (AEO/GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Discovery Layer Links
+Sitemap: https://neoflowoff.agency/sitemap.xml

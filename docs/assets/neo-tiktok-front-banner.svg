@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420">
+  <defs>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10222D"/>
+      <stop offset="100%" stop-color="#0B151C"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D7FE09"/>
+      <stop offset="100%" stop-color="#00F2FE"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo Sólido -->
+  <rect width="1200" height="420" fill="#09131A"/>
+
+  <!-- Cartão Interno -->
+  <rect x="24" y="24" width="1152" height="372" rx="24" fill="url(#cardGrad)" stroke="#6EE7F9" stroke-width="1.5" stroke-opacity="0.4"/>
+
+  <!-- Header Text / Tag Topo -->
+  <text x="60" y="68" fill="#6EE7F9" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="600" letter-spacing="2">NEØFLOW // TIKTOK PARTNER ECOSYSTEM</text>
+
+  <!-- Concentric Circles Symbol (Esquerda) -->
+  <g transform="translate(130, 195)">
+    <circle r="56" fill="none" stroke="#6EE7F9" stroke-width="1.5" stroke-opacity="0.3" stroke-dasharray="4 4"/>
+    <circle r="40" fill="none" stroke="#6EE7F9" stroke-width="2" stroke-opacity="0.7"/>
+    <circle r="24" fill="#09131A" stroke="#D7FE09" stroke-width="2.5"/>
+    <circle r="10" fill="#D7FE09"/>
+  </g>
+
+  <!-- Connecting Lines -->
+  <path d="M 186 175 L 245 175" stroke="#6EE7F9" stroke-width="1.5" stroke-opacity="0.8"/>
+  <path d="M 186 195 L 245 195" stroke="#D7FE09" stroke-width="2"/>
+  <path d="M 186 215 L 245 215" stroke="#6EE7F9" stroke-width="1.5" stroke-opacity="0.8"/>
+
+  <!-- First Card (Funções) -->
+  <rect x="245" y="135" width="260" height="120" rx="14" fill="#09131A" stroke="#6EE7F9" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="265" y="172" fill="#D7FE09" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="15" font-weight="700">shopConnect()</text>
+  <text x="265" y="200" fill="#E8F4F8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="14">creatorNetwork()</text>
+  <text x="265" y="228" fill="#E8F4F8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="14">techIntegration()</text>
+
+  <!-- Arrow Connector -->
+  <g transform="translate(515, 195)">
+    <line x1="0" y1="0" x2="35" y2="0" stroke="#6EE7F9" stroke-width="2"/>
+    <polygon points="35,-5 45,0 35,5" fill="#6EE7F9"/>
+  </g>
+
+  <!-- Second Card (Conceitos do Domínio) -->
+  <rect x="570" y="115" width="550" height="160" rx="16" fill="#09131A" stroke="#D7FE09" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="600" y="152" fill="#D7FE09" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="15" font-weight="700" letter-spacing="1">TIKTOK PARTNER ECOSYSTEM // DOMAIN</text>
+  <text x="600" y="185" fill="#E8F4F8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="13">01 SELLERS &amp; CATALOG // Operação de Lojas, Pedidos e Logística</text>
+  <text x="600" y="213" fill="#E8F4F8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="13">02 CREATORS &amp; AFFILIATES // Afiliados, Conteúdo &amp; Live Commerce</text>
+  <text x="600" y="241" fill="#E8F4F8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="13">03 TECH &amp; INTEGRATION // OAuth, APIs, Webhooks &amp; Agentes de IA</text>
+
+  <!-- Bottom Left Title & Subtitle -->
+  <text x="60" y="340" fill="#E8F4F8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="40" font-weight="800">neo-tiktok-front</text>
+  <text x="60" y="368" fill="#9BB7C3" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="14">Shop. Creators. Marketing. Tech — Official TikTok Partner Frontend &amp; Ecosystem</text>
+</svg>

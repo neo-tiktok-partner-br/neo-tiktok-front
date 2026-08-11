@@ -1,0 +1,408 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  activeDoc: 'privacidade' | 'termos' | 'direitos-titular' | 'decreto-ecommerce';
+}
+
+const { title, subtitle, activeDoc } = Astro.props;
+
+const companyName = "NEOFLOW TECNOLOGIA E PERFORMANCE LTDA";
+const companyCnpj = "00.000.000/0001-00";
+const contactEmail = "neo@neoflowoff.agency";
+---
+
+<BaseLayout title={`${title} | neøflow Legal`}>
+  <div class="legal-page-wrapper">
+    <div class="legal-header">
+      <div class="legal-badge font-mono">
+        <span>CONFORMIDADE LEGAL &amp; REGULATÓRIA</span>
+      </div>
+      <h1 class="legal-title font-display">{title}</h1>
+      <p class="legal-subtitle">{subtitle}</p>
+
+      <!-- Box de Identificação da Razão Social (iOS Glass Box) -->
+      <div class="company-id-box font-mono">
+        <div class="id-item">
+          <span class="label">Razão Social:</span>
+          <span class="value">{companyName}</span>
+        </div>
+        <div class="id-item">
+          <span class="label">CNPJ:</span>
+          <span class="value">{companyCnpj}</span>
+        </div>
+        <div class="id-item">
+          <span class="label">Contato / DPO:</span>
+          <span class="value">{contactEmail}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="legal-content-grid">
+      <!-- Navegação Lateral / Tab Bar Drag & Scroll Mobile iOS -->
+      <aside class="legal-sidebar font-mono">
+        <nav class="sidebar-nav" id="draggable-legal-nav">
+          <a
+            href="/legal/privacidade"
+            class:list={["sidebar-link", { active: activeDoc === 'privacidade' }]}
+          >
+            <span class="num">01</span>
+            <span>Política de Privacidade</span>
+          </a>
+          <a
+            href="/legal/termos"
+            class:list={["sidebar-link", { active: activeDoc === 'termos' }]}
+          >
+            <span class="num">02</span>
+            <span>Termos de Uso &amp; Serviços</span>
+          </a>
+          <a
+            href="/legal/direitos-titular"
+            class:list={["sidebar-link", { active: activeDoc === 'direitos-titular' }]}
+          >
+            <span class="num">03</span>
+            <span>Direitos do Titular (LGPD)</span>
+          </a>
+          <a
+            href="/legal/decreto-ecommerce"
+            class:list={["sidebar-link", { active: activeDoc === 'decreto-ecommerce' }]}
+          >
+            <span class="num">04</span>
+            <span>Decreto do E-commerce</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-info-card">
+          <h4>Dúvidas Jurídicas?</h4>
+          <p>Entre em contato direto com o Encarregado de Proteção de Dados (DPO):</p>
+          <a href={`mailto:${contactEmail}?subject=Solicitação Legal`} class="dpo-email">
+            {contactEmail}
+          </a>
+        </div>
+      </aside>
+
+      <!-- Conteúdo do Documento Legível em Mobile -->
+      <article class="legal-document-body">
+        <slot />
+      </article>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // Script Híbrido Drag-to-Scroll (Mouse + Touch) com Inicialização Imediata
+  function setupDragScroll() {
+    const nav = document.getElementById('draggable-legal-nav');
+    if (!nav) return;
+
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    nav.addEventListener('mousedown', (e) => {
+      isDown = true;
+      nav.classList.add('dragging');
+      startX = e.pageX - nav.offsetLeft;
+      scrollLeft = nav.scrollLeft;
+    });
+
+    nav.addEventListener('mouseleave', () => {
+      isDown = false;
+      nav.classList.remove('dragging');
+    });
+
+    nav.addEventListener('mouseup', () => {
+      isDown = false;
+      nav.classList.remove('dragging');
+    });
+
+    nav.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - nav.offsetLeft;
+      const walk = (x - startX) * 2;
+      nav.scrollLeft = scrollLeft - walk;
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupDragScroll);
+  } else {
+    setupDragScroll();
+  }
+</script>
+
+<style>
+  .legal-page-wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: calc(1.5rem + var(--sat)) 1.25rem calc(3rem + var(--sab)) 1.25rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .legal-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    width: 100%;
+  }
+
+  .legal-badge {
+    display: inline-flex;
+    padding: 0.35rem 0.9rem;
+    border-radius: var(--radius-full);
+    background: var(--glass-bg);
+    border: 1px solid var(--neo-border);
+    color: var(--neo-acid);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .legal-title {
+    font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+    font-weight: 800;
+    color: var(--neo-white);
+    line-height: 1.25;
+  }
+
+  .legal-subtitle {
+    color: var(--neo-text-muted);
+    font-size: 0.95rem;
+    max-width: 680px;
+    line-height: 1.45;
+  }
+
+  .company-id-box {
+    margin-top: 0.5rem;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--radius-ios);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    width: 100%;
+    max-width: 720px;
+    box-shadow: var(--shadow-ios);
+  }
+
+  @media (min-width: 600px) {
+    .company-id-box {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+  }
+
+  .id-item .label {
+    color: var(--neo-text-muted);
+    margin-right: 0.4rem;
+  }
+  .id-item .value {
+    color: var(--neo-acid);
+    font-weight: 600;
+  }
+
+  .legal-content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    align-items: start;
+    width: 100%;
+    min-width: 0;
+  }
+
+  @media (min-width: 860px) {
+    .legal-content-grid {
+      grid-template-columns: 280px 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .legal-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    min-width: 0;
+    overflow: visible;
+  }
+
+  @media (min-width: 860px) {
+    .legal-sidebar {
+      position: sticky;
+      top: 2rem;
+    }
+  }
+
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    padding: 0.65rem;
+    border-radius: var(--radius-ios);
+    box-shadow: var(--shadow-ios);
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Suporte a Arrastar (Drag to Scroll) & Touch Scroll Híbrido */
+  @media (max-width: 860px) {
+    .sidebar-nav {
+      flex-direction: row;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+      padding: 0.65rem;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;
+    }
+
+    .sidebar-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .sidebar-nav:global(.dragging) {
+      cursor: grabbing;
+      scroll-behavior: auto;
+    }
+
+    .sidebar-link {
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+  }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.75rem 0.95rem;
+    border-radius: var(--radius-md);
+    color: var(--neo-text-muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    transition: var(--transition-smooth);
+    min-height: 44px;
+  }
+
+  .sidebar-link .num {
+    color: var(--neo-cyan);
+    font-weight: 700;
+  }
+
+  .sidebar-link:active {
+    transform: var(--ios-active-scale);
+  }
+
+  .sidebar-link.active {
+    background: rgba(215, 254, 9, 0.12);
+    color: var(--neo-acid);
+    border: 1px solid rgba(215, 254, 9, 0.35);
+  }
+
+  .sidebar-info-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    padding: 1.1rem 1.25rem;
+    border-radius: var(--radius-ios);
+    font-size: 0.8rem;
+    box-shadow: var(--shadow-ios);
+    width: 100%;
+  }
+
+  .sidebar-info-card h4 {
+    color: var(--neo-white);
+    margin-bottom: 0.4rem;
+  }
+
+  .sidebar-info-card p {
+    color: var(--neo-text-muted);
+    margin-bottom: 0.65rem;
+    line-height: 1.4;
+  }
+
+  .dpo-email {
+    color: var(--neo-cyan);
+    font-weight: 600;
+    text-decoration: none;
+    word-break: break-all;
+  }
+
+  .legal-document-body {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-ios);
+    padding: 1.5rem 1.25rem;
+    line-height: 1.65;
+    color: #c4d7e0;
+    box-shadow: var(--shadow-ios);
+    width: 100%;
+    min-width: 0;
+  }
+
+  @media (min-width: 600px) {
+    .legal-document-body {
+      padding: 2.5rem;
+    }
+  }
+
+  .legal-document-body :global(h2) {
+    font-family: var(--font-display);
+    color: var(--neo-white);
+    font-size: 1.25rem;
+    margin: 1.75rem 0 0.85rem 0;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .legal-document-body :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .legal-document-body :global(p) {
+    margin-bottom: 1.1rem;
+    font-size: 0.9rem;
+  }
+
+  .legal-document-body :global(ul) {
+    margin-bottom: 1.1rem;
+    padding-left: 1.25rem;
+  }
+
+  .legal-document-body :global(li) {
+    margin-bottom: 0.45rem;
+    font-size: 0.9rem;
+  }
+
+  .legal-document-body :global(strong) {
+    color: var(--neo-white);
+  }
+</style>

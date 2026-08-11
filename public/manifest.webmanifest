@@ -1,0 +1,22 @@
+{
+  "name": "neøflow TikTok Partners",
+  "short_name": "neøflow",
+  "description": "Infraestrutura descentralizada de tecnologia e inteligência comercial no ecossistema TikTok Partner.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09131a",
+  "theme_color": "#09131a",
+  "icons": [
+    {
+      "src": "/assets/logo_partners.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

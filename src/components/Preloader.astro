@@ -1,0 +1,179 @@
+---
+---
+
+<div id="neo-preloader" class="preloader-overlay">
+  <div class="preloader-content">
+    <div class="logo-spinner-container">
+      <div class="spinner-ring outer"></div>
+      <div class="spinner-ring inner"></div>
+      <div class="brand-core">
+        <span class="brand-symbol">NEØ</span>
+      </div>
+    </div>
+    
+    <div class="progress-bar-container">
+      <div class="progress-bar-fill" id="preloader-progress"></div>
+    </div>
+
+    <div class="loading-status font-mono">
+      <span class="status-dot"></span>
+      <span id="preloader-status-text">INITIALIZING neøflow PROTOCOL...</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .preloader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--neo-bg);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s ease;
+  }
+
+  .preloader-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+    max-width: 320px;
+    width: 90%;
+    text-align: center;
+  }
+
+  .logo-spinner-container {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .spinner-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid transparent;
+  }
+
+  .spinner-ring.outer {
+    width: 90px;
+    height: 90px;
+    border-top-color: var(--neo-acid);
+    border-right-color: rgba(215, 254, 9, 0.2);
+    animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  }
+
+  .spinner-ring.inner {
+    width: 68px;
+    height: 68px;
+    border-bottom-color: var(--neo-cyan);
+    border-left-color: rgba(0, 242, 254, 0.2);
+    animation: spin-reverse 0.9s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  }
+
+  .brand-core {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--neo-bg-card);
+    border: 1px solid var(--neo-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(215, 254, 9, 0.2);
+  }
+
+  .brand-symbol {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--neo-acid);
+    letter-spacing: 1px;
+  }
+
+  .progress-bar-container {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--neo-cyan), var(--neo-acid));
+    border-radius: 4px;
+    transition: width 0.15s ease-out;
+  }
+
+  .loading-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--neo-text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--neo-acid);
+    box-shadow: 0 0 8px var(--neo-acid);
+    animation: pulse-dot 1s ease-in-out infinite alternate;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes spin-reverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  @keyframes pulse-dot {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const preloader = document.getElementById('neo-preloader');
+    const progressBar = document.getElementById('preloader-progress');
+    const statusText = document.getElementById('preloader-status-text');
+
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += Math.floor(Math.random() * 25) + 15;
+      if (progress >= 100) {
+        progress = 100;
+        if (progressBar) progressBar.style.width = '100%';
+        if (statusText) statusText.textContent = 'neøflow CONNECTED';
+        clearInterval(interval);
+        setTimeout(() => {
+          if (preloader) preloader.classList.add('hidden');
+        }, 350);
+      } else {
+        if (progressBar) progressBar.style.width = `${progress}%`;
+      }
+    }, 80);
+  });
+</script>
