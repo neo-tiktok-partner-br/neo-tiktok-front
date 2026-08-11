@@ -100,30 +100,38 @@ const contactEmail = "neo@neoflowoff.agency";
     let isDown = false;
     let startX = 0;
     let scrollLeft = 0;
+    let navOffsetLeft = 0;
+    let rafId: number | null = null;
 
     nav.addEventListener('mousedown', (e) => {
       isDown = true;
       nav.classList.add('dragging');
-      startX = e.pageX - nav.offsetLeft;
+      navOffsetLeft = nav.offsetLeft;
+      startX = e.pageX - navOffsetLeft;
       scrollLeft = nav.scrollLeft;
     });
 
     nav.addEventListener('mouseleave', () => {
       isDown = false;
       nav.classList.remove('dragging');
+      if (rafId) cancelAnimationFrame(rafId);
     });
 
     nav.addEventListener('mouseup', () => {
       isDown = false;
       nav.classList.remove('dragging');
+      if (rafId) cancelAnimationFrame(rafId);
     });
 
     nav.addEventListener('mousemove', (e) => {
       if (!isDown) return;
       e.preventDefault();
-      const x = e.pageX - nav.offsetLeft;
+      const x = e.pageX - navOffsetLeft;
       const walk = (x - startX) * 2;
-      nav.scrollLeft = scrollLeft - walk;
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        nav.scrollLeft = scrollLeft - walk;
+      });
     });
   }
 
