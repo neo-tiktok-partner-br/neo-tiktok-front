@@ -8,10 +8,14 @@ export default defineConfig({
   },
   vite: {
     server: {
+      allowedHosts: ['neotiktok.com', '.neotiktok.com', 'neoflowoff.agency', '.neoflowoff.agency', 'localhost'],
       ws: {
         protocol: 'ws',
         host: 'localhost',
       },
+    },
+    preview: {
+      allowedHosts: ['neotiktok.com', '.neotiktok.com', 'neoflowoff.agency', '.neoflowoff.agency', 'localhost'],
     },
   },
 });
