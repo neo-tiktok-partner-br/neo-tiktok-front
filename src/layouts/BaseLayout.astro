@@ -73,6 +73,9 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
 
+    <!-- High Priority Preload for LCP Image (Eliminates Resource Load Delay) -->
+    <link rel="preload" as="image" href="/assets/logo_partners.svg" type="image/svg+xml" fetchpriority="high" />
+
     <!-- Mobile & iOS WebApp Meta Tags -->
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -89,9 +92,6 @@ const jsonLd = {
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/svg+xml" href="/assets/logo_partners.svg" />
-
-    <!-- Preload LCP Image (logo_partners.svg) -->
-    <link rel="preload" as="image" href="/assets/logo_partners.svg" type="image/svg+xml" fetchpriority="high" />
 
     <!-- Google Fonts Optimization (Non-Blocking Preload) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
