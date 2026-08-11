@@ -114,6 +114,26 @@ const jsonLd = {
       />
     </noscript>
 
+    <!-- Critical Inline CSS (Instant FCP Paint) -->
+    <style is:inline>
+      html, body {
+        background-color: #09131a;
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+      }
+      .preloader-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background-color: #09131a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+
     <!-- Meta Open Graph (Desambiguação de Marca) -->
     <meta property="og:site_name" content="neøflow // Official TikTok Partners" />
     <meta property="og:title" content={title} />
