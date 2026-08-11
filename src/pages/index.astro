@@ -42,6 +42,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  <!-- Seção do Embed do TikTok (@neoflowoff.agency) -->
+  <section class="tiktok-embed-section">
+    <div class="tiktok-embed-container">
+      <blockquote
+        class="tiktok-embed"
+        cite="https://www.tiktok.com/@neoflowoff.agency"
+        data-unique-id="neoflowoff.agency"
+        data-embed-from="embed_page"
+        data-embed-type="creator"
+        style="max-width:780px; min-width:288px;"
+      >
+        <section>
+          <a target="_blank" href="https://www.tiktok.com/@neoflowoff.agency?refer=creator_embed">@neoflowoff.agency</a>
+        </section>
+      </blockquote>
+      <script async src="https://www.tiktok.com/embed.js" is:inline></script>
+    </div>
+  </section>
+
   <style>
     /* Mobile-First Layout Core */
     .hero-section {
@@ -149,5 +168,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
     }
 
+    /* ══════════════════════════════════════════
+       TIKTOK EMBED SECTION
+       ══════════════════════════════════════════ */
+    .tiktok-embed-section {
+      width: 100%;
+      padding: 4rem 1.25rem 5rem 1.25rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(180deg, #0b0b0c 0%, #050505 100%);
+      border-top: 1px solid var(--neo-border);
+    }
+
+    .tiktok-embed-container {
+      width: 100%;
+      max-width: 780px;
+      display: flex;
+      justify-content: center;
+    }
   </style>
 </BaseLayout>
