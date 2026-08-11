@@ -6,78 +6,64 @@
 ========================================
     neøflow · PLANO DE EXPANSÃO DE PÁGINAS
 ========================================
-Status: SAVED / APPROVED FOR FUTURE STAGES
+Status: ETAPA 1 CONCLUÍDA / ETAPA 2 QUEUED
 Framework Target: Astro (.astro)
 ========================================
 ```
 
-## ⟠ Arquitetura de Páginas Aprovada
+## ⟠ Arquitetura de Páginas & Status de Execução
 
-Abaixo está o mapeamento de rotas e estruturas de conteúdo aprovadas para desenvolvimento no ecossistema **neøflow // Official TikTok Partners**.
+Abaixo está a matriz completa de rotas concluídas e o roadmap aprovado para desenvolvimento no ecossistema **neøflow // Official TikTok Partners**.
 
 ────────────────────────────────────────
 
-## ⧉ Matriz de Rotas
+## ⧉ Matriz de Rotas & Status de Implementação
 
 ```text
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ ROTA                 DOMÍNIO       PROPÓSITO & RECURSOS CHAVE                       ┃
+┃ ROTA                 DOMÍNIO       STATUS      PROPÓSITO & RECURSOS CHAVE           ┃
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-┃ /                    Home          Landing page principal com carregamento animado ┃
-┃ /shop                Shop          Hub de Sellers, marcas, catálogos e afiliados   ┃
-┃ /shop/conectar       Shop          Onboarding e autorização de lojas (TikTok Shop) ┃
-┃ /creators            Creators      Hub de Criadores, aceleração e Live Commerce    ┃
-┃ /creators/playbook   Creators      Playbooks práticos e manuais de performance      ┃
-┃ /marketing           Marketing     Inteligência de mídias, campanhas e criativos   ┃
-┃ /tech                Tech          Portal do Desenvolvedor, OAuth, Webhooks & Agentes┃
-┃ /tech/integracoes    Tech          Status de APIs, conectores e monitor de eventos ┃
-┃ /sobre               Institucional Posicionamento, tese descentralizada & manifesto ┃
+┃ /                    Home          CONCLUÍDO   Landing page iOS-like com logo LCP   ┃
+┃ /legal/privacidade   Legal         CONCLUÍDO   Política de Privacidade (LGPD)       ┃
+┃ /legal/termos        Legal         CONCLUÍDO   Termos de Uso & Serviços             ┃
+┃ /legal/direitos-...  Legal         CONCLUÍDO   Direitos do Titular de Dados (Art.18)┃
+┃ /legal/decreto-...   Legal         CONCLUÍDO   Decreto do E-commerce (Nº 7.962/13)  ┃
+┃ /shop                Shop          PLANEJADO   Hub de Sellers, marcas e catálogos   ┃
+┃ /shop/conectar       Shop          PLANEJADO   Onboarding e autorização OAuth       ┃
+┃ /creators            Creators      PLANEJADO   Hub de Criadores e Live Commerce     ┃
+┃ /creators/playbook   Creators      PLANEJADO   Playbooks e manuais de performance   ┃
+┃ /marketing           Marketing     PLANEJADO   Inteligência de mídias e Shop Ads    ┃
+┃ /tech                Tech          PLANEJADO   Portal Dev, OAuth, Webhooks & Agentes┃
+┃ /tech/integracoes    Tech          PLANEJADO   Status de APIs e monitor de eventos  ┃
+┃ /sobre               Institucional PLANEJADO   Manifesto descentralizado neøflow    ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
 
 ────────────────────────────────────────
 
-## ⨷ Detalhamento dos Domínios
+## ⨷ Resumo da Etapa 1 (Concluída)
 
-### 1. Home / Portal Principal (`/`)
-* **Propósito:** Apresentação da marca neøflow como parceira oficial do TikTok.
-* **Recursos Clave:**
-  * Preloader / Carregamento animado em Dark Canvas com Acid Green (`#D7FE09`).
-  * Hero centralizado com a marca e logo de parceiros oficiais.
-  * Rodapé em conformidade com as normas brasileiras (LGPD, CDC, Termos de Uso e Política de Privacidade), e-mail de contato: `neo@neoflowoff.agency`.
-
-### 2. Hub Shop / Lojistas (`/shop` e `/shop/conectar`)
-* **Propósito:** Interface dedicada a marcas e lojistas (sellers) para integração e escala de vendas no TikTok Shop.
-* **Recursos Clave:**
-  * Visão geral de captação de catálogos e gestão de inventário.
-  * Programas de colaboração (Open & Target Collaboration).
-  * Conexão via OAuth 2.0 com a TikTok Shop Open API.
-
-### 3. Hub Creators / Criadores (`/creators` e `/creators/playbook`)
-* **Propósito:** Portal de entrada e capacitação de criadores de conteúdo e afiliados.
-* **Recursos Clave:**
-  * Cadastro orientado para integração à comunidade privada e agência (CAP/TAP).
-  * Central de playbooks práticos sobre criação de vídeos e Live Commerce.
-
-### 4. Hub Marketing & Performance (`/marketing`)
-* **Propósito:** Central de inteligência de mídias e campanhas de tráfego (Shop Ads: Product GMV Max & LIVE GMV Max).
-
-### 5. Hub Tech / Desenvolvedores (`/tech` e `/tech/integracoes`)
-* **Propósito:** Portal para parceiros técnicos, APIs (Seller, Products, Orders, Webhooks) e agentes de IA autônomos.
-
-### 6. Institucional (`/sobre`)
-* **Propósito:** Manifesto neøflow ("Seu perfil. Seus interesses. Nosso negócio.").
+1. **Home & Portal Principal (`/`):**
+   * Preloader animado (`Preloader.astro`) com barra de progresso.
+   * Ativo de LCP otimizado com `fetchpriority="high"`, `decoding="async"`, `width="720"` e `height="180"`.
+   * Design System Mobile-First iOS-Like com cantos rounded `--radius-ios: 22px`, física de toque e cores semânticas (Acid Green, Coral, Cyan, White).
+2. **Hub de Conformidade Legal Brasileira (`/legal/*`):**
+   * Layout mestre unificado (`LegalLayout.astro`) com suporte a arraste tátil (Drag-to-Scroll).
+   * Identificação formal da razão social `NEOFLOW TECNOLOGIA E PERFORMANCE LTDA`, CNPJ `00.000.000/0001-00` e DPO `neo@neoflowoff.agency`.
+   * 4 rotas estáticas ativas (`/legal/privacidade`, `/legal/termos`, `/legal/direitos-titular`, `/legal/decreto-ecommerce`).
+3. **Infraestrutura PWA & SEO:**
+   * Service Worker PWA (`public/sw.js`), `manifest.webmanifest`, `robots.txt`, `llms.txt`, `sitemap.xml` e `favicon.ico`.
+   * `make verify` compilando 100% de produção sem erros.
 
 ────────────────────────────────────────
 
-## ⨀ Governança e Status de Implementação
+## ⨀ Etapa 2 (Próximos Passos Queued)
 
-* **Data de salvamento:** 2026-08-11
-* **Status atual:** Arquivado para implementação em etapas subsequentes.
+* **Fase 2A — Hub Shop (`/shop` e `/shop/conectar`):** Formulário de autorização e integração de lojistas com a TikTok Shop Open API.
+* **Fase 2B — Hub Creators (`/creators` e `/creators/playbook`):** Central de onboarding de afiliados e tutoriais de Live Commerce.
+* **Fase 2C — Hub Tech (`/tech` e `/tech/integracoes`):** Monitoramento de saúde de conectores, webhooks e orquestração de Agentes de IA.
 
 ────────────────────────────────────────
-
-## ⍟ Fechamento
 
 ```text
 ▓▓▓ NΞØ MELLØ

@@ -8,6 +8,7 @@
 ========================================
 Status: ACTIVE
 Version: v1.0.0
+Framework: Astro 7 (TypeScript Strict)
 ========================================
 ```
 
@@ -21,13 +22,14 @@ Version: v1.0.0
 ┃ AGENTS.md                  Raiz / Governança Diretrizes para Agentes ┃
 ┃ SETUP.md                   Raiz / Guia     Guia de instalação local  ┃
 ┃ CODEX.md                   Raiz / Glossário Termos e vocabulário      ┃
-┃ CLAUDE.md                  Raiz / Agentes  Instruções para IAs       ┃
+┃ CLAUDE.md                  Raiz / Agentes  Manual operacional IA     ┃
 ┃ NEXTSTEPS.md               Raiz / Roadmap  Matriz de rotas futuras   ┃
 ┃ docs/branding.md           Docs / Design   Design system e tokens    ┃
 ┃ docs/sitemap-operacional.md Docs / Sitemap  Mapa do ecossistema TTS   ┃
 ┃ docs/playbook-operacional.md Docs / Operação Playbook da agência      ┃
 ┃ docs/about-neoflow.md      Docs / Marca    Posicionamento neøflow    ┃
 ┃ docs/perfil-neflow.md      Docs / Mídia    Embed do perfil TikTok    ┃
+┃ docs/SKILL_HUMANIZATION.md Docs / Tom de Voz Comunicação e linguagem  ┃
 ┃ docs/assets/*-banner.svg   Assets / SVG    Banner visual canônico    ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
@@ -38,11 +40,10 @@ Version: v1.0.0
 
 * **SVG Standard:** `_standards/SVG.md`
 * **Markdown Standard:** `_standards/MARKDOWN_STYLE_GUIDE.md`
-* **Makefile Standard:** `_standards/MAKEFILE_STANDARDS.md`
+* **Makefile Standard:** `_standards/MAKEFILE_STANDARDS.md` (`pnpm --ignore-scripts`)
+* **SEO & Discovery Standard:** `_standards/SEO.md` (v2.1.0)
 
 ────────────────────────────────────────
-
-## ⍟ Fechamento
 
 ```text
 ▓▓▓ NΞØ MELLØ

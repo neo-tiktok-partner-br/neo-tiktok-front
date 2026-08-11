@@ -8,6 +8,7 @@
 ========================================
 Status: CANONICAL
 Version: v1.0.0
+Framework: Astro 7 (TypeScript Strict)
 ========================================
 ```
 
@@ -38,11 +39,14 @@ Este documento define o vocabulário e a terminologia técnica oficiais do ecoss
 * **Product GMV Max:** Modalidade de anúncio automatizado no TikTok Ads focado em maximizar o Volume Bruto de Mercadorias (GMV) do produto.
 * **LIVE GMV Max:** Solução de tráfego pago otimizada para impulsionar vendas durante transmissões ao vivo.
 
-### 04 — Tech (APIs & Agentes)
+### 04 — Tech, PWA & Conformidade Legal (APIs, Agentes & Leis)
 * **TikTok Shop Open API:** Interface oficial de integração para sellers, parceiros e aplicativos de terceiros.
 * **OAuth 2.0 Flow:** Protocolo seguro de autorização que permite à neøflow conectar e operar lojas autorizadas.
 * **Idempotency Key:** Chave única utilizada na recepção de Webhooks para evitar o processamento duplicado de eventos.
 * **Acid Green (`#D7FE09`):** Cor canônica que identifica todas as capacidades tecnológicas proprietárias e infraestrutura de IA da neøflow.
+* **Service Worker PWA (`sw.js`):** Script de fundo que gerencia o cache offline e estratégias Network-First / Stale-While-Revalidate.
+* **LGPD (Lei nº 13.709/2018):** Lei Geral de Proteção de Dados Pessoais do Brasil (Direitos do Titular, Art. 18).
+* **Decreto do E-commerce (Decreto nº 7.962/2013):** Regulamentação do e-commerce no Brasil (Direito de Arrependimento de 7 dias e identificação da razão social).
 
 ────────────────────────────────────────
 
@@ -50,10 +54,9 @@ Este documento define o vocabulário e a terminologia técnica oficiais do ecoss
 
 1. **Autonomia de Marca:** neøflow é uma parceira oficial e infraestrutura descentralizada — não clonamos nem imitamos telas pertencentes ao TikTok.
 2. **Propósito Operacional:** "Seu perfil. Seus interesses. Nosso negócio." — Transformamos interesses pessoais em ocupação comercial escalável.
+3. **Escrita da Marca:** Sempre em minúsculas: `neøflow`.
 
 ────────────────────────────────────────
-
-## ⍟ Fechamento
 
 ```text
 ▓▓▓ NΞØ MELLØ

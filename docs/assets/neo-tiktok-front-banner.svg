@@ -17,7 +17,7 @@
   <rect x="24" y="24" width="1152" height="372" rx="24" fill="url(#cardGrad)" stroke="#6EE7F9" stroke-width="1.5" stroke-opacity="0.4"/>
 
   <!-- Header Text / Tag Topo -->
-  <text x="60" y="68" fill="#6EE7F9" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="600" letter-spacing="2">NEØFLOW // TIKTOK PARTNER ECOSYSTEM</text>
+  <text x="60" y="68" fill="#6EE7F9" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="600" letter-spacing="2">neøflow // TIKTOK PARTNER ECOSYSTEM</text>
 
   <!-- Concentric Circles Symbol (Esquerda) -->
   <g transform="translate(130, 195)">
