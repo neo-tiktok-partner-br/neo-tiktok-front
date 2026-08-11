@@ -80,7 +80,7 @@ Esta equipe foca em fechar novos parceiros e ativá-los rapidamente para que com
 
 Para manter o ecossistema atrativo e escalável para quem está propagando a solução no mercado, a neøflow opera com três linhas financeiras claras [12]:
 
-```
+```text
                                   [ RECEITA BRUTA ]
                                          │
         ┌────────────────────────────────┼────────────────────────────────┐
@@ -93,7 +93,7 @@ Para manter o ecossistema atrativo e escalável para quem está propagando a sol
 70%-100%    0%-30%               20%-35%     65%-80%              10%-20%     80%-90%
 Parceiro    neøflow              Parceiro    neøflow              Parceiro    neøflow
 (Esforço   (Validação           (Relação    (Tecnologia          (Indicação  (Operação/
- Comercial)  Técnica)            e Suporte)   e Evolução)         Comercial)   Suporte)
+Comercial)  Técnica)            e Suporte)   e Evolução)         Comercial)   Suporte)
 ```
 
 1. **Taxa de Setup (Implantação):** **70% a 100% para o Parceiro Comercial.** Isso garante caixa imediato e forte incentive comercial para o parceiro realizar a venda, coletar documentos e fazer a captação ativa [5, 12].
@@ -117,7 +117,7 @@ Para garantir que a neøflow possa crescer receita mantendo sua equipe de atendi
 
 Com o time e os parceiros operando sob este modelo descentralizado de performance, a liderança é completamente liberada da operação e de cobranças manuais. O foco estratégico de você (Neo) será de altíssimo impacto:
 
-```
+```text
 ┌────────────────────────────────────────────────────────┐
 │             NEO (ARQUITETO DO ECOSSISTEMA)             │
 ├────────────────────────────────────────────────────────┤
