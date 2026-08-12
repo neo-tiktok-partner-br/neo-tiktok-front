@@ -52,15 +52,15 @@ check-node: ## Valida versão do ambiente Node.js
 	@printf "$(CYAN)╭──────────────────────────────────────────╮$(RESET)\n"
 	@printf "$(CYAN)│$(RESET)  $(WHITE)◉  CHECK-NODE$(RESET)%-29s$(CYAN)│$(RESET)\n" ""
 	@printf "$(CYAN)╰──────────────────────────────────────────╯$(RESET)\n"
-	@node -v | grep -E '^v(20|22|24)' > /dev/null || (printf "$(RED)  ✗ Versão do Node incompatível (requer v20+)$(RESET)\n" && exit 1)
-	@printf "$(GREEN)  ✓ Ambiente Node.js v24 verificado com sucesso.$(RESET)\n"
+	@node -e 'const [major, minor] = process.versions.node.split(".").map(Number); process.exit(major > 22 || (major === 22 && minor >= 12) ? 0 : 1)' || (printf "$(RED)  ✗ Versão do Node incompatível (requer v22.12+)$(RESET)\n" && exit 1)
+	@printf "$(GREEN)  ✓ Ambiente Node.js v22.12+ verificado com sucesso.$(RESET)\n"
 
 install: check-node ## Instala dependências do projeto Astro
 	@printf "$(CYAN)╭──────────────────────────────────────────╮$(RESET)\n"
 	@printf "$(CYAN)│$(RESET)  $(WHITE)▼  INSTALL$(RESET)%-31s$(CYAN)│$(RESET)\n" ""
-	@printf "$(CYAN)│$(RESET)  $(DIM)pnpm install --ignore-workspace$(RESET)%-10s$(CYAN)│$(RESET)\n" ""
+	@printf "$(CYAN)│$(RESET)  $(DIM)pnpm install --frozen-lockfile$(RESET)%-10s$(CYAN)│$(RESET)\n" ""
 	@printf "$(CYAN)╰──────────────────────────────────────────╯$(RESET)\n"
-	@pnpm install --ignore-workspace --ignore-scripts
+	@pnpm install --frozen-lockfile --ignore-scripts
 	@printf "$(GREEN)  ✓ Instalação concluída com sucesso.$(RESET)\n"
 
 repair: ## Limpa node_modules/ e reinstala dependências
@@ -68,7 +68,7 @@ repair: ## Limpa node_modules/ e reinstala dependências
 	@printf "$(YELLOW)│$(RESET)  $(WHITE)⚙  REPAIR$(RESET)%-33s$(YELLOW)│$(RESET)\n" ""
 	@printf "$(YELLOW)╰──────────────────────────────────────────╯$(RESET)\n"
 	@rm -rf node_modules
-	@pnpm install --ignore-workspace --ignore-scripts
+	@pnpm install --frozen-lockfile --ignore-scripts
 	@printf "$(GREEN)  ✓ Manutenção concluída.$(RESET)\n"
 
 update: ## Atualiza o Astro e as dependências
