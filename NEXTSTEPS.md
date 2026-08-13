@@ -6,7 +6,7 @@
 ========================================
     neøflow · PLANO DE EXPANSÃO DE PÁGINAS
 ========================================
-Status: ETAPA 1 CONCLUÍDA / ETAPA 2 QUEUED
+Status: ETAPA 1 CONCLUÍDA / ARQUITETURA DE PLATAFORMA APROVADA
 Framework Target: Astro (.astro)
 ========================================
 ```
@@ -33,7 +33,9 @@ Abaixo está a matriz completa de rotas concluídas e o roadmap aprovado para de
 ┃ /marketing           Marketing     PLANEJADO   Inteligência de mídias e Shop Ads    ┃
 ┃ /tech                Tech          PLANEJADO   Portal Dev, OAuth, Webhooks & Agentes┃
 ┃ /tech/integracoes    Tech          PLANEJADO   Status de APIs e monitor de eventos  ┃
+┃ /partners            Partner Ops   PLANEJADO   Jornada de parceiros e agências      ┃
 ┃ /sobre               Institucional PLANEJADO   Manifesto descentralizado neøflow    ┃
+┃ /app                 Operação      PLANEJADO   Shell autenticado por capacidades    ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
 
@@ -60,6 +62,61 @@ Abaixo está a matriz completa de rotas concluídas e o roadmap aprovado para de
 * **Fase 2A — Hub Shop (`/shop` e `/shop/conectar`):** Formulário de autorização e integração de lojistas com a TikTok Shop Open API.
 * **Fase 2B — Hub Creators (`/creators` e `/creators/playbook`):** Central de onboarding de afiliados e tutoriais de Live Commerce.
 * **Fase 2C — Hub Tech (`/tech` e `/tech/integracoes`):** Monitoramento de saúde de conectores, webhooks e orquestração de Agentes de IA.
+
+────────────────────────────────────────
+
+## ⌁ Arquitetura de Plataforma Aprovada
+
+O `neo-tiktok-front` é a única entrada pública canônica para os territórios
+Shop, Creators, Marketing e Tech.
+
+`Partner Operations` coordena esses territórios internamente e não substitui a
+taxonomia pública. A rota `/partners` apresenta a jornada comercial de
+parceiros e agências; a operação autenticada converge para `/app`.
+
+```text
+entrada pública
+→ qualificação de intenção
+→ identidade
+→ diagnóstico
+→ jornada recomendada
+→ autorização mínima
+→ ativação
+→ acompanhamento operacional
+```
+
+O OAuth não deve ser o primeiro passo padrão. Seller e Creator usam classes de
+autorização separadas. Uma identidade pode acumular memberships, papéis e
+capacidades sem duplicar usuários.
+
+### Aplicação autenticada — taxonomia alvo
+
+```text
+/app
+├── /inicio
+├── /onboarding
+├── /contas
+├── /shops
+├── /creators
+├── /campanhas
+├── /conteudos
+├── /integracoes
+├── /eventos
+└── /configuracoes
+```
+
+Essa árvore é um contrato de evolução, não uma declaração de rotas já
+implementadas. O menu será derivado das capacidades do usuário.
+
+### Consolidação de superfícies legadas
+
+- `neo-content-dashboard`: superfície interna transitória; capacidades úteis
+  migram gradualmente para `/app`.
+- `neo-content-landing`: superfície de aquisição transitória; conteúdo e URLs
+  úteis devem ser inventariados, migrados e redirecionados.
+
+Nenhum serviço será removido antes de paridade, evidência de tráfego, cutover,
+rollback e verificação do runtime.
 
 ────────────────────────────────────────
 

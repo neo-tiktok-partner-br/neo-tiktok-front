@@ -8,7 +8,7 @@
 ========================================
 Status: ACTIVE
 Version: v1.0.0
-Framework: Astro 7 (Node.js >= v20)
+Framework: Astro 7 (Node.js >= v22.12)
 ========================================
 ```
 
@@ -20,8 +20,8 @@ Antes de iniciar a execução local do repositório [neo-tiktok-front](file:///U
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ FERRAMENTA    VERSÃO MÍNIMA        GERENCIADOR RECOMENDADO           ┃
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-┃ Node.js       >= v20.0.0 (v24.x)   fnm / mise                        ┃
-┃ pnpm          >= 9.x (v11.x)       corepack / pnpm self-update       ┃
+┃ Node.js       >= v22.12.0           mise                              ┃
+┃ pnpm          >= 10.x               Corepack                          ┃
 ┃ Makefile      GNU Make >= 3.81     nativo macOS / Linux              ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
@@ -52,7 +52,7 @@ Instale as dependências do Astro utilizando a interface de automação do `Make
 make install
 ```
 
-> **Nota Técnica para Agentes:** O comando `make install` executa `pnpm install --ignore-workspace --ignore-scripts`. Essa estratégia desativa a execução de scripts pós-instalação redundantes do `esbuild` (que já fornece binários nativos pré-compilados), permitindo uma instalação limpa e instantânea em **30ms** sem exigir aprovação manual (`pnpm approve-builds`).
+> **Nota Técnica para Agentes:** O repositório possui um `pnpm-workspace.yaml` local com `packages: []`, que preserva sua soberania em relação ao workspace superior. O comando `make install` usa `pnpm install --frozen-lockfile --ignore-scripts`.
 
 ────────────────────────────────────────
 
