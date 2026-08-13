@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Props {
+  code: string;
+  label: string;
+  title: string;
+  description: string;
+  accent: string;
+  capabilities: string[];
+  nextStep: string;
+}
+
+const { code, label, title, description, accent, capabilities, nextStep } = Astro.props;
+---
+
+<BaseLayout title={`${label} // neøflow Official TikTok Partners`} description={description}>
+  <article class="territory" style={`--territory-accent: ${accent}`}>
+    <div class="territory-glow" aria-hidden="true"></div>
+    <div class="territory-container">
+      <a class="back-link font-mono" href="/">← TODAS AS ENTRADAS</a>
+
+      <header class="territory-header">
+        <p class="territory-code font-mono">{code} — {label.toUpperCase()}</p>
+        <h1 class="font-display">{title}</h1>
+        <p class="territory-description">{description}</p>
+      </header>
+
+      <section class="capability-section" aria-labelledby="capability-title">
+        <p class="section-label font-mono">JORNADA NEOFLOW</p>
+        <h2 id="capability-title" class="font-display">Começamos pelo objetivo.</h2>
+        <ol class="capability-list">
+          {capabilities.map((capability, index) => (
+            <li>
+              <span class="capability-index font-mono">{String(index + 1).padStart(2, '0')}</span>
+              <span>{capability}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="next-step" aria-labelledby="next-step-title">
+        <div>
+          <p class="section-label font-mono">PRÓXIMA CAMADA</p>
+          <h2 id="next-step-title" class="font-display">{nextStep}</h2>
+        </div>
+        <a class="contact-link font-mono" href="mailto:neo@neotiktok.com">
+          FALAR COM A NEOFLOW <span aria-hidden="true">↗</span>
+        </a>
+      </section>
+    </div>
+  </article>
+
+  <style>
+    .territory {
+      --territory-accent: var(--neo-acid);
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      padding: calc(8rem + var(--sat)) 1.25rem 2rem;
+    }
+
+    .territory-glow {
+      position: absolute;
+      width: 44rem;
+      height: 44rem;
+      top: -18rem;
+      right: -16rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--territory-accent) 20%, transparent), transparent 68%);
+      filter: blur(35px);
+      pointer-events: none;
+    }
+
+    .territory-container {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: var(--territory-accent);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      margin-bottom: clamp(4rem, 10vw, 8rem);
+    }
+
+    .territory-header {
+      max-width: 900px;
+      padding-bottom: clamp(4rem, 10vw, 8rem);
+    }
+
+    .territory-code,
+    .section-label {
+      color: var(--territory-accent);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      margin-bottom: 1.25rem;
+    }
+
+    .territory-header h1 {
+      font-size: clamp(3.4rem, 11vw, 8rem);
+      line-height: 0.88;
+      letter-spacing: -0.075em;
+      margin-bottom: 2rem;
+      max-width: 1000px;
+    }
+
+    .territory-description {
+      max-width: 720px;
+      color: var(--neo-text-muted);
+      font-size: clamp(1.05rem, 2.5vw, 1.45rem);
+      line-height: 1.55;
+    }
+
+    .capability-section {
+      border-top: 1px solid var(--neo-border);
+      padding: 4rem 0;
+    }
+
+    .capability-section h2,
+    .next-step h2 {
+      font-size: clamp(2rem, 5vw, 3.75rem);
+      line-height: 1;
+      letter-spacing: -0.045em;
+      margin-bottom: 2rem;
+    }
+
+    .capability-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .capability-list li {
+      min-height: 112px;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.35rem;
+      border: 1px solid var(--neo-border);
+      border-radius: var(--radius-md);
+      background: var(--neo-bg-card);
+      font-size: 1rem;
+    }
+
+    .capability-index {
+      color: var(--territory-accent);
+      font-size: 0.72rem;
+      padding-top: 0.15rem;
+    }
+
+    .next-step {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 2rem;
+      padding: 4rem 0;
+      border-top: 1px solid var(--neo-border);
+    }
+
+    .next-step h2 {
+      margin-bottom: 0;
+      max-width: 700px;
+    }
+
+    .contact-link {
+      color: var(--neo-text-dark);
+      background: var(--territory-accent);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 720px) {
+      .territory {
+        padding-inline: 1rem;
+      }
+
+      .capability-list {
+        grid-template-columns: 1fr;
+      }
+
+      .next-step {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .contact-link {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</BaseLayout>
