@@ -3,11 +3,15 @@
    PWA & Offline Cache Strategy: Network-First (Pages) / Stale-While-Revalidate (Assets)
    ========================================================================== */
 
-const CACHE_NAME = 'neoflow-v1';
+const CACHE_NAME = 'neoflow-v2';
 const PRECACHE_ASSETS = [
   '/',
   '/favicon.ico',
   '/assets/logo_partners.svg',
+  '/shop',
+  '/creators',
+  '/marketing',
+  '/tech',
   '/legal/privacidade',
   '/legal/termos'
 ];

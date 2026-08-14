@@ -84,6 +84,41 @@ When instructions conflict, follow this order:
 
 Never replace an explicit project decision with a generic “best practice” without documenting why.
 
+## 2.1 Approved platform baseline — 2026-08-13
+
+The following decisions are current and must be preserved:
+
+- `neo-tiktok-front` is the single canonical public entry for the ecosystem.
+- Shop, Creators, Marketing and Tech are the four public territories.
+- Partner Operations is the private coordination layer, not a fifth equivalent
+  public territory.
+- `/app` is the target authenticated shell driven by memberships, roles and
+  capabilities.
+- Public journeys start with intent qualification. TikTok OAuth is requested
+  only when the selected journey requires a minimum authorization.
+- Seller and Creator grants are isolated credential classes.
+- `neo-content-dashboard` is transitional; useful capabilities move into
+  `/app` only after contracts and parity exist.
+- `neo-content-landing` is transitional; migration requires URL inventory,
+  redirects, traffic evidence and rollback before retirement.
+- The backend, asynchronous worker and creative engine remain sovereign nodes.
+
+Canonical cross-repository references:
+
+- `../flowoff-tiktok-control-plane/docs/PLATFORM_ARCHITECTURE_2026.md`
+- `../flowoff-tiktok-control-plane/manifests/ecosystem-tiktok.json`
+- `../flowoff-tiktok-control-plane/manifests/platform-journeys.json`
+
+Current implementation increment:
+
+- `/`, `/shop`, `/creators`, `/marketing`, `/tech`, `/legal/privacidade` and
+  `/legal/termos` are implemented in the active branch/PR baseline.
+- The four territory pages are intent entry surfaces, not authenticated
+  dashboards and not claims that every TikTok capability is approved.
+- Existing operator edits in `docs/perfil-neflow.md` and
+  `docs/questionario-qualificacao.md` must remain untouched unless explicitly
+  placed in scope.
+
 ---
 
 # 3. BRANDING IS A TECHNICAL CONSTRAINT

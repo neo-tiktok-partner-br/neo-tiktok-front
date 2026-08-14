@@ -26,12 +26,12 @@ Abaixo está a matriz completa de rotas concluídas e o roadmap aprovado para de
 ┃ /                    Home          CONCLUÍDO   Landing page iOS-like com logo LCP   ┃
 ┃ /legal/privacidade   Legal         CONCLUÍDO   Privacidade & Direitos do Titular    ┃
 ┃ /legal/termos        Legal         CONCLUÍDO   Termos de Uso & Decreto E-commerce   ┃
-┃ /shop                Shop          PLANEJADO   Hub de Sellers, marcas e catálogos   ┃
+┃ /shop                Shop          CONCLUÍDO   Entrada de Sellers, marcas e operação┃
 ┃ /shop/conectar       Shop          PLANEJADO   Onboarding e autorização OAuth       ┃
-┃ /creators            Creators      PLANEJADO   Hub de Criadores e Live Commerce     ┃
+┃ /creators            Creators      CONCLUÍDO   Entrada de Creators e Live Commerce  ┃
 ┃ /creators/playbook   Creators      PLANEJADO   Playbooks e manuais de performance   ┃
-┃ /marketing           Marketing     PLANEJADO   Inteligência de mídias e Shop Ads    ┃
-┃ /tech                Tech          PLANEJADO   Portal Dev, OAuth, Webhooks & Agentes┃
+┃ /marketing           Marketing     CONCLUÍDO   Entrada de conteúdo e performance    ┃
+┃ /tech                Tech          CONCLUÍDO   Entrada de integrações e automações  ┃
 ┃ /tech/integracoes    Tech          PLANEJADO   Status de APIs e monitor de eventos  ┃
 ┃ /partners            Partner Ops   PLANEJADO   Jornada de parceiros e agências      ┃
 ┃ /sobre               Institucional PLANEJADO   Manifesto descentralizado neøflow    ┃
@@ -59,9 +59,9 @@ Abaixo está a matriz completa de rotas concluídas e o roadmap aprovado para de
 
 ## ⨀ Etapa 2 (Próximos Passos Queued)
 
-* **Fase 2A — Hub Shop (`/shop` e `/shop/conectar`):** Formulário de autorização e integração de lojistas com a TikTok Shop Open API.
-* **Fase 2B — Hub Creators (`/creators` e `/creators/playbook`):** Central de onboarding de afiliados e tutoriais de Live Commerce.
-* **Fase 2C — Hub Tech (`/tech` e `/tech/integracoes`):** Monitoramento de saúde de conectores, webhooks e orquestração de Agentes de IA.
+* **Fase 2A — Entradas por intenção:** concluída para `/shop`, `/creators`, `/marketing` e `/tech`, sem antecipar login ou OAuth.
+* **Fase 2B — Qualificação:** definir o contrato de intenção e implementar onboarding progressivo antes das autorizações externas.
+* **Fase 2C — Operação autenticada:** introduzir identidade, memberships e capacidades para sustentar `/app`.
 
 ────────────────────────────────────────
 
