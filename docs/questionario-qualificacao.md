@@ -1,4 +1,5 @@
-SYSTEM STATUS: GATEKEEPER ACTIVE ──
+# SYSTEM STATUS: GATEKEEPER ACTIVE
+
 "Seu perfil. Seus interesses. Nosso negócio."
 
 Não é programa de afiliados.
