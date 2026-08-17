@@ -42,6 +42,14 @@ Este documento define o vocabulário e a terminologia técnica oficiais do ecoss
 ### 04 — Tech, PWA & Conformidade Legal (APIs, Agentes & Leis)
 * **TikTok Shop Open API:** Interface oficial de integração para sellers, parceiros e aplicativos de terceiros.
 * **OAuth 2.0 Flow:** Protocolo seguro de autorização que permite à neøflow conectar e operar lojas autorizadas.
+
+## Reviewer UI publicada — 2026-08-17
+
+`https://neotiktok.com` é a Product URL canônica. O fluxo de avaliação é
+`/login` → `/app` → `/app/orders`; Privacy e Terms são públicas neste mesmo
+frontend. A UI consome `neo-content-accounts-api`, não recebe tokens nem
+`shop_cipher`, aceita empty state de Search Orders e demonstra somente
+`seller.shop.info`, `seller.authorization.info` e `seller.order.info`.
 * **Idempotency Key:** Chave única utilizada na recepção de Webhooks para evitar o processamento duplicado de eventos.
 * **Acid Green (`#D7FE09`):** Cor canônica que identifica todas as capacidades tecnológicas proprietárias e infraestrutura de IA da neøflow.
 * **Service Worker PWA (`sw.js`):** Script de fundo que gerencia o cache offline e estratégias Network-First / Stale-While-Revalidate.

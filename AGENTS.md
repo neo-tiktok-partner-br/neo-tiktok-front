@@ -118,6 +118,15 @@ Current implementation increment:
 - Existing operator edits in `docs/perfil-neflow.md` and
   `docs/questionario-qualificacao.md` must remain untouched unless explicitly
   placed in scope.
+- Production reviewer routes are `/login`, `/app` and `/app/orders` on
+  `https://neotiktok.com`. Privacy and Terms live here as canonical public
+  routes. Do not create a competing landing.
+- The reviewer UI is limited to Global Shop Information
+  (`seller.shop.info`), Shop Authorized Information
+  (`seller.authorization.info`) and Order Information (`seller.order.info`).
+  Do not add catalog, Finance, Fulfillment, Creator or LIVE screens.
+- The reviewer account exists, but its password, session cookies, tokens and
+  `shop_cipher` must never be written to Git or documentation.
 
 ---
 

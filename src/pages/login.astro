@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/review.css';
+---
+
+<BaseLayout title="Acesso do reviewer | neøflow">
+  <section class="review-shell">
+    <div class="review-header">
+      <span class="review-kicker">TikTok Shop App Review</span>
+      <h1>Acesso seguro</h1>
+      <p>Entre com a conta de avaliação fornecida nos materiais do Partner Center.</p>
+    </div>
+    <div class="review-card">
+      <form id="review-login" class="review-form">
+        <label class="review-field">E-mail
+          <input name="email" type="email" value="tiktok-review@neotiktok.com" autocomplete="username" required />
+        </label>
+        <label class="review-field">Senha
+          <input name="password" type="password" autocomplete="current-password" required />
+        </label>
+        <button class="review-button" type="submit">Entrar</button>
+      </form>
+      <div id="login-state" class="review-state" hidden></div>
+    </div>
+  </section>
+  <script>
+    const API = 'https://api.neoflowoff.agency';
+    const form = document.querySelector('#review-login');
+    const state = document.querySelector('#login-state');
+    form?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!(form instanceof HTMLFormElement) || !(state instanceof HTMLElement)) return;
+      const button = form.querySelector('button');
+      if (button instanceof HTMLButtonElement) button.disabled = true;
+      state.hidden = false;
+      state.dataset.kind = '';
+      state.textContent = 'Validando acesso…';
+      const values = new FormData(form);
+      try {
+        const response = await fetch(`${API}/review/login`, {
+          method: 'POST', headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ email: values.get('email'), password: values.get('password') }),
+        });
+        if (!response.ok) throw new Error('Credenciais inválidas.');
+        const payload = await response.json();
+        sessionStorage.setItem('neo_review_session', payload.token);
+        window.location.assign('/app');
+      } catch (error) {
+        state.dataset.kind = 'error';
+        state.textContent = error instanceof Error ? error.message : 'Não foi possível entrar.';
+        if (button instanceof HTMLButtonElement) button.disabled = false;
+      }
+    });
+  </script>
+</BaseLayout>

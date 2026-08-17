@@ -2,6 +2,18 @@
 
 # NEXTSTEPS // Roteiro de Expansão de Páginas e Rotas
 
+## NOW — App Review 2026-08-17
+
+- [x] `/login` publicado para a conta dedicada de reviewer
+- [x] `/app` publicado com status e shop autorizada exata
+- [x] `/app/orders` publicado com loading, success, empty e error sanitizados
+- [x] Privacy e Terms públicas no domínio canônico
+- [ ] Executar gate final em janela anônima e submeter no Partner Center
+- [ ] Registrar status, protocolo e data após a submissão
+
+Pacotes demonstrados: `seller.shop.info`, `seller.authorization.info` e
+`seller.order.info`. Não ampliar a reviewer UI antes do review inicial.
+
 ```text
 ========================================
     neøflow · PLANO DE EXPANSÃO DE PÁGINAS

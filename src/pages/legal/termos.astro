@@ -2,6 +2,7 @@
 import LegalLayout from '../../components/LegalLayout.astro';
 
 const contactEmail = "neo@neotiktok.com";
+const lastUpdated = "17 de agosto de 2026";
 ---
 
 <LegalLayout
@@ -13,10 +14,11 @@ const contactEmail = "neo@neotiktok.com";
   <p>
     Ao acessar ou utilizar a plataforma e serviços fornecidos pela <strong>Flowoff Marketing e Assessoria Digital LTDA</strong> ("neøflow"), pessoa jurídica inscrita no CNPJ/MF sob o nº <strong>43.376.355/0001-92</strong>, o usuário (seja lojista, criador de conteúdo ou parceiro) concorda e aceita integralmente as disposições destes Termos de Uso.
   </p>
+  <p><strong>Última atualização:</strong> {lastUpdated}.</p>
 
   <h2>2. Objeto e Natureza dos Serviços</h2>
   <p>
-    A neøflow atua como uma infraestrutura descentralizada de tecnologia e agência de performance para comércio digital. Fornecemos conectores de integração, automação de catálogos, ferramentas de inteligência operacional e facilitação de parcerias entre marcas e criadores de conteúdo no ecossistema TikTok Shop.
+    A neøflow fornece uma integração tecnológica para conectar uma loja autorizada do TikTok Shop, confirmar sua identidade e consultar pedidos por meio das APIs oficiais e dos escopos concedidos pelo titular.
   </p>
   <p>
     <strong>Declaração de Autonomia:</strong> A neøflow é uma parceira oficial de tecnologia independente do TikTok Shop. As marcas registradas TikTok e TikTok Shop pertencem às suas respectivas detentoras, sendo utilizadas apenas como referência técnica operacional.
@@ -24,7 +26,7 @@ const contactEmail = "neo@neotiktok.com";
 
   <h2>3. Cadastro e Responsabilidades do Usuário</h2>
   <p>
-    Para utilizar os módulos de integração ou participar da rede de criadores e lojistas, o usuário declara ser maior de 18 anos, responsabilizando-se por:
+    Para utilizar a integração, o usuário declara ser maior de 18 anos e possuir autoridade para representar a loja, responsabilizando-se por:
   </p>
   <ul>
     <li>Utilizar os conectores e integrações de acordo com a legislação vigente.</li>
@@ -33,7 +35,18 @@ const contactEmail = "neo@neotiktok.com";
     <li>Não tentar violar a integridade técnica, realizar engenharia reversa ou desestabilizar nossos servidores.</li>
   </ul>
 
-  <h2>4. Regulamentação de E-commerce e Direito de Arrependimento</h2>
+  <h2>4. Integração TikTok Shop</h2>
+  <p>
+    A conexão utiliza OAuth e a TikTok Shop Open API. A neøflow acessa somente os escopos apresentados durante a autorização. O usuário pode revogar o acesso no TikTok Shop ou solicitar a desconexão pelo canal de atendimento.
+  </p>
+  <ul>
+    <li>A continuidade do serviço depende da disponibilidade e das políticas da plataforma integrada.</li>
+    <li>A loja usada nas chamadas deve corresponder exatamente à loja retornada pela mesma autorização.</li>
+    <li>A neøflow não solicita que o usuário compartilhe senha do Seller Center, token ou identificador interno de autorização.</li>
+    <li>Os dados de pedidos são usados somente para a operação autorizada e não representam processamento de pagamentos ou liquidação financeira.</li>
+  </ul>
+
+  <h2>5. Regulamentação de E-commerce e Direito de Arrependimento</h2>
   <p>
     Em cumprimento ao <strong>Decreto Federal nº 7.962/2013 (Decreto do E-commerce)</strong> e ao Código de Defesa do Consumidor (CDC), a neøflow declara e garante:
   </p>
@@ -43,17 +56,22 @@ const contactEmail = "neo@neotiktok.com";
     <li><strong>Canal de Atendimento e Suporte:</strong> Dúvidas, reclamações ou cancelamentos podem ser formalizados pelo e-mail <a href={`mailto:${contactEmail}`} class="email font-mono">{contactEmail}</a>. Confirmamos o recebimento imediatamente e respondemos em até 5 dias úteis.</li>
   </ul>
 
-  <h2>5. Propriedade Intelectual</h2>
+  <h2>6. Propriedade Intelectual</h2>
   <p>
     Todos os direitos de propriedade intelectual relativos ao código-fonte, marcas, logotipos, tokens de design, layout e arquitetura do ecossistema neøflow pertencem exclusivamente à Flowoff Marketing e Assessoria Digital LTDA.
   </p>
 
-  <h2>6. Limitação de Responsabilidade</h2>
+  <h2>7. Limitação de Responsabilidade</h2>
   <p>
     A neøflow não se responsabiliza por eventuais instabilidades temporárias decorrentes das APIs oficiais de terceiros (incluindo serviços do TikTok ou provedores de pagamentos), nem por prejuízos decorrentes do uso inadequado de credenciais pelo próprio usuário.
   </p>
 
-  <h2>7. Foro de Eleição</h2>
+  <h2>8. Encerramento e Revogação</h2>
+  <p>
+    O usuário pode encerrar o uso da integração revogando a autorização no TikTok Shop ou solicitando a desconexão. A retenção e a exclusão de dados seguem a Política de Privacidade e as obrigações legais aplicáveis.
+  </p>
+
+  <h2>9. Foro de Eleição</h2>
   <p>
     Para a solução de quaisquer controvérsias oriundas destes Termos de Uso, fica eleito o Foro da Comarca da Capital do Estado de São Paulo, com renúncia expressa a qualquer outro.
   </p>

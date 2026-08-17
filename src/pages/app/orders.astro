@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/review.css';
+---
+
+<BaseLayout title="Pedidos | neøflow app">
+  <section class="review-shell">
+    <div class="review-header">
+      <span class="review-kicker">Order Information</span>
+      <h1>Pedidos</h1>
+      <p>Consulta read-only da loja TikTok Shop conectada.</p>
+      <div class="review-actions"><a class="review-button secondary" href="/app">Voltar à conexão</a></div>
+    </div>
+    <div class="review-card">
+      <div class="review-actions"><button id="search-orders" class="review-button" type="button">Search Orders</button></div>
+      <div id="orders-state" class="review-state">Pronto para consultar.</div>
+      <div id="orders-list" class="order-list"></div>
+    </div>
+  </section>
+  <script>
+    type ReviewOrderItem = {
+      productName: string;
+      skuName: string | null;
+      quantity: number;
+    };
+    type ReviewOrder = {
+      id: string;
+      status: string;
+      createdAt: number | null;
+      amount: string;
+      currency: string;
+      items: ReviewOrderItem[];
+    };
+    type ReviewOrdersResponse = { count: number; orders: ReviewOrder[] };
+
+    const API = 'https://api.neoflowoff.agency';
+    const token = sessionStorage.getItem('neo_review_session');
+    if (!token) window.location.replace('/login');
+    const button = document.querySelector('#search-orders');
+    const state = document.querySelector('#orders-state');
+    const list = document.querySelector('#orders-list');
+    button?.addEventListener('click', async () => {
+      if (!(button instanceof HTMLButtonElement) || !(state instanceof HTMLElement) || !(list instanceof HTMLElement)) return;
+      button.disabled = true;
+      state.dataset.kind = '';
+      state.textContent = 'Consultando pedidos…';
+      list.replaceChildren();
+      try {
+        const response = await fetch(`${API}/review/tiktok-shop/orders/search`, {
+          method: 'POST', headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' }, body: '{}',
+        });
+        if (response.status === 401) return window.location.replace('/login');
+        if (!response.ok) throw new Error('Search Orders não pôde ser concluído.');
+        const payload = (await response.json()) as ReviewOrdersResponse;
+        if (!payload.orders.length) {
+          state.dataset.kind = 'success';
+          state.textContent = 'Consulta concluída. Nenhum pedido encontrado nesta loja.';
+          return;
+        }
+        state.dataset.kind = 'success';
+        state.textContent = `${payload.count} pedido(s) encontrado(s).`;
+        payload.orders.forEach((order) => {
+          const article = document.createElement('article');
+          article.className = 'order-card';
+          const createdAt = order.createdAt ? new Date(order.createdAt * 1000).toLocaleString('pt-BR') : 'Não informado';
+          const title = document.createElement('h2');
+          title.textContent = `Pedido ${order.id}`;
+          const meta = document.createElement('div');
+          meta.className = 'order-meta';
+          [`Status: ${order.status}`, `Data: ${createdAt}`, `Valor: ${order.currency} ${order.amount}`].forEach((value) => {
+            const item = document.createElement('span');
+            item.textContent = value;
+            meta.append(item);
+          });
+          const items = document.createElement('ul');
+          items.className = 'order-items';
+          order.items.forEach((orderItem) => {
+            const item = document.createElement('li');
+            item.textContent = `${orderItem.productName}${orderItem.skuName ? ` — ${orderItem.skuName}` : ''} × ${orderItem.quantity}`;
+            items.append(item);
+          });
+          article.append(title, meta, items);
+          list.append(article);
+        });
+      } catch (error) {
+        state.dataset.kind = 'error';
+        state.textContent = error instanceof Error ? error.message : 'Falha sanitizada na consulta.';
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</BaseLayout>
