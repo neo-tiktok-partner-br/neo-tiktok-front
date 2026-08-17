@@ -2,6 +2,7 @@
 import LegalLayout from '../../components/LegalLayout.astro';
 
 const contactEmail = "neo@neotiktok.com";
+const lastUpdated = "17 de agosto de 2026";
 ---
 
 <LegalLayout
@@ -16,12 +17,14 @@ const contactEmail = "neo@neotiktok.com";
   <p>
     Esta Política de Privacidade foi elaborada em estrita conformidade com a <strong>Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 - LGPD)</strong>, detalhando como coletamos, armazenamos, utilizamos, compartilhamos e protegemos suas informações.
   </p>
+  <p><strong>Última atualização:</strong> {lastUpdated}.</p>
 
   <h2>2. Dados Pessoais Coletados e Finalidade</h2>
   <p>Coletamos apenas os dados necessários para o fornecimento e aprimoramento de nossos serviços de infraestrutura e ecossistema de performance:</p>
   <ul>
-    <li><strong>Dados de Identificação e Contato:</strong> Nome completo, e-mail corporativo, telefone e cargo (para onboarding de lojistas e criadores).</li>
-    <li><strong>Dados de Integração E-commerce &amp; Criadores:</strong> Informações públicas de perfil no TikTok, métricas de engajamento, identificadores de lojas autorizadas via OAuth e dados de catálogos.</li>
+    <li><strong>Dados de Identificação e Contato:</strong> Nome, e-mail corporativo e dados necessários para criar e proteger a conta de acesso.</li>
+    <li><strong>Dados de autorização TikTok Shop:</strong> identificador e nome da loja autorizada, região, escopos concedidos e credenciais OAuth armazenadas de forma protegida no backend.</li>
+    <li><strong>Dados de pedidos:</strong> identificadores, status, data, valor, moeda e itens retornados pela API oficial para a loja autorizada.</li>
     <li><strong>Dados Técnicos de Conexão:</strong> Endereço IP, registros de acesso à aplicação (logs), tipo de navegador e identificadores de dispositivos.</li>
   </ul>
 
@@ -38,8 +41,8 @@ const contactEmail = "neo@neotiktok.com";
     A neøflow não comercializa dados pessoais. O compartilhamento ocorre estritamente quando necessário para a operação dos serviços, restrito a:
   </p>
   <ul>
-    <li>Provedores de infraestrutura em nuvem (Azure / servidores seguros).</li>
-    <li>APIs oficiais do TikTok Shop para viabilizar os fluxos de autorização e gestão de catálogos.</li>
+    <li>Provedores de infraestrutura utilizados para hospedar a aplicação, o banco de dados e os registros operacionais.</li>
+    <li>APIs oficiais do TikTok Shop para autorização da loja e leitura dos pedidos permitidos pelo titular.</li>
     <li>Autoridades judiciais ou governamentais, mediante ordem judicial ou exigência legal cabível.</li>
   </ul>
 
@@ -48,7 +51,12 @@ const contactEmail = "neo@neotiktok.com";
     Adotamos medidas técnicas e administrativas aptas a proteger os dados pessoais de acessos não autorizados e de situações acidentais ou ilícitas de destruição, perda, alteração ou difusão. Credenciais de API, tokens OAuth e segredos de conexão são armazenados em ambiente isolado e criptografado com acesso restrito.
   </p>
 
-  <h2>6. Seus Direitos Fundamentais (Artigo 18 da LGPD)</h2>
+  <h2>6. Retenção e Revogação</h2>
+  <p>
+    Mantemos credenciais OAuth apenas enquanto a integração estiver ativa ou pelo período necessário para cumprir obrigações legais e de segurança. O titular pode revogar a autorização no TikTok Shop e solicitar a desconexão ou exclusão dos dados pelo canal de atendimento. Dados que precisem ser preservados por obrigação legal serão isolados e tratados somente para essa finalidade.
+  </p>
+
+  <h2>7. Seus Direitos Fundamentais (Artigo 18 da LGPD)</h2>
   <p>
     Conforme o Artigo 18 da LGPD, você possui direitos fundamentais sobre seus dados pessoais, que garantimos de forma gratuita e rápida:
   </p>
@@ -70,7 +78,17 @@ const contactEmail = "neo@neotiktok.com";
     <p class="small font-mono">Prazo de resposta legal: em até 15 dias corridos.</p>
   </div>
 
-  <h2>7. Alterações nesta Política</h2>
+  <h2>8. Cookies e Sessão</h2>
+  <p>
+    A área autenticada pode utilizar cookies ou mecanismos equivalentes estritamente necessários para login, segurança e manutenção da sessão. Esses recursos não são usados para comercializar dados pessoais.
+  </p>
+
+  <h2>9. Menores de Idade</h2>
+  <p>
+    A integração comercial é destinada a pessoas maiores de 18 anos e representantes autorizados de empresas. Não coletamos intencionalmente dados de menores por meio deste serviço.
+  </p>
+
+  <h2>10. Alterações nesta Política</h2>
   <p>
     Esta Política de Privacidade poderá ser atualizada periodicamente para refletir melhorias em nossos serviços ou alterações regulatórias.
   </p>

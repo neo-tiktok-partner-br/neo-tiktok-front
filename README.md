@@ -30,6 +30,19 @@ Design System: Mobile-First iOS-Like
 
 O repositório [neo-tiktok-front](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/README.md) é o ponto focal de interface frontend e ecossistema de aplicação para a **neøflow // Official TikTok Partners**.
 
+## Superfície canônica de App Review
+
+- Product URL: `https://neotiktok.com`
+- Reviewer login: `/login`
+- Home autenticada: `/app`
+- Orders: `/app/orders`
+- Privacy: `/legal/privacidade`
+- Terms: `/legal/termos`
+
+A conta dedicada de reviewer existe, mas sua senha não pertence ao Git nem à
+documentação. Search Orders pode retornar empty state validamente. Esta UI não
+demonstra catálogo, Finance, Fulfillment, Creator ou LIVE.
+
 A neøflow opera como uma infraestrutura descentralizada de comércio digital e agência de performance, integrando parceiros, criadores de conteúdo e lojistas diretamente às capacidades avançadas do TikTok Shop.
 
 ────────────────────────────────────────
