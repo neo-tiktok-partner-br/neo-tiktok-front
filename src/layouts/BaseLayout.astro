@@ -1,5 +1,4 @@
 ---
-import Preloader from '../components/Preloader.astro';
 import FooterPolicy from '../components/FooterPolicy.astro';
 import Header from '../components/Header.astro';
 import '../styles/tokens.css';
@@ -52,10 +51,8 @@ const jsonLd = {
       },
       "knowsAbout": [
         "TikTok Shop Partner",
-        "Infraestrutura Comercial",
-        "Live Commerce",
-        "Automação de Catálogos",
-        "Agentes de IA Customizados"
+        "Integração autorizada com TikTok Shop",
+        "Consulta de pedidos do TikTok Shop"
       ]
     },
     {
@@ -168,7 +165,6 @@ const jsonLd = {
   <body>
     <!-- Skip Navigation (Acessibilidade: WCAG 2.4.1) -->
     <a href="#main-content" class="skip-to-content">Pular para o conteúdo principal</a>
-    <Preloader />
     <Header />
     <main id="main-content">
       <slot />

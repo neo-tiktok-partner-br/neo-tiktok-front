@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReviewSessionActions from '../../components/ReviewSessionActions.astro';
+import '../../styles/review.css';
+---
+
+<BaseLayout title="TikTok Shop | neøflow app">
+  <section class="review-shell">
+    <div class="review-header">
+      <span class="review-kicker">Área autenticada</span>
+      <h1>TikTok Shop</h1>
+      <p>Conexão oficial e leitura operacional da loja autorizada.</p>
+    </div>
+    <div class="review-grid">
+      <article class="review-card">
+        <h2>Status da conexão</h2>
+        <p id="connection-status" class="review-status" role="status" aria-live="polite" aria-atomic="true">Verificando…</p>
+        <div id="shop-details" hidden>
+          <p><strong id="shop-name"></strong><br /><span id="shop-region" class="review-muted"></span></p>
+          <ul id="shop-scopes" class="review-scopes"></ul>
+        </div>
+        <div id="app-error" class="review-state" data-kind="error" role="alert" aria-live="assertive" hidden></div>
+        <div class="review-actions">
+          <button id="connect-shop" class="review-button" type="button" hidden>Conectar TikTok Shop</button>
+          <a class="review-button secondary" href="/app/orders">Ver pedidos</a>
+          <ReviewSessionActions />
+        </div>
+      </article>
+      <article class="review-card">
+        <h2>Fluxo avaliado</h2>
+        <p class="review-muted">OAuth → Get Authorized Shops → vínculo exato → Search Orders.</p>
+        <p>Nenhuma credencial, token ou shop cipher é exibido nesta interface.</p>
+      </article>
+    </div>
+  </section>
+  <script>
+    import { REVIEW_API_BASE_URL } from '../../config/review';
+
+    type ReviewShopStatus = {
+      connected: boolean;
+      shop: { name: string; region: string; scopes: string[] };
+    };
+
+    const token = sessionStorage.getItem('neo_review_session');
+    if (!token) window.location.replace('/login');
+    const headers = { authorization: `Bearer ${token}` };
+    const status = document.querySelector('#connection-status');
+    const details = document.querySelector('#shop-details');
+    const errorBox = document.querySelector('#app-error');
+    const connect = document.querySelector('#connect-shop');
+    async function loadStatus() {
+      try {
+        const response = await fetch(`${REVIEW_API_BASE_URL}/review/tiktok-shop/status`, { headers });
+        if (response.status === 401) return window.location.replace('/login');
+        if (!response.ok) throw new Error('Não foi possível verificar a conexão.');
+        const payload = (await response.json()) as ReviewShopStatus;
+        if (status instanceof HTMLElement) {
+          status.textContent = payload.connected ? 'Conectada' : 'Não conectada';
+          status.classList.toggle('connected', payload.connected);
+        }
+        if (payload.connected && details instanceof HTMLElement) {
+          details.hidden = false;
+          const name = document.querySelector('#shop-name');
+          const region = document.querySelector('#shop-region');
+          const scopes = document.querySelector('#shop-scopes');
+          if (name) name.textContent = payload.shop.name;
+          if (region) region.textContent = `Região: ${payload.shop.region}`;
+          if (scopes) {
+            scopes.replaceChildren();
+            payload.shop.scopes.forEach((scope) => {
+              const item = document.createElement('li');
+              item.textContent = scope;
+              scopes.append(item);
+            });
+          }
+        }
+        if (connect instanceof HTMLButtonElement) connect.hidden = payload.connected;
+      } catch (error) {
+        if (errorBox instanceof HTMLElement) {
+          errorBox.hidden = false;
+          errorBox.textContent = error instanceof Error ? error.message : 'Falha sanitizada de conexão.';
+        }
+      }
+    }
+    connect?.addEventListener('click', async () => {
+      if (connect instanceof HTMLButtonElement) connect.disabled = true;
+      try {
+        const response = await fetch(`${REVIEW_API_BASE_URL}/review/tiktok-shop/authorize`, { headers });
+        if (!response.ok) throw new Error('Não foi possível iniciar a autorização.');
+        const payload = await response.json();
+        window.location.assign(payload.authorizeUrl);
+      } catch (error) {
+        if (errorBox instanceof HTMLElement) {
+          errorBox.hidden = false;
+          errorBox.textContent = error instanceof Error ? error.message : 'Falha sanitizada de autorização.';
+        }
+        if (connect instanceof HTMLButtonElement) connect.disabled = false;
+      }
+    });
+    loadStatus();
+  </script>
+</BaseLayout>

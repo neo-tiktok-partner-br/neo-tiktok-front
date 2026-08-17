@@ -1,0 +1,8 @@
+<button class="review-button secondary" type="button" data-review-logout>Sair</button>
+
+<script>
+  document.querySelector('[data-review-logout]')?.addEventListener('click', () => {
+    sessionStorage.removeItem('neo_review_session');
+    window.location.replace('/login');
+  });
+</script>
