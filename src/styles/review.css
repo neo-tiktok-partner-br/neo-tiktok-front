@@ -37,6 +37,7 @@
   cursor: pointer;
 }
 .review-button.secondary { background: transparent; color: var(--neo-white); border-color: var(--neo-border); }
+.review-button[hidden] { display: none; }
 .review-button:disabled { cursor: wait; opacity: .55; }
 .review-form { display: grid; gap: 1rem; max-width: 480px; }
 .review-field { display: grid; gap: .4rem; }

@@ -8,12 +8,13 @@
       <span>neøflow</span><span class="logo-slash-coral">/</span><span class="logo-slash-cyan">/</span>
     </a>
 
-    <!-- Badge temporária de lançamento -->
-    <div class="header-badge-wrapper">
-      <div class="header-badge font-mono">
-        <span class="badge-dot"></span>
-        <span class="badge-text-desktop">EM BREVE // SETEMBRO 26</span>
-        <span class="badge-text-mobile">SOON // SET 26'</span>
+    <div class="header-actions">
+      <a class="header-app-link font-mono" href="/login">Área do app</a>
+      <!-- Badge temporária de lançamento -->
+      <div class="header-badge font-mono" aria-label="Em breve, agosto de 2026">
+        <span class="badge-dot" aria-hidden="true"></span>
+        <span class="badge-text-desktop">EM BREVE // AGOSTO 26</span>
+        <span class="badge-text-mobile" aria-hidden="true">AGO // 26</span>
       </div>
     </div>
   </div>
@@ -92,9 +93,24 @@
     color: var(--neo-cyan); /* #00F2FE */
   }
 
-  .header-badge-wrapper {
+  .header-actions {
     display: flex;
     align-items: center;
+    gap: 0.75rem;
+  }
+
+  .header-app-link {
+    color: var(--neo-white);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .header-app-link:hover,
+  .header-app-link:focus-visible {
+    color: var(--neo-acid);
   }
 
   .header-badge {
@@ -145,6 +161,11 @@
       font-size: 0.65rem;
       letter-spacing: 0.06em;
       gap: 0.4rem;
+    }
+
+    .header-app-link {
+      font-size: 0.62rem;
+      letter-spacing: 0.04em;
     }
   }
 </style>

@@ -24,7 +24,8 @@ import '../styles/review.css';
     </div>
   </section>
   <script>
-    const API = 'https://api.neoflowoff.agency';
+    import { REVIEW_API_BASE_URL } from '../config/review';
+
     const form = document.querySelector('#review-login');
     const state = document.querySelector('#login-state');
     form?.addEventListener('submit', async (event) => {
@@ -37,7 +38,7 @@ import '../styles/review.css';
       state.textContent = 'Validando acesso…';
       const values = new FormData(form);
       try {
-        const response = await fetch(`${API}/review/login`, {
+        const response = await fetch(`${REVIEW_API_BASE_URL}/review/login`, {
           method: 'POST', headers: { 'content-type': 'application/json' },
           body: JSON.stringify({ email: values.get('email'), password: values.get('password') }),
         });

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReviewSessionActions from '../../components/ReviewSessionActions.astro';
 import '../../styles/review.css';
 ---
 
@@ -8,16 +9,21 @@ import '../../styles/review.css';
     <div class="review-header">
       <span class="review-kicker">Order Information</span>
       <h1>Pedidos</h1>
-      <p>Consulta read-only da loja TikTok Shop conectada.</p>
-      <div class="review-actions"><a class="review-button secondary" href="/app">Voltar à conexão</a></div>
+      <p>Consulta somente leitura pela API oficial Search Orders.</p>
+      <div class="review-actions">
+        <a class="review-button secondary" href="/app">Voltar à conexão</a>
+        <ReviewSessionActions />
+      </div>
     </div>
     <div class="review-card">
-      <div class="review-actions"><button id="search-orders" class="review-button" type="button">Search Orders</button></div>
-      <div id="orders-state" class="review-state">Pronto para consultar.</div>
+      <div class="review-actions"><button id="search-orders" class="review-button" type="button">Consultar pedidos</button></div>
+      <div id="orders-state" class="review-state" role="status" aria-live="polite" aria-atomic="true">Pronto para consultar.</div>
       <div id="orders-list" class="order-list"></div>
     </div>
   </section>
   <script>
+    import { REVIEW_API_BASE_URL } from '../../config/review';
+
     type ReviewOrderItem = {
       productName: string;
       skuName: string | null;
@@ -33,7 +39,6 @@ import '../../styles/review.css';
     };
     type ReviewOrdersResponse = { count: number; orders: ReviewOrder[] };
 
-    const API = 'https://api.neoflowoff.agency';
     const token = sessionStorage.getItem('neo_review_session');
     if (!token) window.location.replace('/login');
     const button = document.querySelector('#search-orders');
@@ -46,7 +51,7 @@ import '../../styles/review.css';
       state.textContent = 'Consultando pedidos…';
       list.replaceChildren();
       try {
-        const response = await fetch(`${API}/review/tiktok-shop/orders/search`, {
+        const response = await fetch(`${REVIEW_API_BASE_URL}/review/tiktok-shop/orders/search`, {
           method: 'POST', headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' }, body: '{}',
         });
         if (response.status === 401) return window.location.replace('/login');
