@@ -30,7 +30,7 @@ const { code, label, title, description, accent, capabilities, nextStep } = Astr
         <p class="section-label font-mono">JORNADA NEOFLOW</p>
         <h2 id="capability-title" class="font-display">Começamos pelo objetivo.</h2>
         <ol class="capability-list">
-          {capabilities.map((capability, index) => (
+          {capabilities.map((capability: string, index: number) => (
             <li>
               <span class="capability-index font-mono">{String(index + 1).padStart(2, '0')}</span>
               <span>{capability}</span>

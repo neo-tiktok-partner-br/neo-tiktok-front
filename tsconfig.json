@@ -1,13 +1,18 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2022"
+    ],
     "strict": true,
     "baseUrl": ".",
     "paths": {
       "@/*": [
-        "src/*"
-      ],
-      "~/*": [
         "src/*"
       ]
     }

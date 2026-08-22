@@ -2,12 +2,15 @@
 
 # NEXTSTEPS // Roteiro de Expansão de Páginas e Rotas
 
-## NOW — App Review 2026-08-17
+## NOW — App Review & Pixel Events (2026-08-21)
 
 - [x] `/login` publicado para a conta dedicada de reviewer
 - [x] `/app` publicado com status e shop autorizada exata
 - [x] `/app/orders` publicado com loading, success, empty e error sanitizados
-- [x] Privacy e Terms públicas no domínio canônico
+- [x] `/tiktok-shop` publicado com onboarding de sellers e creators
+- [x] Pixel TikTok `D9SJPC3C77U97D5QGU0G` instalado no layout base
+- [x] Helper `src/utils/tiktok.ts` com SHA-256 e 10 eventos de funil
+- [x] Privacy e Terms públicas no domínio canônico `neotiktok.com`
 - [ ] Executar gate final em janela anônima e submeter no Partner Center
 - [ ] Registrar status, protocolo e data após a submissão
 
