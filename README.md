@@ -82,6 +82,71 @@ O ecossistema divide-se em 4 territórios fundamentais:
 
 ## ⍟ Arquitetura, PWA & Desempenho (Dev Agents)
 
+### Diagrama Arquitetural Completo (Mermaid)
+
+```mermaid
+flowchart TD
+    subgraph ATORES["ATORES DA REDE (QUEM PARTICIPA)"]
+        Creator["CREATOR\n- Criadores de Conteúdo\n- Afiliados & Live Streamers\n- Monetização de Atenção"]
+        Seller["SELLER\n- Lojistas & Marcas\n- Catálogo & Produtos\n- Transformação de Atenção em Vendas"]
+        Partner["PARTNER\n- Operadores & Agências\n- Creator Managers & Especialistas\n- Execução Descentralizada"]
+    end
+
+    subgraph NETWORK["NEOFLOW NETWORK (NÚCLEO CONECTOR)"]
+        Core["NEOFLOW NETWORK\n'Seu perfil. Seus interesses. Nosso negócio.'\nConexão entre Atores, Infraestrutura e Oportunidades"]
+    end
+
+    subgraph CAPACIDADES["CAPACIDADES DO ECOSSISTEMA (O QUE OFERECEMOS)"]
+        Shop["CAPABILITY: SHOP (#FE2C55)\n- Vendas, Catálogo e Pedidos\n- Sincronização e Conciliação"]
+        Marketing["CAPABILITY: MARKETING\n- Tráfego Pago & Spark Ads\n- Creative Studio & Campanhas"]
+        Tech["CAPABILITY: TECH (#D7FE09)\n- Open API, OAuth, Webhooks\n- Automações, Agentes e Connectors"]
+        NetworkCap["CAPABILITY: NETWORK\n- Hub de Oportunidades\n- Colaborações e Matchmaking"]
+    end
+
+    subgraph EXPERIENCIA["SUPERFÍCIES DE EXPERIÊNCIA"]
+        subgraph PUBLIC_EXP["PUBLIC EXPERIENCE (neotiktok.com)"]
+            P_Home["/ (Home - Qualificação de Perfil)"]
+            P_Creators["/creators (oportunidades, playbook, conectar)"]
+            P_Sellers["/sellers (creators, campanhas, conectar)"]
+            P_Partners["/partners (rede, aplicar)"]
+            P_Marketing["/marketing"]
+            P_Tech["/tech (developers, integrations, status)"]
+            P_Network["/network"]
+            P_Sobre["/sobre"]
+        end
+
+        subgraph PRIVATE_EXP["PRIVATE EXPERIENCE (app.neotiktok.com)"]
+            AppShell["/app (PWA Soberano Operacional)\nIdentidade Multi-Role & Multi-Capability:\n- roles: []\n- capabilities: []\n- connections: []"]
+            AuthRoutes["/auth & /callback (Rotas Reservadas)"]
+        end
+    end
+
+    subgraph TIKTOK_INFRA["INFRAESTRUTURA TIKTOK"]
+        TTS_API["TikTok Shop Open API"]
+        TTS_OAuth["OAuth 2.0 & Webhooks"]
+        TikTokOne["TikTok One & Symphony Creative Studio"]
+        SellerCenter["Seller Center BR & Creator Marketplace"]
+    end
+
+    Creator --> Core
+    Seller --> Core
+    Partner --> Core
+
+    Core --> Shop
+    Core --> Marketing
+    Core --> Tech
+    Core --> NetworkCap
+
+    Shop --> PUBLIC_EXP
+    Marketing --> PUBLIC_EXP
+    Tech --> PUBLIC_EXP
+    NetworkCap --> PUBLIC_EXP
+
+    PUBLIC_EXP -->|"Onboarding & Qualificação"| AppShell
+    AppShell <--> AuthRoutes
+    AppShell <--> TIKTOK_INFRA
+```
+
 * **Framework & Tipagem:** Astro 7 com modo estrito do TypeScript ativado (`"strict": true` em [tsconfig.json](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/tsconfig.json)).
 * **Design System Mobile-First iOS-Like:** Suporte nativo a *Safe Area Insets* (`env(safe-area-inset-top)` / `bottom`), desfoque de fundo glassmorphic (`backdrop-filter: blur(24px)`), bordas arredondadas estilo iOS (`--radius-ios: 22px`), animações com física de mola e navegação por arraste tátil (Drag-to-Scroll em [src/components/LegalLayout.astro](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/src/components/LegalLayout.astro)).
 * **Otimização de LCP / Core Web Vitals:** Carregamento prioritário do ativo LCP (`/assets/logo_partners.svg` com `fetchpriority="high"`, `width="720"` e `height="180"`), CSS crítico inline no `<head>` e Google Fonts não-bloqueante assíncrono em [src/layouts/BaseLayout.astro](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/src/layouts/BaseLayout.astro).
