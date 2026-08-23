@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { REVIEW_API_BASE_URL } from '../../config/review';
+import { PUBLIC_API_BASE_URL } from '../../config/api';
 
-const sellerAuthorizeUrl = `${REVIEW_API_BASE_URL}/auth/seller/authorize`;
+const sellerAuthorizeUrl = `${PUBLIC_API_BASE_URL}/oauth/tiktok-shop/authorize`;
 ---
 
 <BaseLayout
