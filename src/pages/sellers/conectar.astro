@@ -1,0 +1,272 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { REVIEW_API_BASE_URL } from '../../config/review';
+
+const sellerAuthorizeUrl = `${REVIEW_API_BASE_URL}/auth/seller/authorize`;
+---
+
+<BaseLayout
+  title="Conectar TikTok Shop // neøflow Sellers"
+  description="Autorização segura de vendedor TikTok Shop via neøflow. Conecte sua loja com validação anti-CSRF e rastreabilidade de pedidos."
+>
+  <main class="seller-connect-shell">
+    <div class="seller-connect-glow" aria-hidden="true"></div>
+    <div class="seller-connect-container">
+      <a class="back-link font-mono" href="/shop">← VOLTAR PARA SHOP</a>
+
+      <header class="seller-header">
+        <p class="seller-kicker font-mono">01 — SELLER CONNECT</p>
+        <h1 class="font-display">Conectar TikTok Shop</h1>
+        <p class="seller-description">
+          Inicie a conexão oficial da sua loja de vendedor. A autorização é intermediada pelo gateway de segurança da neøflow com proteção anti-CSRF em tempo real.
+        </p>
+      </header>
+
+      <section class="connect-card" aria-labelledby="card-title">
+        <div class="card-header">
+          <div class="status-indicator">
+            <span class="status-dot"></span>
+            <span class="status-text font-mono">CANAL OFICIAL TIKTOK SHOP</span>
+          </div>
+          <h2 id="card-title" class="font-display">Autorização de Vendedor</h2>
+          <p>
+            Ao avançar, você será redirecionado para a página de consentimento seguro do TikTok Shop. Seus dados e tokens serão protegidos com criptografia AES-256 no cofre neøflow.
+          </p>
+        </div>
+
+        <div class="scopes-overview">
+          <p class="scopes-title font-mono">CAPACIDADES HABILITADAS:</p>
+          <ul class="scopes-list">
+            <li>
+              <span class="scope-badge font-mono">SELLER.SHOP.INFO</span>
+              <span>Identificação da loja e dados operacionais básicos</span>
+            </li>
+            <li>
+              <span class="scope-badge font-mono">SELLER.AUTHORIZATION.INFO</span>
+              <span>Vínculo de autorização e cifra de comunicação</span>
+            </li>
+            <li>
+              <span class="scope-badge font-mono">SELLER.ORDER.INFO</span>
+              <span>Consulta e sincronização contínua de pedidos</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="action-box">
+          <a
+            id="seller-connect-button"
+            class="connect-button font-mono"
+            href={sellerAuthorizeUrl}
+          >
+            INICIAR AUTORIZAÇÃO SEGURA <span aria-hidden="true">→</span>
+          </a>
+          <p class="security-note font-mono">
+            🔒 Sessão protegida com Anti-CSRF State e expiração em 10 minutos.
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .seller-connect-shell {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    padding: calc(8rem + var(--sat)) 1.25rem 4rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .seller-connect-glow {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(254, 44, 85, 0.12) 0%, rgba(9, 19, 26, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .seller-connect-container {
+    width: 100%;
+    max-width: 680px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .back-link {
+    font-size: 0.8125rem;
+    color: var(--neo-dim);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: var(--neo-coral);
+  }
+
+  .seller-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .seller-kicker {
+    font-size: 0.8125rem;
+    color: var(--neo-coral);
+    letter-spacing: 0.15em;
+  }
+
+  .seller-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--neo-white);
+    line-height: 1.1;
+  }
+
+  .seller-description {
+    font-size: 1.0625rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+  }
+
+  .connect-card {
+    background: rgba(15, 27, 36, 0.75);
+    border: 1px solid rgba(254, 44, 85, 0.25);
+    border-radius: var(--radius-ios, 22px);
+    backdrop-filter: blur(24px);
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--neo-coral);
+    box-shadow: 0 0 10px var(--neo-coral);
+  }
+
+  .status-text {
+    font-size: 0.75rem;
+    color: var(--neo-coral);
+    letter-spacing: 0.1em;
+  }
+
+  .card-header h2 {
+    font-size: 1.5rem;
+    color: var(--neo-white);
+  }
+
+  .card-header p {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
+  }
+
+  .scopes-overview {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.25rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .scopes-title {
+    font-size: 0.75rem;
+    color: var(--neo-dim);
+    letter-spacing: 0.1em;
+  }
+
+  .scopes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .scopes-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .scope-badge {
+    display: inline-block;
+    align-self: flex-start;
+    background: rgba(254, 44, 85, 0.12);
+    border: 1px solid rgba(254, 44, 85, 0.3);
+    color: var(--neo-coral);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.6875rem;
+  }
+
+  .action-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    align-items: center;
+  }
+
+  .connect-button {
+    width: 100%;
+    text-align: center;
+    background: var(--neo-coral);
+    color: #ffffff;
+    padding: 1.125rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .connect-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(254, 44, 85, 0.35);
+  }
+
+  .connect-button:active {
+    transform: translateY(0);
+  }
+
+  .security-note {
+    font-size: 0.75rem;
+    color: var(--neo-dim);
+    text-align: center;
+  }
+</style>
