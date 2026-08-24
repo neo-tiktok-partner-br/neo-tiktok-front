@@ -30,6 +30,16 @@ Design System: Mobile-First iOS-Like
 
 O repositório [neo-tiktok-front](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/README.md) é o ponto focal de interface frontend e ecossistema de aplicação para a **neøflow // Official TikTok Partners**.
 
+A Visão neøflow: "Marketing como Infraestrutura"
+Enquanto o mercado legado de 2016 focava em campanhas publicitárias de lançamentos isolados e sazonais
+, o social commerce de 2026 exige infraestrutura operacional contínua
+.
+A neøflow não atua como uma agência prestadora de serviços tradicional
+. A tecnologia proprietária (microserviços, integração de catálogos via APIs, automação de direct messages, e funis de conversão de fricção zero) já foi totalmente construída nos bastidores
+. Sob essa tese, a neøflow distribui a capacidade de sua infraestrutura pronta para que parceiros comerciais operem seus próprios territórios e consultorias de TSP, gerando receita recorrente e saudável sem centralizar o gargalo do suporte na equipe de engenharia principal
+.
+📊 Se quiser, nós podemos abrir a nossa calculadora integrada e projetar o faturamento de uma operação de TSP do Mês 1 ao Mês 10 para você visualizar o potencial de ganho com essa estrutura.
+
 ## Superfície canônica de App Review
 
 - Product URL: `https://neotiktok.com`
@@ -62,10 +72,10 @@ A doutrina visual é definida pela regra: **TikTok-native. neøflow-owned.**
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
 
-* **Fundo padrão:** Dark Canvas (`#09131A` / `#0B151C`).
-* **Tipografia:** `Space Grotesk` (Títulos), `Inter` (Corpo), `IBM Plex Mono` (Dados/Labels).
-* **Regra de Nomenclatura:** A marca escreve-se **sempre em minúsculas**: `neøflow` (nunca `NEØFLOW`).
-* **Fronteira com TikTok:** Proibida qualquer reprodução ou clonagem de telas oficiais do Seller Center ou dashboards proprietários do TikTok. A marca neøflow deve passar no *Logo Removal Test* e *Screenshot Confusion Test*.
+- **Fundo padrão:** Dark Canvas (`#09131A` / `#0B151C`).
+- **Tipografia:** `Space Grotesk` (Títulos), `Inter` (Corpo), `IBM Plex Mono` (Dados/Labels).
+- **Regra de Nomenclatura:** A marca escreve-se **sempre em minúsculas**: `neøflow` (nunca `NEØFLOW`).
+- **Fronteira com TikTok:** Proibida qualquer reprodução ou clonagem de telas oficiais do Seller Center ou dashboards proprietários do TikTok. A marca neøflow deve passar no *Logo Removal Test* e *Screenshot Confusion Test*.
 
 ────────────────────────────────────────
 
@@ -147,13 +157,13 @@ flowchart TD
     AppShell <--> TIKTOK_INFRA
 ```
 
-* **Framework & Tipagem:** Astro 7 com modo estrito do TypeScript ativado (`"strict": true` em [tsconfig.json](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/tsconfig.json)).
-* **Design System Mobile-First iOS-Like:** Suporte nativo a *Safe Area Insets* (`env(safe-area-inset-top)` / `bottom`), desfoque de fundo glassmorphic (`backdrop-filter: blur(24px)`), bordas arredondadas estilo iOS (`--radius-ios: 22px`), animações com física de mola e navegação por arraste tátil (Drag-to-Scroll em [src/components/LegalLayout.astro](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/src/components/LegalLayout.astro)).
-* **Otimização de LCP / Core Web Vitals:** Carregamento prioritário do ativo LCP (`/assets/logo_partners.svg` com `fetchpriority="high"`, `width="720"` e `height="180"`), CSS crítico inline no `<head>` e Google Fonts não-bloqueante assíncrono em [src/layouts/BaseLayout.astro](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/src/layouts/BaseLayout.astro).
-* **Compatibilidade Cross-Browser & DevTools:** Tríade de prefixos de ajuste de texto (`-webkit-text-size-adjust`, `-moz-text-size-adjust`, `text-size-adjust`) para iOS Safari, Firefox Mobile e Chrome, e metadados de autodescoberta do Chrome DevTools em [public/.well-known/appspecific/com.chrome.devtools.json](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/public/.well-known/appspecific/com.chrome.devtools.json).
-* **Recursos PWA & Ingestão:** Service Worker PWA em [public/sw.js](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/public/sw.js) (estratégia Network-First para HTML / Stale-While-Revalidate para assets), [public/manifest.webmanifest](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/public/manifest.webmanifest), [public/robots.txt](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/public/robots.txt) (liberado para crawlers de IA `GPTBot`, `ClaudeBot`, `PerplexityBot`), [public/llms.txt](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/public/llms.txt) (LLM Discovery Layer) e [public/sitemap.xml](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/public/sitemap.xml).
-* **Entrada orientada por intenção:** 4 territórios públicos ativos (`/shop`, `/creators`, `/marketing` e `/tech`) encaminham cada perfil sem antecipar login ou OAuth.
-* **Conformidade Legal Brasileira:** 2 rotas estáticas ativas (`/legal/privacidade` e `/legal/termos`), identificando a razão social `Flowoff Marketing e Assessoria Digital LTDA`, CNPJ `43.376.355/0001-92` e DPO `neo@neotiktok.com`.
+- **Framework & Tipagem:** Astro 7 com modo estrito do TypeScript ativado (`"strict": true` em [tsconfig.json](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/tsconfig.json)).
+- **Design System Mobile-First iOS-Like:** Suporte nativo a *Safe Area Insets* (`env(safe-area-inset-top)` / `bottom`), desfoque de fundo glassmorphic (`backdrop-filter: blur(24px)`), bordas arredondadas estilo iOS (`--radius-ios: 22px`), animações com física de mola e navegação por arraste tátil (Drag-to-Scroll em [src/components/LegalLayout.astro](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/src/components/LegalLayout.astro)).
+- **Otimização de LCP / Core Web Vitals:** Carregamento prioritário do ativo LCP (`/assets/logo_partners.svg` com `fetchpriority="high"`, `width="720"` e `height="180"`), CSS crítico inline no `<head>` e Google Fonts não-bloqueante assíncrono em [src/layouts/BaseLayout.astro](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/src/layouts/BaseLayout.astro).
+- **Compatibilidade Cross-Browser & DevTools:** Tríade de prefixos de ajuste de texto (`-webkit-text-size-adjust`, `-moz-text-size-adjust`, `text-size-adjust`) para iOS Safari, Firefox Mobile e Chrome, e metadados de autodescoberta do Chrome DevTools em [public/.well-known/appspecific/com.chrome.devtools.json](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/public/.well-known/appspecific/com.chrome.devtools.json).
+- **Recursos PWA & Ingestão:** Service Worker PWA em [public/sw.js](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/public/sw.js) (estratégia Network-First para HTML / Stale-While-Revalidate para assets), [public/manifest.webmanifest](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/public/manifest.webmanifest), [public/robots.txt](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/public/robots.txt) (liberado para crawlers de IA `GPTBot`, `ClaudeBot`, `PerplexityBot`), [public/llms.txt](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/public/llms.txt) (LLM Discovery Layer) e [public/sitemap.xml](file:///Users/nettomello/neomello/flowoff_tik_tok_partner/neo-tiktok-front/public/sitemap.xml).
+- **Entrada orientada por intenção:** 4 territórios públicos ativos (`/shop`, `/creators`, `/marketing` e `/tech`) encaminham cada perfil sem antecipar login ou OAuth.
+- **Conformidade Legal Brasileira:** 2 rotas estáticas ativas (`/legal/privacidade` e `/legal/termos`), identificando a razão social `Flowoff Marketing e Assessoria Digital LTDA`, CNPJ `43.376.355/0001-92` e DPO `neo@neotiktok.com`.
 
 ────────────────────────────────────────
 
@@ -186,11 +196,11 @@ docs/
 └── SKILL_HUMANIZATION.md    # Diretrizes de linguagem e tom de voz
 ```
 
-* Contrato Operacional do Agente: [AGENTS.md](./AGENTS.md)
-* Guia para Desenvolvedores: [CLAUDE.md](./CLAUDE.md)
-* Guia de Instalação: [SETUP.md](./SETUP.md)
-* Glossário do Ecossistema: [CODEX.md](./CODEX.md)
-* Roadmap de Páginas: [NEXTSTEPS.md](./NEXTSTEPS.md)
+- Contrato Operacional do Agente: [AGENTS.md](./AGENTS.md)
+- Guia para Desenvolvedores: [CLAUDE.md](./CLAUDE.md)
+- Guia de Instalação: [SETUP.md](./SETUP.md)
+- Glossário do Ecossistema: [CODEX.md](./CODEX.md)
+- Roadmap de Páginas: [NEXTSTEPS.md](./NEXTSTEPS.md)
 
 ────────────────────────────────────────
 
