@@ -42,7 +42,7 @@ Abaixo está a matriz completa de rotas concluídas e o roadmap aprovado para de
 ┃ /legal/privacidade   Legal         CONCLUÍDO   Privacidade & Direitos do Titular    ┃
 ┃ /legal/termos        Legal         CONCLUÍDO   Termos de Uso & Decreto E-commerce   ┃
 ┃ /shop                Shop          CONCLUÍDO   Entrada de Sellers, marcas e operação┃
-┃ /shop/conectar       Shop          PLANEJADO   Onboarding e autorização OAuth       ┃
+┃ /sellers/conectar    Shop          CONCLUÍDO   Onboarding e autorização OAuth       ┃
 ┃ /creators            Creators      CONCLUÍDO   Entrada de Creators e Live Commerce  ┃
 ┃ /creators/playbook   Creators      PLANEJADO   Playbooks e manuais de performance   ┃
 ┃ /marketing           Marketing     CONCLUÍDO   Entrada de conteúdo e performance    ┃
