@@ -127,6 +127,12 @@ Current implementation increment:
   Do not add catalog, Finance, Fulfillment, Creator or LIVE screens.
 - The reviewer account exists, but its password, session cookies, tokens and
   `shop_cipher` must never be written to Git or documentation.
+- The canonical backend API configuration is exported in `src/config/api.ts` via
+  `PUBLIC_API_BASE_URL` (default: `https://api.neoflowoff.agency`).
+- The Seller OAuth connection point is `/sellers/conectar`, which routes exclusively
+  to `${PUBLIC_API_BASE_URL}/oauth/tiktok-shop/authorize`. Never point UI buttons directly to external TikTok URLs.
+- Any future frontend AI assistant must consume `POST /ai/chat` via backend proxy
+  (Cloudflare AI Gateway) without embedding API keys, tokens or secrets in the client bundle.
 
 ---
 
