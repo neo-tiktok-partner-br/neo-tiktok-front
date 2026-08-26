@@ -48,6 +48,8 @@ A neøflow não atua como uma agência prestadora de serviços tradicional
 - Orders: `/app/orders`
 - Privacy: `/legal/privacidade`
 - Terms: `/legal/termos`
+- Official Creator Landing: `/creators/paulinha` (`https://neotiktok.com/creators/paulinha`)
+- Production Host: **Railway** (`main` branch trigger)
 
 A conta dedicada de reviewer existe, mas sua senha não pertence ao Git nem à
 documentação. Search Orders pode retornar empty state validamente. Esta UI não

@@ -129,6 +129,8 @@ Current implementation increment:
   `PUBLIC_API_BASE_URL` (default: `https://api.neoflowoff.agency`).
 - The Seller OAuth connection point is `/sellers/conectar`, which routes exclusively
   to `${PUBLIC_API_BASE_URL}/oauth/tiktok-shop/authorize`. Never point UI buttons directly to external TikTok URLs.
+- The official Creator profile page is `/creators/paulinha` (`https://neotiktok.com/creators/paulinha`), featuring official media assets, dark/metal aesthetic, and engagement triggers.
+- **Production Infrastructure & Deploy Baseline:** The canonical production environment for `neo-tiktok-front` is hosted on **Railway** (`neotiktok.com`). Continuous deployment builds strictly from the **`main`** branch. Every change meant for production MUST be merged into `main` and pushed to `origin main`.
 - Any future frontend AI assistant must consume `POST /ai/chat` via backend proxy
   (Cloudflare AI Gateway) without embedding API keys, tokens or secrets in the client bundle.
 
