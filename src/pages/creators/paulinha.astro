@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const pageTitle = 'Paulinha // creator brasileira gerada por IA';
+const pageDescription = 'Paulinha é uma creator brasileira gerada por IA para conteúdo comercial, publicitário e de afiliados, com direção humana e transparência.';
+
+const audiences = [
+  {
+    tag: 'PARA MARCAS',
+    title: 'Uma presença criativa para cada briefing.',
+    text: 'Explore cenas, formatos e narrativas com uma creator virtual consistente — sempre a partir de referências e claims autorizados.',
+  },
+  {
+    tag: 'PARA SELLERS',
+    title: 'Conteúdo que aproxima produto e contexto.',
+    text: 'Apresente o que importa com clareza visual, linguagem natural e espaço para os disclosures de cada campanha.',
+  },
+  {
+    tag: 'PARA PESSOAS',
+    title: 'Escolhas mais fáceis de entender.',
+    text: 'Conteúdo curto, direto e identificado quando for publicidade ou afiliação. Sem fingir uma experiência que não aconteceu.',
+  },
+];
+
+const process = [
+  ['01', 'Referência', 'Produto, contexto e materiais autorizados.'],
+  ['02', 'Direção criativa', 'Brief, linguagem e intenção de cada peça.'],
+  ['03', 'Geração', 'Imagem e vídeo sintéticos com identidade contínua.'],
+  ['04', 'QA', 'Revisão de identidade, produto, claims e disclosure.'],
+  ['05', 'Publicação', 'Entrega pronta para o canal e o objetivo aprovados.'],
+];
+
+const faqs = [
+  ['Paulinha é uma pessoa humana real?', 'Não. Paulinha é uma creator/personagem gerada por inteligência artificial, com direção criativa humana.'],
+  ['Ela realmente usou ou testou o produto?', 'Não se presume isso. Sem prova física atribuível, o conteúdo é uma representação visual baseada em referências autorizadas.'],
+  ['Como o conteúdo é produzido?', 'A produção combina briefing, referências autorizadas, direção criativa, geração de cenas e revisão de identidade, produto, claims e disclosures.'],
+  ['O conteúdo pode ser publicidade ou afiliado?', 'Sim. Quando aplicável, cada publicação deve indicar publicidade, parceria paga ou possível comissão por link afiliado.'],
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <article class="paulinha-page">
+    <section class="paulinha-hero" aria-labelledby="paulinha-title">
+      <div class="page-container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow font-mono">CREATOR COMMERCE // 01</p>
+          <h1 id="paulinha-title">Paulinha<span class="title-dot">.</span></h1>
+          <p class="hero-declaration">Uma creator brasileira <strong>gerada por IA</strong>, com direção humana e linguagem feita para pessoas reais.</p>
+          <p class="hero-purpose">Criada por um humano. Movida por um propósito: aproximar boas escolhas de pessoas reais.</p>
+          <a class="primary-cta" href="mailto:neo@neotiktok.com?subject=Criar%20com%20a%20Paulinha">Criar com a Paulinha <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <div class="hero-stage" aria-label="Perfil oficial da Paulinha no TikTok">
+          <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@paulinhaazevedomendes" data-unique-id="paulinhaazevedomendes" data-embed-type="creator" style="max-width: 780px; min-width: 288px;">
+            <section>
+              <a target="_blank" href="https://www.tiktok.com/@paulinhaazevedomendes?refer=creator_embed">@paulinhaazevedomendes</a>
+            </section>
+          </blockquote>
+          <script async src="https://www.tiktok.com/embed.js"></script>
+        </div>
+      </div>
+      <div class="hero-rule" aria-hidden="true"></div>
+    </section>
+
+    <section class="content-section" aria-labelledby="produz-title">
+      <div class="page-container">
+        <div class="section-intro">
+          <p class="eyebrow font-mono">O QUE ELA PRODUZ</p>
+          <h2 id="produz-title">Conteúdo comercial com cara de conversa.</h2>
+          <p>Paulinha nasce para transformar referências, produtos e boas ideias em conteúdo sintético claro, próximo e pronto para ser revisado.</p>
+        </div>
+        <div class="audience-grid">
+          {audiences.map((item, index) => (
+            <article class={`audience-card card-${index + 1}`}>
+              <span class="card-number font-mono">0{index + 1}</span>
+              <p class="card-tag font-mono">{item.tag}</p>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="process-section" aria-labelledby="process-title">
+      <div class="page-container">
+        <div class="section-intro process-intro">
+          <p class="eyebrow font-mono">UM PROCESSO LEGÍVEL</p>
+          <h2 id="process-title">Da referência à publicação.</h2>
+          <p>O valor está na combinação entre velocidade criativa e revisão humana. Cada peça precisa saber de onde veio e o que pode afirmar.</p>
+        </div>
+        <ol class="process-list">
+          {process.map(([number, title, text]) => (
+            <li>
+              <span class="process-number font-mono">{number}</span>
+              <div><h3>{title}</h3><p>{text}</p></div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="transparency-section" aria-labelledby="transparency-title">
+      <div class="page-container transparency-grid">
+        <div class="section-intro">
+          <p class="eyebrow font-mono">TRANSPARÊNCIA PRIMEIRO</p>
+          <h2 id="transparency-title">A tecnologia aparece. A confiança também.</h2>
+        </div>
+        <div class="transparency-copy">
+          <p>Paulinha não é uma pessoa humana real. Sua imagem e seus conteúdos são produzidos com IA e direção humana.</p>
+          <p>Quando houver publicidade, parceria paga ou afiliação, isso precisa ser identificado. Uma representação visual fiel não é prova de que ela recebeu, vestiu, usou ou testou fisicamente um produto.</p>
+          <div class="notice-row">
+            <span>IA</span><span>PUBLICIDADE</span><span>AFILIAÇÃO</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="approved-section" aria-labelledby="approved-title">
+      <div class="page-container">
+        <div class="approved-panel">
+          <div>
+            <p class="eyebrow font-mono">CONTEÚDOS APROVADOS</p>
+            <h2 id="approved-title">Um espaço para o que vem depois.</h2>
+            <p>Posts, produtos e links só entram quando estiverem confirmados. Nada de vitrine inventada.</p>
+          </div>
+          <span class="empty-mark" aria-hidden="true">—</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" aria-labelledby="cta-title">
+      <div class="page-container cta-panel">
+        <p class="eyebrow font-mono">PARA MARCAS E SELLERS</p>
+        <h2 id="cta-title">Tem um produto que merece uma boa história?</h2>
+        <a class="primary-cta" href="mailto:neo@neotiktok.com?subject=Criar%20com%20a%20Paulinha">Criar com a Paulinha <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="faq-section" aria-labelledby="faq-title">
+      <div class="page-container faq-grid">
+        <div class="section-intro"><p class="eyebrow font-mono">FAQ</p><h2 id="faq-title">Sem entrelinhas.</h2></div>
+        <div class="faq-list">
+          {faqs.map(([question, answer]) => (
+            <details><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .paulinha-page { --paulinha-accent: #f3d6c9; --paulinha-soft: #f3d6c9; background: #0b0b0c; }
+  .page-container { width: min(1080px, calc(100% - 2rem)); margin: 0 auto; }
+  .paulinha-hero { min-height: min(840px, 100vh); padding: calc(8rem + var(--sat)) 0 3rem; display: flex; flex-direction: column; justify-content: center; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(250px, .7fr); align-items: center; gap: clamp(2rem, 8vw, 8rem); }
+  .eyebrow { color: var(--paulinha-accent); font-size: .68rem; font-weight: 600; letter-spacing: .16em; margin-bottom: 1.4rem; }
+  .hero-copy h1 { font-family: var(--font-display); font-size: clamp(5rem, 16vw, 11.5rem); line-height: .82; letter-spacing: -.09em; margin: 0 0 2rem; color: #fff; }
+  .title-dot { color: var(--neo-coral); }
+  .hero-declaration { max-width: 620px; color: #fff; font-size: clamp(1.35rem, 3vw, 2.15rem); line-height: 1.2; letter-spacing: -.035em; }
+  .hero-declaration strong { color: var(--paulinha-accent); font-weight: 500; }
+  .hero-purpose { max-width: 520px; color: var(--neo-text-muted); margin: 1.4rem 0 2rem; font-size: 1rem; line-height: 1.6; }
+  .primary-cta { display: inline-flex; align-items: center; gap: .9rem; background: var(--paulinha-accent); color: #161314; border-radius: 999px; padding: .95rem 1.3rem; font-family: var(--font-mono); font-size: .72rem; font-weight: 600; text-decoration: none; letter-spacing: .03em; transition: transform .2s ease, background .2s ease; }
+  .primary-cta:hover, .primary-cta:focus-visible { background: #fff; transform: translateY(-2px); }
+  .hero-stage { width: 100%; min-width: 0; }
+  .hero-stage .tiktok-embed { width: 100%; margin: 0; }
+  .hero-rule { width: min(1080px, calc(100% - 2rem)); margin: auto auto 0; border-bottom: 1px solid var(--neo-border); }
+  .content-section, .process-section, .transparency-section, .approved-section, .faq-section { padding: clamp(5rem, 12vw, 9rem) 0; border-bottom: 1px solid var(--neo-border); }
+  .section-intro { max-width: 670px; }
+  .section-intro h2, .approved-panel h2, .cta-panel h2 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 5rem); line-height: .95; letter-spacing: -.065em; margin-bottom: 1.5rem; }
+  .section-intro > p:last-child, .approved-panel > div > p:last-child { color: var(--neo-text-muted); font-size: 1.05rem; line-height: 1.6; }
+  .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-top: 4rem; }
+  .audience-card { min-height: 330px; padding: 1.4rem; border: 1px solid var(--neo-border); border-radius: var(--radius-md); display: flex; flex-direction: column; background: rgba(255,255,255,.025); }
+  .card-2 { background: rgba(243,214,201,.08); border-color: rgba(243,214,201,.35); }
+  .card-number { color: var(--neo-text-muted); font-size: .68rem; }
+  .card-tag { color: var(--paulinha-accent); font-size: .65rem; letter-spacing: .13em; margin: auto 0 1.2rem; }
+  .audience-card h3 { font-family: var(--font-display); font-size: 1.7rem; line-height: 1; letter-spacing: -.045em; margin-bottom: 1rem; }
+  .audience-card > p:last-child { color: var(--neo-text-muted); font-size: .92rem; line-height: 1.55; }
+  .process-section { background: #111113; }
+  .process-intro { margin-bottom: 4rem; }
+  .process-list { list-style: none; border-top: 1px solid var(--neo-border); }
+  .process-list li { display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--neo-border); }
+  .process-number { color: var(--paulinha-accent); font-size: .7rem; }
+  .process-list h3 { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: -.03em; }
+  .process-list p { color: var(--neo-text-muted); margin-top: .25rem; }
+  .transparency-grid, .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 10vw, 9rem); }
+  .transparency-copy { padding-top: 2.6rem; }
+  .transparency-copy p { font-size: 1.2rem; line-height: 1.45; margin-bottom: 1.4rem; }
+  .notice-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 2rem; }
+  .notice-row span { border: 1px solid var(--neo-border); border-radius: 999px; color: var(--neo-text-muted); font: .62rem var(--font-mono); letter-spacing: .1em; padding: .5rem .7rem; }
+  .approved-panel { min-height: 270px; padding: clamp(1.5rem, 5vw, 4rem); border: 1px dashed rgba(243,214,201,.4); border-radius: var(--radius-lg); display: flex; justify-content: space-between; align-items: end; gap: 2rem; background: rgba(243,214,201,.04); }
+  .approved-panel h2 { max-width: 650px; }
+  .empty-mark { color: var(--paulinha-accent); font: 3rem var(--font-mono); }
+  .cta-section { padding: clamp(5rem, 12vw, 9rem) 0; background: var(--paulinha-accent); color: #161314; }
+  .cta-panel { display: flex; flex-direction: column; align-items: flex-start; }
+  .cta-panel .eyebrow { color: #62534e; }
+  .cta-panel h2 { max-width: 800px; }
+  .cta-panel .primary-cta { background: #161314; color: #fff; }
+  .cta-panel .primary-cta:hover, .cta-panel .primary-cta:focus-visible { background: #fff; color: #161314; }
+  .faq-section { border-bottom: 0; }
+  .faq-list { border-top: 1px solid var(--neo-border); }
+  details { border-bottom: 1px solid var(--neo-border); }
+  summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem; padding: 1.2rem 0; font-family: var(--font-display); font-size: 1.05rem; }
+  summary::-webkit-details-marker { display: none; }
+  summary span { color: var(--paulinha-accent); font-family: var(--font-mono); }
+  details p { color: var(--neo-text-muted); padding: 0 2rem 1.4rem 0; line-height: 1.6; }
+  @media (max-width: 720px) { .hero-grid, .transparency-grid, .faq-grid { grid-template-columns: 1fr; } .paulinha-hero { min-height: auto; padding-bottom: 3rem; } .hero-stage { margin-top: 2rem; } .audience-grid { grid-template-columns: 1fr; margin-top: 2.5rem; } .audience-card { min-height: 250px; } .transparency-copy { padding-top: 0; } .approved-panel { align-items: flex-start; flex-direction: column; } }
+  @media (prefers-reduced-motion: reduce) { .primary-cta { transition: none; } }
+</style>

@@ -1,171 +1,78 @@
 ---
-// Header.astro — neøflow Official TikTok Partner Header
+const menuItems = [
+  { label: 'Início', href: '/' },
+  { label: 'Shop', href: '/shop' },
+  { label: 'Creators', href: '/creators' },
+  { label: 'Paulinha', href: '/creators/paulinha' },
+  { label: 'Marketing', href: '/marketing' },
+  { label: 'Tech', href: '/tech' },
+  { label: 'TikTok Shop', href: '/tiktok-shop' },
+  { label: 'App', href: '/login' },
+];
 ---
 <header class="neo-header" id="site-header">
   <div class="header-container">
-    <!-- Logo compacta alinhada à identidade visual canônica -->
-    <a href="/" class="header-logo font-display">
+    <a href="/" class="header-logo font-display" aria-label="neøflow, início">
       <span>neøflow</span><span class="logo-slash-coral">/</span><span class="logo-slash-cyan">/</span>
     </a>
-
-    <div class="header-actions">
-      <a class="header-app-link font-mono" href="/login">Área do app</a>
-      <!-- Badge temporária de lançamento -->
-      <div class="header-badge font-mono" aria-label="Em breve, agosto de 2026">
-        <span class="badge-dot" aria-hidden="true"></span>
-        <span class="badge-text-desktop">EM BREVE // AGOSTO 26</span>
-        <span class="badge-text-mobile" aria-hidden="true">AGO // 26</span>
-      </div>
-    </div>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="global-navigation" aria-expanded="false">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+    <nav class="global-navigation" id="global-navigation" aria-label="Navegação principal" hidden>
+      <ul>
+        {menuItems.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+    </nav>
   </div>
 </header>
 
 <script>
   const header = document.getElementById('site-header');
-  if (header) {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        header.classList.add('is-scrolled');
-      } else {
-        header.classList.remove('is-scrolled');
-      }
+  const menuToggle = header?.querySelector<HTMLButtonElement>('.menu-toggle');
+  const navigation = header?.querySelector<HTMLElement>('#global-navigation');
+
+  if (header && menuToggle && navigation) {
+    const closeMenu = () => {
+      navigation.hidden = true;
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Abrir menu');
     };
-    // Scroll passivo para manter performance máxima de render
+    const openMenu = () => {
+      navigation.hidden = false;
+      menuToggle.setAttribute('aria-expanded', 'true');
+      menuToggle.setAttribute('aria-label', 'Fechar menu');
+    };
+    menuToggle.addEventListener('click', () => navigation.hidden ? openMenu() : closeMenu());
+    navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !navigation.hidden) { closeMenu(); menuToggle.focus(); }
+    });
+    document.addEventListener('click', (event) => {
+      if (!navigation.hidden && !header.contains(event.target as Node)) closeMenu();
+    });
+    const handleScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 20);
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Executa uma vez no load
     handleScroll();
   }
 </script>
 
 <style>
-  .neo-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    background: transparent;
-    border-bottom: 1px solid transparent;
-  }
-
-  /* Efeito Glassmorphism quando o usuário rola a página */
-  .neo-header.is-scrolled {
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border-bottom: 1px solid var(--neo-border);
-    box-shadow: var(--shadow-ios);
-  }
-
-  .header-container {
-    max-width: 1080px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .header-logo {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--neo-white);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-    transition: opacity 0.2s ease;
-  }
-
-  .header-logo:hover {
-    opacity: 0.85;
-  }
-
-  .logo-slash-coral {
-    color: var(--neo-coral); /* #FE2C55 */
-    margin-left: 2px;
-  }
-
-  .logo-slash-cyan {
-    color: var(--neo-cyan); /* #00F2FE */
-  }
-
-  .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .header-app-link {
-    color: var(--neo-white);
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-
-  .header-app-link:hover,
-  .header-app-link:focus-visible {
-    color: var(--neo-acid);
-  }
-
-  .header-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.45rem 1rem;
-    border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.03); /* Fundo branco/translúcido sutil */
-    border: 1px solid rgba(255, 255, 255, 0.08); /* Borda neutra esmaecida */
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    color: var(--neo-text-muted); /* Texto slate neutro */
-    box-shadow: var(--shadow-ios);
-  }
-
-  .badge-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: var(--neo-acid); /* Ativo Verde Ácido */
-    box-shadow: 0 0 6px var(--neo-acid);
-  }
-
-  .badge-text-desktop {
-    display: inline;
-  }
-
-  .badge-text-mobile {
-    display: none;
-  }
-
-  @media (max-width: 480px) {
-    .header-container {
-      padding: 0 1rem;
-    }
-
-    .badge-text-desktop {
-      display: none;
-    }
-
-    .badge-text-mobile {
-      display: inline;
-    }
-
-    .header-badge {
-      padding: 0.35rem 0.75rem;
-      font-size: 0.65rem;
-      letter-spacing: 0.06em;
-      gap: 0.4rem;
-    }
-
-    .header-app-link {
-      font-size: 0.62rem;
-      letter-spacing: 0.04em;
-    }
-  }
+  .neo-header { position: fixed; inset: 0 0 auto; z-index: 1000; height: 70px; display: flex; align-items: center; transition: background .3s ease, backdrop-filter .3s ease, border-color .3s ease, box-shadow .3s ease; background: transparent; border-bottom: 1px solid transparent; }
+  .neo-header.is-scrolled { background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border-bottom-color: var(--neo-border); box-shadow: var(--shadow-ios); }
+  .header-container { position: relative; max-width: 1080px; width: 100%; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { font-size: 1.25rem; font-weight: 800; color: var(--neo-white); text-decoration: none; letter-spacing: -.02em; transition: opacity .2s ease; }
+  .header-logo:hover, .header-logo:focus-visible { opacity: .85; }
+  .logo-slash-coral { color: var(--neo-coral); margin-left: 2px; }
+  .logo-slash-cyan { color: var(--neo-cyan); }
+  .menu-toggle { width: 44px; height: 44px; display: grid; place-content: center; gap: 6px; border: 1px solid var(--neo-border); border-radius: var(--radius-full); background: rgba(255,255,255,.04); color: var(--neo-white); cursor: pointer; }
+  .menu-toggle:hover, .menu-toggle:focus-visible { border-color: var(--neo-cyan); color: var(--neo-cyan); }
+  .menu-toggle span { display: block; width: 16px; height: 1px; background: currentColor; transition: transform .2s ease; }
+  .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+  .global-navigation { position: absolute; top: calc(100% + .75rem); right: 1.5rem; width: min(280px, calc(100vw - 2rem)); padding: .65rem; border: 1px solid var(--neo-border); border-radius: var(--radius-md); background: rgba(11,11,12,.96); box-shadow: var(--shadow-ios); }
+  .global-navigation ul { list-style: none; display: grid; gap: .2rem; }
+  .global-navigation a { display: block; padding: .72rem .8rem; border-radius: var(--radius-sm); color: var(--neo-white); font: .76rem var(--font-mono); text-decoration: none; }
+  .global-navigation a:hover, .global-navigation a:focus-visible { background: rgba(0,242,254,.1); color: var(--neo-cyan); outline: none; }
+  @media (max-width: 480px) { .header-container { padding: 0 1rem; } .global-navigation { right: 1rem; } }
+  @media (prefers-reduced-motion: reduce) { .neo-header, .menu-toggle span { transition: none; } }
 </style>
