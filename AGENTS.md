@@ -30,18 +30,16 @@ The primary goals are:
 
 ---
 
-# 1. PROJECT IDENTITY
+1. PROJECT IDENTITY
 
 ## 1.1 Canonical name
 
 Use:
 
-**neøflow // Official TikTok Partners**
-
+*neøflow // Official TikTok Partners*
 Supporting descriptor:
 
-**Shop. Creators. Marketing. Tech**
-
+*Shop. Creators. Marketing. Tech*
 Preferred short forms in internal technical contexts:
 
 - `neøflow`
