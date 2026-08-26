@@ -247,6 +247,16 @@ const faqs = [
 </BaseLayout>
 
 <script>
+  interface TikTokAnalytics {
+    track: (event: string, params?: Record<string, any>) => void;
+  }
+
+  declare global {
+    interface Window {
+      ttq?: TikTokAnalytics;
+    }
+  }
+
   // TikTok Pixel Custom Event Tracker para WhatsApp / Parcerias
   document.querySelectorAll('.js-whatsapp-partner, .btn-whatsapp').forEach((button) => {
     button.addEventListener('click', () => {
