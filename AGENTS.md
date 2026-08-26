@@ -136,7 +136,7 @@ Current implementation increment:
 
 ---
 
-# 3. BRANDING IS A TECHNICAL CONSTRAINT
+1. BRANDING IS A TECHNICAL CONSTRAINT
 
 The visual identity is not decorative.
 
