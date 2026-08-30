@@ -1,18 +1,551 @@
 ---
-import TerritoryHub from '../components/TerritoryHub.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<TerritoryHub
-  code="01"
-  label="Shop"
-  title="Sua operação começa pelo produto."
-  description="Para sellers e marcas que querem organizar catálogo, creators, conteúdo e performance antes de ampliar a operação."
-  accent="var(--neo-coral)"
-  capabilities={[
-    'Entender o estágio atual da operação e o objetivo comercial.',
-    'Mapear catálogo, Affiliate, conteúdo e mídia sem prometer capacidades ainda não habilitadas.',
-    'Definir a autorização mínima necessária para a jornada escolhida.',
-    'Acompanhar ativação, eventos e resultados com trilha de auditoria.',
-  ]}
-  nextStep="Qualificação da operação Shop."
-/>
+<BaseLayout
+  title="TikTok Shop // neøflow Oficial TikTok Partners"
+  description="Pluge seu catálogo no TikTok Shop com fricção-zero. Checkout nativo em 1 clique, automação de DM, sincronização em tempo real e split automático de pagamento."
+>
+  <main class="shop-page">
+    <div class="shop-glow" aria-hidden="true"></div>
+
+    <div class="shop-container">
+      <!-- Breadcrumb / Back -->
+      <a class="back-link font-mono" href="/">← TODAS AS ENTRADAS</a>
+
+      <!-- Hero Header -->
+      <header class="shop-hero">
+        <div class="kicker-pill font-mono">
+          <span class="pulse-dot"></span>
+          01 — SHOP // OFICIAL TIKTOK PARTNERS
+        </div>
+        <p class="tagline font-mono">Seu perfil. Seus interesses. Nosso negócio.</p>
+        <h1 class="font-display">O Commerce Agora é Fricção-Zero.</h1>
+        <p class="hero-lead">
+          Mandar o seu cliente do TikTok para um site lento fora do aplicativo é onde você <strong>perde até 70% das suas vendas</strong>. Em 2026, as marcas que mais crescem não fazem marketing tradicional — elas usam <strong>engenharia de distribuição contínua</strong>.
+        </p>
+        <p class="hero-sublead">
+          A <strong>neøflow</strong> pluga o seu catálogo diretamente na infraestrutura nativa do TikTok Shop, transformando a atenção do público em vendas instantâneas, fluidas e sem esforço.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn-primary font-mono" href="/sellers/conectar">
+            QUERO PLUGAR MEU CATÁLOGO AGORA <span aria-hidden="true">→</span>
+          </a>
+          <a class="btn-secondary font-mono" href="mailto:neo@neotiktok.com">
+            FALAR COM ESPECIALISTA <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- 4 Superpowers / 4 Pilares -->
+      <section class="pillars-section" aria-labelledby="pillars-title">
+        <div class="section-badge font-mono">OS 4 SUPERPODERES</div>
+        <h2 id="pillars-title" class="font-display">O que entregamos para o seu negócio</h2>
+
+        <div class="pillars-grid">
+          <!-- Pilar 1 -->
+          <article class="pillar-card">
+            <div class="pillar-number font-mono">01</div>
+            <div class="pillar-header">
+              <span class="pillar-tag font-mono">CHECKOUT NATIVO</span>
+              <h3>Checkout em 1 Clique &amp; Vendas por DM</h3>
+            </div>
+            <p class="pillar-summary">Elimine o vazamento de clientes com conversão direta dentro do TikTok.</p>
+            <ul class="pillar-details">
+              <li>
+                <strong>Compre com um clique:</strong> Seus clientes assistem aos vídeos ou lives e compram em segundos dentro do app via FaceID, Pix ou Apple Pay.
+              </li>
+              <li>
+                <strong>Comentou, comprou:</strong> Automações oficiais de API respondem a comentários com link seguro de checkout na DM em milissegundos. Dispara o alcance orgânico enquanto converte no privado.
+              </li>
+            </ul>
+          </article>
+
+          <!-- Pilar 2 -->
+          <article class="pillar-card">
+            <div class="pillar-number font-mono">02</div>
+            <div class="pillar-header">
+              <span class="pillar-tag font-mono">SINCRONIZAÇÃO EM TEMPO REAL</span>
+              <h3>Sincronização Invisível de Estoque</h3>
+            </div>
+            <p class="pillar-summary">Esqueça o trabalho manual e o risco de erros com planilhas.</p>
+            <ul class="pillar-details">
+              <li>
+                <strong>Catálogo no piloto automático:</strong> Integração e sincronização automática de produtos, preços e inventário em tempo real via APIs seguras e criptografadas.
+              </li>
+              <li>
+                <strong>Account Manager dedicado:</strong> Operação assistida e blindada contra qualquer burocracia técnica ou de conformidade do Seller Center.
+              </li>
+            </ul>
+          </article>
+
+          <!-- Pilar 3 -->
+          <article class="pillar-card">
+            <div class="pillar-number font-mono">03</div>
+            <div class="pillar-header">
+              <span class="pillar-tag font-mono">CURADORIA DE ELITE</span>
+              <h3>Conexão Cirúrgica com Criadores</h3>
+            </div>
+            <p class="pillar-summary">Conecte seu estoque aos criadores com maior potencial de conversão.</p>
+            <ul class="pillar-details">
+              <li>
+                <strong>Só quem gera resultado:</strong> Conexão direta com uma comunidade privada de criadores de conteúdo treinados e calibrados para vendas.
+              </li>
+              <li>
+                <strong>NΞØ Gatekeeper Protocol:</strong> Filtro inteligente proprietário que valida dados, métricas e reputação de canais de criadores há mais de 2 anos.
+              </li>
+            </ul>
+          </article>
+
+          <!-- Pilar 4 -->
+          <article class="pillar-card">
+            <div class="pillar-number font-mono">04</div>
+            <div class="pillar-header">
+              <span class="pillar-tag font-mono">SPLIT AUTOMATIZADO</span>
+              <h3>Split de Pagamento 100% Hands-Off</h3>
+            </div>
+            <p class="pillar-summary">Liquidação financeira instantânea sem esforço contábil manual.</p>
+            <ul class="pillar-details">
+              <li>
+                <strong>A máquina faz a divisão:</strong> Nunca mais calcule comissões nem faça transferências manuais para afiliados e parceiros.
+              </li>
+              <li>
+                <strong>Divisão em milissegundos:</strong> No ato da compra, o TikTok liquida: o criador recebe no app, a neøflow recebe a taxa de licenciamento e você recebe o valor líquido direto na sua conta.
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Manifesto Box -->
+      <section class="manifesto-card" aria-label="Manifesto neøflow">
+        <p class="manifesto-kicker font-mono">NOSSO MANIFESTO DE ATITUDE</p>
+        <blockquote class="manifesto-quote font-display">
+          <p>“Não é programa de afiliados.”</p>
+          <p>“Não é prestação de serviços.”</p>
+          <p>“Não é marketing digital.”</p>
+          <p class="manifesto-highlight">“É apenas o que gostamos de fazer.”</p>
+        </blockquote>
+      </section>
+
+      <!-- Integration CTA Section -->
+      <section class="integration-cta" aria-labelledby="cta-title">
+        <div class="status-badge font-mono">
+          <span class="status-live-dot"></span>
+          STATUS DO SISTEMA: PRONTO PARA INTEGRAÇÃO
+        </div>
+        <h2 id="cta-title" class="font-display">Pronto para plugar seu catálogo na máquina de escala do TikTok Shop?</h2>
+        <p class="cta-desc">
+          Inicie agora a conexão oficial com validação anti-CSRF e autorização de escopos oficiais TikTok Shop Brasil.
+        </p>
+
+        <div class="cta-actions">
+          <a class="btn-cta font-mono" href="/sellers/conectar">
+            QUERO PLUGAR MEU CATÁLOGO AGORA <span aria-hidden="true">→</span>
+          </a>
+          <span class="security-stamp font-mono">
+            🔒 TikTok Partner Verificado · Enterprise Business Center ID 7614619530886840336
+          </span>
+        </div>
+      </section>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .shop-page {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    padding: calc(7rem + var(--sat)) 1.25rem 5rem;
+  }
+
+  .shop-glow {
+    position: absolute;
+    top: -10rem;
+    right: -10rem;
+    width: 48rem;
+    height: 48rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(254, 44, 85, 0.16) 0%, rgba(9, 19, 26, 0) 70%);
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .shop-container {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    color: var(--neo-coral);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .back-link:hover {
+    transform: translateX(-3px);
+    opacity: 0.85;
+  }
+
+  /* Hero */
+  .shop-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 960px;
+  }
+
+  .kicker-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(254, 44, 85, 0.12);
+    border: 1px solid rgba(254, 44, 85, 0.3);
+    color: var(--neo-coral);
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    align-self: flex-start;
+  }
+
+  .pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--neo-coral);
+    box-shadow: 0 0 8px var(--neo-coral);
+  }
+
+  .tagline {
+    color: var(--neo-text-muted);
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+  }
+
+  .shop-hero h1 {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+    color: var(--neo-white);
+    margin: 0.5rem 0;
+  }
+
+  .hero-lead {
+    font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+    color: var(--neo-white);
+    line-height: 1.5;
+    max-width: 840px;
+  }
+
+  .hero-lead strong {
+    color: var(--neo-coral);
+  }
+
+  .hero-sublead {
+    font-size: 1.05rem;
+    color: var(--neo-text-muted);
+    line-height: 1.6;
+    max-width: 800px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .btn-primary {
+    background: var(--neo-coral);
+    color: #ffffff;
+    padding: 1.1rem 1.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 8px 24px rgba(254, 44, 85, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(254, 44, 85, 0.45);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--neo-border);
+    color: var(--neo-white);
+    padding: 1.1rem 1.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    backdrop-filter: blur(12px);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+
+  /* Pillars Section */
+  .pillars-section {
+    border-top: 1px solid var(--neo-border);
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .section-badge {
+    color: var(--neo-coral);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+  }
+
+  .pillars-section h2 {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    letter-spacing: -0.04em;
+    color: var(--neo-white);
+    margin-top: -1.5rem;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .pillar-card {
+    background: var(--neo-bg-card);
+    border: 1px solid var(--neo-border);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    backdrop-filter: blur(16px);
+    position: relative;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .pillar-card:hover {
+    border-color: rgba(254, 44, 85, 0.4);
+    transform: translateY(-3px);
+  }
+
+  .pillar-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: rgba(254, 44, 85, 0.25);
+    line-height: 1;
+  }
+
+  .pillar-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .pillar-tag {
+    color: var(--neo-coral);
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+  }
+
+  .pillar-header h3 {
+    font-size: 1.35rem;
+    color: var(--neo-white);
+    line-height: 1.2;
+  }
+
+  .pillar-summary {
+    color: var(--neo-text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .pillar-details {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 1.25rem;
+    margin-top: auto;
+  }
+
+  .pillar-details li {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.5;
+  }
+
+  .pillar-details strong {
+    color: var(--neo-white);
+  }
+
+  /* Manifesto Card */
+  .manifesto-card {
+    background: radial-gradient(circle at center, rgba(254, 44, 85, 0.08) 0%, rgba(18, 18, 20, 0.9) 80%);
+    border: 1px solid rgba(254, 44, 85, 0.25);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    backdrop-filter: blur(20px);
+  }
+
+  .manifesto-kicker {
+    color: var(--neo-coral);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    font-weight: 700;
+  }
+
+  .manifesto-quote {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: clamp(1.35rem, 3.5vw, 2.25rem);
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.3;
+    font-style: normal;
+  }
+
+  .manifesto-highlight {
+    color: var(--neo-white) !important;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    text-shadow: 0 0 20px rgba(254, 44, 85, 0.4);
+  }
+
+  /* CTA Section */
+  .integration-cta {
+    background: var(--neo-bg-card);
+    border: 1px solid var(--neo-border);
+    border-radius: var(--radius-lg);
+    padding: clamp(2.5rem, 5vw, 4rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+    align-items: center;
+    backdrop-filter: blur(20px);
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #4ade80;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    background: rgba(74, 222, 128, 0.1);
+    border: 1px solid rgba(74, 222, 128, 0.25);
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-full);
+  }
+
+  .status-live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #4ade80;
+    box-shadow: 0 0 10px #4ade80;
+  }
+
+  .integration-cta h2 {
+    font-size: clamp(1.85rem, 4vw, 2.85rem);
+    letter-spacing: -0.04em;
+    max-width: 760px;
+    line-height: 1.1;
+  }
+
+  .cta-desc {
+    color: var(--neo-text-muted);
+    font-size: 1.05rem;
+    max-width: 620px;
+    line-height: 1.5;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+
+  .btn-cta {
+    background: var(--neo-coral);
+    color: #ffffff;
+    padding: 1.25rem 2.5rem;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 10px 30px rgba(254, 44, 85, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(254, 44, 85, 0.55);
+  }
+
+  .security-stamp {
+    font-size: 0.72rem;
+    color: var(--neo-text-muted);
+  }
+
+  @media (max-width: 840px) {
+    .pillars-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-actions {
+      flex-direction: column;
+    }
+    .btn-primary, .btn-secondary, .btn-cta {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
