@@ -2,13 +2,13 @@
 
 # CONTEXT.md // NEO-TIKTOK-FRONT
 
-> Contexto arquitetural, rotas da vitrine e camada TikTok Minis no domínio canônico `neotiktok.com`.
+> Contexto arquitetural, rotas da vitrine e H5 Minis Shell no domínio canônico `neotiktok.com`.
 
 ---
 
 ## ⟠ Propósito do Módulo
 
-O `neo-tiktok-front` é a superfície web pública unificada e a camada de **TikTok Minis (9:16 In-App)** para o ecossistema TikTok Partner da **neøflow**. Ele atende lojistas (Sellers), criadores (Creators), agências/marcas e operadores de tecnologia, além de conter a área autenticada do conector e as experiências 9:16 in-app.
+O `neo-tiktok-front` é a superfície web pública unificada e a camada **H5 Minis Shell / experiência preparada para WebView** para o ecossistema TikTok Partner da **neøflow**. Ele atende lojistas (Sellers), criadores (Creators), agências/marcas e operadores de tecnologia, além de conter a área autenticada do conector e experiências 9:16. SDK/bridge oficial TikTok Minis, qualification e runtime dentro do TikTok permanecem `NOT_PROVEN`.
 
 ---
 
@@ -24,11 +24,11 @@ O `neo-tiktok-front` é a superfície web pública unificada e a camada de **Tik
 * **`/login` & `/app` (`/app/orders`):** Shell autenticado do conector e interface homologada para o App Review do TikTok Shop.
 * **`/legal/privacidade` & `/legal/termos`:** Conformidade legal LGPD com identificação da razão social (`Flowoff Marketing e Assessoria Digital LTDA - CNPJ 43.376.355/0001-92`).
 
-### 📱 Camada TikTok Minis (9:16 In-App)
-* **`/minis`:** Hub principal de seleção de Mini Apps nativos.
-* **`/minis/seller` & `/minis/seller/dashboard`:** Mini App para Lojistas (conexão em 1 toque, métricas de DM e catálogo em tempo real).
-* **`/minis/creator`, `/minis/creator/catalog` & `/minis/creator/wallet`:** Mini Hub de Criadores (produtos qualificados, gerador de link de DM e extrato de split).
-* **`/minis/series`:** Experiência in-app de micro-learning e edutainment com checkout nativo 1-clique (FaceID / Pix).
+### 📱 H5 Minis Shell / WebView-ready (9:16)
+* **`/minis`:** Hub H5 de seleção das experiências 9:16.
+* **`/minis/seller` & `/minis/seller/dashboard`:** Shell H5 para Lojistas, preparado para WebView, sem prova de Mini App nativo.
+* **`/minis/creator`, `/minis/creator/catalog` & `/minis/creator/wallet`:** Shell H5 para Criadores, preparado para WebView, sem SDK/bridge oficial comprovado.
+* **`/minis/series`:** Experiência H5 de micro-learning e edutainment. Checkout nativo dentro do TikTok permanece `NOT_PROVEN`.
 
 ---
 
@@ -37,6 +37,6 @@ O `neo-tiktok-front` é a superfície web pública unificada e a camada de **Tik
 * **Framework:** Astro 5 (Static Site Generation).
 * **Layouts:**
   * `BaseLayout.astro`: Vitrine institucional desktop/mobile responsiva.
-  * `MiniLayout.astro`: Canvas 9:16 para TikTok Minis (emulação em desktop e tela cheia com safe-areas em mobile).
+  * `MiniLayout.astro`: Canvas 9:16 para H5 Minis Shell / WebView-ready (emulação em desktop e tela cheia com safe-areas em mobile). Não prova SDK/runtime TikTok Minis.
 * **Design System:** Vanilla CSS com tokens (`tokens.css` e `review.css`) para máxima performance.
 * **Tracking Oficial:** TikTok Pixel `D9SJPC3C77U97D5QGU0G` com Events API tipada e hashing SHA-256 para eventos de funil.

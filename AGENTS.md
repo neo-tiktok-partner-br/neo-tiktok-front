@@ -126,7 +126,7 @@ Current implementation increment:
 - The reviewer account exists, but its password, session cookies, tokens and
   `shop_cipher` must never be written to Git or documentation.
 - The canonical backend API configuration is exported in `src/config/api.ts` via
-  `PUBLIC_API_BASE_URL` (default: `https://api.neoflowoff.agency`).
+  `PUBLIC_API_BASE_URL` (current production host: `https://api.neotiktok.com`; historical `https://api.neoflowoff.agency` is `LEGACY/DOC_ONLY`).
 - The Seller OAuth connection point is `/sellers/conectar`, which routes exclusively
   to `${PUBLIC_API_BASE_URL}/oauth/tiktok-shop/authorize`. Never point UI buttons directly to external TikTok URLs.
 - The official Creator profile page is `/creators/paulinha` (`https://neotiktok.com/creators/paulinha`), featuring official media assets, dark/metal aesthetic, and engagement triggers.
