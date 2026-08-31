@@ -1,0 +1,218 @@
+---
+import MiniLayout from '../../../layouts/MiniLayout.astro';
+---
+
+<MiniLayout title="Creator Hub // neøflow Minis" role="creator" activeTab="home">
+  <div class="creator-hub-view">
+    <div class="hub-kicker font-mono">NΞØ GATEKEEPER // CREATOR NETWORK</div>
+
+    <div class="hub-hero">
+      <h1 class="font-display">Monetize sua audiência com produtos validados.</h1>
+      <p class="hub-lead">
+        Chega de comissão incerta. Escolha produtos com alta taxa de conversão, split automático no app e links automáticos de DM.
+      </p>
+    </div>
+
+    <!-- Creator Metrics Snapshot -->
+    <div class="creator-summary-card">
+      <div class="sum-row">
+        <span class="sum-label font-mono">SEU STATUS NO GATEKEEPER</span>
+        <span class="sum-badge font-mono">VERIFICADO TIER 1</span>
+      </div>
+      <div class="sum-val font-display">R$ 3.840,00</div>
+      <span class="sum-sub font-mono">Disponível para saque no TikTok</span>
+    </div>
+
+    <!-- Quick Navigation Cards -->
+    <div class="quick-nav-grid">
+      <a href="/minis/creator/catalog" class="nav-card">
+        <div class="nav-icon">📦</div>
+        <div class="nav-text">
+          <strong>Explorar Catálogo</strong>
+          <span>Produtos com comissão de até 35%</span>
+        </div>
+        <span class="nav-arrow font-mono">→</span>
+      </a>
+
+      <a href="/minis/creator/wallet" class="nav-card">
+        <div class="nav-icon">💳</div>
+        <div class="nav-text">
+          <strong>Extrato &amp; Split</strong>
+          <span>Vendas por DM e lives em tempo real</span>
+        </div>
+        <span class="nav-arrow font-mono">→</span>
+      </a>
+    </div>
+
+    <!-- DM Automation Tool Box -->
+    <div class="dm-box">
+      <div class="dm-header">
+        <span class="font-mono" style="color: var(--neo-cyan); font-size: 0.7rem; font-weight: 700;">AUTOMAÇÃO DE DM ATIVA</span>
+        <span class="dm-dot"></span>
+      </div>
+      <p class="dm-text">
+        Quando alguém comentar <strong>"QUERO"</strong> nos seus vídeos, seu link seguro de checkout nativo é enviado na DM em <strong>120ms</strong>.
+      </p>
+    </div>
+  </div>
+</MiniLayout>
+
+<style>
+  .creator-hub-view {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .hub-kicker {
+    color: var(--neo-cyan);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .hub-hero h1 {
+    font-size: 1.65rem;
+    line-height: 1.15;
+    color: #ffffff;
+    margin: 0 0 0.5rem;
+  }
+
+  .hub-lead {
+    color: var(--neo-text-muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .creator-summary-card {
+    background: radial-gradient(circle at top left, rgba(0, 242, 254, 0.12) 0%, rgba(18, 18, 20, 0.9) 70%);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sum-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sum-label {
+    font-size: 0.625rem;
+    color: var(--neo-text-muted);
+  }
+
+  .sum-badge {
+    font-size: 0.625rem;
+    color: var(--neo-cyan);
+    background: rgba(0, 242, 254, 0.15);
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+  }
+
+  .sum-val {
+    font-size: 1.85rem;
+    color: #ffffff;
+    font-weight: 800;
+  }
+
+  .sum-sub {
+    font-size: 0.6875rem;
+    color: #4ade80;
+  }
+
+  .quick-nav-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .nav-card {
+    background: rgba(18, 18, 20, 0.75);
+    border: 1px solid var(--neo-border);
+    border-radius: 14px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .nav-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--neo-cyan);
+  }
+
+  .nav-icon {
+    font-size: 1.4rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    flex: 1;
+  }
+
+  .nav-text strong {
+    font-size: 0.85rem;
+    color: #ffffff;
+  }
+
+  .nav-text span {
+    font-size: 0.72rem;
+    color: var(--neo-text-muted);
+  }
+
+  .nav-arrow {
+    color: #ffffff;
+    font-size: 1.1rem;
+  }
+
+  .dm-box {
+    background: rgba(18, 18, 20, 0.6);
+    border: 1px dashed rgba(0, 242, 254, 0.35);
+    border-radius: 14px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .dm-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .dm-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--neo-cyan);
+    box-shadow: 0 0 6px var(--neo-cyan);
+  }
+
+  .dm-text {
+    font-size: 0.78rem;
+    color: var(--neo-text-muted);
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  .dm-text strong {
+    color: #ffffff;
+  }
+</style>

@@ -1,0 +1,260 @@
+---
+import MiniLayout from '../../../layouts/MiniLayout.astro';
+
+const products = [
+  {
+    id: "prod-01",
+    name: "Kit Skincare Ácido Hialurônico Pro",
+    price: "R$ 168,00",
+    commission: "R$ 42,00 (25%)",
+    conversion: "18.5%",
+    badge: "🔥 Mais Vendido",
+    category: "Beleza & Cosméticos",
+    sampleAvailable: true
+  },
+  {
+    id: "prod-02",
+    name: "Fone TWS Noise Cancelling Gamer",
+    price: "R$ 219,00",
+    commission: "R$ 65,70 (30%)",
+    conversion: "14.2%",
+    badge: "⚡ Alta Comissão",
+    category: "Tech & Eletrônicos",
+    sampleAvailable: true
+  },
+  {
+    id: "prod-03",
+    name: "Creatina Creapure 100% Pura 300g",
+    price: "R$ 129,90",
+    commission: "R$ 32,47 (25%)",
+    conversion: "21.8%",
+    badge: "🚀 Pico de Conversão",
+    category: "Fitness & Suplementos",
+    sampleAvailable: false
+  }
+];
+---
+
+<MiniLayout title="Catálogo de Produtos // neøflow Minis" role="creator" activeTab="catalog">
+  <div class="catalog-view">
+    <div class="catalog-header">
+      <span class="cat-kicker font-mono">CURADORIA NΞØ GATEKEEPER</span>
+      <h1 class="font-display">Produtos Qualificados</h1>
+      <p class="cat-desc">
+        Catálogo calibrado com split garantido e automação de link de DM.
+      </p>
+    </div>
+
+    <!-- Product Filter Pills -->
+    <div class="filter-scroll font-mono">
+      <span class="pill active">Todos</span>
+      <span class="pill">🔥 Mais Vendidos</span>
+      <span class="pill">⚡ Alta Comissão</span>
+      <span class="pill">📦 Amostras</span>
+    </div>
+
+    <!-- Product Cards -->
+    <div class="products-stack">
+      {products.map((product) => (
+        <article class="prod-card">
+          <div class="prod-top">
+            <span class="prod-badge font-mono">{product.badge}</span>
+            <span class="prod-cat font-mono">{product.category}</span>
+          </div>
+
+          <h2 class="prod-title">{product.name}</h2>
+
+          <div class="prod-numbers">
+            <div class="num-item">
+              <span class="num-lbl font-mono">PREÇO</span>
+              <strong class="num-val">{product.price}</strong>
+            </div>
+            <div class="num-item highlight">
+              <span class="num-lbl font-mono">SUA COMISSÃO</span>
+              <strong class="num-val">{product.commission}</strong>
+            </div>
+            <div class="num-item">
+              <span class="num-lbl font-mono">CONVERSÃO</span>
+              <strong class="num-val" style="color: #4ade80;">{product.conversion}</strong>
+            </div>
+          </div>
+
+          <div class="prod-actions">
+            <button type="button" class="btn-dm-trigger font-mono" onclick={`alert('Link de DM configurado com sucesso para o produto: ${product.name}');`}>
+              ⚡ GERAR LINK DE DM AUTOMÁTICA
+            </button>
+            {product.sampleAvailable && (
+              <button type="button" class="btn-sample font-mono" onclick={`alert('Solicitação de amostra grátis enviada ao lojista com sucesso!');`}>
+                📦 Solicitar Amostra Grátis
+              </button>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</MiniLayout>
+
+<style>
+  .catalog-view {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .cat-kicker {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--neo-cyan);
+    letter-spacing: 0.12em;
+  }
+
+  .catalog-header h1 {
+    font-size: 1.65rem;
+    line-height: 1.15;
+    color: #ffffff;
+    margin: 0 0 0.4rem;
+  }
+
+  .cat-desc {
+    color: var(--neo-text-muted);
+    font-size: 0.82rem;
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .filter-scroll {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+  }
+
+  .filter-scroll::-webkit-scrollbar { display: none; }
+
+  .pill {
+    font-size: 0.6875rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--neo-border);
+    color: var(--neo-text-muted);
+    white-space: nowrap;
+  }
+
+  .pill.active {
+    background: rgba(0, 242, 254, 0.15);
+    border-color: var(--neo-cyan);
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .products-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .prod-card {
+    background: rgba(18, 18, 20, 0.85);
+    border: 1px solid var(--neo-border);
+    border-radius: var(--radius-md);
+    padding: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .prod-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .prod-badge {
+    font-size: 0.625rem;
+    color: var(--neo-cyan);
+    background: rgba(0, 242, 254, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+
+  .prod-cat {
+    font-size: 0.625rem;
+    color: var(--neo-text-muted);
+  }
+
+  .prod-title {
+    font-size: 1.05rem;
+    color: #ffffff;
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  .prod-numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.75rem;
+    border-radius: 10px;
+  }
+
+  .num-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .num-lbl {
+    font-size: 0.58rem;
+    color: var(--neo-text-muted);
+  }
+
+  .num-val {
+    font-size: 0.82rem;
+    color: #ffffff;
+  }
+
+  .num-item.highlight .num-val {
+    color: var(--neo-coral);
+    font-weight: 700;
+  }
+
+  .prod-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn-dm-trigger {
+    background: var(--neo-coral);
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.15s ease;
+  }
+
+  .btn-dm-trigger:hover {
+    transform: scale(0.98);
+  }
+
+  .btn-sample {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--neo-border);
+    color: var(--neo-white);
+    padding: 0.65rem;
+    border-radius: 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+  }
+</style>

@@ -1,0 +1,256 @@
+---
+import MiniLayout from '../../../layouts/MiniLayout.astro';
+
+const episodes = [
+  { ep: "01", title: "O Fim dos Lançamentos & Sistemas Perpétuos", duration: "1:15", unlocked: true },
+  { ep: "02", title: "Automação de DM em 120ms (O Novo E-mail)", duration: "1:30", unlocked: true },
+  { ep: "03", title: "Checkout Nativo: Eliminando 70% de Fuga", duration: "1:45", unlocked: false },
+  { ep: "04", title: "Split de Pagamento e Escala sem Risco", duration: "1:20", unlocked: false },
+  { ep: "05", title: "NΞØ Gatekeeper: Curadoria de Alta Conversão", duration: "1:50", unlocked: false },
+];
+---
+
+<MiniLayout title="TikTok Series // neøflow Minis" role="buyer">
+  <div class="series-view">
+    <!-- Video Player Emulation 9:16 -->
+    <div class="video-preview-box">
+      <div class="video-overlay">
+        <span class="series-badge font-mono">TIKTOK SERIES · EDUTAINMENT</span>
+        <div class="play-btn">▶</div>
+        <div class="video-caption">
+          <h3>Episódio 01 — O Fim dos Lançamentos</h3>
+          <p>Por que webinars de 60min perderam para 80 micro-vídeos de conversão contínua.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buy / Unlock Series 1-Click CTA -->
+    <div class="unlock-box">
+      <div class="unlock-header">
+        <div>
+          <span class="unlock-kicker font-mono">ACESSO COMPLETO À SÉRIE (80 PÍLULAS)</span>
+          <div class="unlock-price font-display">R$ 27,00</div>
+        </div>
+        <span class="discount-badge font-mono">-70% OFF</span>
+      </div>
+
+      <button type="button" class="btn-checkout font-mono" onclick="alert('Iniciando checkout nativo TikTok com FaceID / Pix...');">
+        ⚡ COMPRAR COM 1 CLIQUE (FACE ID / PIX)
+      </button>
+      <span class="checkout-note font-mono">
+        🔒 Cobrança Nativa TikTok Shop · Sem sair do aplicativo
+      </span>
+    </div>
+
+    <!-- Episode Track -->
+    <div class="episodes-section">
+      <span class="ep-kicker font-mono">GRADE DE EPISÓDIOS</span>
+      <div class="episodes-stack">
+        {episodes.map((ep) => (
+          <div class={`ep-item ${ep.unlocked ? 'unlocked' : 'locked'}`}>
+            <div class="ep-num font-mono">{ep.ep}</div>
+            <div class="ep-info">
+              <strong>{ep.title}</strong>
+              <span class="font-mono">{ep.duration}</span>
+            </div>
+            <div class="ep-status font-mono">
+              {ep.unlocked ? 'GRÁTIS' : '🔒 BLOQUEADO'}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</MiniLayout>
+
+<style>
+  .series-view {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .video-preview-box {
+    width: 100%;
+    aspect-ratio: 9/12;
+    background: radial-gradient(circle at center, rgba(254, 44, 85, 0.25) 0%, #000000 85%);
+    border: 1px solid var(--neo-border);
+    border-radius: var(--radius-md);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .video-overlay {
+    width: 100%;
+    height: 100%;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.7) 100%);
+  }
+
+  .series-badge {
+    color: var(--neo-acid);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .play-btn {
+    align-self: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--neo-coral);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 0 25px rgba(254, 44, 85, 0.6);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .play-btn:hover {
+    transform: scale(1.08);
+  }
+
+  .video-caption h3 {
+    font-size: 1.05rem;
+    color: #ffffff;
+    margin: 0 0 0.25rem;
+  }
+
+  .video-caption p {
+    font-size: 0.75rem;
+    color: var(--neo-text-muted);
+    margin: 0;
+    line-height: 1.35;
+  }
+
+  .unlock-box {
+    background: rgba(18, 18, 20, 0.9);
+    border: 1px solid var(--neo-coral);
+    border-radius: var(--radius-md);
+    padding: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    box-shadow: 0 10px 25px -10px rgba(254, 44, 85, 0.4);
+  }
+
+  .unlock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .unlock-kicker {
+    font-size: 0.58rem;
+    color: var(--neo-text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .unlock-price {
+    font-size: 1.75rem;
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 1;
+    margin-top: 0.2rem;
+  }
+
+  .discount-badge {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--neo-acid);
+    background: rgba(215, 254, 9, 0.15);
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+  }
+
+  .btn-checkout {
+    background: var(--neo-coral);
+    color: #ffffff;
+    border: none;
+    padding: 0.95rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 750;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(254, 44, 85, 0.4);
+  }
+
+  .checkout-note {
+    font-size: 0.625rem;
+    color: var(--neo-text-muted);
+    text-align: center;
+  }
+
+  .episodes-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .ep-kicker {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--neo-acid);
+  }
+
+  .episodes-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ep-item {
+    background: rgba(18, 18, 20, 0.65);
+    border: 1px solid var(--neo-border);
+    border-radius: 10px;
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .ep-num {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--neo-text-muted);
+  }
+
+  .ep-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    flex: 1;
+  }
+
+  .ep-info strong {
+    font-size: 0.78rem;
+    color: #ffffff;
+  }
+
+  .ep-info span {
+    font-size: 0.65rem;
+    color: var(--neo-text-muted);
+  }
+
+  .ep-status {
+    font-size: 0.625rem;
+  }
+
+  .ep-item.unlocked .ep-status {
+    color: #4ade80;
+  }
+
+  .ep-item.locked .ep-status {
+    color: var(--neo-coral);
+  }
+</style>

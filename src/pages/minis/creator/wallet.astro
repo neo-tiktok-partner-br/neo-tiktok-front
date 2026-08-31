@@ -1,0 +1,221 @@
+---
+import MiniLayout from '../../../layouts/MiniLayout.astro';
+
+const transactions = [
+  {
+    id: "tx-01",
+    product: "Kit Skincare Ácido Hialurônico",
+    commission: "+ R$ 42,00",
+    channel: "DM Automática",
+    time: "Há 4 min"
+  },
+  {
+    id: "tx-02",
+    product: "Fone TWS Noise Cancelling",
+    commission: "+ R$ 65,70",
+    channel: "Live TikTok Shop",
+    time: "Há 18 min"
+  },
+  {
+    id: "tx-03",
+    product: "Creatina Creapure 300g",
+    commission: "+ R$ 32,47",
+    channel: "Vídeo Feed Fixado",
+    time: "Há 42 min"
+  }
+];
+---
+
+<MiniLayout title="Carteira de Split // neøflow Minis" role="creator" activeTab="wallet">
+  <div class="wallet-view">
+    <div class="wallet-header">
+      <span class="wallet-kicker font-mono">SPLIT AUTOMÁTICO NATIVO</span>
+      <h1 class="font-display">Sua Carteira TikTok</h1>
+    </div>
+
+    <!-- Main Balance Card -->
+    <div class="balance-card">
+      <span class="bal-label font-mono">SALDO DISPONÍVEL (LIQUIDAÇÃO IMEDIATA)</span>
+      <div class="bal-val font-display">R$ 3.840,00</div>
+      <div class="bal-status font-mono">
+        <span class="dot-green"></span>
+        <span>Conta TikTok Vinculada e Pronta para Saque</span>
+      </div>
+    </div>
+
+    <!-- Live Sales Feed -->
+    <div class="tx-section">
+      <div class="tx-title-row">
+        <span class="tx-kicker font-mono">ÚLTIMAS VENDAS COMISSIONADAS</span>
+        <span class="tx-badge font-mono">Hoje</span>
+      </div>
+
+      <div class="tx-stack">
+        {transactions.map((tx) => (
+          <div class="tx-item">
+            <div class="tx-info">
+              <strong>{tx.product}</strong>
+              <span class="tx-meta font-mono">{tx.channel} · {tx.time}</span>
+            </div>
+            <div class="tx-val font-mono">{tx.commission}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Split Guarantee Box -->
+    <div class="guarantee-card font-mono">
+      <span>🔒 Split 100% Nativo TikTok</span>
+      <p>
+        Suas comissões não dependem de repasses manuais. A divisão financeira é executada pelo TikTok no ato do checkout.
+      </p>
+    </div>
+  </div>
+</MiniLayout>
+
+<style>
+  .wallet-view {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .wallet-kicker {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--neo-cyan);
+    letter-spacing: 0.12em;
+  }
+
+  .wallet-header h1 {
+    font-size: 1.65rem;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .balance-card {
+    background: radial-gradient(circle at top left, rgba(74, 222, 128, 0.15) 0%, rgba(18, 18, 20, 0.95) 75%);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    border-radius: var(--radius-md);
+    padding: 1.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bal-label {
+    font-size: 0.625rem;
+    color: var(--neo-text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .bal-val {
+    font-size: 2.2rem;
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .bal-status {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.6875rem;
+    color: #4ade80;
+    margin-top: 0.25rem;
+  }
+
+  .dot-green {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 6px #4ade80;
+  }
+
+  .tx-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .tx-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tx-kicker {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--neo-coral);
+  }
+
+  .tx-badge {
+    font-size: 0.625rem;
+    color: var(--neo-text-muted);
+  }
+
+  .tx-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .tx-item {
+    background: rgba(18, 18, 20, 0.75);
+    border: 1px solid var(--neo-border);
+    border-radius: 12px;
+    padding: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .tx-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .tx-info strong {
+    font-size: 0.82rem;
+    color: #ffffff;
+  }
+
+  .tx-meta {
+    font-size: 0.6875rem;
+    color: var(--neo-text-muted);
+  }
+
+  .tx-val {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #4ade80;
+    white-space: nowrap;
+  }
+
+  .guarantee-card {
+    background: rgba(18, 18, 20, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .guarantee-card span {
+    font-size: 0.6875rem;
+    color: var(--neo-cyan);
+    font-weight: 700;
+  }
+
+  .guarantee-card p {
+    font-size: 0.72rem;
+    color: var(--neo-text-muted);
+    margin: 0;
+    line-height: 1.4;
+  }
+</style>
