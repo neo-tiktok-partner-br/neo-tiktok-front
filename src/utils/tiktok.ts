@@ -64,11 +64,17 @@ export interface TikTokContentItem {
 
 export interface TikTokEventParams {
   contents?: TikTokContentItem[];
+  content_id?: string;
+  content_type?: string;
+  content_name?: string;
+  content_category?: string;
   value?: number;
   currency?: string;
   search_string?: string;
   status?: string;
   event_id?: string;
+  description?: string;
+  [key: string]: any;
 }
 
 /**
