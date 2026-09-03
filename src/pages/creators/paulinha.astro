@@ -247,13 +247,10 @@ const faqs = [
   document.querySelectorAll('.js-whatsapp-partner').forEach((button) => {
     button.addEventListener('click', () => {
       trackTikTokEvent('Contact', {
-        content_name: 'Parceria Paulinha WhatsApp',
-        content_type: 'creator_partnership',
-        value: 0,
-        currency: 'BRL'
+        description: 'Parceria Paulinha WhatsApp'
       });
       trackTikTokEvent('ClickButton', {
-        search_string: 'Propor Parceria WhatsApp'
+        description: 'Propor Parceria WhatsApp'
       });
     });
   });

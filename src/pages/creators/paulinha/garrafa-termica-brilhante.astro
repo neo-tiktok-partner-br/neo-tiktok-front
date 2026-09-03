@@ -85,6 +85,8 @@ const product = {
 
 const pageTitle = `${product.title} // Escolha da Paulinha no TikTok Shop`;
 const pageDescription = `Garrafa Térmica Brilhante com Base em Silicone por R$ ${product.price} (-40% OFF) no TikTok Shop. Vendido por ${product.seller}. Escolha oficial da creator Paulinha.`;
+// Identificador editorial da landing afiliada; nao representa SKU do seller.
+const eventContentId = 'affiliate-garrafa-termica-brilhante';
 
 // Schema.org Product Rich Snippet
 const productSchema = {
@@ -120,7 +122,12 @@ const productSchema = {
 <BaseLayout title={pageTitle} description={pageDescription}>
   <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
 
-  <main class="product-page">
+  <main
+    class="product-page"
+    data-tiktok-content-id={eventContentId}
+    data-tiktok-content-name={product.shortTitle}
+    data-tiktok-content-value={product.price.replace(',', '.')}
+  >
     <div class="product-ambient-glow" aria-hidden="true"></div>
 
     <div class="product-container">
@@ -458,10 +465,33 @@ const productSchema = {
     </div>
   </main>
 
-  <script is:inline>
+  <script>
+    import { trackTikTokEvent } from '../../../utils/tiktok';
+
     // Gallery Thumbnail Switching
     document.addEventListener('DOMContentLoaded', () => {
-      const mainImg = document.getElementById('main-product-image');
+      const productPage = document.querySelector<HTMLElement>('.product-page');
+      const contentId = productPage?.dataset.tiktokContentId;
+      const contentName = productPage?.dataset.tiktokContentName;
+      const contentValue = Number(productPage?.dataset.tiktokContentValue);
+      const productEvent =
+        contentId && contentName && Number.isFinite(contentValue)
+          ? {
+              content_id: contentId,
+              content_name: contentName,
+              content_type: 'product' as const,
+              value: contentValue,
+              currency: 'BRL',
+            }
+          : null;
+
+      if (productEvent) {
+        trackTikTokEvent('ViewContent', productEvent);
+      }
+
+      const mainImg = document.getElementById(
+        'main-product-image'
+      ) as HTMLImageElement | null;
       const thumbBtns = document.querySelectorAll('.thumb-btn');
 
       thumbBtns.forEach((btn) => {
@@ -512,19 +542,13 @@ const productSchema = {
         });
       });
 
-      // TikTok Pixel & Custom Event Analytics on Affiliate Clicks
+      // O clique apenas abre um link afiliado externo; nao inicia checkout aqui.
       const affiliateLinks = document.querySelectorAll('.js-affiliate-track');
       affiliateLinks.forEach((link) => {
         link.addEventListener('click', () => {
-          if (window.ttq && typeof window.ttq.track === 'function') {
-            window.ttq.track('InitiateCheckout', {
-              content_name: 'Garrafa Termica Brilhante Base Silicone',
-              content_id: 'garrafa-termica-brilhante',
-              content_type: 'product',
-              value: 42.90,
-              currency: 'BRL'
-            });
-          }
+          trackTikTokEvent('ClickButton', {
+            description: 'Abrir produto afiliado no TikTok Shop',
+          });
         });
       });
     });

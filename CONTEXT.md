@@ -39,4 +39,4 @@ O `neo-tiktok-front` é a superfície web pública unificada e a camada **H5 Min
   * `BaseLayout.astro`: Vitrine institucional desktop/mobile responsiva.
   * `MiniLayout.astro`: Canvas 9:16 para H5 Minis Shell / WebView-ready (emulação em desktop e tela cheia com safe-areas em mobile). Não prova SDK/runtime TikTok Minis.
 * **Design System:** Vanilla CSS com tokens (`tokens.css` e `review.css`) para máxima performance.
-* **Tracking Oficial:** TikTok Pixel `D9SJPC3C77U97D5QGU0G` com Events API tipada e hashing SHA-256 para eventos de funil.
+* **Tracking Oficial:** TikTok Pixel `D9SJPC3C77U97D5QGU0G`; `ViewContent`, `InitiateCheckout`, `Contact` e `ClickButton` suportam envio browser + server com o mesmo `event_id`. Na jornada UGC afiliada da Paulinha, a landing emite `ViewContent` com identificador editorial interno e o link externo emite `ClickButton`; ela nao emite `InitiateCheckout`, `AddToCart` ou `Purchase`, pois checkout, SKU de catalogo e pedido pertencem ao seller/TikTok Shop. A confirmacao operacional da Events API depende de deploy, Test Events e evidencia `Server & Browser` no Events Manager.
