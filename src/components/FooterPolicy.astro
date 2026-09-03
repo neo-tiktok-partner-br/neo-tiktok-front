@@ -3,45 +3,93 @@ const currentYear = new Date().getFullYear();
 const contactEmail = "neo@neotiktok.com";
 ---
 
-<footer class="neo-footer">
+<footer class="neo-footer" role="contentinfo">
   <div class="footer-container">
     <div class="footer-grid">
-      <!-- Coluna 1: Marca, Descrição e Contato -->
+      <!-- Coluna 1: Marca, TTSPC Badge, Descrição e Contato -->
       <div class="footer-brand font-display">
         <h3 class="brand-title">
           <span>neøflow</span><span class="footer-slash-coral">/</span><span class="footer-slash-cyan">/</span>
         </h3>
-        <p class="brand-tagline font-mono">Official TikTok Partners</p>
+        
+        <div class="ttspc-badge font-mono">
+          <span class="badge-dot" aria-hidden="true"></span>
+          <span>TTSPC // TikTok Shop Partner Center</span>
+        </div>
+
         <p class="brand-desc">
           A INFRAESTRUTURA ESTÁ PRONTA.<br />SEJA A PRIMEIRA CAMADA DE OPERADORES.
         </p>
-        <p class="contact-info font-mono">
-          <a href={`mailto:${contactEmail}`} class="email-link">{contactEmail}</a>
-        </p>
+
+        <a href={`mailto:${contactEmail}`} class="contact-pill font-mono">
+          <span class="pill-dot" aria-hidden="true"></span>
+          <span>{contactEmail}</span>
+        </a>
       </div>
 
-      <!-- Coluna 2: Links Legais Obrigatórios -->
-      <div class="footer-col">
-        <h4 class="col-title font-mono">CONFORMIDADE</h4>
-        <ul class="footer-links">
-          <li><a href="/legal/privacidade">Diretrizes de Privacidade (LGPD)</a></li>
-          <li><a href="/legal/termos">Termos de Uso &amp; Serviços</a></li>
-        </ul>
+      <!-- Links Grid (Mobile: 2 Colunas Lado a Lado / Desktop: 2 Colunas Independentes) -->
+      <div class="footer-nav-wrap">
+        <!-- Coluna 2: Territórios / Navegação Operacional -->
+        <div class="footer-col">
+          <h4 class="col-title font-mono">TERRITÓRIOS</h4>
+          <ul class="footer-links">
+            <li>
+              <a href="/shop" class="touch-target">
+                <span class="link-code font-mono">01</span>
+                <span>Shop &amp; Sellers</span>
+              </a>
+            </li>
+            <li>
+              <a href="/creators" class="touch-target">
+                <span class="link-code font-mono">02</span>
+                <span>Creators &amp; Growth</span>
+              </a>
+            </li>
+            <li>
+              <a href="/marketing" class="touch-target">
+                <span class="link-code font-mono">03</span>
+                <span>Marketing &amp; Ads</span>
+              </a>
+            </li>
+            <li>
+              <a href="/tech" class="touch-target">
+                <span class="link-code font-mono">04</span>
+                <span>Tech &amp; APIs</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: Links Legais Obrigatórios -->
+        <div class="footer-col">
+          <h4 class="col-title font-mono">CONFORMIDADE</h4>
+          <ul class="footer-links">
+            <li>
+              <a href="/legal/privacidade" class="touch-target">
+                <span>Privacidade (LGPD)</span>
+              </a>
+            </li>
+            <li>
+              <a href="/legal/termos" class="touch-target">
+                <span>Termos de Uso</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
     <!-- Divisor Visual -->
-    <div class="footer-divider"></div>
+    <div class="footer-divider" aria-hidden="true"></div>
 
     <!-- Rodapé de Disclaimer Legal e Copyright compactados -->
     <div class="footer-bottom font-mono">
       <p class="legal-notice">
-        <strong>Aviso:</strong> A <strong>neøflow</strong> é uma parceira de tecnologia independente do TikTok Shop. As marcas registradas TikTok e TikTok Shop pertencem às suas respectivas detentoras. Em conformidade com a LGPD e o Código de Defesa do Consumidor.
+        <strong>Aviso:</strong> A <strong>neøflow</strong> é uma parceira de tecnologia independente operando no ecossistema <strong>TikTok Shop Partner Center (TTSPC)</strong>. As marcas registradas TikTok e TikTok Shop pertencem às suas respectivas detentoras. Em conformidade com a LGPD e o CDC.
       </p>
       <div class="copyright">
-        © {currentYear} neøflow // Official TikTok Partners. Todos os direitos reservados.
-        <br />
-        Flowoff Marketing e Assessoria Digital LTDA — CNPJ: 43.376.355/0001-92
+        <span>© {currentYear} neøflow // Official TikTok Partners.</span>
+        <span class="corp-tag">Flowoff Marketing e Assessoria Digital LTDA — CNPJ: 43.376.355/0001-92</span>
       </div>
     </div>
   </div>
@@ -51,45 +99,39 @@ const contactEmail = "neo@neotiktok.com";
   .neo-footer {
     background-color: var(--neo-bg-card);
     border-top: 1px solid var(--neo-border);
-    padding: 3rem 1.25rem 2rem 1.25rem; /* Mais compacto verticalmente */
-    margin-top: 4rem; /* Margem reduzida */
+    /* Mobile-first: respeita Safe Area Bottom de iPhones/Androids com gesture navigation */
+    padding: 3rem 1.25rem calc(3rem + var(--sab)) 1.25rem;
+    margin-top: 4rem;
     color: var(--neo-text-muted);
     font-size: 0.85rem;
+    position: relative;
+    z-index: 10;
   }
 
   .footer-container {
-    max-width: 1080px; /* Alinhado ao max-width da home */
+    max-width: 1080px;
     margin: 0 auto;
   }
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr; /* Layout de 2 colunas no desktop */
+    grid-template-columns: 1.5fr 2fr;
     gap: 2.5rem;
-  }
-
-  @media (max-width: 768px) {
-    .footer-grid {
-      grid-template-columns: 1fr; /* Coluna única no mobile/tablet */
-      gap: 2rem;
-    }
-    .neo-footer {
-      padding: 2.5rem 1rem 1.5rem 1rem; /* Mais compacto em telas pequenas */
-    }
+    align-items: start;
   }
 
   .footer-brand {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
 
   .brand-title {
-    font-size: 1.5rem; /* Ajustado tamanho no footer */
+    font-size: 1.6rem;
     font-weight: 800;
     color: var(--neo-white);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.035em;
     display: inline-flex;
     align-items: center;
   }
@@ -103,41 +145,81 @@ const contactEmail = "neo@neotiktok.com";
     color: var(--neo-cyan);
   }
 
-  .brand-tagline {
+  .ttspc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     color: var(--neo-acid);
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.25rem;
+    background: rgba(215, 254, 9, 0.07);
+    border: 1px solid rgba(215, 254, 9, 0.22);
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-full);
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--neo-acid);
+    box-shadow: 0 0 8px var(--neo-acid);
+    animation: pulseGlow 2.5s infinite ease-in-out;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(0.85); }
   }
 
   .brand-desc {
     color: var(--neo-text-muted);
-    line-height: 1.5;
-    font-size: 0.825rem;
-    max-width: 480px;
-  }
-
-  .contact-info {
+    line-height: 1.45;
     font-size: 0.8rem;
-    margin-top: 0.5rem;
+    max-width: 420px;
   }
 
-  .email-link {
+  .contact-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
     color: var(--neo-cyan);
+    background: rgba(0, 242, 254, 0.06);
+    border: 1px solid rgba(0, 242, 254, 0.2);
+    padding: 0.45rem 0.85rem;
+    border-radius: var(--radius-full);
     text-decoration: none;
-    font-weight: 600;
     transition: var(--transition-smooth);
+    min-height: 38px;
   }
 
-  .email-link:hover {
-    color: var(--neo-acid);
+  .contact-pill:hover,
+  .contact-pill:active {
+    background: rgba(0, 242, 254, 0.15);
+    border-color: var(--neo-cyan);
+    transform: scale(0.98);
+  }
+
+  .pill-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--neo-cyan);
+  }
+
+  .footer-nav-wrap {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2rem;
   }
 
   .col-title {
     color: var(--neo-white);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
     margin-bottom: 0.85rem;
   }
 
@@ -145,27 +227,51 @@ const contactEmail = "neo@neotiktok.com";
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
 
-  .footer-links a {
+  /* Ergonomia Mobile: Tap target mínimo de 44px com touch feedback */
+  .touch-target {
     color: var(--neo-text-muted);
     text-decoration: none;
-    transition: var(--transition-smooth);
     display: inline-flex;
     align-items: center;
+    gap: 0.5rem;
     font-size: 0.825rem;
+    min-height: 40px;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-smooth);
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .footer-links a:hover {
+  .link-code {
+    color: var(--neo-cyan);
+    font-size: 0.68rem;
+    opacity: 0.85;
+  }
+
+  .touch-target:hover,
+  .touch-target:focus-visible {
     color: var(--neo-acid);
-    transform: translateX(2px);
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateX(3px);
+  }
+
+  .touch-target:active {
+    transform: scale(0.97);
+    color: var(--neo-acid);
+  }
+
+  .touch-target:hover .link-code,
+  .touch-target:active .link-code {
+    color: var(--neo-acid);
   }
 
   .footer-divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--neo-border), transparent);
-    margin: 2rem 0 1.5rem 0; /* Espaço reduzido */
+    margin: 2.25rem 0 1.5rem 0;
   }
 
   .footer-bottom {
@@ -181,10 +287,61 @@ const contactEmail = "neo@neotiktok.com";
     opacity: 0.8;
   }
 
+  .legal-notice strong {
+    color: var(--neo-white);
+  }
+
   .copyright {
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
     padding-top: 0.85rem;
     font-size: 0.7rem;
     opacity: 0.75;
+  }
+
+  .corp-tag {
+    opacity: 0.85;
+  }
+
+  /* ══════════════════════════════════════════
+     TIKTOK MOBILE APP-SHELL OPTIMIZATIONS
+     ══════════════════════════════════════════ */
+  @media (max-width: 768px) {
+    .neo-footer {
+      padding: 2.5rem 1.15rem calc(2.5rem + var(--sab)) 1.15rem;
+      margin-top: 3rem;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2.25rem;
+    }
+
+    .footer-nav-wrap {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--neo-border);
+      border-radius: var(--radius-ios);
+      padding: 1.25rem;
+    }
+
+    .touch-target {
+      min-height: 44px; /* WCAG 2.5.5 touch target size */
+      padding: 0.35rem 0.25rem;
+    }
+
+    .brand-title {
+      font-size: 1.45rem;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .footer-nav-wrap {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
   }
 </style>

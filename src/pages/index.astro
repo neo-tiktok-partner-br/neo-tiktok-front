@@ -45,6 +45,57 @@ import IntentGateway from '../components/IntentGateway.astro';
 
   <IntentGateway />
 
+  <!-- Seção: O Novo Paradigma 2026 (Educação Digital, Creators & Performance) -->
+  <section class="paradigm-section" aria-labelledby="paradigm-title">
+    <div class="paradigm-container">
+      <header class="paradigm-header">
+        <p class="paradigm-kicker font-mono">ARQUITETURA 2026 // PARADIGMA TIKTOK</p>
+        <h2 id="paradigm-title" class="font-display">O fim do lançamento estático. O império do fluxo perpétuo.</h2>
+        <p>
+          Atenção fragmentada, microlearning orientado a problemas e automações instantâneas de DM substituíram funis longos e frios de 2016. Conectamos seu conteúdo a um ecossistema de conversão ininterrupto.
+        </p>
+      </header>
+
+      <div class="paradigm-grid">
+        <div class="paradigm-card">
+          <div class="card-num font-mono">01</div>
+          <h3 class="font-display">Microlearning & Nanofunil</h3>
+          <p>
+            Roteirização em pílulas de 60 a 90 segundos com retenção imediata nos primeiros 3s (Edutainment). Eliminação de fricção cognitiva e entrega atômica de valor.
+          </p>
+          <div class="paradigm-tag font-mono">HOOK 3S + RETENÇÃO</div>
+        </div>
+
+        <div class="paradigm-card">
+          <div class="card-num font-mono">02</div>
+          <h3 class="font-display">Conversational Commerce</h3>
+          <p>
+            Engajamento que vira venda no comentário. Automação instantânea via DMs e webhooks que transformam a FYP em um loop viral acelerado de aquisição.
+          </p>
+          <div class="paradigm-tag font-mono">DM SILENCIOSA + LOOP FYP</div>
+        </div>
+
+        <div class="paradigm-card">
+          <div class="card-num font-mono">03</div>
+          <h3 class="font-display">Spark Ads & Esteira Viva</h3>
+          <p>
+            Tráfego impulsionado em vídeos nativos com prova social real. Combate implacável à fadiga criativa através da geração e rotação contínua de criativos.
+          </p>
+          <div class="paradigm-tag font-mono">CAPI SERVER-SIDE + SPARK</div>
+        </div>
+
+        <div class="paradigm-card">
+          <div class="card-num font-mono">04</div>
+          <h3 class="font-display">Oferta No-Brainer & Backend</h3>
+          <p>
+            Aquisição de clientes com produto de entrada de baixo atrito para liquidar o CAC e aquecer o Pixel, capitalizando no backend de alto valor.
+          </p>
+          <div class="paradigm-tag font-mono">VALOR PERPÉTUO + D+0</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Seção do Embed do TikTok (@neoflowagency) -->
   <section class="tiktok-embed-section">
     <div class="tiktok-embed-container">
@@ -168,6 +219,125 @@ import IntentGateway from '../components/IntentGateway.astro';
 
       .slogan-band-section {
         padding: 7rem 2rem; /* Mais respiro na faixa branca no desktop */
+      }
+    }
+
+    /* ══════════════════════════════════════════
+       PARADIGM SECTION (Educação Digital & Performance 2026)
+       ══════════════════════════════════════════ */
+    .paradigm-section {
+      padding: 6rem 1.25rem;
+      background:
+        radial-gradient(circle at 50% 100%, rgba(0, 242, 254, 0.05), transparent 30rem),
+        linear-gradient(180deg, var(--neo-bg) 0%, var(--neo-bg-subtle) 100%);
+      border-top: 1px solid var(--neo-border);
+    }
+
+    .paradigm-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .paradigm-header {
+      max-width: 820px;
+      margin-bottom: 3.5rem;
+    }
+
+    .paradigm-kicker {
+      color: var(--neo-cyan);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      margin-bottom: 1rem;
+    }
+
+    .paradigm-header h2 {
+      font-size: clamp(2.2rem, 6.5vw, 4.2rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      margin-bottom: 1.25rem;
+      color: var(--neo-white);
+    }
+
+    .paradigm-header p {
+      color: var(--neo-text-muted);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.55;
+    }
+
+    .paradigm-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .paradigm-card {
+      background: var(--neo-bg-card);
+      border: 1px solid var(--neo-border);
+      border-radius: var(--radius-ios);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-ios);
+      backdrop-filter: var(--glass-blur);
+      transition: var(--transition-smooth);
+    }
+
+    .paradigm-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 242, 254, 0.4);
+      background: rgba(22, 22, 26, 0.9);
+    }
+
+    .card-num {
+      color: var(--neo-cyan);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.5rem;
+    }
+
+    .paradigm-card h3 {
+      font-size: clamp(1.4rem, 3.5vw, 1.85rem);
+      letter-spacing: -0.035em;
+      margin-bottom: 0.75rem;
+      color: var(--neo-white);
+    }
+
+    .paradigm-card p {
+      color: var(--neo-text-muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .paradigm-tag {
+      align-self: flex-start;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--neo-acid);
+      background: rgba(215, 254, 9, 0.08);
+      border: 1px solid rgba(215, 254, 9, 0.25);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-full);
+    }
+
+    @media (max-width: 720px) {
+      .paradigm-section {
+        padding: 4.5rem 1rem;
+      }
+
+      .paradigm-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .paradigm-card {
+        padding: 1.5rem;
       }
     }
 
