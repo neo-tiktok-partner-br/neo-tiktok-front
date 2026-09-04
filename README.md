@@ -55,6 +55,11 @@ A conta dedicada de reviewer existe, mas sua senha não pertence ao Git nem à
 documentação. Search Orders pode retornar empty state validamente. Esta UI não
 demonstra catálogo, Finance, Fulfillment, Creator ou LIVE.
 
+O Partner Center mostra o `NEØ TikTok Shop Connector` como serviço público
+`Ativados`, com upgrade bem-sucedido notificado em 03/09/2026 05:46, sem fuso
+exibido. A referência auditável apresentada pelo portal é o Service ID
+`7614526955808622356`; nenhum protocolo separado apareceu nas evidências.
+
 A neøflow opera como uma infraestrutura descentralizada de comércio digital e agência de performance, integrando parceiros, criadores de conteúdo e lojistas diretamente às capacidades avançadas do TikTok Shop.
 
 ────────────────────────────────────────

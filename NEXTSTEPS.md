@@ -11,8 +11,16 @@
 - [x] Pixel TikTok `D9SJPC3C77U97D5QGU0G` instalado no layout base
 - [x] Helper `src/utils/tiktok.ts` com SHA-256 e 10 eventos de funil
 - [x] Privacy e Terms públicas no domínio canônico `neotiktok.com`
-- [ ] Executar gate final em janela anônima e submeter no Partner Center
-- [ ] Registrar status, protocolo e data após a submissão
+- [x] Submeter e concluir o gate externo do Partner Center
+- [x] Registrar status, referência do serviço e data após a submissão
+
+Evidência fornecida pelo operador em 04/09/2026: serviço público
+`NEØ TikTok Shop Connector` (`7614526955808622356`) com status `Ativados` e
+upgrade bem-sucedido notificado em 03/09/2026 05:46, sem fuso exibido. O portal
+não exibiu protocolo separado. A execução específica do smoke test em janela
+anônima não possui artefato preservado e não deve ser retroativamente descrita
+como comprovada; após a aprovação externa, ela deixou de ser bloqueio para a
+submissão já concluída.
 
 Pacotes demonstrados: `seller.shop.info`, `seller.authorization.info` e
 `seller.order.info`. Não ampliar a reviewer UI antes do review inicial.
