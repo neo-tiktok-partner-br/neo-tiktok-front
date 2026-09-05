@@ -101,16 +101,32 @@ make preview
 
 ────────────────────────────────────────
 
+## ⟁ Variáveis de Ambiente & Configuração
+ 
+Configure as variáveis copiando o arquivo canônico `.env.example`:
+ 
+```bash
+cp .env.example .env
+```
+ 
+| Variável | Padrão / Exemplo | Descrição |
+| :--- | :--- | :--- |
+| **`PUBLIC_API_BASE_URL`** | `https://api.neotiktok.com` | URL base da API Fastify pública (`http://localhost:3000` em dev) |
+ 
+> ⚠️ **Atenção:** O prefixo `PUBLIC_` é exigido pelo Astro para expor a variável ao cliente. Nunca declare chaves privadas ou segredos de API neste repositório frontend.
+ 
+────────────────────────────────────────
+ 
 ## ◬ Pipeline de Qualidade & Verification
-
+ 
 Antes de realizar qualquer commit, execute o pipeline completo de validação:
-
+ 
 ```bash
 make verify
 ```
-
+ 
 Para efetuar o commit assinado utilizando Conventional Commits:
-
+ 
 ```bash
 make commit
 ```
