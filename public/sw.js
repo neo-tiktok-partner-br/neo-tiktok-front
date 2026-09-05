@@ -3,7 +3,7 @@
    PWA & Offline Cache Strategy: Network-First (Pages) / Stale-While-Revalidate (Assets)
    ========================================================================== */
 
-const CACHE_NAME = 'neoflow-v2';
+const CACHE_NAME = 'neoflow-v3';
 const PRECACHE_ASSETS = [
   '/',
   '/favicon.ico',
@@ -22,9 +22,7 @@ self.addEventListener('install', (event) => {
     caches.open(CACHE_NAME)
       .then((cache) => cache.addAll(PRECACHE_ASSETS))
       .catch((err) => {
-        // FIXADO: catch estava engolindo o erro E impedindo skipWaiting
-        // Agora loga o erro mas ainda ativa o SW
-        console.warn('[neøflow sw] Precache parcial (não crítico):', err);
+        console.warn('[neøflow sw] Precache parcial:', err);
       })
       .finally(() => self.skipWaiting())
   );
@@ -48,9 +46,17 @@ self.addEventListener('activate', (event) => {
 // Interceptação de requisições
 self.addEventListener('fetch', (event) => {
   const request = event.request;
+  const url = new URL(request.url);
 
-  // Ignorar requisições não-GET e esquemas não-http(s) (ex: chrome-extension)
-  if (request.method !== 'GET' || !request.url.startsWith('http')) {
+  // Ignorar localhost, esquemas não-http, requisições não-GET e internals do Vite/HMR
+  if (
+    request.method !== 'GET' ||
+    !request.url.startsWith('http') ||
+    url.hostname === 'localhost' ||
+    url.hostname === '127.0.0.1' ||
+    url.pathname.startsWith('/@') ||
+    url.pathname.includes('vite')
+  ) {
     return;
   }
 
