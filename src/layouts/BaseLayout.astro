@@ -7,12 +7,14 @@ interface Props {
   title?: string;
   description?: string;
   robots?: string;
+  hideChrome?: boolean;
 }
 
 const {
   title = "neøflow // Official TikTok Partners — Shop. Creators. Marketing. Tech",
   description = "Infraestrutura descentralizada de tecnologia e inteligência comercial no ecossistema TikTok Partner. Conectamos lojistas, criadores e dados com autonomia.",
   robots = "index, follow",
+  hideChrome = false,
 } = Astro.props;
 
 // Purificação de URL Canônica conforme SEO.md v2.1.0
@@ -172,14 +174,18 @@ const jsonLd = {
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
   </head>
-  <body>
-    <!-- Skip Navigation (Acessibilidade: WCAG 2.4.1) -->
-    <a href="#main-content" class="skip-to-content">Pular para o conteúdo principal</a>
-    <Header />
-    <main id="main-content">
+  <body class={hideChrome ? "pwa-viewport-lock" : ""}>
+    {!hideChrome && (
+      <>
+        <!-- Skip Navigation (Acessibilidade: WCAG 2.4.1) -->
+        <a href="#main-content" class="skip-to-content">Pular para o conteúdo principal</a>
+        <Header />
+      </>
+    )}
+    <main id="main-content" class={hideChrome ? "pwa-main-canvas" : ""}>
       <slot />
     </main>
-    <FooterPolicy />
+    {!hideChrome && <FooterPolicy />}
 
     <!-- Launch web: remove registros/cache PWA antigos que causavam comportamento divergente entre perfis. -->
     <script>
@@ -216,6 +222,24 @@ const jsonLd = {
       }
       .skip-to-content:focus {
         top: 0;
+      }
+      body.pwa-viewport-lock {
+        overflow: hidden !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+        width: 100% !important;
+        position: fixed !important;
+        inset: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        touch-action: manipulation;
+        -webkit-overflow-scrolling: auto;
+      }
+      .pwa-main-canvas {
+        height: 100% !important;
+        width: 100% !important;
+        overflow: hidden !important;
       }
     </style>
   </body>

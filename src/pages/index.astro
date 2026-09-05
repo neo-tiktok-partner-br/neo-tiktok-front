@@ -1,249 +1,815 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BottomTabBar from '../components/BottomTabBar.astro';
 
 const entries = [
   {
     code: '01',
+    tab: 'shop',
     label: 'Shop',
     title: 'Quero vender no TikTok Shop.',
-    description: 'Conheça a infraestrutura para sellers, marcas e operações de comércio.',
-    href: '/shop',
-    accent: 'var(--neo-coral)',
+    description: 'Infraestrutura para lojistas, marcas e operações de comércio.',
+    accent: 'var(--neo-coral, #fe2c55)',
   },
   {
     code: '02',
+    tab: 'creators',
     label: 'Creators',
     title: 'Quero criar e monetizar conteúdo.',
-    description: 'Explore oportunidades, curadoria de produtos e colaboração para creators.',
-    href: '/creators',
-    accent: 'var(--neo-cyan)',
+    description: 'Oportunidades, curadoria de produtos e colaboração para criadores.',
+    accent: 'var(--neo-cyan, #00f2fe)',
   },
   {
     code: '03',
+    tab: 'marketing',
     label: 'Agências',
     title: 'Quero acelerar marcas e operações.',
-    description: 'A frente para agências parceiras, coprodução, marketing de performance e escala.',
-    href: '/marketing',
-    accent: 'var(--neo-white)',
+    description: 'Frente para agências parceiras, coprodução e marketing de performance.',
+    accent: 'var(--neo-white, #ffffff)',
   },
   {
     code: '04',
+    tab: 'tech',
     label: 'Tech',
     title: 'Quero operar ou integrar tecnologia.',
-    description: 'Acesse a infraestrutura para desenvolvedores, contratos de API e automações.',
-    href: '/tech',
-    accent: 'var(--neo-acid)',
+    description: 'Infraestrutura para operadores, desenvolvedores e contratos de API.',
+    accent: 'var(--neo-acid, #d7fe09)',
   },
 ];
 ---
 
 <BaseLayout
-  title="neøflow // Shop, Creators, Agências e Tech"
-  description="Entrada pública da neøflow para Shop, Creators, Agências e Tech no ecossistema TikTok."
+  title="neøflow // TikTok Partner Hub"
+  description="Hub PWA oficial 9:16 da neøflow para TikTok Shop, Creators, Agências e Tech."
+  hideChrome={true}
 >
-  <section class="launch-entry" aria-labelledby="launch-title">
-    <div class="launch-glow" aria-hidden="true"></div>
-    <div class="launch-container">
-      <header class="launch-header">
-        <img
-          src="/assets/logo_partners.svg"
-          alt="neøflow Official TikTok Partners"
-          class="launch-logo"
-          width="860"
-          height="260"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-        />
-        <p class="launch-kicker font-mono">ENTRADA PÚBLICA · NAVEGAÇÃO WEB</p>
-        <h1 id="launch-title" class="font-display">Escolha o que você veio fazer.</h1>
-        <p class="launch-subtitle">
-          Explore sem criar conta. A autenticação aparece somente quando um recurso realmente precisar dela.
-        </p>
+  <!-- Link discreto para desktop -->
+  <aside class="desktop-escape-bar" aria-label="Versão completa desktop">
+    <span>Visualizando modo In-App 9:16</span>
+    <a href="/home" class="font-mono">Abrir Versão Desktop Completa →</a>
+  </aside>
+
+  <!-- Container Geral da Tela 9:16 -->
+  <div class="pwa-viewport-wrapper">
+    <div class="pwa-device-frame" id="pwa-frame">
+      
+      <!-- Top Bar Nativa iOS / In-App -->
+      <header class="pwa-top-bar" aria-label="Cabeçalho da aplicação">
+        <div class="pwa-brand">
+          <img
+            src="/assets/logo_partners.svg"
+            alt="neøflow Official TikTok Partners"
+            class="pwa-logo"
+            width="220"
+            height="50"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="pwa-partner-badge font-mono">
+          <span class="pwa-status-dot" aria-hidden="true"></span>
+          <span>TIKTOK PARTNER</span>
+        </div>
       </header>
 
-      <nav class="launch-grid" aria-label="Escolha sua entrada">
-        {entries.map((entry) => (
-          <a class="launch-card" href={entry.href} style={`--entry-accent: ${entry.accent}`}>
-            <span class="launch-card-meta font-mono">
-              <span>{entry.code}</span>
-              <span>{entry.label}</span>
-            </span>
-            <span class="launch-card-title font-display">{entry.title}</span>
-            <span class="launch-card-description">{entry.description}</span>
-            <span class="launch-card-action font-mono" aria-hidden="true">CONTINUAR →</span>
-          </a>
-        ))}
-      </nav>
+      <!-- Stage das 5 Visões Concentradas (Zero Rolagem na Janela) -->
+      <div class="pwa-stage" id="pwa-stage">
+        
+        <!-- 00: Início (Launcher com os 4 Cards Touch) -->
+        <section class="pwa-view is-active" data-view="home" aria-label="Visão Geral">
+          <div class="view-content-box">
+            <header class="view-intro">
+              <span class="view-kicker font-mono">ECOSSISTEMA TIKTOK 2026</span>
+              <h1 class="font-display">Escolha sua operação.</h1>
+              <p class="view-subtitle">
+                Seu perfil. Seus interesses. Nosso negócio.
+              </p>
+            </header>
 
-      <p class="launch-note font-mono">
-        Você permanece em neotiktok.com até escolher um recurso que exija autorização.
-      </p>
+            <!-- Grid 9:16 Touch Cards -->
+            <div class="pwa-cards-stack" role="tablist" aria-label="Frentes de operação">
+              {entries.map((entry) => (
+                <button
+                  type="button"
+                  class="touch-card"
+                  data-card-tab={entry.tab}
+                  style={`--card-accent: ${entry.accent};`}
+                  role="tab"
+                  aria-controls={`view-${entry.tab}`}
+                >
+                  <div class="touch-card-top font-mono">
+                    <span class="touch-code">{entry.code}</span>
+                    <span class="touch-label">{entry.label}</span>
+                  </div>
+                  <strong class="touch-title font-display">{entry.title}</strong>
+                  <span class="touch-desc">{entry.description}</span>
+                  <div class="touch-action font-mono" aria-hidden="true">
+                    <span>ACESSAR FRENTE</span>
+                    <span class="touch-arrow">→</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            <!-- Micro Rodapé de Compliance -->
+            <footer class="pwa-micro-compliance font-mono">
+              <p>FLOWOFF MARKETING DIGITAL LTDA · CNPJ 43.376.355/0001-92</p>
+              <div class="compliance-links">
+                <a href="/legal/termos">Termos de Uso</a>
+                <span>·</span>
+                <a href="/legal/privacidade">Privacidade</a>
+                <span>·</span>
+                <a href="mailto:neo@neotiktok.com">Contato</a>
+              </div>
+            </footer>
+          </div>
+        </section>
+
+        <!-- 01: Shop (Sellers & Lojistas) -->
+        <section class="pwa-view" data-view="shop" id="view-shop" aria-label="Frente Shop">
+          <div class="view-content-box">
+            <header class="view-intro">
+              <span class="view-kicker font-mono" style="color: var(--neo-coral);">01 // TIKTOK SHOP INFRASTRUCTURE</span>
+              <h1 class="font-display">Infraestrutura Comercial para Sellers.</h1>
+              <p class="view-subtitle">
+                Conecte sua loja e catálogo ao TikTok Shop oficial com automação de checkout nativo e split transparente.
+              </p>
+            </header>
+
+            <div class="pwa-features-list">
+              <div class="feature-item">
+                <div class="feature-bullet" style="background: var(--neo-coral);"></div>
+                <div class="feature-text">
+                  <strong>Sincronização de Catálogo &amp; SKUs</strong>
+                  <p>Integração direta via SDK oficial de produtos e comissões da TikTok Shop.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-bullet" style="background: var(--neo-coral);"></div>
+                <div class="feature-text">
+                  <strong>Checkout In-App 1-Clique</strong>
+                  <p>Experiência de compra sem sair do TikTok, elevando taxas de conversão.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-bullet" style="background: var(--neo-coral);"></div>
+                <div class="feature-text">
+                  <strong>Split e Liquidação Automatizada</strong>
+                  <p>Repasse seguro e gestão operacional entre parceiros e lojistas.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="view-action-group">
+              <a href="/shop" class="pwa-btn pwa-btn-coral font-mono">
+                <span>VER INFRAESTRUTURA COMPLETA →</span>
+              </a>
+              <button type="button" class="pwa-btn-secondary font-mono" data-card-tab="home">
+                ← Voltar ao Início
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02: Creators (Monetização & Nano-Funis) -->
+        <section class="pwa-view" data-view="creators" id="view-creators" aria-label="Frente Creators">
+          <div class="view-content-box">
+            <header class="view-intro">
+              <span class="view-kicker font-mono" style="color: var(--neo-cyan);">02 // CREATOR NETWORK</span>
+              <h1 class="font-display">Monetização e Nano-Funis para Creators.</h1>
+              <p class="view-subtitle">
+                Transforme sua audiência e repertório em conversão perpétua com produtos validados e automações de DM.
+              </p>
+            </header>
+
+            <div class="pwa-features-list">
+              <div class="feature-item">
+                <div class="feature-bullet" style="background: var(--neo-cyan);"></div>
+                <div class="feature-text">
+                  <strong>Curadoria de Produtos Validados</strong>
+                  <p>Acesso a produtos de alta saída qualificados pelo NΞØ Gatekeeper.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-bullet" style="background: var(--neo-cyan);"></div>
+                <div class="feature-text">
+                  <strong>Automação de DM na FYP</strong>
+                  <p>Comentários no vídeo viram links de compra na DM do seguidor em segundos.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-bullet" style="background: var(--neo-cyan);"></div>
+                <div class="feature-text">
+                  <strong>Comissões e Extratos em Tempo Real</strong>
+                  <p>Transparência total em saques e repasses autorizados pelo ecossistema.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="view-action-group">
+              <a href="/creators" class="pwa-btn pwa-btn-cyan font-mono">
+                <span>CONHECER FRENTE DE CREATORS →</span>
+              </a>
+              <button type="button" class="pwa-btn-secondary font-mono" data-card-tab="home">
+                ← Voltar ao Início
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 03: Agências (Performance & Coprodução) -->
+        <section class="pwa-view" data-view="marketing" id="view-marketing" aria-label="Frente Agências">
+          <div class="view-content-box">
+            <header class="view-intro">
+              <span class="view-kicker font-mono" style="color: var(--neo-white);">03 // AGÊNCIAS &amp; PERFORMANCE</span>
+              <h1 class="font-display">Aceleração de Marcas e Coprodução.</h1>
+              <p class="view-subtitle">
+                A estrutura para agências parceiras operarem múltiplos sellers com tráfego orientado a resultados.
+              </p>
+            </header>
+
+            <div class="pwa-features-list">
+              <div class="feature-item">
+                <div class="feature-bullet" style="background: var(--neo-white);"></div>
+                <div class="feature-text">
+                  <strong>Gestão Centralizada Multi-Seller</strong>
+                  <p>Aceleração de dezenas de lojas e criadores sob governança unificada.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-bullet" style="background: var(--neo-white);"></div>
+                <div class="feature-text">
+                  <strong>TikTok Ads &amp; Spark Ads</strong>
+                  <p>Impulsionamento direto de conteúdo orgânico de criadores para escala rápida.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-bullet" style="background: var(--neo-white);"></div>
+                <div class="feature-text">
+                  <strong>Coprodução e Divisão de Lucro</strong>
+                  <p>Contratos comissionados transparentes e segurança jurídica de ponta a ponta.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="view-action-group">
+              <a href="/marketing" class="pwa-btn pwa-btn-white font-mono">
+                <span>CONHECER FRENTE DE AGÊNCIAS →</span>
+              </a>
+              <button type="button" class="pwa-btn-secondary font-mono" data-card-tab="home">
+                ← Voltar ao Início
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 04: Tech (APIs, SDK & Infraestrutura) -->
+        <section class="pwa-view" data-view="tech" id="view-tech" aria-label="Frente Tech">
+          <div class="view-content-box">
+            <header class="view-intro">
+              <span class="view-kicker font-mono" style="color: var(--neo-acid);">04 // TECH, APIS &amp; SDK OFICIAL</span>
+              <h1 class="font-display">Infraestrutura para Desenvolvedores.</h1>
+              <p class="view-subtitle">
+                Acesse o SDK oficial TikTok Shop, contratos de webhooks em tempo real e orquestração de eventos.
+              </p>
+            </header>
+
+            <div class="pwa-features-list">
+              <div class="feature-item">
+                <div class="feature-bullet" style="background: var(--neo-acid);"></div>
+                <div class="feature-text">
+                  <strong>SDK Oficial TikTok Shop Compilado</strong>
+                  <p>Pacote com 41 escopos oficiais de sellers, produtos e afiliados.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-bullet" style="background: var(--neo-acid);"></div>
+                <div class="feature-text">
+                  <strong>Webhooks &amp; Fila de Eventos BullMQ</strong>
+                  <p>Sincronização assíncrona tolerante a falhas com Redis e PostgreSQL.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-bullet" style="background: var(--neo-acid);"></div>
+                <div class="feature-text">
+                  <strong>Segurança de Credenciais AES-256-GCM</strong>
+                  <p>Criptografia de tokens e chaves em repouso com zero vazamentos.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="view-action-group">
+              <a href="/tech" class="pwa-btn pwa-btn-acid font-mono">
+                <span>ACESSAR DOCUMENTAÇÃO TECH →</span>
+              </a>
+              <button type="button" class="pwa-btn-secondary font-mono" data-card-tab="home">
+                ← Voltar ao Início
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Bottom Menu Bar Estilo iOS TabBar -->
+      <BottomTabBar activeTab="home" />
+
     </div>
-  </section>
+  </div>
 </BaseLayout>
 
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const stage = document.getElementById('pwa-stage');
+    if (!stage) return;
+
+    const views = stage.querySelectorAll('[data-view]');
+    const tabButtons = document.querySelectorAll('.ios-tab-item');
+    const cardButtons = document.querySelectorAll('[data-card-tab]');
+
+    function switchTab(targetTabId) {
+      if (!targetTabId) return;
+
+      // 1. Atualiza visualização das abas no Stage
+      let matchedView = false;
+      views.forEach((v) => {
+        if (v.getAttribute('data-view') === targetTabId) {
+          v.classList.add('is-active');
+          matchedView = true;
+        } else {
+          v.classList.remove('is-active');
+        }
+      });
+
+      if (!matchedView) return;
+
+      // 2. Atualiza estado ativo na BottomTabBar
+      tabButtons.forEach((btn) => {
+        const isSelected = btn.getAttribute('data-tab-target') === targetTabId;
+        btn.classList.toggle('is-active', isSelected);
+        btn.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+      });
+
+      // 3. Atualiza hash sem forçar reload de página
+      try {
+        if (targetTabId === 'home') {
+          history.replaceState(null, '', ' ');
+        } else {
+          history.replaceState(null, '', `#${targetTabId}`);
+        }
+      } catch (_) {}
+    }
+
+    // Clique nas abas do menu inferior
+    tabButtons.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = btn.getAttribute('data-tab-target');
+        switchTab(target);
+      });
+    });
+
+    // Clique nos touch cards da Home
+    cardButtons.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = btn.getAttribute('data-card-tab');
+        switchTab(target);
+      });
+    });
+
+    // Lê hash inicial se houver (#shop, #creators, etc)
+    const initialHash = window.location.hash.replace('#', '').trim();
+    if (initialHash && ['home', 'shop', 'creators', 'marketing', 'tech'].includes(initialHash)) {
+      switchTab(initialHash);
+    }
+  });
+</script>
+
 <style>
-  .launch-entry {
-    position: relative;
-    min-height: 100vh;
-    min-height: 100svh;
-    overflow: clip;
-    padding:
-      calc(7rem + var(--sat))
-      calc(1rem + var(--sar))
-      calc(3rem + var(--sab))
-      calc(1rem + var(--sal));
+  /* ----------------------------------------------------
+     PWA Viewport & Canvas Layout (100dvh Lock, Zero Scroll)
+     ---------------------------------------------------- */
+  .pwa-viewport-wrapper {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at 50% 12%, rgba(215, 254, 9, 0.07) 0%, #060709 85%);
+    overflow: hidden;
+    position: fixed;
+    inset: 0;
   }
 
-  .launch-glow {
-    position: absolute;
-    top: -14rem;
-    left: 50%;
-    width: min(48rem, 100%);
-    height: 34rem;
-    transform: translateX(-50%);
-    background: radial-gradient(circle, rgba(215, 254, 9, 0.11), rgba(0, 242, 254, 0.05) 38%, transparent 70%);
-    filter: blur(40px);
-    pointer-events: none;
+  /* Desktop Escape Bar */
+  .desktop-escape-bar {
+    position: fixed;
+    top: 0.75rem;
+    right: 1rem;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(18, 18, 22, 0.75);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.72rem;
+    color: var(--neo-text-muted, #8c8f96);
   }
 
-  .launch-container {
-    position: relative;
-    width: 100%;
-    max-width: 1080px;
-    margin: 0 auto;
-  }
-
-  .launch-header {
-    max-width: 760px;
-  }
-
-  .launch-logo {
-    display: block;
-    width: min(100%, 430px);
-    height: auto;
-    margin-bottom: clamp(2.5rem, 8vh, 5rem);
-  }
-
-  .launch-kicker {
-    color: var(--neo-acid);
-    font-size: 0.7rem;
+  .desktop-escape-bar a {
+    color: var(--neo-acid, #d7fe09);
+    text-decoration: none;
     font-weight: 600;
-    letter-spacing: 0.14em;
   }
 
-  .launch-header h1 {
-    margin: 0.85rem 0 1rem;
-    font-size: clamp(2.6rem, 10vw, 6.5rem);
-    line-height: 0.92;
-    letter-spacing: -0.065em;
-    overflow-wrap: anywhere;
+  .desktop-escape-bar a:hover {
+    text-decoration: underline;
   }
 
-  .launch-subtitle {
-    max-width: 620px;
-    color: var(--neo-text-muted);
-    font-size: clamp(1rem, 3vw, 1.2rem);
+  @media (min-width: 900px) {
+    .desktop-escape-bar {
+      display: flex;
+    }
   }
 
-  .launch-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 0.85rem;
-    margin-top: clamp(2.5rem, 7vh, 4.5rem);
-  }
-
-  .launch-card {
-    min-width: 0;
-    min-height: 250px;
+  /* Frame 9:16 estilo iOS */
+  .pwa-device-frame {
+    width: 100%;
+    max-width: min(430px, 100%);
+    height: 100vh;
+    height: 100dvh;
+    max-height: 890px;
+    background: #0b0b0d;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 38px;
+    box-shadow: 0 25px 65px -15px rgba(0, 0, 0, 0.85), 0 0 45px rgba(215, 254, 9, 0.06);
     display: flex;
     flex-direction: column;
-    padding: 1.25rem;
-    border: 1px solid var(--neo-border);
-    border-radius: var(--radius-ios);
-    background: var(--neo-bg-card);
-    color: var(--neo-white);
-    text-decoration: none;
-    box-shadow: var(--shadow-ios);
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    overflow: hidden;
+    position: relative;
   }
 
-  .launch-card:hover,
-  .launch-card:focus-visible {
-    transform: translateY(-3px);
-    border-color: var(--entry-accent);
-    outline: none;
+  /* Top Bar */
+  .pwa-top-bar {
+    height: 52px;
+    padding: 0 1rem;
+    padding-top: max(0.25rem, env(safe-area-inset-top, 0px));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(11, 11, 13, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    z-index: 80;
+    flex-shrink: 0;
   }
 
-  .launch-card-meta {
+  .pwa-brand {
+    display: flex;
+    align-items: center;
+  }
+
+  .pwa-logo {
+    height: 24px;
+    width: auto;
+    display: block;
+  }
+
+  .pwa-partner-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--neo-acid, #d7fe09);
+    background: rgba(215, 254, 9, 0.08);
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid rgba(215, 254, 9, 0.2);
+  }
+
+  .pwa-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--neo-acid, #d7fe09);
+    box-shadow: 0 0 6px var(--neo-acid, #d7fe09);
+  }
+
+  /* Stage de Conteúdo */
+  .pwa-stage {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: calc(62px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Visões Alternáveis */
+  .pwa-view {
+    position: absolute;
+    inset: 0;
+    bottom: calc(62px + env(safe-area-inset-bottom, 0px));
+    display: none;
+    flex-direction: column;
+    padding: 0.85rem 1rem 0.5rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .pwa-view::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pwa-view.is-active {
+    display: flex;
+    animation: pwaFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes pwaFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .view-content-box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .view-intro {
+    flex-shrink: 0;
+  }
+
+  .view-kicker {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--neo-acid, #d7fe09);
+  }
+
+  .view-intro h1 {
+    font-size: clamp(1.45rem, 5vw, 1.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin: 0.25rem 0 0.3rem;
+    color: #ffffff;
+  }
+
+  .view-subtitle {
+    font-size: 0.8rem;
+    line-height: 1.35;
+    color: var(--neo-text-muted, #8c8f96);
+    margin: 0;
+  }
+
+  /* 4 Touch Cards */
+  .pwa-cards-stack {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    flex: 1;
+    margin: 0.4rem 0;
+  }
+
+  .touch-card {
+    background: rgba(22, 22, 26, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 3px solid var(--card-accent, #ffffff);
+    border-radius: 14px;
+    padding: 0.65rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .touch-card:active {
+    transform: scale(0.97);
+    background: rgba(30, 30, 36, 0.9);
+  }
+
+  .touch-card-top {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
-    color: var(--entry-accent);
-    font-size: 0.68rem;
-    letter-spacing: 0.11em;
-    text-transform: uppercase;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--card-accent, #ffffff);
   }
 
-  .launch-card-title {
+  .touch-title {
+    font-size: 0.95rem;
+    line-height: 1.15;
+    margin-top: 0.2rem;
+    color: #ffffff;
+  }
+
+  .touch-desc {
+    font-size: 0.74rem;
+    line-height: 1.25;
+    color: var(--neo-text-muted, #8c8f96);
+    margin: 0.2rem 0 0.3rem;
+  }
+
+  .touch-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--card-accent, #ffffff);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 0.35rem;
     margin-top: auto;
-    padding-top: 2rem;
-    font-size: clamp(1.45rem, 4vw, 2.1rem);
-    line-height: 1;
-    overflow-wrap: anywhere;
   }
 
-  .launch-card-description {
-    margin: 0.85rem 0 1.25rem;
-    color: var(--neo-text-muted);
-    font-size: 0.9rem;
+  /* Micro Compliance */
+  .pwa-micro-compliance {
+    flex-shrink: 0;
+    text-align: center;
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.35);
+    line-height: 1.4;
+    padding-top: 0.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  .launch-card-action {
-    padding-top: 0.9rem;
-    border-top: 1px solid var(--neo-border);
-    color: var(--entry-accent);
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
+  .compliance-links {
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-top: 0.15rem;
   }
 
-  .launch-note {
-    margin-top: 1.5rem;
-    color: var(--neo-text-muted);
-    font-size: 0.68rem;
-    line-height: 1.5;
+  .compliance-links a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
   }
 
-  @media (max-width: 760px) {
-    .launch-grid {
-      grid-template-columns: 1fr;
+  .compliance-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+
+  /* Lista de Features nas Páginas de Frentes */
+  .pwa-features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin: 0.6rem 0;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    background: rgba(20, 20, 24, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .feature-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 0.3rem;
+    flex-shrink: 0;
+  }
+
+  .feature-text strong {
+    display: block;
+    font-size: 0.85rem;
+    color: #ffffff;
+    line-height: 1.2;
+  }
+
+  .feature-text p {
+    margin: 0.2rem 0 0;
+    font-size: 0.74rem;
+    line-height: 1.3;
+    color: var(--neo-text-muted, #8c8f96);
+  }
+
+  /* Botões de Ação */
+  .view-action-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    flex-shrink: 0;
+    margin-top: auto;
+  }
+
+  .pwa-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    transition: transform 0.15s ease, filter 0.15s ease;
+  }
+
+  .pwa-btn:active {
+    transform: scale(0.97);
+  }
+
+  .pwa-btn-coral {
+    background: var(--neo-coral, #fe2c55);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(254, 44, 85, 0.3);
+  }
+
+  .pwa-btn-cyan {
+    background: var(--neo-cyan, #00f2fe);
+    color: #050b0f;
+    box-shadow: 0 4px 14px rgba(0, 242, 254, 0.25);
+  }
+
+  .pwa-btn-white {
+    background: #ffffff;
+    color: #050b0f;
+    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.2);
+  }
+
+  .pwa-btn-acid {
+    background: var(--neo-acid, #d7fe09);
+    color: #050b0f;
+    box-shadow: 0 4px 14px rgba(215, 254, 9, 0.25);
+  }
+
+  .pwa-btn-secondary {
+    background: none;
+    border: none;
+    color: var(--neo-text-muted, #8c8f96);
+    font-size: 0.7rem;
+    padding: 0.4rem;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .pwa-btn-secondary:hover {
+    color: #ffffff;
+  }
+
+  /* ----------------------------------------------------
+     Responsividade Nativa Mobile (100dvh, sem frame)
+     ---------------------------------------------------- */
+  @media (max-width: 768px), (hover: none) and (pointer: coarse) {
+    .pwa-viewport-wrapper {
+      padding: 0;
+      background: #0b0b0d;
     }
 
-    .launch-card {
-      min-height: 210px;
-    }
-  }
-
-  @media (max-width: 360px) {
-    .launch-entry {
-      padding-right: calc(0.75rem + var(--sar));
-      padding-left: calc(0.75rem + var(--sal));
-    }
-
-    .launch-card {
-      padding: 1rem;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .launch-card {
-      transition: none;
+    .pwa-device-frame {
+      max-width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      max-height: 100vh;
+      max-height: 100dvh;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
     }
 
-    .launch-card:hover,
-    .launch-card:focus-visible {
-      transform: none;
+    .pwa-top-bar {
+      height: calc(52px + env(safe-area-inset-top, 0px));
+      padding-left: calc(1rem + env(safe-area-inset-left, 0px));
+      padding-right: calc(1rem + env(safe-area-inset-right, 0px));
+    }
+
+    .pwa-stage {
+      padding-left: env(safe-area-inset-left, 0px);
+      padding-right: env(safe-area-inset-right, 0px);
     }
   }
 </style>
