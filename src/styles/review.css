@@ -53,6 +53,8 @@
 .review-state { padding: 1rem; margin-top: 1rem; }
 .review-state[data-kind="success"] { border-color: rgba(215, 254, 9, .5); }
 .review-state[data-kind="error"] { border-color: rgba(254, 44, 85, .6); color: #ffb7c5; }
+.review-back-link { display: inline-block; margin-top: 1.25rem; color: var(--neo-cyan); font-size: .72rem; text-decoration: none; }
+.review-back-link:hover, .review-back-link:focus-visible { text-decoration: underline; }
 .review-status { display: inline-flex; gap: .5rem; align-items: center; font-weight: 700; }
 .review-status::before { content: ''; width: .65rem; height: .65rem; border-radius: 50%; background: #82909a; }
 .review-status.connected::before { background: var(--neo-acid); box-shadow: 0 0 18px rgba(215, 254, 9, .55); }

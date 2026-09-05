@@ -3,12 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/review.css';
 ---
 
-<BaseLayout title="Acesso do reviewer | neøflow">
+<BaseLayout
+  title="Acesso restrito de avaliação | neøflow"
+  description="Acesso restrito fornecido aos avaliadores do TikTok Shop Partner Center."
+  robots="noindex, nofollow"
+>
   <section class="review-shell">
     <div class="review-header">
-      <span class="review-kicker">TikTok Shop App Review</span>
-      <h1>Acesso seguro</h1>
-      <p>Entre com a conta de avaliação fornecida nos materiais do Partner Center.</p>
+      <span class="review-kicker">Acesso restrito · App Review</span>
+      <h1>Avaliação do conector</h1>
+      <p>Esta rota não é um login público. Use somente a conta de avaliação fornecida nos materiais do Partner Center.</p>
     </div>
     <div class="review-card">
       <form id="review-login" class="review-form">
@@ -21,6 +25,7 @@ import '../styles/review.css';
         <button class="review-button" type="submit">Entrar</button>
       </form>
       <div id="login-state" class="review-state" hidden></div>
+      <a class="review-back-link font-mono" href="/">← Voltar para a entrada pública</a>
     </div>
   </section>
   <script>

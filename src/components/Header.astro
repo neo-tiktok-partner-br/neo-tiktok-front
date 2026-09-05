@@ -3,11 +3,7 @@ const menuItems = [
   { label: 'Início', href: '/' },
   { label: 'Shop', href: '/shop' },
   { label: 'Creators', href: '/creators' },
-  { label: 'Paulinha', href: '/creators/paulinha' },
-  { label: 'Marketing', href: '/marketing' },
-  { label: 'Tech', href: '/tech' },
-  { label: 'TikTok Shop', href: '/tiktok-shop' },
-  { label: 'App', href: '/login' },
+  { label: 'Partners', href: '/tech' },
 ];
 ---
 <header class="neo-header" id="site-header">
@@ -59,7 +55,7 @@ const menuItems = [
 <style>
   .neo-header { position: fixed; inset: 0 0 auto; z-index: 1000; height: 70px; display: flex; align-items: center; transition: background .3s ease, backdrop-filter .3s ease, border-color .3s ease, box-shadow .3s ease; background: transparent; border-bottom: 1px solid transparent; }
   .neo-header.is-scrolled { background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border-bottom-color: var(--neo-border); box-shadow: var(--shadow-ios); }
-  .header-container { position: relative; max-width: 1080px; width: 100%; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+  .header-container { position: relative; max-width: 1080px; width: 100%; min-width: 0; margin: 0 auto; padding: 0 calc(1.5rem + var(--sar)) 0 calc(1.5rem + var(--sal)); display: flex; align-items: center; justify-content: space-between; }
   .header-logo { font-size: 1.25rem; font-weight: 800; color: var(--neo-white); text-decoration: none; letter-spacing: -.02em; transition: opacity .2s ease; }
   .header-logo:hover, .header-logo:focus-visible { opacity: .85; }
   .logo-slash-coral { color: var(--neo-coral); margin-left: 2px; }
@@ -69,10 +65,10 @@ const menuItems = [
   .menu-toggle span { display: block; width: 16px; height: 1px; background: currentColor; transition: transform .2s ease; }
   .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
   .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
-  .global-navigation { position: absolute; top: calc(100% + .75rem); right: 1.5rem; width: min(280px, calc(100vw - 2rem)); padding: .65rem; border: 1px solid var(--neo-border); border-radius: var(--radius-md); background: rgba(11,11,12,.96); box-shadow: var(--shadow-ios); }
+  .global-navigation { position: absolute; top: calc(100% + .75rem); right: calc(1.5rem + var(--sar)); width: min(280px, calc(100% - 2rem)); padding: .65rem; border: 1px solid var(--neo-border); border-radius: var(--radius-md); background: rgba(11,11,12,.96); box-shadow: var(--shadow-ios); }
   .global-navigation ul { list-style: none; display: grid; gap: .2rem; }
   .global-navigation a { display: block; padding: .72rem .8rem; border-radius: var(--radius-sm); color: var(--neo-white); font: .76rem var(--font-mono); text-decoration: none; }
   .global-navigation a:hover, .global-navigation a:focus-visible { background: rgba(0,242,254,.1); color: var(--neo-cyan); outline: none; }
-  @media (max-width: 480px) { .header-container { padding: 0 1rem; } .global-navigation { right: 1rem; } }
+  @media (max-width: 480px) { .header-container { padding-right: calc(1rem + var(--sar)); padding-left: calc(1rem + var(--sal)); } .global-navigation { right: calc(1rem + var(--sar)); } }
   @media (prefers-reduced-motion: reduce) { .neo-header, .menu-toggle span { transition: none; } }
 </style>

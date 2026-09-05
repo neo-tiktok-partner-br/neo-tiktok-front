@@ -1,214 +1,241 @@
 ---
-import MiniLayout from '../layouts/MiniLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const entries = [
+  {
+    code: '01',
+    label: 'Shop',
+    title: 'Quero vender no TikTok Shop.',
+    description: 'Conheça a infraestrutura para sellers, marcas e operações de comércio.',
+    href: '/shop',
+    accent: 'var(--neo-coral)',
+  },
+  {
+    code: '02',
+    label: 'Creators',
+    title: 'Quero criar e monetizar conteúdo.',
+    description: 'Explore oportunidades, curadoria de produtos e colaboração para creators.',
+    href: '/creators',
+    accent: 'var(--neo-cyan)',
+  },
+  {
+    code: '03',
+    label: 'Partners',
+    title: 'Quero operar ou integrar tecnologia.',
+    description: 'Acesse a frente para agências, operadores, desenvolvedores e integrações.',
+    href: '/tech',
+    accent: 'var(--neo-acid)',
+  },
+];
 ---
 
-<MiniLayout title="neøflow // TikTok Minis In-App Platform" role="common">
-  <div class="minis-hub-view">
-    <div class="hub-header">
-      <span class="hub-badge font-mono">TIKTOK MINIS IN-APP PLATFORM</span>
-      <h1 class="font-display">Escolha sua porta de entrada</h1>
-      <p class="hub-subtitle">
-        Operação 100% nativa dentro do TikTok. Sem atrito, sem redirecionamento para fora do app.
+<BaseLayout
+  title="neøflow // Shop, Creators e Partners"
+  description="Entrada pública da neøflow para Shop, Creators e Partners no ecossistema TikTok."
+>
+  <section class="launch-entry" aria-labelledby="launch-title">
+    <div class="launch-glow" aria-hidden="true"></div>
+    <div class="launch-container">
+      <header class="launch-header">
+        <img
+          src="/assets/logo_partners.svg"
+          alt="neøflow Official TikTok Partners"
+          class="launch-logo"
+          width="860"
+          height="260"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <p class="launch-kicker font-mono">ENTRADA PÚBLICA · NAVEGAÇÃO WEB</p>
+        <h1 id="launch-title" class="font-display">Escolha o que você veio fazer.</h1>
+        <p class="launch-subtitle">
+          Explore sem criar conta. A autenticação aparece somente quando um recurso realmente precisar dela.
+        </p>
+      </header>
+
+      <nav class="launch-grid" aria-label="Escolha sua entrada">
+        {entries.map((entry) => (
+          <a class="launch-card" href={entry.href} style={`--entry-accent: ${entry.accent}`}>
+            <span class="launch-card-meta font-mono">
+              <span>{entry.code}</span>
+              <span>{entry.label}</span>
+            </span>
+            <span class="launch-card-title font-display">{entry.title}</span>
+            <span class="launch-card-description">{entry.description}</span>
+            <span class="launch-card-action font-mono" aria-hidden="true">CONTINUAR →</span>
+          </a>
+        ))}
+      </nav>
+
+      <p class="launch-note font-mono">
+        Você permanece em neotiktok.com até escolher um recurso que exija autorização.
       </p>
     </div>
-
-    <div class="hub-cards-stack">
-      <!-- Seller Mini App -->
-      <a href="/minis/seller" class="hub-entry-card seller-card">
-        <div class="card-icon font-mono">📦</div>
-        <div class="card-body">
-          <span class="card-kicker font-mono">PARA LOJISTAS</span>
-          <h2>Seller Engine</h2>
-          <p>Conecte seu estoque, sincronize catálogo e acione checkout nativo em 1 clique.</p>
-        </div>
-        <div class="card-arrow font-mono">→</div>
-      </a>
-
-      <!-- Creator Mini Hub -->
-      <a href="/minis/creator" class="hub-entry-card creator-card">
-        <div class="card-icon font-mono">🎧</div>
-        <div class="card-body">
-          <span class="card-kicker font-mono">PARA CRIADORES</span>
-          <h2>Creator Hub</h2>
-          <p>Produtos qualificados pelo NΞØ Gatekeeper, links de DM e comissão instantânea.</p>
-        </div>
-        <div class="card-arrow font-mono">→</div>
-      </a>
-
-      <!-- Series Microlearning -->
-      <a href="/minis/series" class="hub-entry-card series-card">
-        <div class="card-icon font-mono">⚡</div>
-        <div class="card-body">
-          <span class="card-kicker font-mono">MICROLEARNING 2026</span>
-          <h2>TikTok Series 24/7</h2>
-          <p>Micro-vídeos atômicos, conversão perpétua e checkout nativo no app.</p>
-        </div>
-        <div class="card-arrow font-mono">→</div>
-      </a>
-
-      <!-- Agency / Tech Partner -->
-      <a href="/shop" class="hub-entry-card agency-card">
-        <div class="card-icon font-mono">🏢</div>
-        <div class="card-body">
-          <span class="card-kicker font-mono">AGÊNCIAS &amp; TECH</span>
-          <h2>Infraestrutura de Rede</h2>
-          <p>Operações assistidas, APIs abertas, webhooks e ecossistema de parceiros.</p>
-        </div>
-        <div class="card-arrow font-mono">→</div>
-      </a>
-    </div>
-
-    <div class="hub-footer-stamp font-mono">
-      <span>🔒 TikTok Partner Verificado · neøflow</span>
-      <a href="/home" class="desktop-link">Visualizar Versão Desktop Clássica →</a>
-    </div>
-  </div>
-</MiniLayout>
+  </section>
+</BaseLayout>
 
 <style>
-  .minis-hub-view {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  .launch-entry {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    overflow: clip;
+    padding:
+      calc(7rem + var(--sat))
+      calc(1rem + var(--sar))
+      calc(3rem + var(--sab))
+      calc(1rem + var(--sal));
   }
 
-  .hub-header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
+  .launch-glow {
+    position: absolute;
+    top: -14rem;
+    left: 50%;
+    width: min(48rem, 100%);
+    height: 34rem;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(215, 254, 9, 0.11), rgba(0, 242, 254, 0.05) 38%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
   }
 
-  .hub-badge {
-    color: var(--neo-coral);
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+  .launch-container {
+    position: relative;
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
   }
 
-  .hub-header h1 {
-    font-size: 1.75rem;
-    line-height: 1.1;
-    color: #ffffff;
-    margin: 0;
+  .launch-header {
+    max-width: 760px;
   }
 
-  .hub-subtitle {
+  .launch-logo {
+    display: block;
+    width: min(100%, 430px);
+    height: auto;
+    margin-bottom: clamp(2.5rem, 8vh, 5rem);
+  }
+
+  .launch-kicker {
+    color: var(--neo-acid);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+  }
+
+  .launch-header h1 {
+    margin: 0.85rem 0 1rem;
+    font-size: clamp(2.6rem, 10vw, 6.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.065em;
+    overflow-wrap: anywhere;
+  }
+
+  .launch-subtitle {
+    max-width: 620px;
     color: var(--neo-text-muted);
-    font-size: 0.875rem;
-    line-height: 1.5;
-    margin: 0;
+    font-size: clamp(1rem, 3vw, 1.2rem);
   }
 
-  .hub-cards-stack {
+  .launch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin-top: clamp(2.5rem, 7vh, 4.5rem);
+  }
+
+  .launch-card {
+    min-width: 0;
+    min-height: 250px;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-  }
-
-  .hub-entry-card {
-    background: rgba(18, 18, 20, 0.85);
-    border: 1px solid var(--neo-border);
-    border-radius: var(--radius-md);
     padding: 1.25rem;
+    border: 1px solid var(--neo-border);
+    border-radius: var(--radius-ios);
+    background: var(--neo-bg-card);
+    color: var(--neo-white);
+    text-decoration: none;
+    box-shadow: var(--shadow-ios);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .launch-card:hover,
+  .launch-card:focus-visible {
+    transform: translateY(-3px);
+    border-color: var(--entry-accent);
+    outline: none;
+  }
+
+  .launch-card-meta {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
     gap: 1rem;
-    text-decoration: none;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    color: var(--entry-accent);
+    font-size: 0.68rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
   }
 
-  .hub-entry-card:hover {
-    transform: translateY(-2px);
+  .launch-card-title {
+    margin-top: auto;
+    padding-top: 2rem;
+    font-size: clamp(1.45rem, 4vw, 2.1rem);
+    line-height: 1;
+    overflow-wrap: anywhere;
   }
 
-  .seller-card:hover {
-    border-color: var(--neo-coral);
+  .launch-card-description {
+    margin: 0.85rem 0 1.25rem;
+    color: var(--neo-text-muted);
+    font-size: 0.9rem;
   }
 
-  .creator-card:hover {
-    border-color: var(--neo-cyan);
-  }
-
-  .series-card:hover {
-    border-color: var(--neo-acid);
-  }
-
-  .agency-card:hover {
-    border-color: var(--neo-white);
-  }
-
-  .agency-card .card-kicker { color: var(--neo-text-muted); }
-
-  .card-icon {
-    font-size: 1.75rem;
-    background: rgba(255, 255, 255, 0.05);
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    flex: 1;
-  }
-
-  .card-kicker {
-    font-size: 0.625rem;
-    font-weight: 700;
+  .launch-card-action {
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--neo-border);
+    color: var(--entry-accent);
+    font-size: 0.68rem;
     letter-spacing: 0.1em;
+  }
+
+  .launch-note {
+    margin-top: 1.5rem;
     color: var(--neo-text-muted);
+    font-size: 0.68rem;
+    line-height: 1.5;
   }
 
-  .seller-card .card-kicker { color: var(--neo-coral); }
-  .creator-card .card-kicker { color: var(--neo-cyan); }
-  .series-card .card-kicker { color: var(--neo-acid); }
+  @media (max-width: 760px) {
+    .launch-grid {
+      grid-template-columns: 1fr;
+    }
 
-  .card-body h2 {
-    font-size: 1.15rem;
-    color: #ffffff;
-    margin: 0;
+    .launch-card {
+      min-height: 210px;
+    }
   }
 
-  .card-body p {
-    font-size: 0.78rem;
-    color: var(--neo-text-muted);
-    margin: 0;
-    line-height: 1.4;
+  @media (max-width: 360px) {
+    .launch-entry {
+      padding-right: calc(0.75rem + var(--sar));
+      padding-left: calc(0.75rem + var(--sal));
+    }
+
+    .launch-card {
+      padding: 1rem;
+    }
   }
 
-  .card-arrow {
-    color: #ffffff;
-    font-size: 1.25rem;
-    font-weight: 700;
-  }
+  @media (prefers-reduced-motion: reduce) {
+    .launch-card {
+      transition: none;
+    }
 
-  .hub-footer-stamp {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    text-align: center;
-    font-size: 0.6875rem;
-    color: var(--neo-text-muted);
-    padding-top: 1rem;
-  }
-
-  .desktop-link {
-    color: var(--neo-cyan);
-    text-decoration: none;
-    font-size: 0.625rem;
-    opacity: 0.75;
-    transition: opacity 0.2s ease;
-  }
-
-  .desktop-link:hover {
-    opacity: 1;
-    text-decoration: underline;
+    .launch-card:hover,
+    .launch-card:focus-visible {
+      transform: none;
+    }
   }
 </style>

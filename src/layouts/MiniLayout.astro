@@ -9,8 +9,8 @@ interface Props {
 }
 
 const {
-  title = "neøflow // TikTok Minis",
-  description = "Mini App nativo de social commerce e automação TikTok.",
+  title = "neøflow // Experiência H5",
+  description = "Experiência web H5 9:16 da neøflow preparada para navegador in-app.",
   role = 'common',
   activeTab = 'home',
 } = Astro.props;
@@ -52,6 +52,8 @@ const canonicalURL = rawCanonical === BASE_URL + '/' ? BASE_URL : rawCanonical.r
         -webkit-tap-highlight-color: transparent;
       }
       html, body {
+        width: 100%;
+        max-width: 100%;
         background-color: #050608;
         color: #ffffff;
         margin: 0;
@@ -59,7 +61,8 @@ const canonicalURL = rawCanonical === BASE_URL + '/' ? BASE_URL : rawCanonical.r
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
         -webkit-font-smoothing: antialiased;
         min-height: 100vh;
-        overflow-x: hidden;
+        min-height: 100svh;
+        overflow-x: clip;
       }
     </style>
   </head>
@@ -68,7 +71,7 @@ const canonicalURL = rawCanonical === BASE_URL + '/' ? BASE_URL : rawCanonical.r
     <div class="minis-viewport-container">
       <div class="minis-device-frame">
         <!-- Top Status & Minis Bar -->
-        <header class="minis-top-bar" aria-label="Barra do TikTok Mini App">
+        <header class="minis-top-bar" aria-label="Barra da experiência H5">
           <div class="minis-left-action">
             <button type="button" class="minis-nav-btn" onclick="if(window.history.length > 1){window.history.back();}else{window.location.href='/minis';}" aria-label="Voltar">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -94,7 +97,7 @@ const canonicalURL = rawCanonical === BASE_URL + '/' ? BASE_URL : rawCanonical.r
 
         <!-- Bottom Minis Nav Bar (Role-Specific) -->
         {role !== 'common' && (
-          <nav class="minis-bottom-bar font-mono" aria-label="Navegação do Mini App">
+          <nav class="minis-bottom-bar font-mono" aria-label="Navegação da experiência H5">
             {role === 'seller' ? (
               <>
                 <a href="/minis/seller" class={`minis-tab ${activeTab === 'home' ? 'active' : ''}`}>
@@ -135,7 +138,10 @@ const canonicalURL = rawCanonical === BASE_URL + '/' ? BASE_URL : rawCanonical.r
 
 <style>
   .minis-viewport-container {
+    width: 100%;
+    max-width: 100%;
     min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -145,7 +151,7 @@ const canonicalURL = rawCanonical === BASE_URL + '/' ? BASE_URL : rawCanonical.r
 
   .minis-device-frame {
     width: 100%;
-    max-width: 420px;
+    max-width: min(420px, 100%);
     height: 100vh;
     max-height: 880px;
     background: #0b0b0c;
@@ -255,7 +261,7 @@ const canonicalURL = rawCanonical === BASE_URL + '/' ? BASE_URL : rawCanonical.r
   }
 
   /* Mobile In-App Native Viewport */
-  @media (max-width: 500px) {
+  @media (max-width: 768px), (hover: none) and (pointer: coarse) {
     .minis-viewport-container {
       padding: 0;
       background: #0b0b0c;
@@ -264,7 +270,8 @@ const canonicalURL = rawCanonical === BASE_URL + '/' ? BASE_URL : rawCanonical.r
     }
 
     .minis-device-frame {
-      max-width: 100vw;
+      width: 100%;
+      max-width: 100%;
       height: 100vh;
       height: 100dvh;
       max-height: 100vh;
@@ -276,7 +283,21 @@ const canonicalURL = rawCanonical === BASE_URL + '/' ? BASE_URL : rawCanonical.r
 
     .minis-top-bar {
       padding-top: env(safe-area-inset-top, 0px);
+      padding-right: calc(1rem + env(safe-area-inset-right, 0px));
+      padding-left: calc(1rem + env(safe-area-inset-left, 0px));
       height: calc(54px + env(safe-area-inset-top, 0px));
+    }
+
+    .minis-content-scroll {
+      padding-right: calc(1rem + env(safe-area-inset-right, 0px));
+      padding-left: calc(1rem + env(safe-area-inset-left, 0px));
+    }
+
+    .minis-bottom-bar {
+      height: auto;
+      min-height: calc(64px + env(safe-area-inset-bottom, 0px));
+      padding-right: calc(1rem + env(safe-area-inset-right, 0px));
+      padding-left: calc(1rem + env(safe-area-inset-left, 0px));
     }
   }
 </style>
