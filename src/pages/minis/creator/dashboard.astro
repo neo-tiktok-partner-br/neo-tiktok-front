@@ -1,0 +1,232 @@
+---
+import MiniLayout from '../../../layouts/MiniLayout.astro';
+---
+
+<MiniLayout title="Painel do Criador // neøflow Minis" role="creator" activeTab="dashboard">
+  <div class="creator-dash-view">
+    <!-- Header Status -->
+    <div class="creator-status-badge font-mono">
+      <span class="live-dot"></span>
+      <span>CONTA TIKTOK CONECTADA: @paulinha.trend</span>
+    </div>
+
+    <!-- Main Metrics Grid -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <span class="metric-lbl font-mono">COMISSÕES ESTE MÊS</span>
+        <div class="metric-val font-display">R$ 8.420,00</div>
+        <span class="metric-sub font-mono">↑ +38.2% vs mês anterior</span>
+      </div>
+
+      <div class="metric-card cyan">
+        <span class="metric-lbl font-mono">CLIQUES EM LINKS DE DM</span>
+        <div class="metric-val font-display">1.480</div>
+        <span class="metric-sub font-mono">120ms tempo de resposta médio</span>
+      </div>
+    </div>
+
+    <!-- Top Converting Products -->
+    <div class="dash-section">
+      <div class="sec-title-row">
+        <span class="sec-kicker font-mono">SEUS PRODUTOS TOP CONVERSÃO</span>
+        <span class="sec-badge font-mono">3 Ativos</span>
+      </div>
+
+      <div class="prod-perf-list">
+        <div class="prod-perf-item">
+          <div class="prod-icon">🧴</div>
+          <div class="prod-info">
+            <strong>Kit Skincare Ácido Hialurônico</strong>
+            <span>34 vendas hoje · Comissão: R$ 42,00 / un</span>
+          </div>
+          <span class="perf-tag font-mono">+R$ 1.428</span>
+        </div>
+
+        <div class="prod-perf-item">
+          <div class="prod-icon">🎧</div>
+          <div class="prod-info">
+            <strong>Fone TWS Noise Cancelling</strong>
+            <span>18 vendas hoje · Comissão: R$ 65,70 / un</span>
+          </div>
+          <span class="perf-tag font-mono">+R$ 1.182</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Tools -->
+    <div class="tools-grid">
+      <a href="/minis/creator/catalog" class="tool-btn font-mono">
+        📦 Adicionar Novo Produto à Vitrine
+      </a>
+      <a href="/minis/creator/wallet" class="tool-btn secondary font-mono">
+        💳 Solicitar Saque Antecipado
+      </a>
+    </div>
+  </div>
+</MiniLayout>
+
+<style>
+  .creator-dash-view {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .creator-status-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0, 242, 254, 0.1);
+    border: 1px solid rgba(0, 242, 254, 0.25);
+    color: var(--neo-cyan);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    padding: 0.45rem 0.8rem;
+    border-radius: var(--radius-full);
+    align-self: flex-start;
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--neo-cyan);
+    box-shadow: 0 0 6px var(--neo-cyan);
+  }
+
+  .metrics-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .metric-card {
+    background: rgba(18, 18, 20, 0.85);
+    border: 1px solid var(--neo-border);
+    border-radius: var(--radius-md);
+    padding: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .metric-card.cyan {
+    border-color: rgba(0, 242, 254, 0.3);
+    background: radial-gradient(circle at top left, rgba(0, 242, 254, 0.08) 0%, rgba(18, 18, 20, 0.9) 70%);
+  }
+
+  .metric-lbl {
+    font-size: 0.625rem;
+    color: var(--neo-text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .metric-val {
+    font-size: 1.75rem;
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .metric-sub {
+    font-size: 0.6875rem;
+    color: #4ade80;
+  }
+
+  .dash-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .sec-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sec-kicker {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--neo-acid);
+    letter-spacing: 0.08em;
+  }
+
+  .sec-badge {
+    font-size: 0.625rem;
+    color: var(--neo-text-muted);
+  }
+
+  .prod-perf-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .prod-perf-item {
+    background: rgba(18, 18, 20, 0.65);
+    border: 1px solid var(--neo-border);
+    border-radius: 12px;
+    padding: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .prod-icon {
+    font-size: 1.4rem;
+  }
+
+  .prod-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    flex: 1;
+  }
+
+  .prod-info strong {
+    font-size: 0.82rem;
+    color: #ffffff;
+  }
+
+  .prod-info span {
+    font-size: 0.7rem;
+    color: var(--neo-text-muted);
+  }
+
+  .perf-tag {
+    font-size: 0.75rem;
+    color: #4ade80;
+    font-weight: 700;
+  }
+
+  .tools-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+  }
+
+  .tool-btn {
+    background: var(--neo-coral);
+    color: #ffffff;
+    padding: 0.85rem;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.15s ease;
+  }
+
+  .tool-btn:hover {
+    transform: scale(0.98);
+  }
+
+  .tool-btn.secondary {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--neo-border);
+    color: #ffffff;
+    font-weight: 600;
+  }
+</style>

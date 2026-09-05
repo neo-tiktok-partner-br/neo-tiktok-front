@@ -1,0 +1,314 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const sdkSnippet = `import { TikTokShopNodeApiClient } from '@neomello/tiktok-sdk';
+
+const client = new TikTokShopNodeApiClient({
+  config: {
+    app_key: process.env.TIKTOK_APP_KEY,
+    app_secret: process.env.TIKTOK_APP_SECRET,
+    sandbox: false,
+  },
+});
+
+// Busca oficial de produtos
+const response = await client.api.ProductV202502Api.ProductsSearchPost(
+  1,
+  accessToken,
+  'application/json'
+);`;
+---
+
+<BaseLayout
+  title="Documentação Técnica & APIs // neøflow TikTok Partner"
+  description="Documentação oficial para desenvolvedores e integradores. TikTok Shop Open API, @neomello/tiktok-sdk, Webhooks e Minis 9:16 In-App Specs."
+>
+  <div class="docs-wrapper">
+    <!-- Header -->
+    <header class="docs-header">
+      <div class="docs-badge font-mono">NEØFLOW DEVELOPER PORTAL // DOCS.NEOTIKTOK.COM</div>
+      <h1 class="font-display">Documentação de Engenharia &amp; APIs</h1>
+      <p class="docs-lead">
+        Guias técnicos, referências de endpoints, webhooks oficiais e SDK TypeScript para o ecossistema TikTok Shop Partner Brasil.
+      </p>
+    </header>
+
+    <div class="docs-grid">
+      <!-- Navigation Sidebar -->
+      <aside class="docs-nav font-mono">
+        <div class="nav-section">
+          <h3>INÍCIO RÁPIDO</h3>
+          <a href="#overview" class="active">Visão Geral</a>
+          <a href="#sdk">@neomello/tiktok-sdk</a>
+          <a href="#oauth">Autenticação OAuth 2.0</a>
+        </div>
+        <div class="nav-section">
+          <h3>APIS &amp; WEBHOOKS</h3>
+          <a href="#endpoints">Endpoints Principais</a>
+          <a href="#webhooks">Webhooks &amp; HMAC</a>
+          <a href="#minis-specs">Especificações Minis 9:16</a>
+        </div>
+        <div class="nav-section">
+          <h3>CONFORMIDADE</h3>
+          <a href="/legal/termos">Termos de Uso</a>
+          <a href="/legal/privacidade">Privacidade (LGPD)</a>
+        </div>
+      </aside>
+
+      <!-- Main Docs Content Body -->
+      <article class="docs-content">
+        <!-- Overview -->
+        <section id="overview" class="doc-block">
+          <h2>1. Visão Geral da Arquitetura</h2>
+          <p>
+            A infraestrutura da <strong>neøflow</strong> atua como a camada de conectividade de alto desempenho para o <strong>TikTok Shop Partner Center (TTSPC)</strong>. Todas as chamadas ao backend utilizam chaves seguras, isolamento por banco PostgreSQL e processamento assíncrono via BullMQ/Redis.
+          </p>
+          <div class="code-box">
+            <div class="code-header font-mono">ENDPOINT BASE (PRODUÇÃO)</div>
+            <pre><code>https://api.neotiktok.com</code></pre>
+          </div>
+        </section>
+
+        <!-- SDK Section -->
+        <section id="sdk" class="doc-block">
+          <h2>2. SDK Oficial TypeScript (@neomello/tiktok-sdk)</h2>
+          <p>
+            O SDK oficial inclui os <strong>41 escopos aprovados</strong> pelo TikTok Shop Partner Center, cobrindo Afiliados, Catálogo de Produtos, Pedidos, Finanças e Logística.
+          </p>
+          <div class="code-box">
+            <div class="code-header font-mono">INSTALAÇÃO &amp; USO</div>
+            <pre><code>{sdkSnippet}</code></pre>
+          </div>
+        </section>
+
+        <!-- OAuth Section -->
+        <section id="oauth" class="doc-block">
+          <h2>3. Fluxo de Autorização OAuth 2.0</h2>
+          <p>
+            A autorização de lojas e lojistas segue o padrão OAuth 2.0 com redirecionamento criptografado e renovação autônoma de tokens (Auto-Refresh a cada 10 minutos).
+          </p>
+          <ul>
+            <li><strong>Autorização Inicial:</strong> <code>GET /oauth/authorize</code></li>
+            <li><strong>Callback Seguro:</strong> <code>GET /oauth/callback?code=...</code></li>
+            <li><strong>Health Check:</strong> <code>GET /health</code></li>
+          </ul>
+        </section>
+
+        <!-- Minis 9:16 Specs -->
+        <section id="minis-specs" class="doc-block">
+          <h2>4. Especificações para TikTok Minis 9:16</h2>
+          <p>
+            A experiência de Minis roda dentro do WebView In-App do TikTok. Para garantir a melhor experiência, siga os parâmetros oficiais:
+          </p>
+          <div class="specs-table-wrapper font-mono">
+            <table>
+              <thead>
+                <tr>
+                  <th>Propriedade</th>
+                  <th>Especificação Recomendada</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Aspect Ratio</td>
+                  <td>9:16 (Viewport Estrito / Mobile Native)</td>
+                </tr>
+                <tr>
+                  <td>Safe Area Insets</td>
+                  <td>env(safe-area-inset-top) / env(safe-area-inset-bottom)</td>
+                </tr>
+                <tr>
+                  <td>Touch Target</td>
+                  <td>Mínimo 44px x 44px (Acessibilidade WCAG 2.4.1)</td>
+                </tr>
+                <tr>
+                  <td>Latência de DM</td>
+                  <td>&le; 120ms (Processamento de webhooks em tempo real)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </article>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .docs-wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: calc(90px + var(--sat)) 1.25rem calc(4rem + var(--sab));
+  }
+
+  .docs-header {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .docs-badge {
+    color: var(--neo-acid);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .docs-header h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: #ffffff;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  .docs-lead {
+    color: var(--neo-text-muted);
+    font-size: 1.05rem;
+    max-width: 760px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .docs-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  @media (min-width: 860px) {
+    .docs-grid {
+      grid-template-columns: 240px 1fr;
+    }
+  }
+
+  .docs-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    top: 90px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 1.25rem;
+    border-radius: var(--radius-ios);
+  }
+
+  .nav-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .nav-section h3 {
+    font-size: 0.625rem;
+    color: var(--neo-text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.35rem;
+  }
+
+  .nav-section a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.78rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-section a:hover, .nav-section a.active {
+    background: rgba(215, 254, 9, 0.12);
+    color: var(--neo-acid);
+  }
+
+  .docs-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .doc-block {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-ios);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .doc-block h2 {
+    font-family: var(--font-display);
+    color: #ffffff;
+    font-size: 1.35rem;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 0.65rem;
+    margin: 0;
+  }
+
+  .doc-block p {
+    color: #c4d7e0;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .doc-block ul {
+    padding-left: 1.25rem;
+    color: #c4d7e0;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .doc-block code {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--neo-cyan);
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.85em;
+  }
+
+  .code-box {
+    background: #050608;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .code-header {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.5rem 1rem;
+    font-size: 0.65rem;
+    color: var(--neo-text-muted);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .code-box pre {
+    padding: 1.25rem;
+    margin: 0;
+    overflow-x: auto;
+    font-size: 0.82rem;
+    color: #4ade80;
+    font-family: var(--font-mono);
+  }
+
+  .specs-table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+  }
+
+  .specs-table-wrapper th {
+    text-align: left;
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--neo-border);
+    color: var(--neo-acid);
+  }
+
+  .specs-table-wrapper td {
+    padding: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+  }
+</style>
