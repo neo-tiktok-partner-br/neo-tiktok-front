@@ -56,7 +56,7 @@ make install
 
 ────────────────────────────────────────
 
-## ⧉ Fluxo de Desenvolvimento Local
+## ⧉ Fluxo de Desenvolvimento Local & Rotas Canônicas
 
 Para iniciar o servidor local de desenvolvimento do Astro com Hot Module Replacement (HMR WebSocket):
 
@@ -65,6 +65,23 @@ make dev
 ```
 
 O servidor estará disponível em: `http://localhost:4321`
+
+### 📱 Camada 9:16 Minis (In-App TikTok / Mobile Native):
+* **`/` (Home Oficial):** Hub principal 9:16 para escolha de porta (Sellers, Creators, Séries, Tech)
+* **`/minis/creator`:** Hub do Criador e automações de DM
+* **`/minis/creator/dashboard`:** Painel de métricas, produtos e conversão
+* **`/minis/creator/catalog`:** Catálogo qualificado de produtos para amostra / link DM
+* **`/minis/creator/wallet`:** Carteira e extrato de split financeiro
+* **`/minis/seller`:** Splash de integração de lojista
+* **`/minis/seller/dashboard`:** Painel de vendas do lojista
+* **`/minis/series`:** Player de microlearning 9:16 com checkout 1-clique
+
+### 🖥️ Camada Desktop & Documentação Técnica:
+* **`/home`:** Portal institucional clássico widescreen
+* **`/shop`:** Apresentação da infraestrutura comercial para Sellers
+* **`/docs` (`docs.neotiktok.com`):** Portal de desenvolvedores, `@neomello/tiktok-sdk`, OAuth e specs
+* **`/legal/termos`:** Termos de Uso (Dec. 7.962/2013 e CDC Art. 49)
+* **`/legal/privacidade`:** Política de Privacidade (LGPD Lei 13.709/2018 e DPO)
 
 ────────────────────────────────────────
 

@@ -40,9 +40,13 @@ A neøflow não atua como uma agência prestadora de serviços tradicional
 .
 📊 Se quiser, nós podemos abrir a nossa calculadora integrada e projetar o faturamento de uma operação de TSP do Mês 1 ao Mês 10 para você visualizar o potencial de ganho com essa estrutura.
 
-## Superfície canônica de App Review
+## Superfície canônica de App Review & Superfícies Ativas
 
-- Product URL: `https://neotiktok.com`
+- Product URL (Hub 9:16 In-App Oficial): `https://neotiktok.com` (`/`)
+- Desktop Widescreen Home: `https://neotiktok.com/home`
+- Creator Minis Dashboard: `https://neotiktok.com/minis/creator/dashboard`
+- Seller Minis Dashboard: `https://neotiktok.com/minis/seller/dashboard`
+- Developer Portal: `https://neotiktok.com/docs` (`docs.neotiktok.com`)
 - Reviewer login: `/login`
 - Home autenticada: `/app`
 - Orders: `/app/orders`
@@ -50,6 +54,7 @@ A neøflow não atua como uma agência prestadora de serviços tradicional
 - Terms: `/legal/termos`
 - Official Creator Landing: `/creators/paulinha` (`https://neotiktok.com/creators/paulinha`)
 - Production Host: **Railway** (`main` branch trigger)
+
 
 A conta dedicada de reviewer existe, mas sua senha não pertence ao Git nem à
 documentação. Search Orders pode retornar empty state validamente. Esta UI não
