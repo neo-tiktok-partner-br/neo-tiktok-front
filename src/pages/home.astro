@@ -1,0 +1,364 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import IntentGateway from '../components/IntentGateway.astro';
+---
+
+<BaseLayout title="neøflow // Official TikTok Partners">
+  <section class="hero-section">
+    <!-- Efeito sutil de brilho de fundo iOS Ambient -->
+    <div class="ambient-glow"></div>
+
+    <div class="hero-container">
+      <!-- Espaçador superior para manter alinhamento vertical com a logo no centro -->
+      <div class="header-spacer"></div>
+
+      <!-- LOGO -->
+      <img
+        src="/assets/logo_partners.svg"
+        alt="neøflow Official TikTok Partners Logo"
+        class="main-partner-logo"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        width="860"
+        height="260"
+      />
+
+      <!-- Espaçador inferior para manter alinhamento vertical com a logo no centro -->
+      <div class="bottom-spacer"></div>
+    </div>
+  </section>
+
+
+
+
+  <!-- Faixa Branca Esticada nas Laterais (Alto Impacto / TikTok Business Style) -->
+  <section class="slogan-band-section">
+    <div class="slogan-container">
+      <h1 class="hero-slogan font-display">
+        Seu perfil.<br />
+        Seus interesses.<br />
+        Nosso negócio.
+      </h1>
+    </div>
+  </section>
+
+  <IntentGateway />
+
+  <!-- Seção: O Novo Paradigma 2026 (Educação Digital, Creators & Performance) -->
+  <section class="paradigm-section" aria-labelledby="paradigm-title">
+    <div class="paradigm-container">
+      <header class="paradigm-header">
+        <p class="paradigm-kicker font-mono">ARQUITETURA 2026 // PARADIGMA TIKTOK</p>
+        <h2 id="paradigm-title" class="font-display">O fim do lançamento estático. O império do fluxo perpétuo.</h2>
+        <p>
+          Atenção fragmentada, microlearning orientado a problemas e automações instantâneas de DM substituíram funis longos e frios de 2016. Conectamos seu conteúdo a um ecossistema de conversão ininterrupto.
+        </p>
+      </header>
+
+      <div class="paradigm-grid">
+        <div class="paradigm-card">
+          <div class="card-num font-mono">01</div>
+          <h3 class="font-display">Microlearning & Nanofunil</h3>
+          <p>
+            Roteirização em pílulas de 60 a 90 segundos com retenção imediata nos primeiros 3s (Edutainment). Eliminação de fricção cognitiva e entrega atômica de valor.
+          </p>
+          <div class="paradigm-tag font-mono">HOOK 3S + RETENÇÃO</div>
+        </div>
+
+        <div class="paradigm-card">
+          <div class="card-num font-mono">02</div>
+          <h3 class="font-display">Conversational Commerce</h3>
+          <p>
+            Engajamento que vira venda no comentário. Automação instantânea via DMs e webhooks que transformam a FYP em um loop viral acelerado de aquisição.
+          </p>
+          <div class="paradigm-tag font-mono">DM SILENCIOSA + LOOP FYP</div>
+        </div>
+
+        <div class="paradigm-card">
+          <div class="card-num font-mono">03</div>
+          <h3 class="font-display">Spark Ads & Esteira Viva</h3>
+          <p>
+            Tráfego impulsionado em vídeos nativos com prova social real. Combate implacável à fadiga criativa através da geração e rotação contínua de criativos.
+          </p>
+          <div class="paradigm-tag font-mono">CAPI SERVER-SIDE + SPARK</div>
+        </div>
+
+        <div class="paradigm-card">
+          <div class="card-num font-mono">04</div>
+          <h3 class="font-display">Oferta No-Brainer & Backend</h3>
+          <p>
+            Aquisição de clientes com produto de entrada de baixo atrito para liquidar o CAC e aquecer o Pixel, capitalizando no backend de alto valor.
+          </p>
+          <div class="paradigm-tag font-mono">VALOR PERPÉTUO + D+0</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção do Embed do TikTok (@neoflowagency) -->
+  <section class="tiktok-embed-section">
+    <div class="tiktok-embed-container">
+      <blockquote
+        class="tiktok-embed"
+        cite="https://www.tiktok.com/@neoflowagency"
+        data-unique-id="neoflowagency"
+        data-embed-from="oembed"
+        data-embed-type="creator"
+        style="max-width:780px; min-width:288px;"
+      >
+        <section>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@neoflowagency?refer=creator_embed">@neoflowagency</a>
+        </section>
+      </blockquote>
+      <script async src="https://www.tiktok.com/embed.js" is:inline></script>
+    </div>
+  </section>
+
+  <style>
+    /* Mobile-First Layout Core */
+    .hero-section {
+      position: relative;
+      min-height: 85vh; /* Ocupa a maior parte da tela de entrada */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(3rem + var(--sat)) 1.25rem calc(3rem + var(--sab)) 1.25rem;
+    }
+
+    .ambient-glow {
+      position: absolute;
+      top: 50%; /* Centraliza o brilho na logo */
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      max-width: 600px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(215, 254, 9, 0.12) 0%, rgba(0, 242, 254, 0.05) 50%, transparent 75%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      width: 100%;
+      min-height: 65vh; /* Estica o container verticalmente */
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between; /* Badge no topo, logo no centro, slogan embaixo */
+      text-align: center;
+      gap: 3rem; /* Fallback caso a tela seja muito pequena */
+    }
+
+    /* Espaçadores que garantem o alinhamento da logo no centro exato da tela */
+    .header-spacer,
+    .bottom-spacer {
+      height: 70px;
+      width: 100%;
+    }
+
+    .main-partner-logo {
+      width: 100%;
+      height: auto;
+      max-width: 640px; /* Mobile width */
+      max-height: 220px;
+      object-fit: contain;
+      transition: var(--transition-smooth);
+      margin: auto 0;
+    }
+
+    /* ══════════════════════════════════════════
+       SLOGAN BAND SECTION (TikTok Business Style)
+       ══════════════════════════════════════════ */
+    .slogan-band-section {
+      background-color: var(--neo-white); /* Faixa branca esticada nas laterais */
+      color: #000000;
+      padding: 4.5rem 1.5rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .slogan-container {
+      max-width: 1080px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start; /* Alinhado à esquerda como na referência */
+    }
+
+    .hero-slogan {
+      font-size: clamp(2.2rem, 8vw, 4.5rem); /* Grande e ultra-impactante */
+      font-weight: 800; /* Extra bold */
+      color: #000000;
+      line-height: 1.08; /* Altura de linha super-apertada */
+      letter-spacing: -0.04em; /* Letras coladas */
+      text-align: left; /* Alinhado à esquerda */
+    }
+
+    /* Responsividade para telas maiores (Tablet/Desktop) */
+    @media (min-width: 768px) {
+      .hero-section {
+        min-height: 90vh; /* Altura generosa no desktop */
+      }
+
+      .hero-container {
+        min-height: 72vh; /* Distribuição de espaço premium */
+      }
+
+      .main-partner-logo {
+        max-width: 840px; /* Aumentado no desktop */
+      }
+
+      .slogan-band-section {
+        padding: 7rem 2rem; /* Mais respiro na faixa branca no desktop */
+      }
+    }
+
+    /* ══════════════════════════════════════════
+       PARADIGM SECTION (Educação Digital & Performance 2026)
+       ══════════════════════════════════════════ */
+    .paradigm-section {
+      padding: 6rem 1.25rem;
+      background:
+        radial-gradient(circle at 50% 100%, rgba(0, 242, 254, 0.05), transparent 30rem),
+        linear-gradient(180deg, var(--neo-bg) 0%, var(--neo-bg-subtle) 100%);
+      border-top: 1px solid var(--neo-border);
+    }
+
+    .paradigm-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .paradigm-header {
+      max-width: 820px;
+      margin-bottom: 3.5rem;
+    }
+
+    .paradigm-kicker {
+      color: var(--neo-cyan);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      margin-bottom: 1rem;
+    }
+
+    .paradigm-header h2 {
+      font-size: clamp(2.2rem, 6.5vw, 4.2rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      margin-bottom: 1.25rem;
+      color: var(--neo-white);
+    }
+
+    .paradigm-header p {
+      color: var(--neo-text-muted);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.55;
+    }
+
+    .paradigm-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .paradigm-card {
+      background: var(--neo-bg-card);
+      border: 1px solid var(--neo-border);
+      border-radius: var(--radius-ios);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-ios);
+      backdrop-filter: var(--glass-blur);
+      transition: var(--transition-smooth);
+    }
+
+    .paradigm-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 242, 254, 0.4);
+      background: rgba(22, 22, 26, 0.9);
+    }
+
+    .card-num {
+      color: var(--neo-cyan);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.5rem;
+    }
+
+    .paradigm-card h3 {
+      font-size: clamp(1.4rem, 3.5vw, 1.85rem);
+      letter-spacing: -0.035em;
+      margin-bottom: 0.75rem;
+      color: var(--neo-white);
+    }
+
+    .paradigm-card p {
+      color: var(--neo-text-muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .paradigm-tag {
+      align-self: flex-start;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--neo-acid);
+      background: rgba(215, 254, 9, 0.08);
+      border: 1px solid rgba(215, 254, 9, 0.25);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-full);
+    }
+
+    @media (max-width: 720px) {
+      .paradigm-section {
+        padding: 4.5rem 1rem;
+      }
+
+      .paradigm-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .paradigm-card {
+        padding: 1.5rem;
+      }
+    }
+
+    /* ══════════════════════════════════════════
+       TIKTOK EMBED SECTION
+       ══════════════════════════════════════════ */
+    .tiktok-embed-section {
+      width: 100%;
+      padding: 4rem 1.25rem 5rem 1.25rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(180deg, #0b0b0c 0%, #050505 100%);
+      border-top: 1px solid var(--neo-border);
+    }
+
+    .tiktok-embed-container {
+      width: 100%;
+      max-width: 780px;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</BaseLayout>
