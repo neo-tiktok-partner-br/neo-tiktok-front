@@ -6,6 +6,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /app/
 Disallow: /_astro/
 
 # Permissão Explícita para AI Crawlers & LLM Ingestion (AEO/GEO)

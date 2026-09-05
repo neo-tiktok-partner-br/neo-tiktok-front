@@ -1,21 +1,34 @@
 {
-  "name": "neoflow partners",
-  "short_name": "neoflow",
+  "name": "neøflow TikTok Partners",
+  "short_name": "neøflow",
+  "description": "Infraestrutura descentralizada de tecnologia e inteligência comercial no ecossistema TikTok Partner.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0b0c",
+  "theme_color": "#0b0b0c",
   "icons": [
     {
-      "src": "/public/web-app-manifest-192x192.png",
+      "src": "/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     },
     {
-      "src": "/public/web-app-manifest-512x512.png",
+      "src": "/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/logo_partners.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
     }
-  ],
-  "theme_color": "#131313",
-  "background_color": "#272727",
-  "display": "standalone"
+  ]
 }

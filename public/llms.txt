@@ -2,15 +2,27 @@
 > Sovereign Markdown Documentation Index for Agentic Ingestion & Synthesis
 
 ## System Overview
-neøflow is an official TikTok Partner ecosystem operating as a decentralized commercial infrastructure for Shop (Sellers), Creators (Affiliates/LIVES), Marketing (UGC/Ads), and Tech (Open API, OAuth 2.0, Webhooks, AI Agents).
+neøflow is an official TikTok Shop Partner (TTSPC) technology ecosystem operating commercial and API infrastructure for Shop (Sellers), Creators (Affiliates/Live Commerce), Marketing (Performance/Ads), and Tech (OAuth 2.0, Webhooks, Multi-Agent Systems).
 
-## Core Documentation Index
-- [System Architecture & Rules](https://neotiktok.com/AGENTS.md): Canonical development policy, design system, and integration constraints.
-- [Setup & Environment Guide](https://neotiktok.com/SETUP.md): Local installation, Node.js runtime, pnpm, and Makefile instructions.
-- [Ecosystem Domain Codex](https://neotiktok.com/CODEX.md): Vocabulary, technical terms, and domain glossary.
-- [Legal Compliance Hub](https://neotiktok.com/legal/privacidade): Privacy policy (LGPD), Terms of Service, Data Subject Rights (LGPD Art. 18), and E-commerce Decree (7.962/13).
+## Canonical Public Endpoints
+- [Home Hub](https://neotiktok.com/): Official 9:16 mobile-first in-app entry and portal selection.
+- [Desktop Portal](https://neotiktok.com/home): Widescreen desktop overview of neøflow capabilities and infrastructure.
+- [TikTok Shop & Sellers](https://neotiktok.com/shop): Official connection overview for merchants and e-commerce operations.
+- [Seller Connect Gateway](https://neotiktok.com/sellers/conectar): Secure OAuth onboarding gateway for TikTok Shop sellers.
+- [Creators & Affiliates](https://neotiktok.com/creators): Curated product catalog, affiliate tools, and creator opportunities.
+- [Marketing & Ads](https://neotiktok.com/marketing): Performance marketing and data-driven infrastructure.
+- [Tech & API Integrations](https://neotiktok.com/tech): Developer integrations, authorized endpoints, and architecture.
+- [Privacy Policy (LGPD)](https://neotiktok.com/legal/privacidade): Data Subject Rights (LGPD Lei 13.709/2018, Art. 18) and DPO contact.
+- [Terms of Service](https://neotiktok.com/legal/termos): E-Commerce Decree 7.962/2013 and Brazilian Consumer Protection Code (CDC Art. 49).
 
-## Operational Identity
+## Operational Identity & Verified TikTok Credentials
 - Legal Entity: Flowoff Marketing e Assessoria Digital LTDA
 - CNPJ: 43.376.355/0001-92
+- TikTok Business Center Enterprise: 7614619530886840336 (Verified)
+- TikTok One Org ID: 7620915620019864596 (Verified)
+- TikTok Shop App Connector Service ID: 7614526955808622356 (Active Public Service · Brazil)
+- TikTok Pixel ID: D9SJPC3C77U97D5QGU0G (Web Events API with SHA-256)
+- Canonical Domain: https://neotiktok.com
+- Production API: https://api.neotiktok.com
+- Operations Cockpit: https://dashboard.neotiktok.com
 - Official Contact & DPO: neo@neotiktok.com
