@@ -20,9 +20,17 @@ const entries = [
   },
   {
     code: '03',
-    label: 'Partners',
+    label: 'Agências',
+    title: 'Quero acelerar marcas e operações.',
+    description: 'A frente para agências parceiras, coprodução, marketing de performance e escala.',
+    href: '/marketing',
+    accent: 'var(--neo-white)',
+  },
+  {
+    code: '04',
+    label: 'Tech',
     title: 'Quero operar ou integrar tecnologia.',
-    description: 'Acesse a frente para agências, operadores, desenvolvedores e integrações.',
+    description: 'Acesse a infraestrutura para desenvolvedores, contratos de API e automações.',
     href: '/tech',
     accent: 'var(--neo-acid)',
   },
@@ -30,8 +38,8 @@ const entries = [
 ---
 
 <BaseLayout
-  title="neøflow // Shop, Creators e Partners"
-  description="Entrada pública da neøflow para Shop, Creators e Partners no ecossistema TikTok."
+  title="neøflow // Shop, Creators, Agências e Tech"
+  description="Entrada pública da neøflow para Shop, Creators, Agências e Tech no ecossistema TikTok."
 >
   <section class="launch-entry" aria-labelledby="launch-title">
     <div class="launch-glow" aria-hidden="true"></div>
@@ -141,7 +149,7 @@ const entries = [
 
   .launch-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 0.85rem;
     margin-top: clamp(2.5rem, 7vh, 4.5rem);
   }
