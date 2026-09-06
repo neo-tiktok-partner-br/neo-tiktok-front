@@ -1,0 +1,194 @@
+---
+const agents = [
+  {
+    code: 'AG-01',
+    name: 'Token Sentinel Agent',
+    role: 'Auto-Refresh OAuth 2.0 & Redis Lock',
+    description: 'Monitora a expiração dos tokens de Sellers e Criadores a cada 6h. Executa renovação em lote de forma transparente antes da expiração.',
+    badge: 'RUNNING · 6H CYCLE',
+    accent: 'var(--neo-acid)',
+    specs: ['OAuth 2.0 Token Exchange', 'Redis Distributed Lock', 'BullMQ Retry Strategy']
+  },
+  {
+    code: 'AG-02',
+    name: 'CAPI Relay Agent',
+    role: 'Atribuição Server-Side & Hashing SHA-256',
+    description: 'Recebe eventos de conversão e dispara para o TikTok Events API com criptografia de dados sensíveis imune a bloqueadores de anúncios.',
+    badge: 'LIVE · 100% MATCH',
+    accent: 'var(--neo-cyan)',
+    specs: ['SHA-256 Hashing', 'TikTok Events API v2', 'Zero-Cookie Attribution']
+  },
+  {
+    code: 'AG-03',
+    name: 'Ledger Reconciler',
+    role: 'Split de Comissões & Auditable Balance',
+    description: 'Calcula o repasse exato entre Lojista, Criador e Operador da rede. Processa extrato com liquidez Pix/D+1 sem intervenção manual.',
+    badge: 'ACTIVE · D+1 SETTLEMENT',
+    accent: 'var(--neo-pulse)',
+    specs: ['Automated Split Fee', 'Pix D+1 Instant Payout', 'Immutable Ledger Audit']
+  },
+  {
+    code: 'AG-04',
+    name: 'Gatekeeper Protocol',
+    role: 'Varredura Algorítmica & Quality Filter',
+    description: 'Filtra novas conexões na porta de entrada da plataforma. Analisa integridade de APIs, engajamento e prontidão técnica do operador.',
+    badge: 'ENFORCED · GATEKEEPING',
+    accent: 'var(--neo-white)',
+    specs: ['API Scopes Audit', 'Maturity Score Scan', 'Zero-Trust Gatekeeper']
+  }
+];
+---
+
+<section class="m2m-agents-section" aria-labelledby="m2m-agents-title">
+  <div class="m2m-header">
+    <p class="section-label font-mono">AUTOMAÇÃO M2M · NΞØ PROTOCOL</p>
+    <h2 id="m2m-agents-title" class="font-display">Agentes Autônomos de Infraestrutura</h2>
+    <p class="m2m-intro">
+      Operação machine-to-machine sem dependência de processos manuais ou suporte humano para tarefas repetitivas.
+    </p>
+  </div>
+
+  <div class="agents-grid">
+    {agents.map((agent) => (
+      <article class="agent-card" style={`--card-accent: ${agent.accent}`}>
+        <div class="agent-top">
+          <span class="agent-code font-mono">{agent.code}</span>
+          <span class="agent-badge font-mono">{agent.badge}</span>
+        </div>
+        <h3 class="agent-name font-display">{agent.name}</h3>
+        <p class="agent-role font-mono">{agent.role}</p>
+        <p class="agent-desc">{agent.description}</p>
+        <ul class="agent-specs">
+          {agent.specs.map((spec) => (
+            <li class="font-mono"><span>›</span> {spec}</li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .m2m-agents-section {
+    padding: 4rem 0;
+    border-top: 1px solid var(--neo-border);
+  }
+
+  .m2m-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    color: var(--neo-acid);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.75rem;
+  }
+
+  .m2m-header h2 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    margin-bottom: 1rem;
+  }
+
+  .m2m-intro {
+    color: var(--neo-text-muted);
+    font-size: 1.1rem;
+    max-width: 680px;
+    line-height: 1.5;
+  }
+
+  .agents-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .agent-card {
+    border: 1px solid var(--neo-border);
+    border-top: 2px solid var(--card-accent);
+    border-radius: var(--radius-md);
+    background: var(--neo-bg-card);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .agent-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .agent-code {
+    color: var(--card-accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .agent-badge {
+    font-size: 0.58rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-full);
+    border: 1px solid color-mix(in srgb, var(--card-accent) 40%, transparent);
+    color: var(--card-accent);
+    background: color-mix(in srgb, var(--card-accent) 8%, transparent);
+  }
+
+  .agent-name {
+    font-size: 1.4rem;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0;
+  }
+
+  .agent-role {
+    color: var(--neo-text-muted);
+    font-size: 0.75rem;
+    margin: 0;
+  }
+
+  .agent-desc {
+    color: var(--neo-text);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .agent-specs {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-top: 1px dashed var(--neo-border);
+    padding-top: 0.85rem;
+  }
+
+  .agent-specs li {
+    font-size: 0.72rem;
+    color: var(--neo-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .agent-specs li span {
+    color: var(--card-accent);
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    .agents-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

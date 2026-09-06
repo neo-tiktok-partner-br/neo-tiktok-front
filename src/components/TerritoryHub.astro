@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MobilePublicShell from './MobilePublicShell.astro';
+import M2MAgentsGrid from './M2MAgentsGrid.astro';
+import TspSimulator from './TspSimulator.astro';
+import EcosystemArchitecture from './EcosystemArchitecture.astro';
 
 interface Props {
   code: string;
@@ -41,6 +44,18 @@ const activeTab = label === 'Creators' ? 'creators' : label === 'Tech' ? 'tech' 
           ))}
         </ol>
       </section>
+
+      {label === 'Marketing' && (
+        <TspSimulator />
+        <M2MAgentsGrid />
+        <EcosystemArchitecture />
+      )}
+
+      {label === 'Tech' && (
+        <M2MAgentsGrid />
+        <EcosystemArchitecture />
+        <TspSimulator />
+      )}
 
       <section class="next-step" aria-labelledby="next-step-title">
         <div>

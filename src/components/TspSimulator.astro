@@ -1,0 +1,339 @@
+---
+---
+
+<section class="tsp-simulator-section" data-tsp-simulator aria-labelledby="tsp-sim-title">
+  <div class="sim-header">
+    <p class="section-label font-mono">SIMULADOR OPERACIONAL · TSP</p>
+    <h2 id="tsp-sim-title" class="font-display">Calculadora de Faturamento & Split</h2>
+    <p class="sim-intro">
+      Simule o potencial de receita da sua operação baseada em volume de vendas (GMV), taxa de comissão e automação de infraestrutura neøflow.
+    </p>
+  </div>
+
+  <div class="sim-container">
+    <div class="sim-controls">
+      <div class="control-group">
+        <div class="control-header">
+          <label for="gmv-range" class="font-mono">Vendas Brutas Mensais (GMV)</label>
+          <span class="control-val font-mono" data-val-gmv>R$ 150.000</span>
+        </div>
+        <input 
+          id="gmv-range" 
+          type="range" 
+          min="20000" 
+          max="2000000" 
+          step="10000" 
+          value="150000" 
+          data-input-gmv
+        />
+        <div class="range-labels font-mono">
+          <span>R$ 20k</span>
+          <span>R$ 1M</span>
+          <span>R$ 2M</span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="control-header">
+          <label for="rate-range" class="font-mono">Taxa Média de Comissão Afiliado</label>
+          <span class="control-val font-mono" data-val-rate>15%</span>
+        </div>
+        <input 
+          id="rate-range" 
+          type="range" 
+          min="5" 
+          max="35" 
+          step="1" 
+          value="15" 
+          data-input-rate
+        />
+        <div class="range-labels font-mono">
+          <span>5%</span>
+          <span>20%</span>
+          <span>35%</span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="control-header">
+          <label for="stores-range" class="font-mono">Lojas / Operações Conectadas</label>
+          <span class="control-val font-mono" data-val-stores>3 lojas</span>
+        </div>
+        <input 
+          id="stores-range" 
+          type="range" 
+          min="1" 
+          max="20" 
+          step="1" 
+          value="3" 
+          data-input-stores
+        />
+        <div class="range-labels font-mono">
+          <span>1 loja</span>
+          <span>10 lojas</span>
+          <span>20 lojas</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sim-results">
+      <div class="result-card primary">
+        <span class="res-label font-mono">COMISSÃO BRUTA GERADA / MÊS</span>
+        <strong class="res-amount font-display" data-res-gross>R$ 22.500</strong>
+        <p class="res-sub">Volume total de comissões processadas pela plataforma.</p>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-card accent-green">
+          <span class="res-label font-mono">RETORNO DO OPERADOR (RECORRÊNCIA)</span>
+          <strong class="res-val font-mono" data-res-operator>R$ 6.750 /mês</strong>
+          <span class="res-tag font-mono">30% Share de Operação</span>
+        </div>
+
+        <div class="result-card accent-cyan">
+          <span class="res-label font-mono">SETUP INICIAL ESTIMA (D+1 PIX)</span>
+          <strong class="res-val font-mono" data-res-setup>R$ 10.500</strong>
+          <span class="res-tag font-mono">70% Setup Share</span>
+        </div>
+
+        <div class="result-card accent-pink">
+          <span class="res-label font-mono">ECONOMIA ESTIMADA VS AGÊNCIA</span>
+          <strong class="res-val font-mono" data-res-savings>R$ 14.200 /mês</strong>
+          <span class="res-tag font-mono">Zero Fee Fixo de Agência</span>
+        </div>
+      </div>
+
+      <a class="sim-cta font-mono" href="mailto:neo@neotiktok.com?subject=Diagnóstico%20Simulador%20TSP">
+        SOLICITAR DIAGNÓSTICO DA OPERAÇÃO <span>→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector('[data-tsp-simulator]');
+    if (!root) return;
+
+    const inputGmv = root.querySelector('[data-input-gmv]');
+    const inputRate = root.querySelector('[data-input-rate]');
+    const inputStores = root.querySelector('[data-input-stores]');
+
+    const valGmv = root.querySelector('[data-val-gmv]');
+    const valRate = root.querySelector('[data-val-rate]');
+    const valStores = root.querySelector('[data-val-stores]');
+
+    const resGross = root.querySelector('[data-res-gross]');
+    const resOperator = root.querySelector('[data-res-operator]');
+    const resSetup = root.querySelector('[data-res-setup]');
+    const resSavings = root.querySelector('[data-res-savings]');
+
+    const fmtMoney = (v) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(v);
+
+    function update() {
+      const gmv = parseFloat(inputGmv.value) || 0;
+      const rate = parseFloat(inputRate.value) || 0;
+      const stores = parseInt(inputStores.value, 10) || 1;
+
+      valGmv.textContent = fmtMoney(gmv);
+      valRate.textContent = rate + '%';
+      valStores.textContent = stores + (stores === 1 ? ' loja' : ' lojas');
+
+      const grossCommission = gmv * (rate / 100);
+      const operatorShare = grossCommission * 0.30;
+      const setupFeeEst = stores * 3500;
+      const agencySavingsEst = (gmv * 0.05) + (stores * 2500);
+
+      resGross.textContent = fmtMoney(grossCommission);
+      resOperator.textContent = fmtMoney(operatorShare) + ' /mês';
+      resSetup.textContent = fmtMoney(setupFeeEst);
+      resSavings.textContent = fmtMoney(agencySavingsEst) + ' /mês';
+    }
+
+    [inputGmv, inputRate, inputStores].forEach((el) => {
+      if (el) el.addEventListener('input', update);
+    });
+
+    update();
+  })();
+</script>
+
+<style>
+  .tsp-simulator-section {
+    padding: 4rem 0;
+    border-top: 1px solid var(--neo-border);
+  }
+
+  .sim-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    color: var(--neo-acid);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.75rem;
+  }
+
+  .sim-header h2 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    margin-bottom: 1rem;
+  }
+
+  .sim-intro {
+    color: var(--neo-text-muted);
+    font-size: 1.1rem;
+    max-width: 680px;
+    line-height: 1.5;
+  }
+
+  .sim-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .sim-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    border: 1px solid var(--neo-border);
+    border-radius: var(--radius-md);
+    background: var(--neo-bg-card);
+  }
+
+  .control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .control-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+  }
+
+  .control-header label {
+    color: var(--neo-text-muted);
+  }
+
+  .control-val {
+    color: var(--neo-acid);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  input[type="range"] {
+    accent-color: var(--neo-acid);
+    width: 100%;
+    cursor: pointer;
+    height: 6px;
+    background: var(--neo-border);
+    border-radius: 3px;
+  }
+
+  .range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    color: var(--neo-text-muted);
+    opacity: 0.6;
+  }
+
+  .sim-results {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .result-card {
+    border: 1px solid var(--neo-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    background: var(--neo-bg-card);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .result-card.primary {
+    border-color: color-mix(in srgb, var(--neo-acid) 40%, transparent);
+    background: linear-gradient(135deg, rgba(215, 254, 9, 0.05), transparent);
+  }
+
+  .res-label {
+    font-size: 0.68rem;
+    color: var(--neo-text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .res-amount {
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    color: var(--neo-acid);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+  }
+
+  .res-sub {
+    font-size: 0.82rem;
+    color: var(--neo-text-muted);
+    margin: 0.5rem 0 0 0;
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .result-card.accent-green { border-top: 2px solid var(--neo-acid); }
+  .result-card.accent-cyan { border-top: 2px solid var(--neo-cyan); }
+  .result-card.accent-pink { border-top: 2px solid var(--neo-pulse); }
+
+  .res-val {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--neo-white);
+  }
+
+  .res-tag {
+    font-size: 0.62rem;
+    color: var(--neo-text-muted);
+  }
+
+  .sim-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: var(--neo-acid);
+    color: var(--neo-bg);
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    margin-top: 0.5rem;
+    transition: opacity 0.2s ease;
+  }
+
+  .sim-cta:hover {
+    opacity: 0.9;
+  }
+
+  @media (max-width: 900px) {
+    .sim-container {
+      grid-template-columns: 1fr;
+    }
+    .results-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,187 @@
+---
+const nodes = [
+  {
+    num: '01',
+    name: 'flowoff-tiktok-control-plane',
+    role: 'Orquestrador & Manifestos Canônicos',
+    desc: 'Repositório de topo que gerencia a topologia, manifestos de ecossistema, regras de governança e diagnósticos (doctor).',
+    tech: ['Control Plane JSON', 'Workspace Doctor', 'Makefile Canon'],
+    accent: 'var(--neo-acid)'
+  },
+  {
+    num: '02',
+    name: 'neo-tiktok-front',
+    role: 'Frontend Astro 7 & Minis 9:16 In-App',
+    desc: 'Superfície pública principal operando o padrão 9:16 nativo do TikTok, vitrine /shop, landing pages e rotas de conformidade.',
+    tech: ['Astro 7 SSG/SSR', 'TypeScript 5.9', '9:16 Minis Shell'],
+    accent: 'var(--neo-white)'
+  },
+  {
+    num: '03',
+    name: 'neo-content-accounts-api',
+    role: 'Fastify API & TikTok Shop SDK',
+    desc: 'Backend soberano para OAuth 2.0, criptografia AES-256-GCM de tokens, Prisma ORM e o pacote oficial @neomello/tiktok-sdk (41 escopos).',
+    tech: ['Fastify v5', 'Prisma PostgreSQL', '@neomello/tiktok-sdk'],
+    accent: 'var(--neo-cyan)'
+  },
+  {
+    num: '04',
+    name: 'neo-content-worker',
+    role: 'Worker BullMQ & Sincronizador Redis',
+    desc: 'Processador assíncrono de filas responsável por auto-refresh de tokens OAuth, sincronização de ordens e webhooks com idempotência.',
+    tech: ['BullMQ Engine', 'Redis Queue', 'Auto-Refresh Worker'],
+    accent: 'var(--neo-pulse)'
+  },
+  {
+    num: '05',
+    name: 'neo-content-dashboard',
+    role: 'Cockpit do Usuário & Perfil (/ops)',
+    desc: 'Interface SPA Vite/React para o operador e membro consultar extrato de comissões, status do Gatekeeper e perfil no ecossistema.',
+    tech: ['Vite 7', 'React 18', 'Tailwind CSS v3'],
+    accent: 'var(--neo-acid)'
+  }
+];
+---
+
+<section class="eco-arch-section" aria-labelledby="eco-arch-title">
+  <div class="eco-header">
+    <p class="section-label font-mono">VISÃO DO ECOSSISTEMA · 5 NÓS SOBERANOS</p>
+    <h2 id="eco-arch-title" class="font-display">Arquitetura Desacoplada NΞØ Protocol</h2>
+    <p class="eco-intro">
+      O ecossistema opera como um conjunto de 5 repositórios Git independentes e soberanos, integrados por contratos de API rigorosos e filas de alta performance.
+    </p>
+  </div>
+
+  <div class="nodes-flow">
+    {nodes.map((node) => (
+      <article class="node-card" style={`--node-accent: ${node.accent}`}>
+        <div class="node-num font-mono">{node.num}</div>
+        <div class="node-body">
+          <div class="node-top">
+            <h3 class="node-name font-mono">{node.name}</h3>
+            <span class="node-role font-mono">{node.role}</span>
+          </div>
+          <p class="node-desc">{node.desc}</p>
+          <div class="node-techs">
+            {node.tech.map((t) => (
+              <span class="tech-pill font-mono">{t}</span>
+            ))}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .eco-arch-section {
+    padding: 4rem 0;
+    border-top: 1px solid var(--neo-border);
+  }
+
+  .eco-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    color: var(--neo-acid);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.75rem;
+  }
+
+  .eco-header h2 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    margin-bottom: 1rem;
+  }
+
+  .eco-intro {
+    color: var(--neo-text-muted);
+    font-size: 1.1rem;
+    max-width: 680px;
+    line-height: 1.5;
+  }
+
+  .nodes-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .node-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    border: 1px solid var(--neo-border);
+    border-left: 3px solid var(--node-accent);
+    border-radius: var(--radius-md);
+    background: var(--neo-bg-card);
+    padding: 1.5rem;
+    align-items: center;
+  }
+
+  .node-num {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--node-accent);
+    opacity: 0.8;
+  }
+
+  .node-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .node-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .node-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--neo-white);
+  }
+
+  .node-role {
+    font-size: 0.75rem;
+    color: var(--node-accent);
+  }
+
+  .node-desc {
+    color: var(--neo-text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  .node-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.35rem;
+  }
+
+  .tech-pill {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--neo-border);
+    border-radius: var(--radius-full);
+    color: var(--neo-text-muted);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  @media (max-width: 640px) {
+    .node-card {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+  }
+</style>
