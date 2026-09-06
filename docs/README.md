@@ -8,8 +8,9 @@
 
 ## ⟠ Autoridade Canônica Global
 
-Para consultar as credenciais oficiais do TikTok Shop Partner, políticas de privacidade, termos de uso e matriz de escopos de API aprovados, consulte a Fonte Única da Verdade na raiz do workspace:
-👉 **[`../../docs/README.md`](../../docs/README.md)**
+Para consultar as credenciais oficiais do TikTok Shop Partner, políticas de privacidade, termos de uso e matriz de escopos de API aprovados:
+- **Repositório Local:** [`../README.md`](../README.md)
+- **Índice Canônico Mestre:** [`Control Plane Master Docs`](https://github.com/neo-tiktok-partner-br/flowoff-tiktok-control-plane/blob/main/docs/README.md)
 
 ---
 
