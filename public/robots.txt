@@ -6,6 +6,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /login
 Disallow: /app/
 Disallow: /_astro/
 
