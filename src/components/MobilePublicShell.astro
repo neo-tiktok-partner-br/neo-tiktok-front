@@ -14,8 +14,8 @@ const { activeTab = 'home', interactive = false, desktopPreview = false } = Astr
 const operations = [
   { id: 'shop', code: '01', label: 'Shop', title: 'Infraestrutura para Sellers.', description: 'Conexão e diagnóstico para operações de TikTok Shop.', accent: 'coral' },
   { id: 'creators', code: '02', label: 'Creators', title: 'Creators.', description: 'Produtos, campanhas e oportunidades com contexto claro.', accent: 'cyan' },
-  { id: 'marketing', code: '03', label: 'Agências', title: 'Agências.', description: 'Operação, mídia e coprodução com escopo definido.', accent: 'white' },
-  { id: 'tech', code: '04', label: 'Tech', title: 'Tech.', description: 'Integrações e infraestrutura para times técnicos.', accent: 'acid' },
+  { id: 'marketing', code: '03', label: 'Marketing', title: 'Marketing como Infra.', description: 'Engenharia de mídia, Spark Ads, CAPI e 41 escopos de API.', accent: 'white' },
+  { id: 'tech', code: '04', label: 'Tech', title: 'Tecnologia Soberana.', description: 'Orquestração de 5 nós, SDK oficial e OAuth AES-256.', accent: 'acid' },
 ] as const;
 
 const views = [
@@ -40,22 +40,22 @@ const views = [
     action: 'Conhecer creator oficial', href: '/creators/paulinha',
   },
   {
-    id: 'marketing', code: '03', eyebrow: 'AGÊNCIAS / PARTNERS', title: 'Agências.', subtitle: 'Operação, mídia e coprodução.', accent: 'white',
-    stats: [['Entrada', 'Diagnóstico'], ['Escopo', 'Campanhas'], ['Modelo', 'Parceiro']],
+    id: 'marketing', code: '03', eyebrow: 'MARKETING COMO INFRA', title: 'Marketing como Infraestrutura.', subtitle: 'Infraestrutura de mídia sobre agências convencionais.', accent: 'white',
+    stats: [['Conexão', '41 Scopes'], ['Atribuição', 'CAPI SHA-256'], ['Modelo', 'Ownership']],
     features: [
-      ['Frentes separadas', 'Seller, creator, mídia e tecnologia têm contratos próprios.'],
-      ['Operação orientada', 'Objetivos, responsáveis e evidências definem a próxima etapa.'],
-      ['Coprodução responsável', 'A oportunidade é qualificada antes de qualquer promessa comercial.'],
+      ['Engenharia de mídia', 'Conexão via 41 escopos de API oficiais do TikTok Shop sem planilhas.'],
+      ['Atribuição CAPI Server-Side', 'Conversions API nativa com hashing SHA-256 resiliente.'],
+      ['Spark Ads & Anti-Fatigue', 'Esteira contínua de mídia focada em conversão real e ROI.'],
     ],
-    action: 'Falar sobre parceria', href: 'mailto:neo@neotiktok.com',
+    action: 'Ver tese de marketing', href: '/marketing',
   },
   {
-    id: 'tech', code: '04', eyebrow: 'TECH / INFRA', title: 'Tech.', subtitle: 'Integrações e infraestrutura.', accent: 'acid',
-    stats: [['Entrada', 'Contrato'], ['Autorização', 'OAuth'], ['Integração', 'Eventos']],
+    id: 'tech', code: '04', eyebrow: 'TECH / NΞØ PROTOCOL', title: 'Tecnologia Soberana.', subtitle: 'Orquestração de 5 nós e 41 escopos de API.', accent: 'acid',
+    stats: [['SDK', '@neomello'], ['Segurança', 'AES-256-GCM'], ['Arquitetura', '5 Nós']],
     features: [
-      ['APIs por contrato', 'O frontend consome capacidades sem assumir autoridade.'],
-      ['OAuth por necessidade', 'Escopos e classes de credencial permanecem explícitos.'],
-      ['Eventos observáveis', 'Webhooks e filas exigem idempotência e rastreabilidade.'],
+      ['SDK TikTok Shop', 'Pacote oficial compilado com 41 escopos de API aprovados.'],
+      ['Isolamento de Credenciais', 'Tokens OAuth de Sellers e Criadores criptografados no backend.'],
+      ['Fila BullMQ + Redis', 'Auto-refresh de tokens e eventos assíncronos idempotentes.'],
     ],
     action: 'Ver frente técnica', href: '/tech',
   },
