@@ -3,10 +3,10 @@
 
 <section class="tsp-simulator-section" data-tsp-simulator aria-labelledby="tsp-sim-title">
   <div class="sim-header">
-    <p class="section-label font-mono">SIMULADOR OPERACIONAL · TSP</p>
-    <h2 id="tsp-sim-title" class="font-display">Calculadora de Faturamento & Split</h2>
+    <p class="section-label font-mono">SIMULADOR HIPOTÉTICO · PROJEÇÃO DE CENÁRIOS</p>
+    <h2 id="tsp-sim-title" class="font-display">Simulador de Estimativas de Operação</h2>
     <p class="sim-intro">
-      Simule o potencial de receita da sua operação baseada em volume de vendas (GMV), taxa de comissão e automação de infraestrutura neøflow.
+      Ferramenta de projeção hipotética para estimar cenários operacionais de volume de vendas (GMV), comissão estimada e modelos de repasse.
     </p>
   </div>
 
@@ -14,7 +14,7 @@
     <div class="sim-controls">
       <div class="control-group">
         <div class="control-header">
-          <label for="gmv-range" class="font-mono">Vendas Brutas Mensais (GMV)</label>
+          <label for="gmv-range" class="font-mono">Vendas Brutas Mensais Estimadas (GMV)</label>
           <span class="control-val font-mono" data-val-gmv>R$ 150.000</span>
         </div>
         <input 
@@ -35,7 +35,7 @@
 
       <div class="control-group">
         <div class="control-header">
-          <label for="rate-range" class="font-mono">Taxa Média de Comissão Afiliado</label>
+          <label for="rate-range" class="font-mono">Alíquota Hipotética de Comissão</label>
           <span class="control-val font-mono" data-val-rate>15%</span>
         </div>
         <input 
@@ -56,8 +56,8 @@
 
       <div class="control-group">
         <div class="control-header">
-          <label for="stores-range" class="font-mono">Lojas / Operações Conectadas</label>
-          <span class="control-val font-mono" data-val-stores>3 lojas</span>
+          <label for="stores-range" class="font-mono">Operações / Canais em Simulação</label>
+          <span class="control-val font-mono" data-val-stores>3 canais</span>
         </div>
         <input 
           id="stores-range" 
@@ -69,42 +69,46 @@
           data-input-stores
         />
         <div class="range-labels font-mono">
-          <span>1 loja</span>
-          <span>10 lojas</span>
-          <span>20 lojas</span>
+          <span>1 canal</span>
+          <span>10 canais</span>
+          <span>20 canais</span>
         </div>
       </div>
     </div>
 
     <div class="sim-results">
       <div class="result-card primary">
-        <span class="res-label font-mono">COMISSÃO BRUTA GERADA / MÊS</span>
+        <span class="res-label font-mono">COMISSÃO BRUTA SIMULADA / MÊS</span>
         <strong class="res-amount font-display" data-res-gross>R$ 22.500</strong>
-        <p class="res-sub">Volume total de comissões processadas pela plataforma.</p>
+        <p class="res-sub">Estimativa matemática bruta baseada no GMV e na alíquota selecionados.</p>
       </div>
 
       <div class="results-grid">
         <div class="result-card accent-green">
-          <span class="res-label font-mono">RETORNO DO OPERADOR (RECORRÊNCIA)</span>
-          <strong class="res-val font-mono" data-res-operator>R$ 6.750 /mês</strong>
-          <span class="res-tag font-mono">30% Share de Operação</span>
+          <span class="res-label font-mono">GMV MÉDIO POR CANAL</span>
+          <strong class="res-val font-mono" data-res-gmv-channel>R$ 50.000 /mês</strong>
+          <span class="res-tag font-mono">Volume por operação ativa</span>
         </div>
 
         <div class="result-card accent-cyan">
-          <span class="res-label font-mono">SETUP INICIAL ESTIMA (D+1 PIX)</span>
-          <strong class="res-val font-mono" data-res-setup>R$ 10.500</strong>
-          <span class="res-tag font-mono">70% Setup Share</span>
+          <span class="res-label font-mono">COMISSÃO MÉDIA POR CANAL</span>
+          <strong class="res-val font-mono" data-res-com-channel>R$ 7.500 /mês</strong>
+          <span class="res-tag font-mono">Receita média gerada por canal</span>
         </div>
 
         <div class="result-card accent-pink">
-          <span class="res-label font-mono">ECONOMIA ESTIMADA VS AGÊNCIA</span>
-          <strong class="res-val font-mono" data-res-savings>R$ 14.200 /mês</strong>
-          <span class="res-tag font-mono">Zero Fee Fixo de Agência</span>
+          <span class="res-label font-mono">PROJEÇÃO ANUALIZADA DE VOLUME</span>
+          <strong class="res-val font-mono" data-res-annual>R$ 270.000 /ano</strong>
+          <span class="res-tag font-mono">Cenário acumulado de comissões</span>
         </div>
       </div>
 
-      <a class="sim-cta font-mono" href="mailto:neo@neotiktok.com?subject=Diagnóstico%20Simulador%20TSP">
-        SOLICITAR DIAGNÓSTICO DA OPERAÇÃO <span>→</span>
+      <p class="sim-disclaimer font-mono">
+        * Nota: Os valores acima são projeções matemáticas hipotéticas para auxílio no planejamento de volume e não representam garantia de faturamento, proposta comercial vinculante ou política financeira ativa da plataforma.
+      </p>
+
+      <a class="sim-cta font-mono" href="mailto:neo@neotiktok.com?subject=Consulta%20Cenário%20Operacional">
+        CONSULTAR POSSIBILIDADES DE INTEGRAÇÃO <span>→</span>
       </a>
     </div>
   </div>
@@ -124,9 +128,9 @@
     const valStores = root.querySelector('[data-val-stores]');
 
     const resGross = root.querySelector('[data-res-gross]');
-    const resOperator = root.querySelector('[data-res-operator]');
-    const resSetup = root.querySelector('[data-res-setup]');
-    const resSavings = root.querySelector('[data-res-savings]');
+    const resGmvChannel = root.querySelector('[data-res-gmv-channel]');
+    const resComChannel = root.querySelector('[data-res-com-channel]');
+    const resAnnual = root.querySelector('[data-res-annual]');
 
     const fmtMoney = (v) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(v);
 
@@ -137,17 +141,17 @@
 
       valGmv.textContent = fmtMoney(gmv);
       valRate.textContent = rate + '%';
-      valStores.textContent = stores + (stores === 1 ? ' loja' : ' lojas');
+      valStores.textContent = stores + (stores === 1 ? ' canal' : ' canais');
 
       const grossCommission = gmv * (rate / 100);
-      const operatorShare = grossCommission * 0.30;
-      const setupFeeEst = stores * 3500;
-      const agencySavingsEst = (gmv * 0.05) + (stores * 2500);
+      const gmvPerChannel = stores > 0 ? gmv / stores : 0;
+      const comPerChannel = stores > 0 ? grossCommission / stores : 0;
+      const annualCommission = grossCommission * 12;
 
       resGross.textContent = fmtMoney(grossCommission);
-      resOperator.textContent = fmtMoney(operatorShare) + ' /mês';
-      resSetup.textContent = fmtMoney(setupFeeEst);
-      resSavings.textContent = fmtMoney(agencySavingsEst) + ' /mês';
+      resGmvChannel.textContent = fmtMoney(gmvPerChannel) + ' /mês';
+      resComChannel.textContent = fmtMoney(comPerChannel) + ' /mês';
+      resAnnual.textContent = fmtMoney(annualCommission) + ' /ano';
     }
 
     [inputGmv, inputRate, inputStores].forEach((el) => {
@@ -306,6 +310,14 @@
   .res-tag {
     font-size: 0.62rem;
     color: var(--neo-text-muted);
+  }
+
+  .sim-disclaimer {
+    font-size: 0.68rem;
+    color: var(--neo-text-muted);
+    line-height: 1.4;
+    opacity: 0.8;
+    margin: 0.25rem 0;
   }
 
   .sim-cta {

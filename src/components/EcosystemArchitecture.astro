@@ -11,16 +11,16 @@ const nodes = [
   {
     num: '02',
     name: 'neo-tiktok-front',
-    role: 'Frontend Astro 7 & Minis 9:16 In-App',
-    desc: 'Superfície pública principal operando o padrão 9:16 nativo do TikTok, vitrine /shop, landing pages e rotas de conformidade.',
-    tech: ['Astro 7 SSG/SSR', 'TypeScript 5.9', '9:16 Minis Shell'],
+    role: 'Frontend Canônico (Web Mobile 9:16 · TikTok Minis: TARGET futuro)',
+    desc: 'Superfície pública principal operando a navegação mobile 9:16, vitrine /shop, landing pages e rotas de conformidade.',
+    tech: ['Astro 7 SSG/SSR', 'TypeScript 5.9', '9:16 Web Shell'],
     accent: 'var(--neo-white)'
   },
   {
     num: '03',
     name: 'neo-content-accounts-api',
     role: 'Fastify API & TikTok Shop SDK',
-    desc: 'Backend soberano para OAuth 2.0, criptografia AES-256-GCM de tokens, Prisma ORM e o pacote oficial @neomello/tiktok-sdk (41 escopos).',
+    desc: 'Backend soberano para OAuth 2.0, criptografia AES-256-GCM de tokens, Prisma ORM e o pacote @neomello/tiktok-sdk para TikTok Shop Open API.',
     tech: ['Fastify v5', 'Prisma PostgreSQL', '@neomello/tiktok-sdk'],
     accent: 'var(--neo-cyan)'
   },
@@ -28,15 +28,15 @@ const nodes = [
     num: '04',
     name: 'neo-content-worker',
     role: 'Worker BullMQ & Sincronizador Redis',
-    desc: 'Processador assíncrono de filas responsável por auto-refresh de tokens OAuth, sincronização de ordens e webhooks com idempotência.',
+    desc: 'Processador assíncrono de filas para auto-refresh de tokens OAuth, sincronização de pedidos e webhooks com idempotência.',
     tech: ['BullMQ Engine', 'Redis Queue', 'Auto-Refresh Worker'],
     accent: 'var(--neo-pulse)'
   },
   {
     num: '05',
     name: 'neo-content-dashboard',
-    role: 'Cockpit do Usuário & Perfil (/ops)',
-    desc: 'Interface SPA Vite/React para o operador e membro consultar extrato de comissões, status do Gatekeeper e perfil no ecossistema.',
+    role: 'Dashboard Técnico Histórico (TARGET)',
+    desc: 'Superfície de dashboard histórico mantida como referência estrutural (TARGET para reconstrução sobre contratos auditados).',
     tech: ['Vite 7', 'React 18', 'Tailwind CSS v3'],
     accent: 'var(--neo-acid)'
   }
@@ -48,7 +48,7 @@ const nodes = [
     <p class="section-label font-mono">VISÃO DO ECOSSISTEMA · 5 NÓS SOBERANOS</p>
     <h2 id="eco-arch-title" class="font-display">Arquitetura Desacoplada NΞØ Protocol</h2>
     <p class="eco-intro">
-      O ecossistema opera como um conjunto de 5 repositórios Git independentes e soberanos, integrados por contratos de API rigorosos e filas de alta performance.
+      O ecossistema opera como um conjunto de 5 repositórios Git independentes e soberanos, integrados por contratos de API e filas assíncronas.
     </p>
   </div>
 

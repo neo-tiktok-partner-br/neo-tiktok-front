@@ -14,7 +14,7 @@ const { activeTab = 'home', interactive = false, desktopPreview = false } = Astr
 const operations = [
   { id: 'shop', code: '01', label: 'Shop', title: 'Infraestrutura para Sellers.', description: 'Conexão e diagnóstico para operações de TikTok Shop.', accent: 'coral' },
   { id: 'creators', code: '02', label: 'Creators', title: 'Creators.', description: 'Produtos, campanhas e oportunidades com contexto claro.', accent: 'cyan' },
-  { id: 'marketing', code: '03', label: 'Marketing', title: 'Marketing como Infra.', description: 'Engenharia de mídia, Spark Ads, CAPI e 41 escopos de API.', accent: 'white' },
+  { id: 'marketing', code: '03', label: 'Marketing', title: 'Marketing como Infra.', description: 'Engenharia de mídia, Spark Ads, CAPI e API TikTok Shop.', accent: 'white' },
   { id: 'tech', code: '04', label: 'Tech', title: 'Tecnologia Soberana.', description: 'Orquestração de 5 nós, SDK oficial e OAuth AES-256.', accent: 'acid' },
 ] as const;
 
@@ -41,19 +41,19 @@ const views = [
   },
   {
     id: 'marketing', code: '03', eyebrow: 'MARKETING COMO INFRA', title: 'Marketing como Infraestrutura.', subtitle: 'Infraestrutura de mídia sobre agências convencionais.', accent: 'white',
-    stats: [['Conexão', '41 Scopes'], ['Atribuição', 'CAPI SHA-256'], ['Modelo', 'Ownership']],
+    stats: [['Conexão', 'Open API'], ['Atribuição', 'CAPI SHA-256'], ['Modelo', 'Ownership']],
     features: [
-      ['Engenharia de mídia', 'Conexão via 41 escopos de API oficiais do TikTok Shop sem planilhas.'],
+      ['Engenharia de mídia', 'Conexão via API oficial do TikTok Shop sem manipulação manual de planilhas.'],
       ['Atribuição CAPI Server-Side', 'Conversions API nativa com hashing SHA-256 resiliente.'],
       ['Spark Ads & Anti-Fatigue', 'Esteira contínua de mídia focada em conversão real e ROI.'],
     ],
     action: 'Ver tese de marketing', href: '/marketing',
   },
   {
-    id: 'tech', code: '04', eyebrow: 'TECH / NΞØ PROTOCOL', title: 'Tecnologia Soberana.', subtitle: 'Orquestração de 5 nós e 41 escopos de API.', accent: 'acid',
+    id: 'tech', code: '04', eyebrow: 'TECH / NΞØ PROTOCOL', title: 'Tecnologia Soberana.', subtitle: 'Orquestração de 5 nós e SDK TikTok Shop.', accent: 'acid',
     stats: [['SDK', '@neomello'], ['Segurança', 'AES-256-GCM'], ['Arquitetura', '5 Nós']],
     features: [
-      ['SDK TikTok Shop', 'Pacote oficial compilado com 41 escopos de API aprovados.'],
+      ['SDK TikTok Shop', 'Pacote TypeScript oficial para a TikTok Shop Open API.'],
       ['Isolamento de Credenciais', 'Tokens OAuth de Sellers e Criadores criptografados no backend.'],
       ['Fila BullMQ + Redis', 'Auto-refresh de tokens e eventos assíncronos idempotentes.'],
     ],
