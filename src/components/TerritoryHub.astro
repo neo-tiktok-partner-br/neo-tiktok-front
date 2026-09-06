@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import MobilePublicShell from './MobilePublicShell.astro';
 
 interface Props {
   code: string;
@@ -12,9 +13,11 @@ interface Props {
 }
 
 const { code, label, title, description, accent, capabilities, nextStep } = Astro.props;
+const activeTab = label === 'Creators' ? 'creators' : label === 'Tech' ? 'tech' : 'marketing';
 ---
 
 <BaseLayout title={`${label} // neøflow Official TikTok Partners`} description={description}>
+  <MobilePublicShell activeTab={activeTab} />
   <article class="territory" style={`--territory-accent: ${accent}`}>
     <div class="territory-glow" aria-hidden="true"></div>
     <div class="territory-container">
@@ -182,9 +185,9 @@ const { code, label, title, description, accent, capabilities, nextStep } = Astr
       white-space: nowrap;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 768px) {
       .territory {
-        padding-inline: 1rem;
+        display: none;
       }
 
       .capability-list {

@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import MobilePublicShell from '../components/MobilePublicShell.astro';
 ---
 
 <BaseLayout
   title="TikTok Shop // neøflow Oficial TikTok Partners"
   description="Conheça a conexão oficial da neøflow para sellers autorizarem sua operação no TikTok Shop."
 >
+  <MobilePublicShell activeTab="shop" />
   <main class="shop-page">
     <div class="shop-glow" aria-hidden="true"></div>
 
@@ -684,7 +686,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
+    .shop-page {
+      display: none;
+    }
+
     .hero-actions {
       flex-direction: column;
     }
