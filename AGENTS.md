@@ -68,7 +68,7 @@ Do not rewrite them unless the task explicitly requests copy changes.
 
 ---
 
-# 2. SOURCE-OF-TRUTH ORDER
+> 2.SOURCE-OF-TRUTH ORDER
 
 When instructions conflict, follow this order:
 
