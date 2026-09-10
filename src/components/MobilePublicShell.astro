@@ -14,10 +14,42 @@ const { activeTab: rawTab = 'home', interactive = false, desktopPreview = false 
 const activeTab = rawTab === 'marketing' ? 'partners' : rawTab;
 
 const operations = [
-  { id: 'shop', code: '01', label: 'Shop', title: 'Infraestrutura para Sellers.', description: 'Conexão e diagnóstico oficial de loja TikTok Shop.', accent: 'coral' },
-  { id: 'creators', code: '02', label: 'Creators', title: 'Rede de Criadores.', description: 'Onboarding oficial de Creator, produtos e briefs.', accent: 'cyan' },
-  { id: 'partners', code: '03', label: 'Partners', title: 'Affiliate Partner & TAP.', description: 'Seller and Scalable Creator Match-Up via Partner Center.', accent: 'white' },
-  { id: 'tech', code: '04', label: 'Tech', title: 'Tecnologia Soberana.', description: 'Orquestração de 5 nós, SDK oficial e OAuth AES-256.', accent: 'acid' },
+  {
+    id: 'shop',
+    code: '01',
+    label: 'SHOP',
+    phrase: 'Quero vender no TikTok Shop.',
+    accent: 'coral',
+    accentColor: 'var(--neo-coral)',
+    glowColor: 'rgba(254, 44, 85, 0.24)',
+  },
+  {
+    id: 'creators',
+    code: '02',
+    label: 'CREATORS',
+    phrase: 'Quero criar e transformar conteúdo em receita.',
+    accent: 'cyan',
+    accentColor: 'var(--neo-cyan)',
+    glowColor: 'rgba(0, 242, 254, 0.24)',
+  },
+  {
+    id: 'partners',
+    code: '03',
+    label: 'PARTNERS',
+    phrase: 'Quero conectar negócios, marcas e creators.',
+    accent: 'white',
+    accentColor: '#ffffff',
+    glowColor: 'rgba(255, 255, 255, 0.2)',
+  },
+  {
+    id: 'tech',
+    code: '04',
+    label: 'TECH',
+    phrase: 'Quero construir e integrar tecnologia.',
+    accent: 'acid',
+    accentColor: 'var(--neo-acid)',
+    glowColor: 'rgba(215, 254, 9, 0.24)',
+  },
 ] as const;
 
 const views = [
@@ -61,7 +93,7 @@ const views = [
     id: 'tech', code: '04', eyebrow: 'TECH / NΞØ PROTOCOL', title: 'Tecnologia Soberana.', subtitle: 'Orquestração de 5 nós independentes e SDK TikTok Shop.', accent: 'acid',
     stats: [['SDK', '@neomello/sdk'], ['Segurança', 'AES-256-GCM'], ['Topologia', '5 Módulos']],
     features: [
-      ['SDK TikTok Shop', 'Pacote TypeScript oficial para a TikTok Shop Open API com 41 escopos.'],
+      ['SDK TikTok Shop', 'Pacote TypeScript oficial para a TikTok Shop Open API com 21 escopos.'],
       ['Isolamento de Credenciais', 'Tokens de Sellers, Creators e Partners estritamente segregados.'],
       ['Fila BullMQ + Redis', 'Auto-refresh de tokens e processamento assíncrono idempotente.'],
     ],
@@ -84,24 +116,32 @@ const views = [
       <a class="mobile-brand" href="/" aria-label="neøflow — início">
         <img src="/assets/logo_partners.svg" alt="neøflow Official TikTok Partners" width="220" height="50" loading="eager" fetchpriority="high" />
       </a>
-      <span class="partner-status font-mono">SERVIÇO PÚBLICO</span>
     </header>
 
     <div class="mobile-stage" aria-live="polite">
       <section class:list={['mobile-view', 'home-view', { 'is-active': activeTab === 'home' }]} data-view="home" aria-label="Início">
         <header class="hero-copy">
-          <span class="eyebrow font-mono">TIKTOK PARTNER ECOSYSTEM</span>
-          <h1>Escolha sua operação.</h1>
-          <p>Seu perfil. Seus interesses. Nosso negócio.</p>
+          <span class="eyebrow font-mono">NEØFLOW // TIKTOK SHOP</span>
+          <h1>Escolha sua porta de entrada.</h1>
+          <p>Comece pelo que você gosta de fazer.</p>
         </header>
 
-        <div class="operation-grid" aria-label="Frentes de operação">
+        <div class="operation-grid" aria-label="Portas de entrada">
           {operations.map((operation) => (
-            <a class={`operation-card accent-${operation.accent}`} href={`/#${operation.id}`} data-tab-target={operation.id}>
-              <span class="card-meta font-mono"><b>{operation.code}</b>{operation.label}</span>
-              <strong>{operation.title}</strong>
-              <p>{operation.description}</p>
-              <span class="card-action font-mono">EXPLORAR <b aria-hidden="true">→</b></span>
+            <a
+              class={`operation-card accent-${operation.accent}`}
+              href={`/#${operation.id}`}
+              data-tab-target={operation.id}
+              style={`--card-accent: ${operation.accentColor}; --card-glow: ${operation.glowColor};`}
+            >
+              <div class="card-glow" aria-hidden="true" />
+              <div class="card-inner">
+                <div class="card-meta font-mono">
+                  <span class="card-code">{operation.code} / {operation.label}</span>
+                  <span class="card-arrow" aria-hidden="true">↗</span>
+                </div>
+                <p class="card-phrase">{operation.phrase}</p>
+              </div>
             </a>
           ))}
         </div>
@@ -160,6 +200,7 @@ const views = [
       if (!shell) return;
       const views = Array.from(shell.querySelectorAll('[data-view]'));
       const tabs = Array.from(shell.querySelectorAll('[data-tab-target]'));
+      const cards = Array.from(shell.querySelectorAll('.operation-card'));
       const validTabs = ['home', 'shop', 'creators', 'partners', 'marketing', 'tech'];
 
       const normalizeTarget = (target) => (target === 'marketing' ? 'partners' : target);
@@ -187,6 +228,41 @@ const views = [
         switchTab(target);
       }));
 
+      // Interação de luz/reflexo pontual nos cards
+      const hasReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      cards.forEach((card) => {
+        const updatePointer = (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--pointer-x', `${x}px`);
+          card.style.setProperty('--pointer-y', `${y}px`);
+          card.style.setProperty('--card-glow-opacity', '1');
+
+          if (!hasReducedMotion) {
+            const tiltX = (((y / rect.height) - 0.5) * -3.5).toFixed(2);
+            const tiltY = (((x / rect.width) - 0.5) * 3.5).toFixed(2);
+            card.style.setProperty('--tilt-x', `${tiltX}deg`);
+            card.style.setProperty('--tilt-y', `${tiltY}deg`);
+          }
+        };
+
+        const resetPointer = () => {
+          card.style.setProperty('--card-glow-opacity', '0');
+          if (!hasReducedMotion) {
+            card.style.setProperty('--tilt-x', '0deg');
+            card.style.setProperty('--tilt-y', '0deg');
+          }
+        };
+
+        card.addEventListener('pointerenter', updatePointer, { passive: true });
+        card.addEventListener('pointermove', updatePointer, { passive: true });
+        card.addEventListener('pointerdown', updatePointer, { passive: true });
+        card.addEventListener('pointerleave', resetPointer, { passive: true });
+        card.addEventListener('pointercancel', resetPointer, { passive: true });
+      });
+
       // OAuth CTAs: intercept click to fetch JSON launchUrl and navigate directly to TikTok domain
       const oauthActions = Array.from(shell.querySelectorAll('[data-oauth-role]'));
       oauthActions.forEach((btn) => {
@@ -195,7 +271,6 @@ const views = [
           if (!role) return;
           e.preventDefault();
           const labelSpan = btn.querySelector('span:first-child');
-          const originalText = labelSpan ? labelSpan.textContent : btn.textContent;
           if (labelSpan) labelSpan.textContent = 'CONECTANDO AO TIKTOK...';
           btn.style.pointerEvents = 'none';
           btn.style.opacity = '0.75';
@@ -229,20 +304,19 @@ const views = [
 
 <style>
   .mobile-public-shell {
-    --shell-bg: #08090a; --shell-panel: rgba(21, 23, 25, 0.88); --shell-panel-strong: #141619;
-    --shell-border: rgba(255, 255, 255, 0.1); --shell-muted: #91a3aa; --shell-accent: var(--neo-acid);
+    --shell-bg: #070809; --shell-panel: rgba(18, 20, 23, 0.88); --shell-panel-strong: #121417;
+    --shell-border: rgba(255, 255, 255, 0.08); --shell-muted: #94a3b8; --shell-accent: var(--neo-acid);
     display: none; min-width: 0; background: var(--shell-bg); color: #fff;
   }
   .mobile-public-shell.is-desktop-preview { display: flex; width: 100%; min-height: 100vh; min-height: 100dvh; align-items: center; justify-content: center; overflow: hidden; }
   .mobile-device { position: relative; display: flex; flex-direction: column; width: min(100%, 430px); height: 100vh; height: 100dvh; max-height: 932px; min-width: 0; overflow: hidden; background: var(--shell-bg); }
-  .is-desktop-preview .mobile-device { border: 1px solid var(--shell-border); border-radius: 30px; box-shadow: 0 26px 80px rgba(0, 0, 0, 0.64); }
-  .desktop-preview-link { position: fixed; top: 1rem; right: 1rem; z-index: 120; display: flex; align-items: center; gap: 0.7rem; padding: 0.45rem 0.7rem; border: 1px solid var(--shell-border); border-radius: 999px; background: rgba(14, 16, 18, 0.9); color: var(--shell-muted); font-size: 0.65rem; }
+  .is-desktop-preview .mobile-device { border: 1px solid var(--shell-border); border-radius: 32px; box-shadow: 0 28px 90px rgba(0, 0, 0, 0.75); }
+  .desktop-preview-link { position: fixed; top: 1rem; right: 1rem; z-index: 120; display: flex; align-items: center; gap: 0.7rem; padding: 0.45rem 0.75rem; border: 1px solid var(--shell-border); border-radius: 999px; background: rgba(14, 16, 18, 0.92); color: var(--shell-muted); font-size: 0.65rem; backdrop-filter: blur(12px); }
   .desktop-preview-link a { color: var(--neo-acid); text-decoration: none; }
 
-  .mobile-topbar { z-index: 20; flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; min-height: 58px; padding: max(0.5rem, env(safe-area-inset-top)) 1rem 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.07); background: rgba(8, 9, 10, 0.92); backdrop-filter: blur(18px); }
+  .mobile-topbar { z-index: 20; flex: 0 0 auto; display: flex; align-items: center; justify-content: flex-start; min-height: 56px; padding: max(0.5rem, env(safe-area-inset-top)) 1rem 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); background: rgba(7, 8, 9, 0.92); backdrop-filter: blur(18px); }
   .mobile-brand { display: flex; min-width: 0; }
-  .mobile-brand img { display: block; width: auto; height: 23px; max-width: 48vw; }
-  .partner-status { display: inline-flex; align-items: center; gap: 0.35rem; flex: 0 0 auto; padding: 0.32rem 0.52rem; border: 1px solid rgba(215, 254, 9, 0.24); border-radius: 999px; color: var(--neo-acid); font-size: 0.55rem; font-weight: 600; letter-spacing: 0.08em; }
+  .mobile-brand img { display: block; width: auto; height: 24px; max-width: 52vw; }
 
   .mobile-stage { position: relative; flex: 1 1 auto; min-height: 0; min-width: 0; overflow: hidden; }
   .mobile-device :global(.ios-bottom-bar) { position: relative; flex: 0 0 auto; }
@@ -250,24 +324,146 @@ const views = [
   .mobile-view::-webkit-scrollbar { display: none; }
   .mobile-view.is-active { display: flex; flex-direction: column; }
   .hero-copy { flex: 0 0 auto; }
-  .eyebrow { display: block; margin-bottom: 0.5rem; color: var(--shell-accent); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.13em; }
+  .eyebrow { display: block; margin-bottom: 0.45rem; color: var(--shell-accent); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; }
   .hero-copy h1 { max-width: 360px; margin: 0; font-size: clamp(1.85rem, 8vw, 2.55rem); line-height: 0.98; letter-spacing: -0.055em; }
   .hero-copy p { max-width: 330px; margin: 0.55rem 0 0; color: var(--shell-muted); font-size: clamp(0.82rem, 3.4vw, 0.98rem); line-height: 1.35; }
 
-  .operation-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem; flex: 1 1 auto; min-height: 0; margin: clamp(1rem, 3vh, 1.5rem) 0 0.75rem; }
-  .operation-card { --shell-accent: #fff; display: flex; flex-direction: column; min-width: 0; min-height: 0; padding: 0.85rem; border: 1px solid var(--shell-border); border-top-color: color-mix(in srgb, var(--shell-accent) 60%, transparent); border-radius: 17px; background: var(--shell-panel); color: #fff; text-decoration: none; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 12px 24px rgba(0, 0, 0, 0.18); }
-  .operation-card:active, .primary-action:active { transform: scale(0.98); }
-  .accent-coral { --shell-accent: var(--neo-coral); }
-  .accent-cyan { --shell-accent: var(--neo-cyan); }
-  .accent-white { --shell-accent: #fff; }
-  .accent-acid { --shell-accent: var(--neo-acid); }
-  .card-meta { display: flex; justify-content: space-between; gap: 0.5rem; color: var(--shell-accent); font-size: 0.58rem; letter-spacing: 0.09em; text-transform: uppercase; }
-  .operation-card > strong { margin-top: auto; padding-top: 0.8rem; font-family: var(--font-display); font-size: clamp(0.92rem, 4vw, 1.08rem); line-height: 1.05; letter-spacing: -0.035em; }
-  .operation-card > p { margin: 0.35rem 0 0.65rem; color: var(--shell-muted); font-size: clamp(0.65rem, 2.8vw, 0.74rem); line-height: 1.3; }
-  .card-action { display: flex; justify-content: space-between; padding-top: 0.48rem; border-top: 1px solid rgba(255, 255, 255, 0.07); color: var(--shell-accent); font-size: 0.56rem; font-weight: 600; letter-spacing: 0.08em; }
-  .micro-footer { display: flex; justify-content: space-between; gap: 0.5rem; color: rgba(255, 255, 255, 0.35); font-size: 0.48rem; line-height: 1.3; }
+  /* Home Operation Grid & Physical Door Cards */
+  .operation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(0.6rem, 1.8vh, 0.85rem);
+    flex: 1 1 auto;
+    min-height: 0;
+    margin: clamp(0.9rem, 2.4vh, 1.4rem) 0 0.8rem;
+    perspective: 1000px;
+  }
+
+  .operation-card {
+    --card-accent: #ffffff;
+    --card-glow: rgba(255, 255, 255, 0.18);
+    --card-glow-opacity: 0;
+    --tilt-x: 0deg;
+    --tilt-y: 0deg;
+    --pointer-x: 50%;
+    --pointer-y: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    border-radius: 20px;
+    background: linear-gradient(155deg, rgba(22, 24, 27, 0.85) 0%, rgba(10, 11, 13, 0.94) 100%);
+    color: #fff;
+    text-decoration: none;
+    overflow: hidden;
+    touch-action: manipulation;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+      0 12px 28px -4px rgba(0, 0, 0, 0.55);
+    transform: perspective(800px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+    transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .operation-card:hover {
+    border-color: color-mix(in srgb, var(--card-accent) 45%, rgba(255, 255, 255, 0.12));
+    border-top-color: color-mix(in srgb, var(--card-accent) 70%, rgba(255, 255, 255, 0.25));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.16),
+      0 18px 36px -6px rgba(0, 0, 0, 0.7),
+      0 0 20px -4px var(--card-glow);
+  }
+
+  .operation-card:active {
+    transform: scale(0.975);
+  }
+
+  .card-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(170px circle at var(--pointer-x) var(--pointer-y), var(--card-glow) 0%, transparent 75%);
+    opacity: var(--card-glow-opacity);
+    transition: opacity 0.25s ease;
+    mix-blend-mode: screen;
+  }
+
+  .card-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: clamp(0.85rem, 2.2vh, 1.15rem);
+    min-height: 0;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    color: var(--card-accent);
+  }
+
+  .card-code {
+    font-size: clamp(0.58rem, 2.4vw, 0.66rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .card-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(0.75rem, 3vw, 0.92rem);
+    line-height: 1;
+    opacity: 0.7;
+    transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease;
+  }
+
+  .operation-card:hover .card-arrow {
+    opacity: 1;
+    transform: translate(2px, -2px);
+  }
+
+  .card-phrase {
+    margin-top: auto;
+    padding-top: clamp(0.8rem, 2vh, 1.4rem);
+    margin-bottom: 0;
+    font-family: var(--font-display);
+    font-size: clamp(0.9rem, 3.6vw, 1.08rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    color: #f3f4f6;
+  }
+
+  .accent-coral {
+    --card-accent: var(--neo-coral);
+    --card-glow: rgba(254, 44, 85, 0.24);
+  }
+  .accent-cyan {
+    --card-accent: var(--neo-cyan);
+    --card-glow: rgba(0, 242, 254, 0.24);
+  }
+  .accent-white {
+    --card-accent: #ffffff;
+    --card-glow: rgba(255, 255, 255, 0.2);
+  }
+  .accent-acid {
+    --card-accent: var(--neo-acid);
+    --card-glow: rgba(215, 254, 9, 0.24);
+  }
+
+  .micro-footer { display: flex; justify-content: space-between; gap: 0.5rem; color: rgba(255, 255, 255, 0.35); font-size: 0.48rem; line-height: 1.3; margin-top: auto; }
   .micro-footer a { color: inherit; }
 
+  /* Detail Views (Preserved) */
   .detail-view { gap: clamp(0.8rem, 2.3vh, 1.15rem); }
   .signal-card { flex: 0 0 auto; padding: 0.8rem; border: 1px solid color-mix(in srgb, var(--shell-accent) 30%, var(--shell-border)); border-radius: 17px; background: var(--shell-panel-strong); box-shadow: 0 14px 30px rgba(0, 0, 0, 0.24); }
   .signal-heading { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; padding-bottom: 0.65rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
@@ -296,14 +492,13 @@ const views = [
   @media (max-width: 350px), (max-height: 650px) {
     .mobile-topbar { min-height: 50px; padding-block: 0.4rem; }
     .mobile-brand img { height: 20px; }
-    .partner-status { padding: 0.26rem 0.4rem; font-size: 0.48rem; }
     .mobile-view { padding-top: 0.7rem; padding-inline: 0.75rem; }
     .hero-copy h1 { font-size: 1.62rem; }
     .hero-copy p { font-size: 0.76rem; margin-top: 0.35rem; }
-    .operation-grid { gap: 0.45rem; margin-top: 0.7rem; }
-    .operation-card { padding: 0.62rem; border-radius: 13px; }
-    .operation-card > strong { padding-top: 0.45rem; font-size: 0.82rem; }
-    .operation-card > p { margin-block: 0.25rem 0.4rem; font-size: 0.6rem; }
+    .operation-grid { gap: 0.45rem; margin-top: 0.65rem; }
+    .operation-card { border-radius: 15px; }
+    .card-inner { padding: 0.65rem; }
+    .card-phrase { padding-top: 0.5rem; font-size: 0.82rem; }
     .detail-view { gap: 0.55rem; }
     .signal-card { padding: 0.62rem; border-radius: 13px; }
     .feature-list { gap: 0.4rem; }
@@ -316,7 +511,9 @@ const views = [
     .detail-view .feature-list article { align-items: center; }
     .detail-view .primary-action { min-height: 40px; padding-block: 0.6rem; }
   }
-  @media (prefers-reduced-motion: reduce) { .operation-card, .primary-action { transition: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .operation-card, .primary-action, .card-arrow { transition: none !important; transform: none !important; }
+  }
 </style>
 
 <style is:global>
