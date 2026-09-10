@@ -3,66 +3,92 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { PUBLIC_API_BASE_URL } from '../../config/api';
 
 const sellerAuthorizeUrl = `${PUBLIC_API_BASE_URL}/oauth/tiktok-shop/authorize`;
+
+const reassurancePoints = [
+  {
+    num: '01',
+    title: 'AMBIENTE OFICIAL TIKTOK SHOP',
+    copy: 'A autorização acontece diretamente em services.tiktokshop.com com o seu login oficial de vendedor, sem compartilhamento de senha com terceiros.',
+  },
+  {
+    num: '02',
+    title: 'PERMISSÕES ESTRITAS',
+    copy: 'Apenas os acessos essenciais para identificação da loja e consulta operacional de pedidos autorizados pela sua conta.',
+  },
+  {
+    num: '03',
+    title: 'CONTINUIDADE E SEGURANÇA',
+    copy: 'Vínculo operacional seguro para permitir que produtos, conteúdo e campanhas operem com estabilidade e proteção de dados.',
+  },
+] as const;
 ---
 
 <BaseLayout
   title="Conectar TikTok Shop // neøflow Sellers"
-  description="Autorização segura de vendedor TikTok Shop via neøflow. Conecte sua loja com validação anti-CSRF e rastreabilidade de pedidos."
+  description="Autorização segura de vendedor TikTok Shop via neøflow. Conecte sua loja no ambiente oficial do TikTok Shop."
 >
-  <main class="seller-connect-shell">
-    <div class="seller-connect-glow" aria-hidden="true"></div>
-    <div class="seller-connect-container">
-      <a class="back-link font-mono" href="/shop">← VOLTAR PARA SHOP</a>
+  <main class="seller-connect-page">
+    <div class="ambient-glow" aria-hidden="true"></div>
 
-      <header class="seller-header">
-        <p class="seller-kicker font-mono">01 — SELLER CONNECT</p>
-        <h1 class="font-display">Conectar TikTok Shop</h1>
-        <p class="seller-description">
-          Inicie a conexão oficial da sua loja de vendedor. A autorização é intermediada pelo gateway de segurança da neøflow com proteção anti-CSRF em tempo real.
+    <div class="seller-connect-container">
+      <nav class="connect-nav" aria-label="Navegação de retorno">
+        <a class="nav-back font-mono" href="/sellers">← VOLTAR PARA SELLERS</a>
+      </nav>
+
+      <!-- Header -->
+      <header class="connect-hero">
+        <div class="kicker-pill font-mono">
+          <span class="coral-dot" aria-hidden="true"></span>
+          01.3 // SHOP // CONECTAR
+        </div>
+        <h1 class="font-display">Autorize sua loja no TikTok Shop.</h1>
+        <p class="connect-lead">
+          Dê o primeiro passo para integrar sua operação. Ao avançar, você será direcionado ao ambiente oficial do TikTok Shop para confirmar o acesso.
         </p>
       </header>
 
-      <section class="connect-card" aria-labelledby="card-title">
-        <div class="card-header">
-          <div class="status-indicator">
-            <span class="status-dot"></span>
-            <span class="status-text font-mono">CANAL OFICIAL TIKTOK SHOP</span>
-          </div>
-          <h2 id="card-title" class="font-display">Autorização de Vendedor</h2>
+      <!-- Main Connect Action Card -->
+      <section class="action-card" aria-labelledby="action-card-title">
+        <div class="card-status font-mono">
+          <span class="status-indicator"></span>
+          CANAL OFICIAL DE VENDEDOR
+        </div>
+
+        <div class="card-body">
+          <h2 id="action-card-title" class="font-display">Autorização de Loja</h2>
           <p>
-            Ao avançar, você será redirecionado para a página de consentimento seguro do TikTok Shop. Seus dados e tokens serão protegidos com criptografia AES-256 no cofre neøflow.
+            Você entrará no ambiente seguro do TikTok Shop para autorizar a conexão da sua loja com a neøflow.
           </p>
-        </div>
 
-        <div class="scopes-overview">
-          <p class="scopes-title font-mono">CAPACIDADES HABILITADAS:</p>
-          <ul class="scopes-list">
-            <li>
-              <span class="scope-badge font-mono">SELLER.SHOP.INFO</span>
-              <span>Identificação da loja e dados operacionais básicos</span>
-            </li>
-            <li>
-              <span class="scope-badge font-mono">SELLER.AUTHORIZATION.INFO</span>
-              <span>Vínculo de autorização e cifra de comunicação</span>
-            </li>
-            <li>
-              <span class="scope-badge font-mono">SELLER.ORDER.INFO</span>
-              <span>Consulta e sincronização contínua de pedidos</span>
-            </li>
-          </ul>
+          <div class="action-wrap">
+            <a
+              id="seller-connect-button"
+              class="connect-button font-mono"
+              href={sellerAuthorizeUrl}
+            >
+              <span>INICIAR AUTORIZAÇÃO SEGURA</span>
+              <span class="cta-arrow" aria-hidden="true">→</span>
+            </a>
+            <span class="cta-microcopy">Autorização feita pelo TikTok Shop.</span>
+          </div>
         </div>
+      </section>
 
-        <div class="action-box">
-          <a
-            id="seller-connect-button"
-            class="connect-button font-mono"
-            href={sellerAuthorizeUrl}
-          >
-            INICIAR AUTORIZAÇÃO SEGURA <span aria-hidden="true">→</span>
-          </a>
-          <p class="security-note font-mono">
-            🔒 Sessão protegida com Anti-CSRF State e expiração em 10 minutos.
-          </p>
+      <!-- 3 Reassurance Pillars -->
+      <section class="reassurance-section" aria-labelledby="reassurance-title">
+        <div class="section-label font-mono">01 // SEGURANÇA E TRANSPARÊNCIA</div>
+        <h2 id="reassurance-title" class="sr-only">Pilares de segurança da autorização</h2>
+
+        <div class="reassurance-grid">
+          {reassurancePoints.map((point) => (
+            <article class="reassurance-card">
+              <div class="card-header font-mono">
+                <span class="card-num">{point.num}</span>
+                <h3 class="card-title">{point.title}</h3>
+              </div>
+              <p class="card-copy">{point.copy}</p>
+            </article>
+          ))}
         </div>
       </section>
     </div>
@@ -70,23 +96,25 @@ const sellerAuthorizeUrl = `${PUBLIC_API_BASE_URL}/oauth/tiktok-shop/authorize`;
 </BaseLayout>
 
 <style>
-  .seller-connect-shell {
+  .seller-connect-page {
     min-height: 100vh;
     position: relative;
     overflow: hidden;
-    padding: calc(8rem + var(--sat)) 1.25rem 4rem;
+    padding: calc(6.5rem + var(--sat, 0px)) 1.25rem 5rem;
     display: flex;
     justify-content: center;
+    background: #070809;
+    color: #ffffff;
   }
 
-  .seller-connect-glow {
+  .ambient-glow {
     position: absolute;
     top: 15%;
     left: 50%;
     transform: translateX(-50%);
-    width: 600px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(254, 44, 85, 0.12) 0%, rgba(9, 19, 26, 0) 70%);
+    width: min(800px, 90vw);
+    height: 460px;
+    background: radial-gradient(circle, rgba(254, 44, 85, 0.14) 0%, rgba(7, 8, 9, 0) 70%);
     pointer-events: none;
     z-index: 0;
   }
@@ -98,175 +126,252 @@ const sellerAuthorizeUrl = `${PUBLIC_API_BASE_URL}/oauth/tiktok-shop/authorize`;
     z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
   }
 
-  .back-link {
-    font-size: 0.8125rem;
-    color: var(--neo-dim);
+  .connect-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-back {
+    font-size: 0.78rem;
+    color: var(--neo-dim, #94a3b8);
     text-decoration: none;
     letter-spacing: 0.08em;
-    transition: color 0.2s ease;
+    transition: color 0.18s ease;
   }
 
-  .back-link:hover {
-    color: var(--neo-coral);
+  .nav-back:hover {
+    color: var(--neo-coral, #fe2c55);
   }
 
-  .seller-header {
+  .connect-hero {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1.15rem;
   }
 
-  .seller-kicker {
-    font-size: 0.8125rem;
-    color: var(--neo-coral);
-    letter-spacing: 0.15em;
-  }
-
-  .seller-header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--neo-white);
-    line-height: 1.1;
-  }
-
-  .seller-description {
-    font-size: 1.0625rem;
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.6;
-  }
-
-  .connect-card {
-    background: rgba(15, 27, 36, 0.75);
-    border: 1px solid rgba(254, 44, 85, 0.25);
-    border-radius: var(--radius-ios, 22px);
-    backdrop-filter: blur(24px);
-    padding: 2.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  }
-
-  .card-header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .status-indicator {
+  .kicker-pill {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-  }
-
-  .status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: var(--neo-coral);
-    box-shadow: 0 0 10px var(--neo-coral);
-  }
-
-  .status-text {
+    align-self: flex-start;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(254, 44, 85, 0.08);
+    border: 1px solid rgba(254, 44, 85, 0.25);
+    color: var(--neo-coral, #fe2c55);
     font-size: 0.75rem;
-    color: var(--neo-coral);
+    font-weight: 700;
     letter-spacing: 0.1em;
   }
 
-  .card-header h2 {
-    font-size: 1.5rem;
-    color: var(--neo-white);
+  .coral-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--neo-coral, #fe2c55);
+    box-shadow: 0 0 8px var(--neo-coral, #fe2c55);
   }
 
-  .card-header p {
-    font-size: 0.9375rem;
-    color: rgba(255, 255, 255, 0.65);
+  .connect-hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin: 0;
+  }
+
+  .connect-lead {
+    font-size: clamp(1.05rem, 3vw, 1.2rem);
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.78);
+    margin: 0;
+  }
+
+  /* Action Card */
+  .action-card {
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(32, 16, 22, 0.9) 0%, rgba(14, 16, 19, 0.96) 100%);
+    border: 1px solid rgba(254, 44, 85, 0.35);
+    padding: 2.25rem 2rem;
+    box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.7), 0 0 32px -8px rgba(254, 44, 85, 0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .card-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.72rem;
+    color: var(--neo-coral, #fe2c55);
+    letter-spacing: 0.08em;
+  }
+
+  .status-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--neo-coral, #fe2c55);
+    box-shadow: 0 0 8px var(--neo-coral, #fe2c55);
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .card-body h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .card-body p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.95rem;
     line-height: 1.5;
   }
 
-  .scopes-overview {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 1.25rem 0;
+  .action-wrap {
     display: flex;
     flex-direction: column;
-    gap: 0.875rem;
-  }
-
-  .scopes-title {
-    font-size: 0.75rem;
-    color: var(--neo-dim);
-    letter-spacing: 0.1em;
-  }
-
-  .scopes-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .scopes-list li {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.8);
-  }
-
-  .scope-badge {
-    display: inline-block;
-    align-self: flex-start;
-    background: rgba(254, 44, 85, 0.12);
-    border: 1px solid rgba(254, 44, 85, 0.3);
-    color: var(--neo-coral);
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.6875rem;
-  }
-
-  .action-box {
-    display: flex;
-    flex-direction: column;
-    gap: 0.875rem;
-    align-items: center;
+    gap: 0.45rem;
+    margin-top: 0.5rem;
   }
 
   .connect-button {
-    width: 100%;
-    text-align: center;
-    background: var(--neo-coral);
-    color: #ffffff;
-    padding: 1.125rem 1.5rem;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 0.9375rem;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
+    min-height: 52px;
+    padding: 1rem 1.75rem;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--neo-coral, #fe2c55) 0%, #d81640 100%);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    box-shadow: 0 10px 28px -4px rgba(254, 44, 85, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
   }
 
   .connect-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(254, 44, 85, 0.35);
+    box-shadow: 0 14px 32px -4px rgba(254, 44, 85, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    filter: brightness(1.06);
   }
 
   .connect-button:active {
-    transform: translateY(0);
+    transform: scale(0.98);
   }
 
-  .security-note {
-    font-size: 0.75rem;
-    color: var(--neo-dim);
+  .cta-arrow {
+    transition: transform 0.18s ease;
+  }
+
+  .connect-button:hover .cta-arrow {
+    transform: translateX(3px);
+  }
+
+  .cta-microcopy {
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.48);
+    letter-spacing: 0.02em;
     text-align: center;
+  }
+
+  /* Reassurance */
+  .reassurance-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--neo-coral, #fe2c55);
+    letter-spacing: 0.14em;
+  }
+
+  .reassurance-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .reassurance-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 1.25rem 1.4rem;
+    border-radius: 16px;
+    background: rgba(18, 20, 24, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: border-color 0.2s ease;
+  }
+
+  .reassurance-card:hover {
+    border-color: rgba(254, 44, 85, 0.25);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .card-num {
+    color: var(--neo-coral, #fe2c55);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .card-title {
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .card-copy {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 768px) {
+    .action-card {
+      padding: 1.5rem 1.25rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .connect-button, .reassurance-card, .nav-back, .cta-arrow {
+      transition: none !important;
+      transform: none !important;
+    }
   }
 </style>

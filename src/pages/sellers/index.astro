@@ -1,0 +1,579 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const sellerAdvantages = [
+  {
+    code: '01',
+    title: 'VENDA ONDE A DESCOBERTA ACONTECE',
+    copy: 'O TikTok Shop aproxima conteúdo e comércio. Sua operação não precisa começar mandando o público para fora para só depois tentar converter.',
+    highlight: true,
+  },
+  {
+    code: '02',
+    title: 'CREATORS COMO DISTRIBUIÇÃO',
+    copy: 'Prepare produtos e oportunidades para trabalhar com creators que já fazem parte da dinâmica de descoberta da plataforma.',
+    highlight: false,
+  },
+  {
+    code: '03',
+    title: 'CAMPANHAS MAIS PERTO DA OPERAÇÃO',
+    copy: 'Conteúdo, campanhas e Shop deixam de funcionar como ilhas separadas. A ideia é aproximar sinal, distribuição e resultado comercial.',
+    highlight: false,
+  },
+  {
+    code: '04',
+    title: 'MENOS TRABALHO REPETITIVO',
+    copy: 'Integrações e automações existem para absorver tarefas operacionais por baixo, deixando você mais livre para decidir, criar e vender.',
+    highlight: false,
+  },
+] as const;
+
+const sellerPaths = [
+  {
+    code: '01',
+    title: 'CREATORS',
+    copy: 'Coloque seus produtos em circulação por meio de conteúdo e colaboração.',
+    href: '/sellers/creators',
+    cta: 'Explorar creators',
+    icon: '↗',
+  },
+  {
+    code: '02',
+    title: 'CAMPANHAS',
+    copy: 'Estruture ações comerciais sem separar mídia da operação.',
+    href: '/sellers/campanhas',
+    cta: 'Estruturar campanhas',
+    icon: '↗',
+  },
+  {
+    code: '03',
+    title: 'CONECTAR',
+    copy: 'Autorize sua Shop e dê o primeiro passo para integrar sua operação.',
+    href: '/sellers/conectar',
+    cta: 'Autorizar loja',
+    icon: '→',
+  },
+] as const;
+---
+
+<BaseLayout
+  title="Sellers // neøflow Official TikTok Partners"
+  description="Menos caminho entre atenção e venda. Conectamos sua operação ao ecossistema TikTok Shop para aproximar produtos, conteúdo, creators e campanhas."
+>
+  <main class="sellers-hub-page">
+    <div class="ambient-glow" aria-hidden="true"></div>
+
+    <div class="sellers-hub-container">
+      <nav class="hub-nav" aria-label="Navegação de retorno">
+        <a class="nav-back font-mono" href="/">← INÍCIO</a>
+      </nav>
+
+      <!-- Hero Header -->
+      <header class="sellers-hero">
+        <div class="kicker-pill font-mono">
+          <span class="coral-dot" aria-hidden="true"></span>
+          01 // SHOP // SELLERS
+        </div>
+        <h1 class="font-display">Menos caminho entre atenção e venda.</h1>
+        <p class="hero-lead">
+          Conectamos sua operação ao ecossistema TikTok Shop para aproximar produtos, conteúdo, creators e campanhas de onde a compra acontece.
+        </p>
+
+        <!-- CTA Principal & Secundário -->
+        <div class="hero-actions-box">
+          <div class="cta-primary-wrap">
+            <a
+              id="hero-seller-connect"
+              class="cta-primary font-mono"
+              href="/sellers/conectar"
+            >
+              <span>CONECTAR MINHA LOJA</span>
+              <span class="cta-arrow" aria-hidden="true">→</span>
+            </a>
+            <span class="cta-microcopy">Autorização feita pelo TikTok Shop.</span>
+          </div>
+          <a class="cta-secondary font-mono" href="#vantagens">
+            <span>VER COMO FUNCIONA</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- 04 Vantagens Comerciais Aprovadas -->
+      <section id="vantagens" class="advantages-section" aria-labelledby="advantages-title">
+        <div class="section-label font-mono">01 // VANTAGENS COMERCIAIS</div>
+        <h2 id="advantages-title" class="sr-only">Vantagens comerciais da operação no TikTok Shop</h2>
+
+        <div class="advantages-grid">
+          {sellerAdvantages.map((adv) => (
+            <article class:list={['advantage-block', { 'is-heroic': adv.highlight }]}>
+              <div class="advantage-meta font-mono">
+                <span class="adv-num">{adv.code}</span>
+                <span class="adv-tag">{adv.title}</span>
+              </div>
+              <p class="adv-text">{adv.copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Arquitetura de Navegação Comercial (3 Caminhos) -->
+      <section class="seller-paths-section" aria-labelledby="paths-title">
+        <div class="section-label font-mono">02 // JORNADA SELLER</div>
+        <h2 id="paths-title" class="section-heading font-display">Aprofunde sua operação</h2>
+
+        <div class="paths-grid">
+          {sellerPaths.map((path) => (
+            <a class="path-card" href={path.href}>
+              <div class="path-meta font-mono">
+                <span class="path-num">{path.code}</span>
+                <span class="path-arrow" aria-hidden="true">{path.icon}</span>
+              </div>
+              <h3 class="path-title font-mono">{path.title}</h3>
+              <p class="path-copy">{path.copy}</p>
+              <span class="path-action font-mono">
+                {path.cta} <span aria-hidden="true">{path.icon}</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- Bottom Reassurance Card -->
+      <section class="bottom-connect-box">
+        <div class="connect-box-inner">
+          <span class="connect-kicker font-mono">PRIMEIRO PASSO</span>
+          <h2 class="font-display">Pronto para aproximar sua loja de onde a compra acontece?</h2>
+          <p>
+            A autorização é feita diretamente no ambiente seguro do TikTok Shop, concedendo apenas os acessos operacionais da sua loja.
+          </p>
+          <div class="bottom-cta-wrap">
+            <a class="cta-primary font-mono" href="/sellers/conectar">
+              <span>CONECTAR MINHA LOJA</span>
+              <span class="cta-arrow" aria-hidden="true">→</span>
+            </a>
+            <span class="cta-microcopy">Autorização feita pelo TikTok Shop.</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .sellers-hub-page {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    padding: calc(6.5rem + var(--sat, 0px)) 1.25rem 5rem;
+    display: flex;
+    justify-content: center;
+    background: #070809;
+    color: #ffffff;
+  }
+
+  .ambient-glow {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(800px, 90vw);
+    height: 480px;
+    background: radial-gradient(circle, rgba(254, 44, 85, 0.14) 0%, rgba(7, 8, 9, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .sellers-hub-container {
+    width: 100%;
+    max-width: 780px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  .hub-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-back {
+    font-size: 0.78rem;
+    color: var(--neo-dim, #94a3b8);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.18s ease;
+  }
+
+  .nav-back:hover {
+    color: var(--neo-coral, #fe2c55);
+  }
+
+  /* Hero */
+  .sellers-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .kicker-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: flex-start;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(254, 44, 85, 0.08);
+    border: 1px solid rgba(254, 44, 85, 0.25);
+    color: var(--neo-coral, #fe2c55);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .coral-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--neo-coral, #fe2c55);
+    box-shadow: 0 0 8px var(--neo-coral, #fe2c55);
+  }
+
+  .sellers-hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .hero-lead {
+    font-size: clamp(1.05rem, 3.2vw, 1.25rem);
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.78);
+    margin: 0;
+  }
+
+  .hero-actions-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 0.75rem;
+  }
+
+  .cta-primary-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 50px;
+    padding: 0.95rem 1.75rem;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--neo-coral, #fe2c55) 0%, #d81640 100%);
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    box-shadow: 0 10px 28px -4px rgba(254, 44, 85, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  }
+
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px -4px rgba(254, 44, 85, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    filter: brightness(1.06);
+  }
+
+  .cta-primary:active {
+    transform: scale(0.98);
+  }
+
+  .cta-arrow {
+    transition: transform 0.18s ease;
+  }
+
+  .cta-primary:hover .cta-arrow {
+    transform: translateX(3px);
+  }
+
+  .cta-microcopy {
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.48);
+    letter-spacing: 0.02em;
+    padding-left: 0.25rem;
+  }
+
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.95rem 1.35rem;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  }
+
+  .cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.22);
+    color: #ffffff;
+  }
+
+  /* Vantagens */
+  .advantages-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--neo-coral, #fe2c55);
+    letter-spacing: 0.14em;
+  }
+
+  .advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.15rem;
+  }
+
+  .advantage-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 1.4rem;
+    border-radius: 18px;
+    background: rgba(18, 20, 24, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .advantage-block:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
+  }
+
+  .advantage-block.is-heroic {
+    background: linear-gradient(145deg, rgba(38, 16, 23, 0.85) 0%, rgba(18, 20, 24, 0.92) 100%);
+    border-color: rgba(254, 44, 85, 0.35);
+    box-shadow: 0 12px 30px -4px rgba(254, 44, 85, 0.18), inset 0 1px 0 rgba(254, 44, 85, 0.22);
+  }
+
+  .advantage-block.is-heroic:hover {
+    border-color: rgba(254, 44, 85, 0.55);
+  }
+
+  .advantage-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .adv-num {
+    color: var(--neo-coral, #fe2c55);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  .adv-tag {
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.25;
+  }
+
+  .adv-text {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  /* Seller Paths */
+  .seller-paths-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .section-heading {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .paths-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .path-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 1.35rem;
+    border-radius: 18px;
+    background: linear-gradient(155deg, rgba(22, 24, 28, 0.82) 0%, rgba(12, 13, 16, 0.94) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+    color: #ffffff;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .path-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(254, 44, 85, 0.38);
+    box-shadow: 0 14px 32px -6px rgba(0, 0, 0, 0.65), 0 0 20px -6px rgba(254, 44, 85, 0.25);
+  }
+
+  .path-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--neo-coral, #fe2c55);
+  }
+
+  .path-num {
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .path-arrow {
+    font-size: 0.88rem;
+    transition: transform 0.18s ease;
+  }
+
+  .path-card:hover .path-arrow {
+    transform: translate(2px, -2px);
+  }
+
+  .path-title {
+    margin: 0;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+  }
+
+  .path-copy {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.82rem;
+    line-height: 1.45;
+    flex: 1 1 auto;
+  }
+
+  .path-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--neo-coral, #fe2c55);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* Bottom Connect */
+  .bottom-connect-box {
+    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(28, 14, 19, 0.88) 0%, rgba(14, 16, 19, 0.95) 100%);
+    border: 1px solid rgba(254, 44, 85, 0.3);
+    padding: 2.25rem 2rem;
+    box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.7), 0 0 32px -8px rgba(254, 44, 85, 0.18);
+  }
+
+  .connect-box-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    max-width: 620px;
+  }
+
+  .connect-kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--neo-coral, #fe2c55);
+    letter-spacing: 0.14em;
+  }
+
+  .connect-box-inner h2 {
+    font-size: clamp(1.4rem, 3.8vw, 1.9rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .connect-box-inner p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .bottom-cta-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 768px) {
+    .advantages-grid {
+      grid-template-columns: 1fr;
+    }
+    .paths-grid {
+      grid-template-columns: 1fr;
+    }
+    .sellers-hub-container {
+      gap: 2.5rem;
+    }
+    .bottom-connect-box {
+      padding: 1.5rem 1.25rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-primary, .advantage-block, .path-card, .nav-back, .path-arrow, .cta-arrow {
+      transition: none !important;
+      transform: none !important;
+    }
+  }
+</style>
