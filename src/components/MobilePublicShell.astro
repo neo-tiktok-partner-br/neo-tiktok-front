@@ -294,7 +294,7 @@ const sellerPaths = [
       if (!shell) return;
       const views = Array.from(shell.querySelectorAll('[data-view]'));
       const tabs = Array.from(shell.querySelectorAll('[data-tab-target]'));
-      const cards = Array.from(shell.querySelectorAll('.operation-card'));
+      const cards = Array.from(shell.querySelectorAll('.operation-card, .advantage-card, .seller-path-item'));
       const validTabs = ['home', 'shop', 'creators', 'partners', 'marketing', 'tech'];
 
       const normalizeTarget = (target) => (target === 'marketing' ? 'partners' : target);
