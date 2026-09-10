@@ -166,15 +166,16 @@ const views = [
               <span class="signal-state font-mono">PRONTO PARA DIAGNÓSTICO</span>
             </div>
             <div class="signal-stats">
-              {view.stats.map(([label, value]) => <div><span>{label}</span><strong>{value}</strong></div>)}
+              {view.stats.map((stat) => <div><span>{stat[0]}</span><strong>{stat[1]}</strong></div>)}
             </div>
           </div>
 
           <div class="feature-list">
-            {view.features.map(([title, copy], index) => (
-              <article><span class="feature-index font-mono">0{index + 1}</span><div><h2>{title}</h2><p>{copy}</p></div></article>
+            {view.features.map((feature, index) => (
+              <article><span class="feature-index font-mono">0{index + 1}</span><div><h2>{feature[0]}</h2><p>{feature[1]}</p></div></article>
             ))}
           </div>
+
 
           <a
             class="primary-action font-mono"
