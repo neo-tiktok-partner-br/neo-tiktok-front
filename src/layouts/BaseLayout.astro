@@ -173,6 +173,18 @@ const jsonLd = {
 
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+
+    <!-- PWA Service Worker Registration -->
+    <script is:inline>
+      if (typeof window !== 'undefined' && 'serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js', { scope: '/' })
+            .catch((err) => {
+              console.warn('[SW] Registration failed (non-critical):', err);
+            });
+        });
+      }
+    </script>
   </head>
   <body class={hideChrome ? "pwa-viewport-lock" : ""}>
     {!hideChrome && (

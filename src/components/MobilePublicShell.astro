@@ -2,7 +2,7 @@
 import BottomTabBar from './BottomTabBar.astro';
 import { PUBLIC_API_BASE_URL } from '../config/api';
 
-type TabId = 'home' | 'shop' | 'creators' | 'partners' | 'marketing' | 'tech';
+type TabId = 'home' | 'shop' | 'creators' | 'partners' | 'agency' | 'marketing' | 'tech';
 
 interface Props {
   activeTab?: TabId;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const { activeTab: rawTab = 'home', interactive = false, desktopPreview = false } = Astro.props;
-const activeTab = rawTab === 'marketing' ? 'partners' : rawTab;
+const activeTab = rawTab === 'marketing' || rawTab === 'agency' ? 'partners' : rawTab;
 
 const operations = [
   {
@@ -33,10 +33,10 @@ const operations = [
     glowColor: 'rgba(0, 242, 254, 0.24)',
   },
   {
-    id: 'partners',
+    id: 'agency',
     code: '03',
-    label: 'PARTNERS',
-    phrase: 'Quero conectar negócios, marcas e creators.',
+    label: 'AGÊNCIAS',
+    phrase: 'Quero gerenciar dados, tráfego pago e me conectar com Sellers',
     accent: 'white',
     accentColor: '#ffffff',
     glowColor: 'rgba(255, 255, 255, 0.2)',
@@ -159,11 +159,12 @@ const sellerPaths = [
     <div class="mobile-stage" aria-live="polite">
       <!-- 00 / HOME -->
       <section class:list={['mobile-view', 'home-view', { 'is-active': activeTab === 'home' }]} data-view="home" aria-label="Início">
-        <header class="hero-copy">
-          <span class="eyebrow font-mono">NEØFLOW // TIKTOK SHOP</span>
-          <h1>Escolha sua porta de entrada.</h1>
-          <p>Comece pelo que você gosta de fazer.</p>
-        </header>
+        <div class="home-refraction-stage">
+          <h1 class="home-refraction-headline">Escolha sua porta de entrada.</h1>
+          <header class="home-hero-glass">
+            <p>Comece pelo que você gosta de fazer.</p>
+          </header>
+        </div>
 
         <div class="operation-grid" aria-label="Portas de entrada">
           {operations.map((operation) => (
@@ -179,7 +180,9 @@ const sellerPaths = [
                   <span class="card-code">{operation.code} / {operation.label}</span>
                   <span class="card-arrow" aria-hidden="true">↗</span>
                 </div>
-                <p class="card-phrase">{operation.phrase}</p>
+                <p class="card-phrase">
+                  {operation.phrase.replace(/\.$/, '')}<span class="brand-slashes" aria-hidden="true"><span class="slash-red">/</span><span class="slash-cyan">/</span></span>
+                </p>
               </div>
             </a>
           ))}
@@ -298,9 +301,9 @@ const sellerPaths = [
       const views = Array.from(shell.querySelectorAll('[data-view]'));
       const tabs = Array.from(shell.querySelectorAll('[data-tab-target]'));
       const cards = Array.from(shell.querySelectorAll('.operation-card, .advantage-card, .seller-path-item'));
-      const validTabs = ['home', 'shop', 'creators', 'partners', 'marketing', 'tech'];
+      const validTabs = ['home', 'shop', 'creators', 'partners', 'agency', 'marketing', 'tech'];
 
-      const normalizeTarget = (target) => (target === 'marketing' ? 'partners' : target);
+      const normalizeTarget = (target) => (target === 'marketing' || target === 'agency' ? 'partners' : target);
 
       const switchTab = (rawTarget) => {
         const target = normalizeTarget(rawTarget);
@@ -411,28 +414,109 @@ const sellerPaths = [
   .desktop-preview-link { position: fixed; top: 1rem; right: 1rem; z-index: 120; display: flex; align-items: center; gap: 0.7rem; padding: 0.45rem 0.75rem; border: 1px solid var(--shell-border); border-radius: 999px; background: rgba(14, 16, 18, 0.92); color: var(--shell-muted); font-size: 0.65rem; backdrop-filter: blur(12px); }
   .desktop-preview-link a { color: var(--neo-acid); text-decoration: none; }
 
-  .mobile-topbar { z-index: 20; flex: 0 0 auto; display: flex; align-items: center; justify-content: flex-start; min-height: 56px; padding: max(0.5rem, env(safe-area-inset-top)) 1rem 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); background: rgba(7, 8, 9, 0.92); backdrop-filter: blur(18px); }
+  .mobile-topbar { z-index: 20; flex: 0 0 auto; display: flex; align-items: center; justify-content: flex-start; min-height: clamp(64px, 7.5vh, 74px); padding: max(0.6rem, env(safe-area-inset-top)) 1.1rem 0.55rem; border-bottom: 1px solid rgba(255, 255, 255, 0.06); background: rgba(7, 8, 9, 0.94); backdrop-filter: blur(18px); }
   .mobile-brand { display: flex; min-width: 0; }
-  .mobile-brand img { display: block; width: auto; height: 24px; max-width: 52vw; }
+  .mobile-brand img { display: block; width: auto; height: clamp(42px, 5.2vh, 50px); max-width: 72vw; }
 
   .mobile-stage { position: relative; flex: 1 1 auto; min-height: 0; min-width: 0; overflow: hidden; }
   .mobile-device :global(.ios-bottom-bar) { position: relative; flex: 0 0 auto; }
-  .mobile-view { position: absolute; inset: 0; display: none; min-width: 0; overflow-x: clip; overflow-y: auto; overscroll-behavior: contain; padding: clamp(1rem, 3.2vh, 1.6rem) 1rem calc(1rem + env(safe-area-inset-bottom)); scrollbar-width: none; }
+  .mobile-view { position: absolute; inset: 0; display: none; min-width: 0; overflow-x: clip; overflow-y: auto; overscroll-behavior: contain; padding: clamp(0.7rem, 2.2vh, 1.2rem) 1rem calc(0.8rem + env(safe-area-inset-bottom)); scrollbar-width: none; }
   .mobile-view::-webkit-scrollbar { display: none; }
   .mobile-view.is-active { display: flex; flex-direction: column; }
   .hero-copy { flex: 0 0 auto; }
   .eyebrow { display: block; margin-bottom: 0.45rem; color: var(--shell-accent); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; }
-  .hero-copy h1 { max-width: 360px; margin: 0; font-size: clamp(2.35rem, 10.5vw, 3.15rem); line-height: 0.94; letter-spacing: -0.055em; }
+  .hero-copy h1 { max-width: 360px; margin: 0; font-size: clamp(1.85rem, 8vw, 2.55rem); line-height: 0.98; letter-spacing: -0.055em; }
   .hero-copy p { max-width: 330px; margin: 0.55rem 0 0; color: var(--shell-muted); font-size: clamp(0.82rem, 3.4vw, 0.98rem); line-height: 1.35; }
 
-  /* Home Operation Grid & Physical Door Cards */
+  /* Optical Stage: Headline with Chromatic Refraction and Glassmorphism */
+  .home-refraction-stage {
+    position: relative;
+    width: 100%;
+    flex: 0 0 auto;
+    margin-top: clamp(0.25rem, 1vh, 0.55rem);
+    margin-bottom: clamp(0.35rem, 1.2vh, 0.65rem);
+  }
+
+  .home-refraction-headline {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    margin: 0;
+    padding: 0 0.1rem;
+    font-size: clamp(0.85rem, 4.35vw, 1.25rem) !important;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    white-space: nowrap !important;
+    text-wrap: nowrap !important;
+    color: #ffffff;
+    text-shadow:
+      -1.5px 0 2px rgba(254, 44, 85, 0.75),
+      1.5px 0 2px rgba(37, 244, 238, 0.75);
+  }
+
+  .home-hero-glass {
+    position: relative;
+    z-index: 2;
+    margin-top: 0.35rem;
+    padding: clamp(0.48rem, 1.25vh, 0.68rem) clamp(0.8rem, 2.2vw, 1rem);
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(20, 24, 30, 0.45) 100%);
+    backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+      0 12px 30px -8px rgba(0, 0, 0, 0.5),
+      inset 0 1px 1px rgba(255, 255, 255, 0.35),
+      -1px -1px 6px -1px rgba(254, 44, 85, 0.35),
+      1px 1px 6px -1px rgba(37, 244, 238, 0.35);
+    overflow: hidden;
+  }
+
+  .home-hero-glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: linear-gradient(90deg,
+      rgba(254, 44, 85, 0.95) 0%,
+      rgba(255, 255, 255, 1) 35%,
+      rgba(37, 244, 238, 0.95) 75%,
+      rgba(215, 254, 9, 0.6) 100%
+    );
+    opacity: 0.95;
+    pointer-events: none;
+  }
+
+  .home-hero-glass::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 15% 0%, rgba(254, 44, 85, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 100%, rgba(37, 244, 238, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .home-hero-glass p {
+    position: relative;
+    z-index: 3;
+    margin: 0;
+    font-size: clamp(0.72rem, 2.6vw, 0.84rem);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.3;
+  }
+
+  /* Home Operation Grid & Physical Door Cards (Restored to base) */
   .operation-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: clamp(0.6rem, 1.8vh, 0.85rem);
     flex: 1 1 auto;
     min-height: 0;
-    margin: clamp(0.9rem, 2.4vh, 1.4rem) 0 0.8rem;
+    margin: clamp(0.8rem, 2.2vh, 1.4rem) 0 0.8rem;
     perspective: 1000px;
   }
 
@@ -448,7 +532,7 @@ const sellerPaths = [
     display: flex;
     flex-direction: column;
     min-width: 0;
-    min-height: 0;
+    min-height: clamp(135px, 19vh, 175px);
     border-radius: 20px;
     background: linear-gradient(155deg, rgba(22, 24, 27, 0.85) 0%, rgba(10, 11, 13, 0.94) 100%);
     color: #fff;
@@ -493,8 +577,9 @@ const sellerPaths = [
     z-index: 2;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     flex: 1 1 auto;
-    padding: clamp(0.85rem, 2.2vh, 1.15rem);
+    padding: clamp(0.65rem, 1.8vh, 0.9rem);
     min-height: 0;
   }
 
@@ -530,14 +615,32 @@ const sellerPaths = [
 
   .card-phrase {
     margin-top: auto;
-    padding-top: clamp(0.8rem, 2vh, 1.4rem);
+    padding-top: clamp(0.25rem, 0.8vh, 0.45rem);
     margin-bottom: 0;
     font-family: var(--font-display);
-    font-size: clamp(0.9rem, 3.6vw, 1.08rem);
+    font-size: clamp(1.35rem, 5.4vw, 1.7rem);
     font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.03em;
-    color: #f3f4f6;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: none;
+    text-wrap: pretty;
+  }
+
+  .brand-slashes {
+    display: inline-flex;
+    margin-left: 0.18em;
+    font-family: var(--font-display, sans-serif);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+  }
+  .slash-red {
+    color: #fe2c55;
+  }
+  .slash-cyan {
+    color: #25f4ee;
   }
 
   .accent-coral {
@@ -770,15 +873,19 @@ const sellerPaths = [
     .desktop-preview-link { display: none; }
   }
   @media (max-width: 350px), (max-height: 650px) {
-    .mobile-topbar { min-height: 50px; padding-block: 0.4rem; }
-    .mobile-brand img { height: 20px; }
-    .mobile-view { padding-top: 0.7rem; padding-inline: 0.75rem; }
-    .hero-copy h1 { font-size: 1.9rem; }
+    .mobile-topbar { min-height: 68px; padding-block: 0.5rem; }
+    .mobile-brand img { height: 44px; max-width: 80vw; }
+    .mobile-view { padding-top: 0.6rem; padding-inline: 0.75rem; }
+    .home-refraction-headline { font-size: clamp(0.82rem, 4.2vw, 1.05rem) !important; white-space: nowrap !important; text-wrap: nowrap !important; }
+    .home-hero-glass { margin-top: 0.35rem; padding: 0.45rem 0.65rem; border-radius: 14px; }
+    .home-hero-glass p { font-size: 0.7rem; }
+    .hero-copy h1 { font-size: 1.62rem; }
     .hero-copy p { font-size: 0.76rem; margin-top: 0.35rem; }
-    .operation-grid { gap: 0.45rem; margin-top: 0.65rem; }
-    .operation-card { border-radius: 15px; }
-    .card-inner { padding: 0.65rem; }
-    .card-phrase { padding-top: 0.5rem; font-size: 0.82rem; }
+    .operation-grid { gap: 0.45rem; margin: auto 0 0.5rem; flex: 0 0 auto; }
+    .operation-card { border-radius: 16px; min-height: 125px; }
+    .card-inner { padding: 0.55rem 0.6rem; justify-content: space-between; }
+    .card-code { font-size: 0.58rem; }
+    .card-phrase { padding-top: 0.25rem; font-size: 1.18rem; line-height: 1.08; margin-top: auto; }
     .detail-view { gap: 0.55rem; }
     .signal-card { padding: 0.62rem; border-radius: 13px; }
     .feature-list { gap: 0.4rem; }

@@ -1,17 +1,25 @@
 # neøflow // Official TikTok Partners — LLM Discovery Layer
-> Sovereign Markdown Documentation Index for Agentic Ingestion & Synthesis
+> Sovereign Markdown Documentation Index for Agentic Ingestion, Synthesis, and AI Crawlers
+> Protocol Alignment: NEØ Protocol Node (neotiktok.com)
 
 ## System Overview
-neøflow is an official TikTok Shop Partner (TTSPC) technology ecosystem operating commercial and API infrastructure for Shop (Sellers), Creators (Affiliates/Live Commerce), Marketing (Performance/Ads), and Tech (OAuth 2.0, Webhooks, Multi-Agent Systems).
+neøflow is an official TikTok Shop Partner (TTSPC) commercial and technical infrastructure node. It operates 4 sovereign operational doors:
+- **01 / SHOP**: E-commerce enablement, development shops, and authorized TikTok Shop order management.
+- **02 / CREATORS**: Alliance creator onboarding, affiliate links, and live-commerce monetization.
+- **03 / AGÊNCIAS**: Performance marketing, paid traffic, data management, and seller matching.
+- **04 / TECH**: Developer tools, OAuth 2.0 flow, Webhooks, BullMQ queues, and Multi-Agent integration.
 
 ## Canonical Public Endpoints
-- [Home Hub](https://neotiktok.com/): Official 9:16 mobile-first in-app entry and portal selection.
+- [Home Hub (9:16 Minis)](https://neotiktok.com/): Official mobile-first 9:16 in-app entry and portal selection.
 - [Desktop Portal](https://neotiktok.com/home): Widescreen desktop overview of neøflow capabilities and infrastructure.
 - [TikTok Shop & Sellers](https://neotiktok.com/shop): Official connection overview for merchants and e-commerce operations.
+- [TikTok Shop Official Landing](https://neotiktok.com/tiktok-shop): Direct merchant landing for TikTok Shop expansion.
 - [Seller Connect Gateway](https://neotiktok.com/sellers/conectar): Secure OAuth onboarding gateway for TikTok Shop sellers.
 - [Creators & Affiliates](https://neotiktok.com/creators): Curated product catalog, affiliate tools, and creator opportunities.
-- [Marketing & Ads](https://neotiktok.com/marketing): Performance marketing and data-driven infrastructure.
+- [Minis Hub](https://neotiktok.com/minis): Fast lightweight web minis for creators and sellers.
+- [Agências & Marketing](https://neotiktok.com/marketing): Performance marketing and data-driven agency infrastructure.
 - [Tech & API Integrations](https://neotiktok.com/tech): Developer integrations, authorized endpoints, and architecture.
+- [Documentation](https://neotiktok.com/docs): Technical specs, integration guides, and API contracts.
 - [Privacy Policy (LGPD)](https://neotiktok.com/legal/privacidade): Data Subject Rights (LGPD Lei 13.709/2018, Art. 18) and DPO contact.
 - [Terms of Service](https://neotiktok.com/legal/termos): E-Commerce Decree 7.962/2013 and Brazilian Consumer Protection Code (CDC Art. 49).
 

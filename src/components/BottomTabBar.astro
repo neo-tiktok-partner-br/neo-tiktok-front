@@ -1,10 +1,10 @@
 ---
 interface Props {
-  activeTab?: 'home' | 'shop' | 'creators' | 'partners' | 'marketing' | 'tech';
+  activeTab?: 'home' | 'shop' | 'creators' | 'partners' | 'agency' | 'marketing' | 'tech';
 }
 
 const { activeTab: rawTab = 'home' } = Astro.props;
-const activeTab = rawTab === 'marketing' ? 'partners' : rawTab;
+const activeTab = rawTab === 'marketing' || rawTab === 'agency' ? 'partners' : rawTab;
 
 const tabs = [
   {
