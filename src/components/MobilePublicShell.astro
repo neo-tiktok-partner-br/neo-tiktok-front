@@ -177,11 +177,16 @@ const sellerPaths = [
               <div class="card-glow" aria-hidden="true" />
               <div class="card-inner">
                 <div class="card-meta font-mono">
-                  <span class="card-code">{operation.code} / {operation.label}</span>
+                  <span class="card-code">{operation.code}</span>
                   <span class="card-arrow" aria-hidden="true">↗</span>
                 </div>
+                <div class="card-center">
+                  <h2 class="card-title">
+                    {operation.label}<span class="brand-slashes" aria-hidden="true"><span class="slash-red">/</span><span class="slash-cyan">/</span></span>
+                  </h2>
+                </div>
                 <p class="card-phrase">
-                  {operation.phrase.replace(/\.$/, '')}<span class="brand-slashes" aria-hidden="true"><span class="slash-red">/</span><span class="slash-cyan">/</span></span>
+                  {operation.phrase.replace(/\.$/, '')}
                 </p>
               </div>
             </a>
@@ -613,16 +618,36 @@ const sellerPaths = [
     transform: translate(2px, -2px);
   }
 
-  .card-phrase {
-    margin-top: auto;
-    padding-top: clamp(0.25rem, 0.8vh, 0.45rem);
-    margin-bottom: 0;
+  .card-center {
+    display: flex;
+    align-items: center;
+    margin: auto 0;
+    min-height: 0;
+  }
+
+  .card-title {
+    margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(1.35rem, 5.4vw, 1.7rem);
-    font-weight: 600;
+    font-size: clamp(1.22rem, 4.8vw, 1.68rem);
+    font-weight: 800;
     line-height: 1.05;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.035em;
+    white-space: nowrap !important;
+    text-wrap: nowrap !important;
     color: #ffffff;
+  }
+
+  .card-phrase {
+    margin: 0;
+    min-height: clamp(2.4rem, 6vh, 3.2rem);
+    display: flex;
+    align-items: flex-end;
+    font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+    font-size: clamp(0.76rem, 2.9vw, 0.88rem);
+    font-weight: 400;
+    line-height: 1.32;
+    letter-spacing: -0.01em;
+    color: rgba(255, 255, 255, 0.72);
     overflow-wrap: break-word;
     word-break: normal;
     hyphens: none;
@@ -883,9 +908,10 @@ const sellerPaths = [
     .hero-copy p { font-size: 0.76rem; margin-top: 0.35rem; }
     .operation-grid { gap: 0.45rem; margin: auto 0 0.5rem; flex: 0 0 auto; }
     .operation-card { border-radius: 16px; min-height: 125px; }
-    .card-inner { padding: 0.55rem 0.6rem; justify-content: space-between; }
+    .card-inner { padding: 0.55rem 0.6rem; }
     .card-code { font-size: 0.58rem; }
-    .card-phrase { padding-top: 0.25rem; font-size: 1.18rem; line-height: 1.08; margin-top: auto; }
+    .card-title { font-size: clamp(1.02rem, 4.3vw, 1.25rem) !important; white-space: nowrap !important; text-wrap: nowrap !important; }
+    .card-phrase { font-size: 0.72rem; line-height: 1.28; min-height: 2.2rem; }
     .detail-view { gap: 0.55rem; }
     .signal-card { padding: 0.62rem; border-radius: 13px; }
     .feature-list { gap: 0.4rem; }
