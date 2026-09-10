@@ -1,7 +1,8 @@
 ---
 import BottomTabBar from './BottomTabBar.astro';
+import { PUBLIC_API_BASE_URL } from '../config/api';
 
-type TabId = 'home' | 'shop' | 'creators' | 'marketing' | 'tech';
+type TabId = 'home' | 'shop' | 'creators' | 'partners' | 'marketing' | 'tech';
 
 interface Props {
   activeTab?: TabId;
@@ -9,55 +10,64 @@ interface Props {
   desktopPreview?: boolean;
 }
 
-const { activeTab = 'home', interactive = false, desktopPreview = false } = Astro.props;
+const { activeTab: rawTab = 'home', interactive = false, desktopPreview = false } = Astro.props;
+const activeTab = rawTab === 'marketing' ? 'partners' : rawTab;
 
 const operations = [
-  { id: 'shop', code: '01', label: 'Shop', title: 'Infraestrutura para Sellers.', description: 'Conexão e diagnóstico para operações de TikTok Shop.', accent: 'coral' },
-  { id: 'creators', code: '02', label: 'Creators', title: 'Creators.', description: 'Produtos, campanhas e oportunidades com contexto claro.', accent: 'cyan' },
-  { id: 'marketing', code: '03', label: 'Marketing', title: 'Marketing como Infra.', description: 'Engenharia de mídia, Spark Ads, CAPI e API TikTok Shop.', accent: 'white' },
+  { id: 'shop', code: '01', label: 'Shop', title: 'Infraestrutura para Sellers.', description: 'Conexão e diagnóstico oficial de loja TikTok Shop.', accent: 'coral' },
+  { id: 'creators', code: '02', label: 'Creators', title: 'Rede de Criadores.', description: 'Onboarding oficial de Creator, produtos e briefs.', accent: 'cyan' },
+  { id: 'partners', code: '03', label: 'Partners', title: 'Affiliate Partner & TAP.', description: 'Seller and Scalable Creator Match-Up via Partner Center.', accent: 'white' },
   { id: 'tech', code: '04', label: 'Tech', title: 'Tecnologia Soberana.', description: 'Orquestração de 5 nós, SDK oficial e OAuth AES-256.', accent: 'acid' },
 ] as const;
 
 const views = [
   {
-    id: 'shop', code: '01', eyebrow: 'SHOP / SELLERS', title: 'Infraestrutura para Sellers.', subtitle: 'Conecte sua operação ao TikTok Shop.', accent: 'coral',
-    stats: [['Entrada', 'OAuth Seller'], ['Princípio', 'Escopo mínimo'], ['Custódia', 'Backend']],
+    id: 'shop', code: '01', eyebrow: 'SHOP / SELLERS', title: 'Infraestrutura para Sellers.', subtitle: 'Conecte sua operação ao TikTok Shop com autorização oficial.', accent: 'coral',
+    stats: [['Entrada', 'OAuth Seller'], ['Identidade', 'user_type == 0'], ['Custódia', 'AES-256']],
     features: [
-      ['Diagnóstico primeiro', 'Loja, catálogo e necessidade são mapeados antes da autorização.'],
-      ['Consentimento oficial', 'A conexão ocorre no TikTok Shop sem coleta de senha no frontend.'],
-      ['Dados protegidos', 'Tokens e identificadores sensíveis permanecem na API.'],
+      ['Diagnóstico e Catálogo', 'Loja, inventário e pedidos integrados via SDK oficial.'],
+      ['Autorização Oficial Seller', 'Consentimento seguro em services.tiktokshop.com sem coleta de senha no frontend.'],
+      ['Dados e Tokens Protegidos', 'Tokens OAuth criptografados em repouso com auto-refresh assíncrono.'],
     ],
-    action: 'Iniciar conexão da loja', href: '/sellers/conectar',
+    action: 'Conectar minha loja',
+    href: `${PUBLIC_API_BASE_URL}/oauth/tiktok-shop/authorize`,
+    role: 'SELLER',
   },
   {
-    id: 'creators', code: '02', eyebrow: 'CREATOR NETWORK', title: 'Creators.', subtitle: 'Produtos, campanhas e oportunidades.', accent: 'cyan',
-    stats: [['Entrada', 'Perfil'], ['Formato', 'Briefs'], ['Modelo', 'Afiliado']],
+    id: 'creators', code: '02', eyebrow: 'CREATOR NETWORK', title: 'Rede de Criadores.', subtitle: 'Produtos, campanhas de afiliados e oportunidades qualificadas.', accent: 'cyan',
+    stats: [['Entrada', 'Alliance Creator'], ['Identidade', 'user_type == 1'], ['Modelo', 'Afiliado']],
     features: [
-      ['Curadoria com contexto', 'Produtos e pautas entram com origem e objetivo explícitos.'],
-      ['Creator não é Seller', 'Autorizações e responsabilidades permanecem separadas.'],
-      ['Oportunidades qualificadas', 'Cada campanha começa por aderência, consentimento e repertório.'],
+      ['Onboarding Oficial de Perfil', 'Conexão direta via shop.tiktok.com/alliance/creator/auth com state assinado anti-CSRF.'],
+      ['Creator não é Seller', 'Autorizações, permissões e tokens de criador rigorosamente isolados.'],
+      ['Case Modelo Oficial', 'Paulinha (@paulinhamellooficial) como creator modelo do ecossistema neøflow.'],
     ],
-    action: 'Conhecer creator oficial', href: '/creators/paulinha',
+    action: 'Conectar meu perfil Creator',
+    href: `${PUBLIC_API_BASE_URL}/oauth/tiktok-creator/authorize`,
+    role: 'CREATOR',
   },
   {
-    id: 'marketing', code: '03', eyebrow: 'MARKETING COMO INFRA', title: 'Marketing como Infraestrutura.', subtitle: 'Infraestrutura de mídia sobre agências convencionais.', accent: 'white',
-    stats: [['Conexão', 'Open API'], ['Atribuição', 'CAPI SHA-256'], ['Modelo', 'Ownership']],
+    id: 'partners', code: '03', eyebrow: 'AGÊNCIAS & PARTNERS / TAP', title: 'Affiliate Partner & TAP.', subtitle: 'Seller and Scalable Creator Match-Up no TikTok Partner Center.', accent: 'white',
+    stats: [['Entrada', 'Partner Auth'], ['Identidade', 'user_type == 3'], ['Categoria', 'TAP Validado']],
     features: [
-      ['Engenharia de mídia', 'Conexão via API oficial do TikTok Shop sem manipulação manual de planilhas.'],
-      ['Atribuição CAPI Server-Side', 'Conversions API nativa com hashing SHA-256 resiliente.'],
-      ['Spark Ads & Anti-Fatigue', 'Esteira contínua de mídia focada em conversão real e ROI.'],
+      ['Matchmaking de Escala', 'Orquestração comercial conectando marcas/sellers e redes de criadores.'],
+      ['Validação de Category Asset', 'Verificação estrita de categoria TAP em /authorization/202405/category_assets.'],
+      ['Engenharia e Governança', 'Esteira contínua com atribuição server-side e governança de dados.'],
     ],
-    action: 'Ver tese de marketing', href: '/marketing',
+    action: 'Conectar Partner Center',
+    href: `${PUBLIC_API_BASE_URL}/oauth/tiktok-partner/authorize`,
+    role: 'PARTNER',
   },
   {
-    id: 'tech', code: '04', eyebrow: 'TECH / NΞØ PROTOCOL', title: 'Tecnologia Soberana.', subtitle: 'Orquestração de 5 nós e SDK TikTok Shop.', accent: 'acid',
-    stats: [['SDK', '@neomello'], ['Segurança', 'AES-256-GCM'], ['Arquitetura', '5 Nós']],
+    id: 'tech', code: '04', eyebrow: 'TECH / NΞØ PROTOCOL', title: 'Tecnologia Soberana.', subtitle: 'Orquestração de 5 nós independentes e SDK TikTok Shop.', accent: 'acid',
+    stats: [['SDK', '@neomello/sdk'], ['Segurança', 'AES-256-GCM'], ['Topologia', '5 Módulos']],
     features: [
-      ['SDK TikTok Shop', 'Pacote TypeScript oficial para a TikTok Shop Open API.'],
-      ['Isolamento de Credenciais', 'Tokens OAuth de Sellers e Criadores criptografados no backend.'],
-      ['Fila BullMQ + Redis', 'Auto-refresh de tokens e eventos assíncronos idempotentes.'],
+      ['SDK TikTok Shop', 'Pacote TypeScript oficial para a TikTok Shop Open API com 41 escopos.'],
+      ['Isolamento de Credenciais', 'Tokens de Sellers, Creators e Partners estritamente segregados.'],
+      ['Fila BullMQ + Redis', 'Auto-refresh de tokens e processamento assíncrono idempotente.'],
     ],
-    action: 'Ver frente técnica', href: '/tech',
+    action: 'Ver arquitetura técnica',
+    href: '/tech',
+    role: null,
   },
 ] as const;
 ---
@@ -126,7 +136,15 @@ const views = [
             ))}
           </div>
 
-          <a class="primary-action font-mono" href={view.href}>{view.action}<span aria-hidden="true">→</span></a>
+          <a
+            class="primary-action font-mono"
+            href={view.href}
+            data-oauth-role={view.role}
+            data-auth-endpoint={view.href}
+          >
+            <span>{view.action}</span>
+            <span aria-hidden="true">→</span>
+          </a>
         </section>
       ))}
     </div>
@@ -142,12 +160,17 @@ const views = [
       if (!shell) return;
       const views = Array.from(shell.querySelectorAll('[data-view]'));
       const tabs = Array.from(shell.querySelectorAll('[data-tab-target]'));
-      const validTabs = ['home', 'shop', 'creators', 'marketing', 'tech'];
-      const switchTab = (target) => {
+      const validTabs = ['home', 'shop', 'creators', 'partners', 'marketing', 'tech'];
+
+      const normalizeTarget = (target) => (target === 'marketing' ? 'partners' : target);
+
+      const switchTab = (rawTarget) => {
+        const target = normalizeTarget(rawTarget);
         if (!validTabs.includes(target)) return;
         views.forEach((view) => view.classList.toggle('is-active', view.getAttribute('data-view') === target));
         tabs.forEach((tab) => {
-          const selected = tab.getAttribute('data-tab-target') === target;
+          const tabTarget = normalizeTarget(tab.getAttribute('data-tab-target'));
+          const selected = tabTarget === target;
           if (tab.closest('.ios-bottom-bar')) {
             tab.classList.toggle('is-active', selected);
             selected ? tab.setAttribute('aria-current', 'page') : tab.removeAttribute('aria-current');
@@ -156,12 +179,44 @@ const views = [
         history.replaceState(null, '', target === 'home' ? window.location.pathname : `#${target}`);
         shell.querySelector('.mobile-stage')?.scrollTo({ top: 0, behavior: 'instant' });
       };
+
       tabs.forEach((tab) => tab.addEventListener('click', (event) => {
         const target = tab.getAttribute('data-tab-target');
         if (!target) return;
         event.preventDefault();
         switchTab(target);
       }));
+
+      // OAuth CTAs: intercept click to fetch JSON launchUrl and navigate directly to TikTok domain
+      const oauthActions = Array.from(shell.querySelectorAll('[data-oauth-role]'));
+      oauthActions.forEach((btn) => {
+        btn.addEventListener('click', async (e) => {
+          const role = btn.getAttribute('data-oauth-role');
+          if (!role) return;
+          e.preventDefault();
+          const labelSpan = btn.querySelector('span:first-child');
+          const originalText = labelSpan ? labelSpan.textContent : btn.textContent;
+          if (labelSpan) labelSpan.textContent = 'CONECTANDO AO TIKTOK...';
+          btn.style.pointerEvents = 'none';
+          btn.style.opacity = '0.75';
+
+          const authEndpoint = btn.getAttribute('data-auth-endpoint') || btn.getAttribute('href');
+          try {
+            const res = await fetch(authEndpoint, {
+              headers: { Accept: 'application/json' },
+            });
+            const data = await res.json();
+            if (data && data.authorizeUrl) {
+              window.location.assign(data.authorizeUrl);
+              return;
+            }
+            window.location.assign(authEndpoint);
+          } catch {
+            window.location.assign(authEndpoint);
+          }
+        });
+      });
+
       const hash = window.location.hash.slice(1);
       if (validTabs.includes(hash)) switchTab(hash);
       window.addEventListener('hashchange', () => {
@@ -230,7 +285,7 @@ const views = [
   .feature-index { color: var(--shell-accent); font-size: 0.58rem; padding-top: 0.12rem; }
   .feature-list h2 { margin: 0; font-size: 0.82rem; line-height: 1.15; letter-spacing: -0.02em; }
   .feature-list p { margin: 0.24rem 0 0; color: var(--shell-muted); font-size: 0.68rem; line-height: 1.3; }
-  .primary-action { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: 0.75rem 0.9rem; border-radius: 13px; background: var(--shell-accent); color: #070809; font-size: 0.67rem; font-weight: 700; letter-spacing: 0.06em; text-decoration: none; text-transform: uppercase; }
+  .primary-action { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: 0.75rem 0.9rem; border-radius: 13px; background: var(--shell-accent); color: #070809; font-size: 0.67rem; font-weight: 700; letter-spacing: 0.06em; text-decoration: none; text-transform: uppercase; transition: opacity 0.2s ease, transform 0.15s ease; cursor: pointer; }
 
   @media (max-width: 768px) {
     .mobile-public-shell { display: flex; min-height: 100vh; min-height: 100dvh; }

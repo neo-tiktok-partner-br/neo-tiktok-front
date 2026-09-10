@@ -1,9 +1,10 @@
 ---
 interface Props {
-  activeTab?: 'home' | 'shop' | 'creators' | 'marketing' | 'tech';
+  activeTab?: 'home' | 'shop' | 'creators' | 'partners' | 'marketing' | 'tech';
 }
 
-const { activeTab = 'home' } = Astro.props;
+const { activeTab: rawTab = 'home' } = Astro.props;
+const activeTab = rawTab === 'marketing' ? 'partners' : rawTab;
 
 const tabs = [
   {
@@ -15,25 +16,25 @@ const tabs = [
   {
     id: 'shop',
     label: 'Shop',
-    href: '/shop',
+    href: '/#shop',
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
   },
   {
     id: 'creators',
     label: 'Creators',
-    href: '/creators',
+    href: '/#creators',
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect width="15" height="14" x="1" y="5" rx="2" ry="2"/></svg>`,
   },
   {
-    id: 'marketing',
-    label: 'Agências',
-    href: '/marketing',
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
+    id: 'partners',
+    label: 'Partners',
+    href: '/#partners',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
   },
   {
     id: 'tech',
     label: 'Tech',
-    href: '/tech',
+    href: '/#tech',
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
   },
 ];

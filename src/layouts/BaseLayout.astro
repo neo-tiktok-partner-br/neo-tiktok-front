@@ -187,24 +187,6 @@ const jsonLd = {
     </main>
     {!hideChrome && <FooterPolicy />}
 
-    <!-- Launch web: remove registros/cache PWA antigos que causavam comportamento divergente entre perfis. -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          void navigator.serviceWorker.getRegistrations()
-            .then((registrations) => Promise.all(registrations.map((registration) => registration.unregister())))
-            .catch(() => undefined);
-        });
-      }
-      if ('caches' in window) {
-        window.addEventListener('load', () => {
-          void caches.keys().then((keys) => {
-            const legacyKeys = keys.filter((key) => key.startsWith('neoflow-'));
-            return Promise.all(legacyKeys.map((key) => caches.delete(key)));
-          }).catch(() => undefined);
-        });
-      }
-    </script>
     <style is:inline>
       .skip-to-content {
         position: absolute;
