@@ -82,23 +82,33 @@ When instructions conflict, follow this order:
 
 Never replace an explicit project decision with a generic “best practice” without documenting why.
 
-## 2.1 Approved platform baseline — 2026-08-13
+## 2.1 Approved platform baseline — 2026-09-09
 
-The following decisions are current and must be preserved:
+**OPERATIONAL DIRECTIVE (FREEZE ON PUBLIC PRESENTATION):**
+- **CONFIRMED:** The public presentation UI on `neo-tiktok-front` (`https://neotiktok.com`) is **UNDER ANALYSIS** by the operator.
+- **CONFIRMED:** `neo-tiktok-front` remains the canonical public surface at `neotiktok.com`.
+- **UNKNOWN:** Whether this review affects pending API/scope changes (no need to resolve now for frontend).
+- **MANDATORY DEV AGENT RULE:** **DO NOT MODIFY** `MobilePublicShell.astro`, public territory views, or landing presentation layouts while under analysis.
+
+The following architectural decisions are current and must be preserved:
 
 - `neo-tiktok-front` is the single canonical public entry for the ecosystem.
-- Shop, Creators, Marketing and Tech are the four public territories.
+- Shop, Creators, Partners and Tech are the four in-shell public territories.
+- Public navigation on mobile uses **In-Shell DOM/hash switching** (`#shop`, `#creators`, `#partners`, `#tech`) inside `MobilePublicShell.astro` to ensure 100% stable execution within TikTok In-App WebViews without page reload flicker.
+- Service Worker (`sw.js`) and PWA caching hooks have been permanently expunged to prevent cache contamination and stale assets in WebView sessions.
 - Partner Operations is the private coordination layer, not a fifth equivalent
   public territory.
 - `/app` is the target authenticated shell driven by memberships, roles and
   capabilities.
 - Public journeys start with intent qualification. TikTok OAuth is requested
   only when the selected journey requires a minimum authorization.
-- Seller and Creator grants are isolated credential classes.
+- Seller, Creator and Partner grants are isolated credential classes.
+  - Seller OAuth: `${PUBLIC_API_BASE_URL}/oauth/tiktok-shop/authorize`
+  - Creator OAuth: `${PUBLIC_API_BASE_URL}/oauth/tiktok-creator/authorize`
+  - Partner OAuth: `${PUBLIC_API_BASE_URL}/oauth/tiktok-partner/authorize`
 - `neo-content-dashboard` is transitional; useful capabilities move into
   `/app` only after contracts and parity exist.
-- `neo-content-landing` is transitional; migration requires URL inventory,
-  redirects, traffic evidence and rollback before retirement.
+- `neo-content-landing` is transitional/legacy;
 - The backend, asynchronous worker and creative engine remain sovereign nodes.
 
 Canonical cross-repository references:
@@ -126,10 +136,8 @@ Current implementation increment:
 - The reviewer account exists, but its password, session cookies, tokens and
   `shop_cipher` must never be written to Git or documentation.
 - The canonical backend API configuration is exported in `src/config/api.ts` via
-  `PUBLIC_API_BASE_URL` (current production host: `https://api.neotiktok.com`; historical `https://api.neoflowoff.agency` is `LEGACY/DOC_ONLY`).
-- The Seller OAuth connection point is `/sellers/conectar`, which routes exclusively
-  to `${PUBLIC_API_BASE_URL}/oauth/tiktok-shop/authorize`. Never point UI buttons directly to external TikTok URLs.
-- The official Creator profile page is `/creators/paulinha` (`https://neotiktok.com/creators/paulinha`), featuring official media assets, dark/metal aesthetic, and engagement triggers.
+  `PUBLIC_API_BASE_URL` (current production host: `https://api.neotiktok.com`).
+- The official Creator profile page is `/creators/paulinha` (`https://neotiktok.com/creators/paulinha`).
 - **Production Infrastructure & Deploy Baseline:** The canonical production environment for `neo-tiktok-front` is hosted on **Railway** (`neotiktok.com`). Continuous deployment builds strictly from the **`main`** branch. Every change meant for production MUST be merged into `main` and pushed to `origin main`.
 - Any future frontend AI assistant must consume `POST /ai/chat` via backend proxy
   (Cloudflare AI Gateway) without embedding API keys, tokens or secrets in the client bundle.
@@ -137,6 +145,7 @@ Current implementation increment:
 ---
 
 1. BRANDING IS A TECHNICAL CONSTRAINT
+
 
 The visual identity is not decorative.
 

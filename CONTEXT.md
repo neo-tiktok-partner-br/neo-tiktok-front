@@ -24,19 +24,25 @@ O `neo-tiktok-front` é a superfície web pública unificada e a camada **H5 Min
 * **`/login` & `/app` (`/app/orders`):** Shell autenticado do conector e interface homologada para o App Review do TikTok Shop.
 * **`/legal/privacidade` & `/legal/termos`:** Conformidade legal LGPD com identificação da razão social (`Flowoff Marketing e Assessoria Digital LTDA - CNPJ 43.376.355/0001-92`).
 
-### 📱 H5 Minis Shell / WebView-ready (9:16)
-* **`/minis`:** Hub H5 de seleção das experiências 9:16.
-* **`/minis/seller` & `/minis/seller/dashboard`:** Shell H5 para Lojistas, preparado para WebView, sem prova de Mini App nativo.
-* **`/minis/creator`, `/minis/creator/catalog` & `/minis/creator/wallet`:** Shell H5 para Criadores, preparado para WebView, sem SDK/bridge oficial comprovado.
-* **`/minis/series`:** Experiência H5 de micro-learning e edutainment. Checkout nativo dentro do TikTok permanece `NOT_PROVEN`.
+### 📱 Camada In-App Minis 9:16 (In-Shell Navigation)
+* **`/` (Home In-App 9:16):** Shell nativo mobile com navegação por abas (`#shop`, `#creators`, `#partners`, `#tech`) via DOM/hash interno sem reload de página, garantindo compatibilidade total com o TikTok In-App WebView.
+* **`/home`:** Versão clássica desktop da vitrine institucional.
+* **`/shop`, `/creators`, `/marketing`, `/tech`:** Rotas canônicas públicas de intenção e qualificação.
+* **`/sellers/conectar`:** Gateway de intenção que dispara o OAuth Seller oficial (`/oauth/tiktok-shop/authorize`).
+* **`/legal/privacidade` & `/legal/termos`:** Conformidade legal LGPD com identificação da razão social (`Flowoff Marketing e Assessoria Digital LTDA - CNPJ 43.376.355/0001-92`).
+* **`/login` & `/app` (`/app/orders`):** Shell autenticado do conector e interface homologada para o App Review do TikTok Shop.
+
+> **DIRETIVA DE FREEZE (SOB ANÁLISE):** A camada de apresentação visual pública está sob análise do operador. Não modificar `MobilePublicShell.astro` ou layouts visuais públicos.
 
 ---
 
 ## ⟁ Tecnologias, Layouts & Tracking
 
 * **Framework:** Astro 5 (Static Site Generation).
+* **Navegação:** In-Shell DOM/hash tabs para WebView TikTok. Service Worker (`sw.js`) expurgado permanentemente.
 * **Layouts:**
   * `BaseLayout.astro`: Vitrine institucional desktop/mobile responsiva.
-  * `MiniLayout.astro`: Canvas 9:16 para H5 Minis Shell / WebView-ready (emulação em desktop e tela cheia com safe-areas em mobile). Não prova SDK/runtime TikTok Minis.
+  * `MobilePublicShell.astro`: Canvas 9:16 para navegação in-app móvel sem reload.
 * **Design System:** Vanilla CSS com tokens (`tokens.css` e `review.css`) para máxima performance.
-* **Tracking Oficial:** TikTok Pixel `D9SJPC3C77U97D5QGU0G`; `ViewContent`, `InitiateCheckout`, `Contact` e `ClickButton` suportam envio browser + server com o mesmo `event_id`. Na jornada UGC afiliada da Paulinha, a landing emite `ViewContent` com identificador editorial interno e o link externo emite `ClickButton`; ela nao emite `InitiateCheckout`, `AddToCart` ou `Purchase`, pois checkout, SKU de catalogo e pedido pertencem ao seller/TikTok Shop. A confirmacao operacional da Events API depende de deploy, Test Events e evidencia `Server & Browser` no Events Manager.
+* **Tracking Oficial:** TikTok Pixel `D9SJPC3C77U97D5QGU0G`; `ViewContent`, `InitiateCheckout`, `Contact` e `ClickButton` suportam envio browser + server com o mesmo `event_id`.
+
